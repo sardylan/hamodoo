@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <menuitem id="menu_root"
+                  name="HAM Utility"
+                  sequence="1000"/>
+
+        <menuitem id="menu_modulation"
+                  name="Modulations"
+                  parent="menu_root"
+                  groups="group_modulation_manage"
+                  sequence="0"/>
+
+        <menuitem id="menu_modulation_list"
+                  name="List"
+                  parent="menu_modulation"
+                  action="action_modulation_list"
+                  sequence="0"/>
+
+        <menuitem id="menu_country"
+                  name="Countries"
+                  parent="menu_root"
+                  groups="group_country_manage"
+                  sequence="1"/>
+
+        <menuitem id="menu_country_list"
+                  name="List"
+                  parent="menu_country"
+                  action="action_country_list"
+                  sequence="0"/>
+
+        <menuitem id="menu_country_import"
+                  name="Import"
+                  parent="menu_country"
+                  action="action_country_import"
+                  sequence="1"/>
+
+    </data>
+</odoo>

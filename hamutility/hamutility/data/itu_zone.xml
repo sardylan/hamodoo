@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_1">
+            <field name="number">1</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_2">
+            <field name="number">2</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_3">
+            <field name="number">3</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_4">
+            <field name="number">4</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_5">
+            <field name="number">5</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_6">
+            <field name="number">6</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_7">
+            <field name="number">7</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_8">
+            <field name="number">8</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_9">
+            <field name="number">9</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_10">
+            <field name="number">10</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_11">
+            <field name="number">11</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_12">
+            <field name="number">12</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_13">
+            <field name="number">13</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_14">
+            <field name="number">14</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_15">
+            <field name="number">15</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_16">
+            <field name="number">16</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_17">
+            <field name="number">17</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_18">
+            <field name="number">18</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_19">
+            <field name="number">19</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_20">
+            <field name="number">20</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_21">
+            <field name="number">21</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_22">
+            <field name="number">22</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_23">
+            <field name="number">23</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_24">
+            <field name="number">24</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_25">
+            <field name="number">25</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_26">
+            <field name="number">26</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_27">
+            <field name="number">27</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_28">
+            <field name="number">28</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_29">
+            <field name="number">29</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_30">
+            <field name="number">30</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_31">
+            <field name="number">31</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_32">
+            <field name="number">32</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_33">
+            <field name="number">33</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_34">
+            <field name="number">34</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_35">
+            <field name="number">35</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_36">
+            <field name="number">36</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_37">
+            <field name="number">37</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_38">
+            <field name="number">38</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_39">
+            <field name="number">39</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_40">
+            <field name="number">40</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_41">
+            <field name="number">41</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_42">
+            <field name="number">42</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_43">
+            <field name="number">43</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_44">
+            <field name="number">44</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_45">
+            <field name="number">45</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_46">
+            <field name="number">46</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_47">
+            <field name="number">47</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_48">
+            <field name="number">48</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_49">
+            <field name="number">49</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_50">
+            <field name="number">50</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_51">
+            <field name="number">51</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_52">
+            <field name="number">52</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_53">
+            <field name="number">53</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_54">
+            <field name="number">54</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_55">
+            <field name="number">55</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_56">
+            <field name="number">56</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_57">
+            <field name="number">57</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_58">
+            <field name="number">58</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_59">
+            <field name="number">59</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_60">
+            <field name="number">60</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_61">
+            <field name="number">61</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_62">
+            <field name="number">62</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_63">
+            <field name="number">63</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_64">
+            <field name="number">64</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_65">
+            <field name="number">65</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_66">
+            <field name="number">66</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_67">
+            <field name="number">67</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_68">
+            <field name="number">68</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_69">
+            <field name="number">69</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_70">
+            <field name="number">70</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_71">
+            <field name="number">71</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_72">
+            <field name="number">72</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_73">
+            <field name="number">73</field>
+        </record>
+
+        <record model="hamutility.itu_zone" id="data_itu_zone_74">
+            <field name="number">74</field>
+        </record>
+
+    </data>
+</odoo>

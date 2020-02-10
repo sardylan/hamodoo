@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record model="ir.actions.act_window" id="action_modulation_list">
+            <field name="name">Modulations</field>
+            <field name="res_model">hamutility.modulation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="limit">20</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_country_list">
+            <field name="name">Countries</field>
+            <field name="res_model">hamutility.country</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="limit">20</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_country_import">
+            <field name="name">Import Countries</field>
+            <field name="res_model">hamutility.wizard_import_prefix</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>
