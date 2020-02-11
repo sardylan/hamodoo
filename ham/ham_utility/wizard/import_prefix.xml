@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record model="ir.ui.view" id="view_wizard_import_prefix">
+            <field name="name">Import Country</field>
+            <field name="model">ham_utility.wizard_import_prefix</field>
+            <field name="arch" type="xml">
+                <form string="Import Prefixes" create="false" edit="false" delete="false">
+                    <group>
+                        <button name="action_delete_all"
+                                string="Delete All"
+                                type="object"/>
+                    </group>
+                    <group>
+                        <field name="xlsx_file" widget="file"/>
+                        <button name="action_import_xlsx"
+                                string="Import"
+                                type="object"/>
+                    </group>
+                    <footer/>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

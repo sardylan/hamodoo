@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record model="res.groups" id="group_modulation_manage">
+            <field name="name">Manages modulations</field>
+            <field name="category_id" ref="category_ham_utility"/>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record model="res.groups" id="group_country_manage">
+            <field name="name">Manages countries</field>
+            <field name="category_id" ref="category_ham_utility"/>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+    </data>
+</odoo>

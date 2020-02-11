@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record model="ham_utility.modulation" id="data_modulation_am">
+            <field name="name">AM</field>
+            <field name="description">AM speech communication</field>
+            <field name="modulation">A</field>
+            <field name="signal">3</field>
+            <field name="information">E</field>
+        </record>
+
+        <record model="ham_utility.modulation" id="data_modulation_fm">
+            <field name="name">FM</field>
+            <field name="description">FM speech communication</field>
+            <field name="modulation">F</field>
+            <field name="signal">3</field>
+            <field name="information">E</field>
+        </record>
+
+        <record model="ham_utility.modulation" id="data_modulation_ssb">
+            <field name="name">SSB</field>
+            <field name="description">SSB speech communication</field>
+            <field name="modulation">J</field>
+            <field name="signal">3</field>
+            <field name="information">E</field>
+        </record>
+
+        <record model="ham_utility.modulation" id="data_modulation_cw">
+            <field name="name">CW</field>
+            <field name="description">Signalling by keying the carrier directly, a.k.a. Continuous Wave (CW) or On-Off Keying (OOK), currently used in amateur radio. This is often but not necessarily Morse code.</field>
+            <field name="modulation">A</field>
+            <field name="signal">1</field>
+            <field name="information">A</field>
+        </record>
+
+        <record model="ham_utility.modulation" id="data_modulation_rtty">
+            <field name="name">RTTY</field>
+            <field name="description">Frequency-shift keying (FSK) telegraphy, such as RTTY.</field>
+            <field name="modulation">F</field>
+            <field name="signal">1</field>
+            <field name="information">B</field>
+            <field name="bandwidth">170</field>
+        </record>
+
+        <record model="ham_utility.modulation" id="data_modulation_psk31">
+            <field name="name">BPSK31</field>
+            <field name="description">Phase-shift keying.</field>
+            <field name="modulation">J</field>
+            <field name="signal">2</field>
+            <field name="information">B</field>
+            <field name="bandwidth">31</field>
+        </record>
+
+        <record model="ham_utility.modulation" id="data_modulation_afsk">
+            <field name="name">AFSK</field>
+            <field name="description">Data transmission by frequency modulation of a radio frequency carrier with an audio frequency FSK subcarrier. Often called AFSK/FM.</field>
+            <field name="modulation">F</field>
+            <field name="signal">2</field>
+            <field name="information">B</field>
+        </record>
+
+    </data>
+</odoo>
