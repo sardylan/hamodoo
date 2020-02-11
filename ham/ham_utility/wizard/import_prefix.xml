@@ -8,18 +8,29 @@
             <field name="model">ham_utility.wizard_import_prefix</field>
             <field name="arch" type="xml">
                 <form string="Import Prefixes" create="false" edit="false" delete="false">
-                    <group>
-                        <button name="action_delete_all"
+                    <field name="xlsx_file_name" invisible="1"/>
+                    <header>
+                        <button type="object"
+                                name="action_delete_all"
                                 string="Delete All"
-                                type="object"/>
-                    </group>
+                                confirm="Delete all countries records?"
+                                class="btn-danger"/>
+                        <button type="object"
+                                name="action_open_web_site"
+                                string="Open Web Site"
+                                class="btn-link"/>
+                    </header>
                     <group>
-                        <field name="xlsx_file" widget="file"/>
-                        <button name="action_import_xlsx"
-                                string="Import"
-                                type="object"/>
+                        <field name="xlsx_file"
+                               widget="file"
+                               filename="xlsx_file_name"/>
                     </group>
-                    <footer/>
+                    <footer>
+                        <button type="object"
+                                name="action_import_xlsx"
+                                string="Import"
+                                class="btn-primary"/>
+                    </footer>
                 </form>
             </field>
         </record>

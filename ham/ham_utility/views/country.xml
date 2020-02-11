@@ -8,8 +8,8 @@
             <field name="model">ham_utility.country</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="flag" widget="image"/>
                     <field name="name"/>
+                    <field name="res_country_id"/>
                     <field name="prefix_ids"/>
                 </tree>
             </field>
@@ -21,9 +21,9 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                        <group>
+                        <h1>
                             <field name="name"/>
-                        </group>
+                        </h1>
                         <group string="General">
                             <field name="res_country_id"/>
                             <field name="flag" widget="image"/>
