@@ -1,20 +1,15 @@
 {
-    "name": "HAM Utility",
-    "version": "13.0.1.0.0",
-    "category": "HAM Utility",
-    "sequence": 0,
-    "summary": "HAM utilities and models",
+    "name": "HAM Awards",
+    "version": "13.0.0.0.0",
+    "category": "Extra Tools",
+    "summary": "HAM award management",
     "depends": [
-        "base",
-        "mail"
+        "ham_utility",
+        "web_responsive"
     ],
     "data": [
-        "security/groups/modulation.xml",
-        "security/groups/country.xml",
-
         "security/categories.xml",
-        "security/profiles.xml",
-
+        "security/groups.xml",
         "security/access/modulation.xml",
         "security/access/country.xml",
 

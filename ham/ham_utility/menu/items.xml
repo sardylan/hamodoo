@@ -6,12 +6,12 @@
         <menuitem id="menu_root"
                   name="HAM Utility"
                   web_icon="ham_utility,static/description/icon.png"
-                  sequence="1000"/>
+                  groups="group_profile_user"
+                  sequence="0"/>
 
         <menuitem id="menu_modulation"
                   name="Modulations"
                   parent="menu_root"
-                  groups="group_modulation_manage"
                   sequence="0"/>
 
         <menuitem id="menu_modulation_list"
@@ -23,7 +23,6 @@
         <menuitem id="menu_country"
                   name="Countries"
                   parent="menu_root"
-                  groups="group_country_manage"
                   sequence="1"/>
 
         <menuitem id="menu_country_list"
@@ -35,6 +34,7 @@
         <menuitem id="menu_country_import"
                   name="Import"
                   parent="menu_country"
+                  groups="group_profile_manager"
                   action="action_country_import"
                   sequence="1"/>
 
