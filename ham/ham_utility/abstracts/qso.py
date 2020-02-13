@@ -7,6 +7,7 @@ class QSO(models.AbstractModel):
     _inherit = "mail.thread"
     _description = "Abstract QSO"
     _order = "ts_start DESC"
+    _rec_name = "footprint"
 
     _sql_constraints = [
         ("footprint_uniq", "UNIQUE(footprint)", _("QSO Already present"))
@@ -96,11 +97,21 @@ class QSO(models.AbstractModel):
         store=True
     )
 
-    def create(self, vals_list):
-        if "rx_frequency" not in vals_list or not vals_list["rx_frequency"]:
-            vals_list["rx_frequency"] = vals_list["frequency"]
+    def create(self, vals):
+        vals = self.sanitize_vals(vals)
+        return super().create(vals)
 
-        return super().create(vals_list)
+    def write(self, vals):
+        vals = self.sanitize_vals(vals)
+        return super().write(vals)
+
+    @api.onchange("callsign", "local_callsign")
+    def uppercase_onchange(self):
+        callsign_utility = self.env["ham_utility.utility_callsign"]
+
+        for rec in self:
+            rec.callsign = callsign_utility.uppercase(rec.callsign)
+            rec.local_callsign = callsign_utility.uppercase(rec.local_callsign)
 
     @api.depends("ts_start", "local_callsign", "callsign", "modulation_id", "frequency")
     def compute_footprint(self):
@@ -113,7 +124,7 @@ class QSO(models.AbstractModel):
                 rec.frequency
             )
 
-            rec.footprint = footprint
+            rec.footprint = footprint.strip().upper()
 
     @api.model
     def footprint_value(self, ts_start, local_callsign, callsign, modulation_id, frequency):
@@ -125,3 +136,16 @@ class QSO(models.AbstractModel):
             frequency
         )
         return footprint
+
+    @api.model
+    def sanitize_vals(self, vals):
+        callsign_utility = self.env["ham_utility.utility_callsign"]
+
+        if "rx_frequency" not in vals or not vals["rx_frequency"]:
+            vals["rx_frequency"] = vals["frequency"]
+
+        for field in ["callsign", "local_callsign"]:
+            if field in vals:
+                vals[field] = callsign_utility.uppercase(vals[field])
+
+        return vals

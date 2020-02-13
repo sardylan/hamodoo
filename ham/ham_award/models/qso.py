@@ -3,6 +3,7 @@ from odoo import models, fields
 
 class QSO(models.Model):
     _name = "ham_award.qso"
+    _description = "QSO"
 
     _inherit = [
         "ham_utility.qso",

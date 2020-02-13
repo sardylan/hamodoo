@@ -32,3 +32,13 @@ class Award(models.Model):
         required=True,
         tracking=True
     )
+
+    operator_ids = fields.Many2many(
+        string="Operators",
+        help="Enabled operators",
+        comodel_name="ham_award.operator",
+        relation="ham_award_operator_award_rel",
+        column1="operator_id",
+        column2="award_id",
+        tracking=True
+    )
