@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record model="ir.ui.view" id="view_qso_tree">
+            <field name="name">view_qso_tree</field>
+            <field name="model">ham_utility.qso</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="callsign"/>
+                    <field name="ts_start"/>
+                    <field name="ts_end"/>
+                    <field name="local_callsign"/>
+                    <field name="op_name"/>
+                    <field name="frequency"/>
+                    <field name="rx_frequency"/>
+                    <field name="modulation_id"/>
+                    <field name="tx_rst"/>
+                    <field name="rx_rst"/>
+                    <field name="qth"/>
+                    <field name="footprint"/>
+                    <field name="award_id"/>
+                    <field name="operator_id"/>
+                    <field name="upload_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_qso_form">
+            <field name="name">view_qso_form</field>
+            <field name="model">ham_utility.qso</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Remote">
+                            <field name="callsign"/>
+                            <field name="op_name"/>
+                            <field name="qth"/>
+                        </group>
+                        <group string="Date &amp; Time">
+                            <field name="ts_start"/>
+                            <field name="ts_end"/>
+                        </group>
+                        <group string="Technical data">
+                            <field name="frequency"/>
+                            <field name="rx_frequency"/>
+                            <field name="modulation_id"/>
+                            <field name="tx_rst"/>
+                            <field name="rx_rst"/>
+                        </group>
+                        <group string="Local informations"
+                               col="4">
+                            <field name="operator_id"/>
+                            <field name="local_callsign"/>
+                        </group>
+                        <group string="Others">
+                            <field name="footprint"/>
+                            <field name="award_id"/>
+                            <field name="upload_id"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_qso_search">
+            <field name="name">view_qso_search</field>
+            <field name="model">ham_utility.qso</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="callsign"/>
+                    <field name="op_name"/>
+                    <field name="qth"/>
+                    <separator/>
+                    <field name="ts_start"/>
+                    <field name="ts_end"/>
+                    <separator/>
+                    <field name="frequency"/>
+                    <field name="operator_id"/>
+                    <field name="local_callsign"/>
+                    <separator/>
+                    <field name="footprint"/>
+                    <field name="award_id"/>
+                    <field name="upload_id"/>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -8,6 +8,7 @@
         "web_responsive"
     ],
     "data": [
+        "views/award.xml"
     ],
     "application": True
 }

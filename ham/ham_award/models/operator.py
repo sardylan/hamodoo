@@ -74,3 +74,9 @@ class Operator(models.Model):
                 vals[field] = callsign_utility.uppercase(vals[field])
 
         return vals
+
+    def action_active_toggle(self):
+        for rec in self:
+            rec.active = not rec.active
+
+        return True
