@@ -25,3 +25,10 @@ class QSO(models.Model):
         required=True,
         tracking=True
     )
+
+    upload_id = fields.Many2one(
+        string="Upload",
+        help="Related upload",
+        comodel_name="ham_award.upload",
+        tracking=True
+    )
