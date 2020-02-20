@@ -20,7 +20,7 @@
             <field name="name">Manager</field>
             <field name="category_id" ref="category_main"/>
             <field name="implied_ids" eval="[(6, 0, [
-            ref('group_profile_user'),
+            ref('group_profile_viewer'),
             ref('group_award_readwrite'),
             ref('group_operator_readwrite'),
             ref('group_qso_readwrite'),

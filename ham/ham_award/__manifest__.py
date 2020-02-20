@@ -27,7 +27,10 @@
         "views/operator.xml",
         "views/qso.xml",
         "views/station.xml",
-        "views/upload.xml"
+        "views/upload.xml",
+
+        "menu/action.xml",
+        "menu/items.xml"
     ],
     "application": True
 }

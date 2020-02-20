@@ -1,7 +1,7 @@
 from odoo import models, api
 
 
-class CallsignUtility(models.Model):
+class CallsignUtility(models.AbstractModel):
     _name = "ham_utility.utility_callsign"
     _description = "Callsign utilities"
 

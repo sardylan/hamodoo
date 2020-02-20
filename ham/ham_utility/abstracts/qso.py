@@ -128,6 +128,9 @@ class QSO(models.AbstractModel):
 
     @api.model
     def footprint_value(self, ts_start, local_callsign, callsign, modulation_id, frequency):
+        if not ts_start or not local_callsign or not callsign or not modulation_id or not frequency:
+            return ""
+
         footprint = "%s-%s-%s-%s-%d" % (
             ts_start.strftime("%Y%m%d%H%M%S"),
             local_callsign.strip().upper(),

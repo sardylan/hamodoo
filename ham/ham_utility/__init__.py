@@ -1,4 +1,4 @@
 from . import abstracts
 from . import models
-from . import utility
+from . import utilities
 from . import wizard
