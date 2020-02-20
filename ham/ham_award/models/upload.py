@@ -32,3 +32,11 @@ class Upload(models.Model):
         required=True,
         tracking=True
     )
+
+    award_id = fields.Many2one(
+        string="Award",
+        help="Related award",
+        comodel_name="ham_award.award",
+        required=True,
+        tracking=True
+    )

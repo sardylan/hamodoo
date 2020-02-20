@@ -5,7 +5,7 @@
 
         <record model="ir.ui.view" id="view_operator_tree">
             <field name="name">view_operator_tree</field>
-            <field name="model">ham_utility.operator</field>
+            <field name="model">ham_award.operator</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="partner_id"/>
@@ -17,7 +17,7 @@
 
         <record model="ir.ui.view" id="view_operator_form">
             <field name="name">view_operator_form</field>
-            <field name="model">ham_utility.operator</field>
+            <field name="model">ham_award.operator</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
@@ -59,7 +59,7 @@
 
         <record model="ir.ui.view" id="view_operator_search">
             <field name="name">view_operator_search</field>
-            <field name="model">ham_utility.operator</field>
+            <field name="model">ham_award.operator</field>
             <field name="arch" type="xml">
                 <search>
                     <field name="callsign"/>

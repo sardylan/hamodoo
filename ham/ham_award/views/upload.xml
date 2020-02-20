@@ -5,7 +5,7 @@
 
         <record model="ir.ui.view" id="view_upload_tree">
             <field name="name">view_upload_tree</field>
-            <field name="model">ham_utility.upload</field>
+            <field name="model">ham_award.upload</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="file_name" invisible="1"/>
@@ -18,7 +18,7 @@
 
         <record model="ir.ui.view" id="view_upload_form">
             <field name="name">view_upload_form</field>
-            <field name="model">ham_utility.upload</field>
+            <field name="model">ham_award.upload</field>
             <field name="arch" type="xml">
                 <form>
                     <field name="file_name" invisible="1"/>
@@ -27,6 +27,7 @@
                             <field name="ts"/>
                             <field name="file_content" filename="file_name"/>
                             <field name="operator_id"/>
+                            <field name="award_id"/>
                         </group>
                     </sheet>
                     <div class="oe_chatter">
@@ -39,7 +40,7 @@
 
         <record model="ir.ui.view" id="view_upload_search">
             <field name="name">view_upload_search</field>
-            <field name="model">ham_utility.upload</field>
+            <field name="model">ham_award.upload</field>
             <field name="arch" type="xml">
                 <search>
                     <field name="ts"/>
@@ -47,6 +48,8 @@
                     <field name="file_name"/>
                     <separator/>
                     <field name="operator_id"/>
+                    <separator/>
+                    <field name="award_id"/>
                 </search>
             </field>
         </record>

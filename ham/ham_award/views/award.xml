@@ -5,7 +5,7 @@
 
         <record model="ir.ui.view" id="view_award_tree">
             <field name="name">view_award_tree</field>
-            <field name="model">ham_utility.award</field>
+            <field name="model">ham_award.award</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
@@ -17,7 +17,7 @@
 
         <record model="ir.ui.view" id="view_award_form">
             <field name="name">view_award_form</field>
-            <field name="model">ham_utility.award</field>
+            <field name="model">ham_award.award</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
@@ -42,7 +42,7 @@
 
         <record model="ir.ui.view" id="view_award_search">
             <field name="name">view_award_search</field>
-            <field name="model">ham_utility.award</field>
+            <field name="model">ham_award.award</field>
             <field name="arch" type="xml">
                 <search>
                     <field name="name"/>

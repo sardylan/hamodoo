@@ -8,7 +8,26 @@
         "web_responsive"
     ],
     "data": [
-        "views/award.xml"
+        "security/groups/award.xml",
+        "security/groups/operator.xml",
+        "security/groups/qso.xml",
+        "security/groups/station.xml",
+        "security/groups/upload.xml",
+
+        "security/categories.xml",
+        "security/profiles.xml",
+
+        "security/access/award.xml",
+        "security/access/operator.xml",
+        "security/access/qso.xml",
+        "security/access/station.xml",
+        "security/access/upload.xml",
+
+        "views/award.xml",
+        "views/operator.xml",
+        "views/qso.xml",
+        "views/station.xml",
+        "views/upload.xml"
     ],
     "application": True
 }

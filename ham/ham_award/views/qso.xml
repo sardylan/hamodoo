@@ -5,7 +5,7 @@
 
         <record model="ir.ui.view" id="view_qso_tree">
             <field name="name">view_qso_tree</field>
-            <field name="model">ham_utility.qso</field>
+            <field name="model">ham_award.qso</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="callsign"/>
@@ -29,7 +29,7 @@
 
         <record model="ir.ui.view" id="view_qso_form">
             <field name="name">view_qso_form</field>
-            <field name="model">ham_utility.qso</field>
+            <field name="model">ham_award.qso</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
@@ -70,7 +70,7 @@
 
         <record model="ir.ui.view" id="view_qso_search">
             <field name="name">view_qso_search</field>
-            <field name="model">ham_utility.qso</field>
+            <field name="model">ham_award.qso</field>
             <field name="arch" type="xml">
                 <search>
                     <field name="callsign"/>

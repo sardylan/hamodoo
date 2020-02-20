@@ -12,6 +12,13 @@ class Award(models.Model):
         ("name_uniq", "UNIQUE(name)", _("Already present. Must be unique"))
     ]
 
+    name = fields.Char(
+        string="Name",
+        help="Name of the award",
+        required=True,
+        tracking=True
+    )
+
     ts_start = fields.Datetime(
         string="Date & Time Start",
         help="Date and Time of start",
@@ -22,13 +29,6 @@ class Award(models.Model):
     ts_end = fields.Datetime(
         string="Date & Time End",
         help="Date and Time of end",
-        required=True,
-        tracking=True
-    )
-
-    name = fields.Char(
-        string="Name",
-        help="Name of the award",
         required=True,
         tracking=True
     )

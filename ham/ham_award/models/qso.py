@@ -19,8 +19,8 @@ class QSO(models.Model):
     )
 
     operator_id = fields.Many2one(
-        string="Award",
-        help="Related award",
+        string="Operator",
+        help="Operator",
         comodel_name="ham_award.operator",
         required=True,
         tracking=True
