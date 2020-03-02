@@ -4,6 +4,8 @@
     "category": "Extra Tools",
     "summary": "HAM award management",
     "depends": [
+        "website",
+        "portal",
         "ham_utility",
         "web_responsive"
     ],
@@ -30,7 +32,11 @@
         "views/upload.xml",
 
         "menu/action.xml",
-        "menu/items.xml"
+        "menu/items.xml",
+
+        "templates/portal/my_home.xml",
+        "templates/portal/breadcrumbs.xml",
+        "templates/uploads/list.xml"
     ],
     "application": True
 }

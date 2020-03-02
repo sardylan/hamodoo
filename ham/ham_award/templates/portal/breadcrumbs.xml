@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <template id="portal_breadcrumbs"
+                  inherit_id="portal.portal_breadcrumbs"
+                  priority="0">
+            <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+                <li t-if="page_name == 'uploads_list'" class="breadcrumb-item">Uploads</li>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

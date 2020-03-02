@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <template id="portal_my_home_upload"
+                  name="Portal My Home : timesheets entries"
+                  inherit_id="portal.portal_my_home"
+                  priority="0">
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="title">Uploads</t>
+                    <t t-set="url" t-value="'/ham_award/uploads'"/>
+                    <t t-set="count" t-value="ham_award_upload_count"/>
+                </t>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

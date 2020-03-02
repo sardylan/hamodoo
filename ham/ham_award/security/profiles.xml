@@ -16,19 +16,31 @@
             <field name="users" eval="[(4, ref('base.user_admin'))]"/>
         </record>
 
-        <record model="res.groups" id="group_profile_manager">
-            <field name="name">Manager</field>
+        <record model="res.groups" id="group_profile_user">
+            <field name="name">User</field>
             <field name="category_id" ref="category_main"/>
             <field name="implied_ids" eval="[(6, 0, [
             ref('group_profile_viewer'),
-            ref('group_award_readwrite'),
-            ref('group_operator_readwrite'),
             ref('group_qso_readwrite'),
-            ref('group_station_readwrite'),
             ref('group_upload_readwrite')
             ])]"/>
             <field name="users" eval="[(4, ref('base.user_admin'))]"/>
         </record>
 
+        <record model="res.groups" id="group_profile_manager">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="category_main"/>
+            <field name="implied_ids" eval="[(6, 0, [
+            ref('group_profile_user'),
+            ref('group_award_readwrite'),
+            ref('group_operator_readwrite'),
+            ref('group_station_readwrite')
+            ])]"/>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="base.group_portal" model="res.groups">
+            <field name="implied_ids" eval="[(4, ref('ham_award.group_profile_user'))]"/>
+        </record>
     </data>
 </odoo>

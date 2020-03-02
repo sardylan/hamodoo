@@ -50,6 +50,7 @@ class Operator(models.Model):
         related="partner_id.name"
     )
 
+    @api.model
     def create(self, vals):
         vals = self.sanitize_vals(vals)
         return super().create(vals)

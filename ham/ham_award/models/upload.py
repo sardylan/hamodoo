@@ -5,6 +5,7 @@ class Upload(models.Model):
     _name = "ham_award.upload"
     _inherit = "mail.thread"
     _description = "Upload"
+    _order = "ts DESC"
 
     ts = fields.Datetime(
         string="Date & Time of upload",
