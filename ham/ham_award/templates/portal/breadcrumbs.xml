@@ -7,7 +7,18 @@
                   inherit_id="portal.portal_breadcrumbs"
                   priority="0">
             <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
-                <li t-if="page_name == 'uploads_list'" class="breadcrumb-item">Uploads</li>
+                <t t-if="page_name in ['award_list', 'award_single']">
+                    <li class="breadcrumb-item">
+                        <a href="/ham_award/award">Awards</a>
+                    </li>
+                </t>
+                <t t-if="page_name == 'award_single'">
+                    <li class="breadcrumb-item">
+                        <a t-att-href="'/ham_award/award/%d' % award_id.id">
+                            <t t-esc="award_id.name"/>
+                        </a>
+                    </li>
+                </t>
             </xpath>
         </template>
 

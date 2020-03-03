@@ -10,7 +10,14 @@
                     <ul>
                         <t t-foreach="upload_ids" t-as="upload_id">
                             <li>
-                                <t t-esc="upload_id.ts"/>
+                                <strong>
+                                    <t t-esc="upload_id.ts"/>
+                                </strong>
+                                [
+                                <em>
+                                    <t t-esc="upload_id.file_name"/>
+                                </em>
+                                ]
                             </li>
                         </t>
                     </ul>
@@ -18,10 +25,10 @@
                 <div t-else="">
                     <p>There are no uploads for your account.</p>
                 </div>
-                <form action="/ham_award/uploads" method="POST">
+                <form action="/ham_award/upload" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                     <div class="row o_portal_details">
-                        <div class="col-lg-8">
+                        <div class="col-lg-12">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div t-if="error_message" class="alert alert-danger" role="alert">
@@ -32,12 +39,22 @@
                                     </div>
                                 </div>
                                 <div t-attf-class="form-group #{error.get('adif_file') and 'o_has_error' or ''} col-xl-6">
+                                    <label class="col-form-label" for="award">Award</label>
+                                    <select class="form-control" name="award">
+                                        <option disabled="1" selected="1" value="">Choose...</option>
+                                        <t t-foreach="award_ids" t-as="award_id">
+                                            <option t-att-value="award_id.id">
+                                                <t t-esc="award_id.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div t-attf-class="form-group #{error.get('adif_file') and 'o_has_error' or ''} col-xl-6">
                                     <label class="col-form-label" for="adif_file">ADIF File</label>
                                     <input type="file" name="adif_file"
                                            t-attf-class="form-control #{error.get('adif_file') and 'is-invalid' or ''}"
                                            t-att-value="adif_file"/>
                                 </div>
-
                                 <div class="clearfix"/>
                                 <input type="hidden" name="redirect" t-att-value="redirect"/>
                             </div>

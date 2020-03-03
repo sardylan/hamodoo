@@ -9,9 +9,9 @@
                   priority="0">
             <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
                 <t t-call="portal.portal_docs_entry">
-                    <t t-set="title">Uploads</t>
-                    <t t-set="url" t-value="'/ham_award/uploads'"/>
-                    <t t-set="count" t-value="ham_award_upload_count"/>
+                    <t t-set="title">Awards</t>
+                    <t t-set="url" t-value="'/ham_award/award'"/>
+                    <t t-set="count" t-value="ham_award_award_count"/>
                 </t>
             </xpath>
         </template>

@@ -36,7 +36,9 @@
 
         "templates/portal/my_home.xml",
         "templates/portal/breadcrumbs.xml",
-        "templates/uploads/list.xml"
+        "templates/award/list.xml",
+        "templates/award/single.xml",
+        "templates/upload/list.xml"
     ],
     "application": True
 }

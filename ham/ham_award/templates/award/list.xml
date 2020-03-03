@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <template id="template_award_list" name="Awards List">
+            <t t-call="portal.portal_layout">
+                <t t-set="additional_title">Awards</t>
+                <t t-if="award_ids" t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>Name</th>
+                            <th>Start</th>
+                            <th>End</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="award_ids" t-as="award_id">
+                            <tr>
+                                <td>
+                                    <a t-att-href="'/ham_award/award/%d' % award_id.id">
+                                        <strong>
+                                            <t t-esc="award_id.name"/>
+                                        </strong>
+                                    </a>
+                                </td>
+                                <td>
+                                    <t t-esc="award_id.ts_start"/>
+                                </td>
+                                <td>
+                                    <t t-esc="award_id.ts_end"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </t>
+                <div t-else="">
+                    <p>There are no awards for your account.</p>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>
