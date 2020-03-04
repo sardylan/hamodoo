@@ -1,4 +1,19 @@
-from odoo import models, fields
+import base64
+import datetime
+import json
+import logging
+
+from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+from odoo.tools.translate import _
+
+SELECTION_STATUS = [
+    ("draft", "To parse"),
+    ("parsed", "Parsed"),
+    ("error", "Error")
+]
+
+_logger = logging.getLogger(__name__)
 
 
 class Upload(models.Model):
@@ -41,3 +56,98 @@ class Upload(models.Model):
         required=True,
         tracking=True
     )
+
+    status = fields.Selection(
+        string="Status",
+        help="Upload status",
+        selection=SELECTION_STATUS,
+        required=True,
+        default="draft"
+    )
+
+    headers = fields.Char(
+        string="Headers",
+        help="ADIF headers",
+        readonly=True
+    )
+
+    qso_ids = fields.One2many(
+        string="QSOs",
+        help="Related QSOs",
+        comodel_name="ham_award.qso",
+        inverse_name="upload_id",
+        readonly=True
+    )
+
+    name = fields.Char(
+        string="Name",
+        help="Name",
+        compute="_compute_name",
+        readonly=True
+    )
+
+    @api.depends("ts", "operator_id")
+    def _compute_name(self):
+        for rec in self:
+            rec.name = "%s - %s" % (
+                rec.ts.strftime("%Y-%m-%d %H:%M:%S"),
+                rec.operator_id.name
+            )
+
+    def action_parse(self):
+        for rec in self:
+            self.parse_adif(rec)
+
+    @api.model
+    def parse_adif(self, upload_id):
+        qso_obj = self.env["ham_award.qso"]
+        modulation_obj = self.env["ham_utility.modulation"]
+
+        adif_utility = self.env["ham_utility.utility_adif"]
+        qso_utility = self.env["ham_utility.utility_qso"]
+
+        if not upload_id:
+            raise ValidationError(_("Invalid Upload"))
+
+        file_raw = base64.b64decode(upload_id.with_context(bin_size=False).file_content)
+
+        try:
+            adif = adif_utility.parse_file_adif(file_raw)
+        except ValidationError as e:
+            _logger.error(e)
+            upload_id.status = "error"
+            return
+
+        upload_id.headers = json.dumps(adif["headers"])
+
+        for qso in adif["qso"]:
+            ts_time = qso["TIME_ON"]
+            ts_date = qso["QSO_DATE"]
+
+            modulation = qso["CALLSIGN"]
+
+            modulation_id = modulation_obj.search([("name", "=", modulation)])
+            if not modulation_id:
+                modulation_id = modulation_obj.search([("name", "ilike", modulation)])
+
+            if not modulation_id:
+                _logger.error("Modulation not found for value: %s", modulation)
+                upload_id.status = "error"
+                return
+
+            ts_start = datetime.datetime.combine(ts_date, ts_time)
+            local_callsign = upload_id.operator_id.callsign
+            callsign = qso["CALLSIGN"]
+            frequency = qso["FREQ"]
+
+            values = qso_utility.values_from_adif_record(qso)
+            footprint = qso_obj.footprint_value(ts_start, local_callsign, callsign, modulation_id, frequency)
+
+            qso_id = qso_obj.search([("footprint", "=", footprint)])
+            if not qso_id:
+                qso_id = qso_id.create(values)
+
+            if not qso_id:
+                raise ValidationError("Unable to create QSO with values: %s" % json.dumps(values))
+
+        upload_id.status = "parsed"

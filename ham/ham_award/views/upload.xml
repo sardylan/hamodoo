@@ -7,11 +7,14 @@
             <field name="name">view_upload_tree</field>
             <field name="model">ham_award.upload</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-primary="status == 'draft'"
+                      decoration-danger="status == 'error'">
                     <field name="file_name" invisible="1"/>
                     <field name="ts"/>
                     <field name="file_content" filename="file_name"/>
+                    <field name="award_id"/>
                     <field name="operator_id"/>
+                    <field name="status"/>
                 </tree>
             </field>
         </record>
@@ -21,6 +24,16 @@
             <field name="model">ham_award.upload</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button type="object"
+                                name="action_parse"
+                                string="Parse"
+                                default_focus="1"
+                                confirm="Proceed with ADIF parsing?"
+                                class="btn-primary"/>
+                        <field name="status"
+                               widget="statusbar"/>
+                    </header>
                     <field name="file_name" invisible="1"/>
                     <sheet>
                         <group>
@@ -29,6 +42,20 @@
                             <field name="operator_id"/>
                             <field name="award_id"/>
                         </group>
+                        <notebook>
+                            <page name="page_adif"
+                                  string="ADIF">
+                                <label for="headers"
+                                       string="Headers"/>
+                                <field name="headers"
+                                       widget="ace"
+                                       options="{'mode': 'python'}"/>
+                            </page>
+                            <page name="page_adif"
+                                  string="QSOs">
+                                <field name="qso_ids"/>
+                            </page>
+                        </notebook>
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
@@ -50,6 +77,11 @@
                     <field name="operator_id"/>
                     <separator/>
                     <field name="award_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Status" name="status" context="{'group_by': 'status'}"/>
+                        <filter string="Awards" name="award" context="{'group_by': 'award_id'}"/>
+                        <filter string="Operators" name="award" context="{'group_by': 'operator_id'}"/>
+                    </group>
                 </search>
             </field>
         </record>

@@ -64,7 +64,7 @@ class AwardController(http.Controller):
         ])
 
         upload_ids = upload_obj.search([
-            ("award_id.id", "=", award_id.ids),
+            ("award_id.id", "in", award_id.ids),
             ("operator_id.id", "=", operator_id.id)
         ])
 

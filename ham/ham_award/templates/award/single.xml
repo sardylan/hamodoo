@@ -33,9 +33,9 @@
                                     <a t-att-href="'/ham_award/upload/file_content/%d' % upload_id.id">
                                         <span class="fa fa-download"/>
                                     </a>
-<!--                                    <a t-att-href="'/ham_award/upload/delete/%d' % upload_id.id">-->
-<!--                                        <span class="fa fa-close"/>-->
-<!--                                    </a>-->
+                                    <!--                                    <a t-att-href="'/ham_award/upload/delete/%d' % upload_id.id">-->
+                                    <!--                                        <span class="fa fa-close"/>-->
+                                    <!--                                    </a>-->
                                 </td>
                             </tr>
                         </t>
@@ -43,6 +43,45 @@
                 </t>
                 <div t-else="">
                     <p>There are no uploads for your account.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        Upload new ADIF
+                    </div>
+                    <div class="card-body">
+                        <form action="/ham_award/upload/add" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="award" t-att-value="award_id.id"/>
+                            <div class="row o_portal_details">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div t-if="error_message" class="alert alert-danger" role="alert">
+                                                <t t-foreach="error_message" t-as="err">
+                                                    <t t-esc="err"/>
+                                                    <br/>
+                                                </t>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"/>
+                                        <div t-attf-class="form-group #{error.get('adif_file') and 'o_has_error' or ''} col-xl-12">
+                                            <label class="col-form-label" for="adif_file">ADIF File</label>
+                                            <input type="file" name="adif_file"
+                                                   t-attf-class="form-control #{error.get('adif_file') and 'is-invalid' or ''}"
+                                                   t-att-value="adif_file"/>
+                                        </div>
+                                        <div class="clearfix"/>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary float-right mb32">
+                                            Upload
+                                            <span class="fa fa-long-arrow-right"/>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </t>
         </template>
