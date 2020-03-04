@@ -2,13 +2,15 @@ import re
 from datetime import time, date
 
 from odoo import models, api
+from odoo.exceptions import ValidationError
+from odoo.tools.translate import _
 
 MODE_HEADER = 0
 MODE_QSO = 1
 
 
 class AdifUtility(models.AbstractModel):
-    _name = "ham_utility.adif"
+    _name = "ham_utility.utility_adif"
     _description = "ADIF log format parsing utilities"
 
     @api.model
@@ -16,6 +18,8 @@ class AdifUtility(models.AbstractModel):
         adif_regex = re.compile(r"<([a-zA-Z0-9:_]+)>([^<\t\f\v\r\n]*)")
 
         items = adif_regex.findall(raw_content)
+        if not items:
+            raise ValidationError(_("Invalid ADIF file"))
 
         mode = MODE_HEADER
 

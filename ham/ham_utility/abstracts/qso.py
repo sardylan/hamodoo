@@ -138,6 +138,7 @@ class QSO(models.AbstractModel):
             modulation_id.name.strip().upper(),
             frequency
         )
+
         return footprint
 
     @api.model
