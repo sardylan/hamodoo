@@ -13,6 +13,7 @@
                         <tr class="active">
                             <th>Date &amp; Time</th>
                             <th>Filename</th>
+                            <th>Status</th>
                             <th>Download</th>
                         </tr>
                     </thead>
@@ -30,6 +31,22 @@
                                     </em>
                                 </td>
                                 <td>
+                                    <em>
+                                        <t t-if="upload_id.status == 'draft'">
+                                            <span class="fa fa-file"/>
+                                            Uploaded
+                                        </t>
+                                        <t t-if="upload_id.status == 'parsed'">
+                                            <span class="fa fa-check"/>
+                                            Imported
+                                        </t>
+                                        <t t-if="upload_id.status == 'error'">
+                                            <span class="fa fa-exclamation-triangle"/>
+                                            Problems
+                                        </t>
+                                    </em>
+                                </td>
+                                <td>
                                     <a t-att-href="'/ham_award/upload/file_content/%d' % upload_id.id">
                                         <span class="fa fa-download"/>
                                     </a>
@@ -44,6 +61,7 @@
                 <div t-else="">
                     <p>There are no uploads for your account.</p>
                 </div>
+                <hr/>
                 <div class="card">
                     <div class="card-header">
                         Upload new ADIF
