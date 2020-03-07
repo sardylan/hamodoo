@@ -1,9 +1,10 @@
 import re
 from datetime import time, date
 
-from odoo import models, api
 from odoo.exceptions import ValidationError
 from odoo.tools.translate import _
+
+from odoo import models, api
 
 MODE_HEADER = 0
 MODE_QSO = 1
@@ -16,6 +17,9 @@ class AdifUtility(models.AbstractModel):
     @api.model
     def parse_file_adif(self, raw_content=""):
         adif_regex = re.compile(r"<([a-zA-Z0-9:_]+)>([^<\t\f\v\r\n]*)")
+
+        if isinstance(raw_content, bytes):
+            raw_content = raw_content.decode()
 
         items = adif_regex.findall(raw_content)
         if not items:

@@ -3,9 +3,10 @@ import datetime
 import json
 import logging
 
-from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from odoo.tools.translate import _
+
+from odoo import models, fields, api
 
 SELECTION_STATUS = [
     ("draft", "To parse"),
@@ -124,7 +125,7 @@ class Upload(models.Model):
             ts_time = qso["TIME_ON"]
             ts_date = qso["QSO_DATE"]
 
-            modulation = qso["CALLSIGN"]
+            modulation = qso["MODE"]
 
             modulation_id = modulation_obj.search([("name", "=", modulation)])
             if not modulation_id:
@@ -137,11 +138,17 @@ class Upload(models.Model):
 
             ts_start = datetime.datetime.combine(ts_date, ts_time)
             local_callsign = upload_id.operator_id.callsign
-            callsign = qso["CALLSIGN"]
+            callsign = qso["CALL"]
             frequency = qso["FREQ"]
 
-            values = qso_utility.values_from_adif_record(qso)
             footprint = qso_obj.footprint_value(ts_start, local_callsign, callsign, modulation_id, frequency)
+
+            values = qso_utility.values_from_adif_record(qso)
+            values.update({
+                "award_id": upload_id.award_id.id,
+                "operator_id": upload_id.operator_id.id,
+                "upload_id": upload_id.id
+            })
 
             qso_id = qso_obj.search([("footprint", "=", footprint)])
             if not qso_id:
