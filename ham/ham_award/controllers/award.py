@@ -1,9 +1,12 @@
 import logging
 
 from odoo import http
+from odoo.addons.portal.controllers.portal import pager as portal_pager
 from odoo.http import route, request
 
 _logger = logging.getLogger(__name__)
+
+QSO_PAGE_SIZE = 10
 
 
 class AwardController(http.Controller):
@@ -30,14 +33,17 @@ class AwardController(http.Controller):
         return request.render("ham_award.template_award_public_awards", values)
 
     @route(
-        route="/ham_award/public/award/<int:awardid>",
+        route=[
+            "/ham_award/public/award/<int:awardid>",
+            "/ham_award/public/award/<int:awardid>/page/<int:page>"
+        ],
         type="http",
         auth="public",
         methods=["GET"],
         csrf=True,
         website=True
     )
-    def public_award_qso(self, awardid):
+    def public_award_qso(self, awardid, page=1):
         award_obj = request.env["ham_award.award"].sudo()
         qso_obj = request.env["ham_award.qso"].sudo()
 
@@ -46,13 +52,34 @@ class AwardController(http.Controller):
             ("public", "=", True),
         ], limit=1)
 
-        qso_ids = qso_obj.search([
+        qso_count = qso_obj.search_count([
             ("award_id", "=", award_id.id)
         ])
 
+        country_count = len(qso_obj.read_group(
+            domain=[("award_id", "=", award_id.id)],
+            fields=["country_id"],
+            groupby=["country_id"]
+        ))
+
+        qso_ids = qso_obj.search(
+            args=[("award_id", "=", award_id.id)],
+            offset=((page - 1) * QSO_PAGE_SIZE),
+            limit=QSO_PAGE_SIZE
+        )
+
+        pager = portal_pager(
+            url="/ham_award/public/award/%d" % award_id.id,
+            total=qso_count,
+            page=page,
+            step=QSO_PAGE_SIZE
+        )
         values = {
             "award_id": award_id,
+            "qso_count": qso_count,
+            "country_count": country_count,
             "qso_ids": qso_ids,
+            "pager": pager
         }
 
         return request.render("ham_award.template_award_public_award_qsos", values)

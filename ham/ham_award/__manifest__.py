@@ -34,6 +34,8 @@
         "menu/action.xml",
         "menu/items.xml",
 
+        "templates/assets/frontend.xml",
+
         "templates/portal/my_home.xml",
         "templates/portal/breadcrumbs.xml",
         "templates/award/list.xml",

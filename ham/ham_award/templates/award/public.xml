@@ -13,6 +13,7 @@
                                 <thead>
                                     <tr class="active">
                                         <th>Name</th>
+                                        <th>Callsign</th>
                                         <th>Start</th>
                                         <th>End</th>
                                     </tr>
@@ -26,6 +27,9 @@
                                                         <t t-esc="award_id.name"/>
                                                     </strong>
                                                 </a>
+                                            </td>
+                                            <td>
+                                                <span class="ham-award-callsign" t-esc="award_id.common_callsign"/>
                                             </td>
                                             <td>
                                                 <t t-esc="award_id.ts_start"/>
@@ -55,12 +59,25 @@
                                 <h1 class="mt32">
                                     <t t-esc="award_id.name"/>
                                 </h1>
+                                <div class="ham-award-summary">
+                                    <ul>
+                                        <li>Callsign:
+                                            <span class="ham-award-callsign" t-esc="award_id.common_callsign"/>
+                                        </li>
+                                        <li>QSO:
+                                            <span t-esc="qso_count"/>
+                                        </li>
+                                        <li>Countries:
+                                            <span t-esc="country_count"/>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <t t-if="qso_ids" t-call="portal.portal_table">
                                     <thead>
                                         <tr class="active">
+                                            <th>Date &amp; Time</th>
                                             <th>Callsign</th>
                                             <th>Country</th>
-                                            <th>Date &amp; Time</th>
                                             <th>Mode</th>
                                             <th>Frequency</th>
                                         </tr>
@@ -69,15 +86,15 @@
                                         <t t-foreach="qso_ids" t-as="qso_id">
                                             <tr>
                                                 <td>
+                                                    <t t-esc="qso_id.ts_start"/>
+                                                </td>
+                                                <td>
                                                     <strong>
                                                         <t t-esc="qso_id.callsign"/>
                                                     </strong>
                                                 </td>
                                                 <td>
                                                     <t t-esc="qso_id.country_id.name"/>
-                                                </td>
-                                                <td>
-                                                    <t t-esc="qso_id.ts_start"/>
                                                 </td>
                                                 <td>
                                                     <t t-esc="qso_id.modulation_id.name"/>
