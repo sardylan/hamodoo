@@ -61,5 +61,14 @@
             <field name="information">B</field>
         </record>
 
+        <record model="ham_utility.modulation" id="data_modulation_ft8">
+            <field name="name">FT8</field>
+            <field name="description">Amateur radio QSO communication protocol developed by Joe Taylor (K1JT) and Steve Franke (K9AN).</field>
+            <field name="modulation">F</field>
+            <field name="signal">1</field>
+            <field name="information">B</field>
+            <field name="bandwidth">50</field>
+        </record>
+
     </data>
 </odoo>
