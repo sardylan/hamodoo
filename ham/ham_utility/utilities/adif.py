@@ -1,10 +1,9 @@
 import re
 from datetime import time, date
 
+from odoo import models, api
 from odoo.exceptions import ValidationError
 from odoo.tools.translate import _
-
-from odoo import models, api
 
 MODE_HEADER = 0
 MODE_QSO = 1
@@ -58,7 +57,7 @@ class AdifUtility(models.AbstractModel):
             if item_param in ["TIME_ON", "TIME_OFF"]:
                 second = len(item_value) > 4 and int(item_value[4:6]) or 0
                 item_value = time(hour=int(item_value[0:2]), minute=int(item_value[2:4]), second=second)
-            elif item_param in ["QSO_DATE", "QSLSDATE"]:
+            elif item_param in ["QSO_DATE", "QSO_DATE_OFF", "QSLSDATE"]:
                 item_value = date(year=int(item_value[0:4]), month=int(item_value[4:6]), day=int(item_value[6:8]))
             elif item_param in ["FREQ", "FREQ_RX"]:
                 item_value = int(float(item_value) * 1000000)
