@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 
 class UploadController(http.Controller):
     @route(
-        route="/ham_award/upload/file_content/<int:uploadid>",
+        route="/ham_award/private/upload/file_content/<int:uploadid>",
         type="http",
         auth="user",
         methods=["GET"],
@@ -46,7 +46,7 @@ class UploadController(http.Controller):
         ])
 
     @route(
-        route="/ham_award/upload/add",
+        route="/ham_award/private/upload/add",
         type="http",
         auth="user",
         methods=["POST"],
@@ -97,4 +97,4 @@ class UploadController(http.Controller):
         if not upload_id:
             _logger.error("Upload not created")
 
-        return request.redirect("/ham_award/award/%d" % award_id.id)
+        return request.redirect("/ham_award/private/award/%d" % award_id.id)

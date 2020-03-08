@@ -9,12 +9,12 @@
             <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
                 <t t-if="page_name in ['award_list', 'award_single']">
                     <li class="breadcrumb-item">
-                        <a href="/ham_award/award">Awards</a>
+                        <a href="/ham_award/private/award">Awards</a>
                     </li>
                 </t>
                 <t t-if="page_name == 'award_single'">
                     <li class="breadcrumb-item">
-                        <a t-att-href="'/ham_award/award/%d' % award_id.id">
+                        <a t-att-href="'/ham_award/private/award/%d' % award_id.id">
                             <t t-esc="award_id.name"/>
                         </a>
                     </li>

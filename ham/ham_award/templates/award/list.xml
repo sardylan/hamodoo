@@ -18,7 +18,7 @@
                         <t t-foreach="award_ids" t-as="award_id">
                             <tr>
                                 <td>
-                                    <a t-att-href="'/ham_award/award/%d' % award_id.id">
+                                    <a t-att-href="'/ham_award/private/award/%d' % award_id.id">
                                         <strong>
                                             <t t-esc="award_id.name"/>
                                         </strong>

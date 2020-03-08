@@ -47,10 +47,10 @@
                                     </em>
                                 </td>
                                 <td>
-                                    <a t-att-href="'/ham_award/upload/file_content/%d' % upload_id.id">
+                                    <a t-att-href="'/ham_award/private/upload/file_content/%d' % upload_id.id">
                                         <span class="fa fa-download"/>
                                     </a>
-                                    <!--                                    <a t-att-href="'/ham_award/upload/delete/%d' % upload_id.id">-->
+                                    <!--                                    <a t-att-href="'/ham_award/private/upload/delete/%d' % upload_id.id">-->
                                     <!--                                        <span class="fa fa-close"/>-->
                                     <!--                                    </a>-->
                                 </td>
@@ -67,7 +67,7 @@
                         Upload new ADIF
                     </div>
                     <div class="card-body">
-                        <form action="/ham_award/upload/add" method="POST" enctype="multipart/form-data">
+                        <form action="/ham_award/private/upload/add" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                             <input type="hidden" name="award" t-att-value="award_id.id"/>
                             <div class="row o_portal_details">
