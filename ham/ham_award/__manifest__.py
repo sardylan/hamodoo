@@ -38,6 +38,7 @@
         "templates/portal/breadcrumbs.xml",
         "templates/award/list.xml",
         "templates/award/single.xml",
+        "templates/award/public.xml",
         "templates/upload/list.xml"
     ],
     "application": True

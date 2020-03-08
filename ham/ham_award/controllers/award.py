@@ -9,6 +9,55 @@ _logger = logging.getLogger(__name__)
 class AwardController(http.Controller):
 
     @route(
+        route="/ham_award/public/award",
+        type="http",
+        auth="public",
+        methods=["GET"],
+        csrf=True,
+        website=True
+    )
+    def public_award(self):
+        award_obj = request.env["ham_award.award"].sudo()
+
+        award_ids = award_obj.search([
+            ("public", "=", True)
+        ])
+
+        values = {
+            "award_ids": award_ids
+        }
+
+        return request.render("ham_award.template_award_public_awards", values)
+
+    @route(
+        route="/ham_award/public/award/<int:awardid>",
+        type="http",
+        auth="public",
+        methods=["GET"],
+        csrf=True,
+        website=True
+    )
+    def public_award_qso(self, awardid):
+        award_obj = request.env["ham_award.award"].sudo()
+        qso_obj = request.env["ham_award.qso"].sudo()
+
+        award_id = award_obj.search([
+            ("id", "=", awardid),
+            ("public", "=", True),
+        ], limit=1)
+
+        qso_ids = qso_obj.search([
+            ("award_id", "=", award_id.id)
+        ])
+
+        values = {
+            "award_id": award_id,
+            "qso_ids": qso_ids,
+        }
+
+        return request.render("ham_award.template_award_public_award_qsos", values)
+
+    @route(
         route="/ham_award/private/award",
         type="http",
         auth="user",
