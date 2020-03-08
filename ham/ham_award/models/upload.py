@@ -155,7 +155,8 @@ class Upload(models.Model):
                 _logger.info("Creating new QSO: %s" % footprint)
                 qso_id = qso_id.create(values)
             else:
-                _logger.info("QSO already present: %s" % footprint)
+                _logger.info("Updating QSO: %s" % footprint)
+                qso_id.write(values)
 
             if not qso_id:
                 raise ValidationError("Unable to create QSO with values: %s" % json.dumps(values))

@@ -106,6 +106,12 @@ class QSO(models.AbstractModel):
         store=True
     )
 
+    note = fields.Html(
+        string="Note",
+        help="Note",
+        tracking=True
+    )
+
     def create(self, vals):
         vals = self.sanitize_vals(vals)
         return super().create(vals)

@@ -56,11 +56,20 @@
                             <field name="operator_id"/>
                             <field name="local_callsign"/>
                         </group>
-                        <group string="Others">
-                            <field name="footprint"/>
-                            <field name="award_id"/>
-                            <field name="upload_id"/>
-                        </group>
+                        <notebook>
+                            <page name="page_others"
+                                  string="Others">
+                                <group string="Others">
+                                    <field name="footprint"/>
+                                    <field name="award_id"/>
+                                    <field name="upload_id"/>
+                                </group>
+                            </page>
+                            <page name="page_note"
+                                  string="Note">
+                                <field name="note"/>
+                            </page>
+                        </notebook>
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>

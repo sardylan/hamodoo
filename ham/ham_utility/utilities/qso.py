@@ -53,6 +53,12 @@ class QsoUtility(models.AbstractModel):
         rx_rst = "RST_RCVD" in adif_record and adif_record["RST_RCVD"].strip() or ""
         qth = "QTH" in adif_record and adif_record["QTH"].strip() or ""
 
+        note = ""
+
+        for key in ["NOTES", "NOTES_INTL", "SRX", "SRX_STRING", "STX", "STX_STRING"]:
+            if key in adif_record:
+                note += adif_record[key]
+
         values = {
             "ts_start": ts_start,
             "ts_end": ts_end,
@@ -64,7 +70,8 @@ class QsoUtility(models.AbstractModel):
             "modulation_id": modulation_id.id,
             "tx_rst": tx_rst,
             "rx_rst": rx_rst,
-            "qth": qth
+            "qth": qth,
+            "note": note
         }
 
         return values

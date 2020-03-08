@@ -10,6 +10,8 @@
         "web_responsive"
     ],
     "data": [
+        "actions/upload.xml",
+
         "security/groups/award.xml",
         "security/groups/operator.xml",
         "security/groups/qso.xml",
