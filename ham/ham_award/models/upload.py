@@ -3,10 +3,9 @@ import datetime
 import json
 import logging
 
+from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from odoo.tools.translate import _
-
-from odoo import models, fields, api
 
 SELECTION_STATUS = [
     ("draft", "To parse"),
@@ -137,7 +136,7 @@ class Upload(models.Model):
                 return
 
             ts_start = datetime.datetime.combine(ts_date, ts_time)
-            local_callsign = upload_id.operator_id.callsign
+            local_callsign = upload_id.award_id.common_callsign
             callsign = qso["CALL"]
             frequency = qso["FREQ"]
 
@@ -145,7 +144,7 @@ class Upload(models.Model):
 
             values = qso_utility.values_from_adif_record(qso)
             values.update({
-                "local_callsign": upload_id.award_id.common_callsign,
+                "local_callsign": local_callsign,
                 "award_id": upload_id.award_id.id,
                 "operator_id": upload_id.operator_id.id,
                 "upload_id": upload_id.id
@@ -154,6 +153,8 @@ class Upload(models.Model):
             qso_id = qso_obj.search([("footprint", "=", footprint)])
             if not qso_id:
                 qso_id = qso_id.create(values)
+            else:
+                _logger.info("QSO already present: %s" % footprint)
 
             if not qso_id:
                 raise ValidationError("Unable to create QSO with values: %s" % json.dumps(values))
