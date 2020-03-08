@@ -145,6 +145,7 @@ class Upload(models.Model):
 
             values = qso_utility.values_from_adif_record(qso)
             values.update({
+                "local_callsign": upload_id.award_id.common_callsign,
                 "award_id": upload_id.award_id.id,
                 "operator_id": upload_id.operator_id.id,
                 "upload_id": upload_id.id

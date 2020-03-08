@@ -19,6 +19,13 @@ class Award(models.Model):
         tracking=True
     )
 
+    common_callsign = fields.Char(
+        string="Common Callsign",
+        help="Common Callsign used by all stations in the award",
+        required=True,
+        tracking=True
+    )
+
     ts_start = fields.Datetime(
         string="Date & Time Start",
         help="Date and Time of start",
