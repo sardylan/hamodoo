@@ -49,3 +49,10 @@ class Award(models.Model):
         column2="award_id",
         tracking=True
     )
+
+    public = fields.Boolean(
+        string="Public",
+        help="Enable visibility on public site",
+        required=True,
+        default=True
+    )
