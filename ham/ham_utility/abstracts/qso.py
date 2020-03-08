@@ -97,6 +97,15 @@ class QSO(models.AbstractModel):
         store=True
     )
 
+    country_id = fields.Many2one(
+        string="Country",
+        help="HAM Country",
+        comodel_name="ham_utility.country",
+        readonly=True,
+        compute="_compute_country_id",
+        store=True
+    )
+
     def create(self, vals):
         vals = self.sanitize_vals(vals)
         return super().create(vals)
@@ -125,6 +134,14 @@ class QSO(models.AbstractModel):
             )
 
             rec.footprint = footprint.strip().upper()
+
+    @api.depends("callsign")
+    def _compute_country_id(self):
+        country_utility = self.env["ham_utility.utility_country"]
+
+        for rec in self:
+            country_id = country_utility.get_country(rec.callsign)
+            rec.country_id = country_id and country_id.id or False
 
     @api.model
     def footprint_value(self, ts_start, local_callsign, callsign, modulation_id, frequency):

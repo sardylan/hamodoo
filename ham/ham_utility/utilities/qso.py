@@ -9,6 +9,7 @@ _logger = logging.getLogger(__name__)
 
 class QsoUtility(models.AbstractModel):
     _name = "ham_utility.utility_qso"
+    _description = "QSO Utilities"
 
     @api.model
     def values_from_adif_record(self, adif_record):

@@ -8,18 +8,14 @@
             <field name="model">ham_award.qso</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="country_id"/>
                     <field name="callsign"/>
                     <field name="ts_start"/>
                     <field name="ts_end"/>
-                    <field name="local_callsign"/>
-                    <field name="op_name"/>
                     <field name="frequency"/>
-                    <field name="rx_frequency"/>
                     <field name="modulation_id"/>
                     <field name="tx_rst"/>
                     <field name="rx_rst"/>
-                    <field name="qth"/>
-                    <field name="footprint"/>
                     <field name="award_id"/>
                     <field name="operator_id"/>
                     <field name="upload_id"/>
@@ -33,24 +29,30 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                        <group string="Remote">
+                        <h1>
                             <field name="callsign"/>
+                        </h1>
+                        <h2>
+                            <field name="country_id"/>
+                        </h2>
+                        <group string="Remote" col="4">
                             <field name="op_name"/>
                             <field name="qth"/>
                         </group>
-                        <group string="Date &amp; Time">
+                        <group string="Date &amp; Time" col="4">
                             <field name="ts_start"/>
                             <field name="ts_end"/>
                         </group>
-                        <group string="Technical data">
+                        <group string="Technical data" col="4">
                             <field name="frequency"/>
                             <field name="rx_frequency"/>
                             <field name="modulation_id"/>
+                        </group>
+                        <group string="Reports" col="4">
                             <field name="tx_rst"/>
                             <field name="rx_rst"/>
                         </group>
-                        <group string="Local informations"
-                               col="4">
+                        <group string="Local informations" col="4">
                             <field name="operator_id"/>
                             <field name="local_callsign"/>
                         </group>
