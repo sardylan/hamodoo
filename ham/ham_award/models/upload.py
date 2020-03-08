@@ -152,6 +152,7 @@ class Upload(models.Model):
 
             qso_id = qso_obj.search([("footprint", "=", footprint)])
             if not qso_id:
+                _logger.info("Creating new QSO: %s" % footprint)
                 qso_id = qso_id.create(values)
             else:
                 _logger.info("QSO already present: %s" % footprint)
