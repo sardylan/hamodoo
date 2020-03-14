@@ -54,5 +54,6 @@ class Award(models.Model):
         string="Public",
         help="Enable visibility on public site",
         required=True,
-        default=True
+        default=True,
+        tracking=True
     )
