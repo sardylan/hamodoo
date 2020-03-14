@@ -38,5 +38,16 @@
                   action="action_country_import"
                   sequence="1"/>
 
+        <menuitem id="menu_band"
+                  name="Bands"
+                  parent="menu_root"
+                  sequence="2"/>
+
+        <menuitem id="menu_band_list"
+                  name="List"
+                  parent="menu_band"
+                  action="action_band_list"
+                  sequence="0"/>
+
     </data>
 </odoo>

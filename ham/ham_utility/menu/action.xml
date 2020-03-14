@@ -26,5 +26,13 @@
             <field name="target">new</field>
         </record>
 
+        <record model="ir.actions.act_window" id="action_band_list">
+            <field name="name">Bands</field>
+            <field name="res_model">ham_utility.band</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="limit">20</field>
+        </record>
+
     </data>
 </odoo>

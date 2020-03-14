@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record model="ham_utility.band" id="data_band_2200m">
+            <field name="name">2200m</field>
+            <field name="start">135700</field>
+            <field name="end">137800</field>
+            <field name="range_itu">LF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_630m">
+            <field name="name">630m</field>
+            <field name="start">472000</field>
+            <field name="end">479000</field>
+            <field name="range_itu">MF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_160m">
+            <field name="name">160m</field>
+            <field name="start">1800000</field>
+            <field name="end">2000000</field>
+            <field name="range_itu">MF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_80m">
+            <field name="name">80m</field>
+            <field name="start">3500000</field>
+            <field name="end">3800000</field>
+            <field name="range_itu">HF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_60m">
+            <field name="name">60m</field>
+            <field name="start">5351500</field>
+            <field name="end">5366500</field>
+            <field name="range_itu">HF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_40m">
+            <field name="name">40m</field>
+            <field name="start">7000000</field>
+            <field name="end">7300000</field>
+            <field name="range_itu">HF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_30m">
+            <field name="name">30m</field>
+            <field name="start">10100000</field>
+            <field name="end">10150000</field>
+            <field name="range_itu">HF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_20m">
+            <field name="name">20m</field>
+            <field name="start">14000000</field>
+            <field name="end">14350000</field>
+            <field name="range_itu">HF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_17m">
+            <field name="name">17m</field>
+            <field name="start">18068000</field>
+            <field name="end">18168000</field>
+            <field name="range_itu">HF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_15m">
+            <field name="name">15m</field>
+            <field name="start">21000000</field>
+            <field name="end">21450000</field>
+            <field name="range_itu">HF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_12m">
+            <field name="name">12m</field>
+            <field name="start">24890000</field>
+            <field name="end">24990000</field>
+            <field name="range_itu">HF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_10m">
+            <field name="name">10m</field>
+            <field name="start">28000000</field>
+            <field name="end">29700000</field>
+            <field name="range_itu">HF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_6m">
+            <field name="name">6m</field>
+            <field name="start">50000000</field>
+            <field name="end">54000000</field>
+            <field name="range_itu">VHF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_4m">
+            <field name="name">4m</field>
+            <field name="start">70000000</field>
+            <field name="end">70500000</field>
+            <field name="range_itu">VHF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_2m">
+            <field name="name">2m</field>
+            <field name="start">144000000</field>
+            <field name="end">148000000</field>
+            <field name="range_itu">VHF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_70cm">
+            <field name="name">70cm</field>
+            <field name="start">420000000</field>
+            <field name="end">450000000</field>
+            <field name="range_itu">UHF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_23cm">
+            <field name="name">23cm</field>
+            <field name="start">1240000000</field>
+            <field name="end">1300000000</field>
+            <field name="range_itu">UHF</field>
+        </record>
+
+        <record model="ham_utility.band" id="data_band_13cm">
+            <field name="name">13cm</field>
+            <field name="start">2300000000</field>
+            <field name="end">2450000000</field>
+            <field name="range_itu">UHF</field>
+        </record>
+
+    </data>
+</odoo>

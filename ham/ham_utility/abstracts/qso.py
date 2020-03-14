@@ -47,16 +47,20 @@ class QSO(models.AbstractModel):
         tracking=True
     )
 
-    frequency = fields.Integer(
+    frequency = fields.Float(
         string="Frequency",
         help="Frequency of TX",
+        digits=(12, 0),
+        group_operator=False,
         required=True,
         tracking=True
     )
 
-    rx_frequency = fields.Integer(
+    rx_frequency = fields.Float(
         string="RX Frequency",
         help="Frequency of RX",
+        digits=(12, 0),
+        group_operator=False,
         required=True,
         tracking=True
     )
