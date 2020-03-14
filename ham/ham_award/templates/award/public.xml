@@ -105,9 +105,12 @@
                                                         <t t-esc="qso_id.ts_start"/>
                                                     </td>
                                                     <td>
-                                                        <strong>
-                                                            <t t-esc="qso_id.callsign"/>
-                                                        </strong>
+                                                        <a t-att-href="'https://www.qrz.com/db/%s' % qso_id.callsign"
+                                                           target="-blank">
+                                                            <strong>
+                                                                <t t-esc="qso_id.callsign"/>
+                                                            </strong>
+                                                        </a>
                                                     </td>
                                                     <td>
                                                         <t t-esc="qso_id.country_id.name"/>
@@ -116,7 +119,7 @@
                                                         <t t-esc="qso_id.modulation_id.name"/>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="qso_id.frequency"/>
+                                                        <t t-esc="'%.03f MHz' % float(qso_id.frequency / 1000000)"/>
                                                     </td>
                                                 </tr>
                                             </t>
