@@ -45,11 +45,12 @@
                         <notebook>
                             <page name="page_adif"
                                   string="ADIF">
-                                <label for="headers"
-                                       string="Headers"/>
-                                <field name="headers"
-                                       widget="ace"
-                                       options="{'mode': 'python'}"/>
+                                <group>
+                                    <field name="headers"
+                                           widget="ace"
+                                           options="{'mode': 'python'}"/>
+                                    <field name="errors"/>
+                                </group>
                             </page>
                             <page name="page_adif"
                                   string="QSOs">

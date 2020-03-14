@@ -62,13 +62,22 @@ class Upload(models.Model):
         help="Upload status",
         selection=SELECTION_STATUS,
         required=True,
-        default="draft"
+        default="draft",
+        tracking=True
     )
 
     headers = fields.Char(
         string="Headers",
         help="ADIF headers",
-        readonly=True
+        readonly=True,
+        tracking=True
+    )
+
+    errors = fields.Char(
+        string="Errors",
+        help="Error during ADIF parsing",
+        readonly=True,
+        tracking=True
     )
 
     qso_ids = fields.One2many(
@@ -76,7 +85,8 @@ class Upload(models.Model):
         help="Related QSOs",
         comodel_name="ham_award.qso",
         inverse_name="upload_id",
-        readonly=True
+        readonly=True,
+        tracking=True
     )
 
     name = fields.Char(
@@ -96,7 +106,15 @@ class Upload(models.Model):
 
     def action_parse(self):
         for rec in self:
-            self.parse_adif(rec)
+            ret = self.parse_adif(rec)
+
+            if ret:
+                return ret
+
+        return {
+            "type": "ir.actions.client",
+            "tag": "reload",
+        }
 
     @api.model
     def parse_adif(self, upload_id):
@@ -113,10 +131,19 @@ class Upload(models.Model):
 
         try:
             adif = adif_utility.parse_file_adif(file_raw)
-        except ValidationError as e:
+        except Exception as e:
             _logger.error(e)
+            error_message = str(e)
+
             upload_id.status = "error"
-            return
+            upload_id.errors = error_message
+
+            return {
+                "warning": {
+                    "title": _("Error parsing upload %d: %s" % (upload_id.id, upload_id.name)),
+                    "message": error_message
+                }
+            }
 
         upload_id.headers = json.dumps(adif["headers"])
 
