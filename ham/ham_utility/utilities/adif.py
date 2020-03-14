@@ -60,6 +60,7 @@ class AdifUtility(models.AbstractModel):
             elif item_param in ["QSO_DATE", "QSO_DATE_OFF", "QSLSDATE"]:
                 item_value = date(year=int(item_value[0:4]), month=int(item_value[4:6]), day=int(item_value[6:8]))
             elif item_param in ["FREQ", "FREQ_RX"]:
+                item_value = item_value.replace(",", ".")
                 item_value = int(float(item_value) * 1000000)
             elif item_param in ["GRIDSQUARE"]:
                 item_value = "%s%s" % (item_value[0:4].upper(), item_value[4:8].lower())
