@@ -6,3 +6,8 @@
 div.ham-award-summary {
     font-size: x-large;
 }
+
+div.ham-award-qso-table {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

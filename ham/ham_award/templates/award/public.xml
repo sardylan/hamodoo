@@ -72,40 +72,60 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <t t-if="qso_ids" t-call="portal.portal_table">
-                                    <thead>
-                                        <tr class="active">
-                                            <th>Date &amp; Time</th>
-                                            <th>Callsign</th>
-                                            <th>Country</th>
-                                            <th>Mode</th>
-                                            <th>Frequency</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <t t-foreach="qso_ids" t-as="qso_id">
-                                            <tr>
-                                                <td>
-                                                    <t t-esc="qso_id.ts_start"/>
-                                                </td>
-                                                <td>
-                                                    <strong>
-                                                        <t t-esc="qso_id.callsign"/>
-                                                    </strong>
-                                                </td>
-                                                <td>
-                                                    <t t-esc="qso_id.country_id.name"/>
-                                                </td>
-                                                <td>
-                                                    <t t-esc="qso_id.modulation_id.name"/>
-                                                </td>
-                                                <td>
-                                                    <t t-esc="qso_id.frequency"/>
-                                                </td>
+                                <div t-if="qso_ids" class="ham-award-qso-table">
+                                    <div>
+                                        <form class="form-inline md-form mr-auto mb-3 pull-right"
+                                              method="GET"
+                                              t-att-action="'/ham_award/public/award/%d' % award_id.id">
+                                            <input type="hidden"
+                                                   name="csrf_token"
+                                                   t-att-value="request.csrf_token()"/>
+                                            <input type="text"
+                                                   name="search_callsign"
+                                                   class="form-control mr-sm-2"
+                                                   placeholder="Search"
+                                                   aria-label="Search"
+                                                   t-att-value="search_callsign"/>
+                                            <button class="btn aqua-gradient btn-primary my-0" type="submit">
+                                                Search
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <t t-call="portal.portal_table">
+                                        <thead>
+                                            <tr class="active">
+                                                <th>Date &amp; Time</th>
+                                                <th>Callsign</th>
+                                                <th>Country</th>
+                                                <th>Mode</th>
+                                                <th>Frequency</th>
                                             </tr>
-                                        </t>
-                                    </tbody>
-                                </t>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="qso_ids" t-as="qso_id">
+                                                <tr>
+                                                    <td>
+                                                        <t t-esc="qso_id.ts_start"/>
+                                                    </td>
+                                                    <td>
+                                                        <strong>
+                                                            <t t-esc="qso_id.callsign"/>
+                                                        </strong>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="qso_id.country_id.name"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="qso_id.modulation_id.name"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="qso_id.frequency"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </t>
+                                </div>
                             </t>
                             <t t-else="">
                                 <div>

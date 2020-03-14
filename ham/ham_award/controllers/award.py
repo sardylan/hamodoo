@@ -1,4 +1,5 @@
 import logging
+import re
 
 from odoo import http
 from odoo.addons.portal.controllers.portal import pager as portal_pager
@@ -39,11 +40,11 @@ class AwardController(http.Controller):
         ],
         type="http",
         auth="public",
-        methods=["GET"],
+        methods=["GET", "POST"],
         csrf=True,
         website=True
     )
-    def public_award_qso(self, awardid, page=1):
+    def public_award_qso(self, awardid, page=1, **get):
         award_obj = request.env["ham_award.award"].sudo()
         qso_obj = request.env["ham_award.qso"].sudo()
 
@@ -62,24 +63,45 @@ class AwardController(http.Controller):
             groupby=["country_id"]
         ))
 
+        qso_domain = [
+            ("award_id", "=", award_id.id)
+        ]
+
+        search_callsign = ""
+
+        if "search_callsign" in get and get["search_callsign"]:
+            search_callsign = get["search_callsign"].strip().upper()
+            search_callsign = re.sub(r"[^0-9A-Z/]+", "", search_callsign)
+
+            qso_domain.extend([
+                ("callsign", "ilike", search_callsign)
+            ])
+
+        search_qso_count = qso_obj.search_count(qso_domain)
+
         qso_ids = qso_obj.search(
-            args=[("award_id", "=", award_id.id)],
+            args=qso_domain,
             offset=((page - 1) * QSO_PAGE_SIZE),
             limit=QSO_PAGE_SIZE
         )
 
         pager = portal_pager(
             url="/ham_award/public/award/%d" % award_id.id,
-            total=qso_count,
+            total=search_qso_count,
             page=page,
-            step=QSO_PAGE_SIZE
+            step=QSO_PAGE_SIZE,
+            url_args={
+                "search_callsign": search_callsign
+            }
         )
+
         values = {
             "award_id": award_id,
             "qso_count": qso_count,
             "country_count": country_count,
             "qso_ids": qso_ids,
-            "pager": pager
+            "pager": pager,
+            "search_callsign": search_callsign
         }
 
         return request.render("ham_award.template_award_public_award_qsos", values)
