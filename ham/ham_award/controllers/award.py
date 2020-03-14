@@ -17,7 +17,7 @@ class AwardController(http.Controller):
         type="http",
         auth="public",
         methods=["GET"],
-        csrf=True,
+        csrf=False,
         website=True
     )
     def public_award(self):
@@ -41,7 +41,7 @@ class AwardController(http.Controller):
         type="http",
         auth="public",
         methods=["GET", "POST"],
-        csrf=True,
+        csrf=False,
         website=True
     )
     def public_award_qso(self, awardid, page=1, **get):

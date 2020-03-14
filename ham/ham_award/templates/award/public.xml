@@ -77,9 +77,6 @@
                                         <form class="form-inline md-form mr-auto mb-3 pull-right"
                                               method="GET"
                                               t-att-action="'/ham_award/public/award/%d' % award_id.id">
-                                            <input type="hidden"
-                                                   name="csrf_token"
-                                                   t-att-value="request.csrf_token()"/>
                                             <input type="text"
                                                    name="search_callsign"
                                                    class="form-control mr-sm-2"
