@@ -119,7 +119,7 @@
                                                         <t t-esc="qso_id.modulation_id.name"/>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="'%.03f MHz' % float(qso_id.frequency / 1000000)"/>
+                                                        <t t-esc="'%.03f MHz (%s)' % (float(qso_id.frequency / 1000000), qso_id.band_id and qso_id.band_id.name or '')"/>
                                                     </td>
                                                 </tr>
                                             </t>
