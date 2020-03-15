@@ -110,6 +110,15 @@ class QSO(models.AbstractModel):
         store=True
     )
 
+    band_id = fields.Many2one(
+        string="Band",
+        help="HAM Band",
+        comodel_name="ham_utility.band",
+        readonly=True,
+        compute="_compute_band_id",
+        store=True
+    )
+
     note = fields.Html(
         string="Note",
         help="Note",
@@ -153,6 +162,14 @@ class QSO(models.AbstractModel):
             country_id = country_utility.get_country(rec.callsign)
             rec.country_id = country_id and country_id.id or False
 
+    @api.depends("frequency")
+    def _compute_band_id(self):
+        band_obj = self.env["ham_utility.band"]
+
+        for rec in self:
+            band_id = band_obj.get_band(rec.frequency)
+            rec.band_id = band_id and band_id.id or False
+
     @api.model
     def footprint_value(self, ts_start, local_callsign, callsign, modulation_id, frequency):
         if not ts_start or not local_callsign or not callsign or not modulation_id or not frequency:
@@ -173,7 +190,8 @@ class QSO(models.AbstractModel):
         callsign_utility = self.env["ham_utility.utility_callsign"]
 
         if "rx_frequency" not in vals or not vals["rx_frequency"]:
-            vals["rx_frequency"] = vals["frequency"]
+            if "frequency" in vals:
+                vals["rx_frequency"] = vals["frequency"]
 
         for field in ["callsign", "local_callsign"]:
             if field in vals:

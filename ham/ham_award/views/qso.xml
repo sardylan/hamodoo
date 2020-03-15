@@ -13,6 +13,7 @@
                     <field name="ts_start"/>
                     <field name="ts_end"/>
                     <field name="frequency"/>
+                    <field name="band_id"/>
                     <field name="modulation_id"/>
                     <field name="tx_rst"/>
                     <field name="rx_rst"/>
@@ -47,6 +48,7 @@
                             <field name="frequency"/>
                             <field name="rx_frequency"/>
                             <field name="modulation_id"/>
+                            <field name="band_id"/>
                         </group>
                         <group string="Reports" col="4">
                             <field name="tx_rst"/>
@@ -92,12 +94,16 @@
                     <field name="ts_end"/>
                     <separator/>
                     <field name="frequency"/>
+                    <field name="band_id"/>
                     <field name="operator_id"/>
                     <field name="local_callsign"/>
                     <separator/>
                     <field name="footprint"/>
                     <field name="award_id"/>
                     <field name="upload_id"/>
+                    <group expand="1">
+                        <filter string="Band" name="band_id" context="{'group_by': 'band_id'}"/>
+                    </group>
                 </search>
             </field>
         </record>

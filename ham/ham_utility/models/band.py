@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 SELECTION_RANGE_ITU = [
     ("ELF", "ELF (3-30 Hz | 100000-10000 km)"),
@@ -59,3 +59,20 @@ class Band(models.Model):
         help="Note",
         tracking=True
     )
+
+    @api.model
+    def get_band(self, frequency):
+        if not frequency:
+            return False
+
+        band_obj = self
+
+        band_id = band_obj.search([
+            ("start", "<=", frequency),
+            ("end", ">=", frequency)
+        ])
+
+        if not band_id:
+            return False
+
+        return band_id
