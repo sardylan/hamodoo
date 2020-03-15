@@ -10,7 +10,7 @@
                 <tree decoration-primary="status == 'draft'"
                       decoration-danger="status == 'error'">
                     <field name="file_name" invisible="1"/>
-                    <field name="ts"/>
+                    <field name="ts" widget="datetime_tz"/>
                     <field name="file_content" filename="file_name"/>
                     <field name="award_id"/>
                     <field name="operator_id"/>
@@ -37,7 +37,7 @@
                     <field name="file_name" invisible="1"/>
                     <sheet>
                         <group>
-                            <field name="ts"/>
+                            <field name="ts" widget="datetime_tz"/>
                             <field name="file_content" filename="file_name"/>
                             <field name="operator_id"/>
                             <field name="award_id"/>

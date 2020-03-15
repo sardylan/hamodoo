@@ -6,7 +6,8 @@
     "summary": "HAM utilities and models",
     "depends": [
         "base",
-        "mail"
+        "mail",
+        "widget_datetime_tz"
     ],
     "data": [
         "security/groups/modulation.xml",

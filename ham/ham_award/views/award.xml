@@ -9,8 +9,8 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="ts_start"/>
-                    <field name="ts_end"/>
+                    <field name="ts_start" widget="datetime_tz"/>
+                    <field name="ts_end" widget="datetime_tz"/>
                 </tree>
             </field>
         </record>
@@ -29,8 +29,8 @@
                             <field name="public"/>
                         </group>
                         <group string="Date &amp; Time" col="4">
-                            <field name="ts_start"/>
-                            <field name="ts_end"/>
+                            <field name="ts_start" widget="datetime_tz"/>
+                            <field name="ts_end" widget="datetime_tz"/>
                         </group>
                         <group string="Operators">
                             <field name="operator_ids"/>

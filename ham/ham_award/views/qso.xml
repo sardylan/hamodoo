@@ -10,8 +10,8 @@
                 <tree>
                     <field name="country_id"/>
                     <field name="callsign"/>
-                    <field name="ts_start"/>
-                    <field name="ts_end"/>
+                    <field name="ts_start" widget="datetime_tz"/>
+                    <field name="ts_end" widget="datetime_tz"/>
                     <field name="frequency"/>
                     <field name="band_id"/>
                     <field name="modulation_id"/>
@@ -41,8 +41,8 @@
                             <field name="qth"/>
                         </group>
                         <group string="Date &amp; Time" col="4">
-                            <field name="ts_start"/>
-                            <field name="ts_end"/>
+                            <field name="ts_start" widget="datetime_tz"/>
+                            <field name="ts_end" widget="datetime_tz"/>
                         </group>
                         <group string="Technical data" col="4">
                             <field name="frequency"/>
