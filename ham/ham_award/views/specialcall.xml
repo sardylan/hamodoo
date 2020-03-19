@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record model="ir.ui.view" id="view_specialcall_tree">
+            <field name="name">view_specialcall_tree</field>
+            <field name="model">ham_award.specialcall</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="award_id"/>
+                    <field name="callsign"/>
+                    <field name="reference"/>
+                    <field name="description"/>
+                    <field name="points"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_specialcall_form">
+            <field name="name">view_specialcall_form</field>
+            <field name="model">ham_award.specialcall</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="callsign"/>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="award_id"/>
+                            <field name="reference"/>
+                            <field name="points"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_specialcall_search">
+            <field name="name">view_specialcall_search</field>
+            <field name="model">ham_award.specialcall</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="award_id"/>
+                    <field name="callsign"/>
+                    <field name="reference"/>
+                    <field name="description"/>
+                    <field name="points"/>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>

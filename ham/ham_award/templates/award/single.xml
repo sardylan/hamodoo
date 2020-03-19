@@ -8,97 +8,202 @@
                 <t t-set="additional_title">
                     <t t-esc="award_id.name"/>
                 </t>
-                <t t-if="upload_ids" t-call="portal.portal_table">
-                    <thead>
-                        <tr class="active">
-                            <th>Date &amp; Time</th>
-                            <th>Filename</th>
-                            <th>Status</th>
-                            <th>Download</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <t t-foreach="upload_ids" t-as="upload_id">
-                            <tr>
-                                <td>
+                <div class="m-2"/>
+                <div class="card">
+                    <div class="card-header">Informations</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-xl-2">
+                                <h5>QSO count</h5>
+                                <p>Total QSO:
                                     <strong>
-                                        <t t-esc="upload_id.ts"/>
+                                        <t t-esc="infos['total_qso']['TOTAL']"/>
                                     </strong>
-                                </td>
-                                <td>
-                                    <em>
-                                        <t t-esc="upload_id.file_name"/>
-                                    </em>
-                                </td>
-                                <td>
-                                    <em>
-                                        <t t-if="upload_id.status == 'draft'">
-                                            <span class="fa fa-file"/>
-                                            Uploaded
+                                    <ul>
+                                        <li>
+                                            <em>CW:
+                                                <strong>
+                                                    <t t-esc="infos['total_qso']['CW']"/>
+                                                </strong>
+                                            </em>
+                                        </li>
+                                        <li>
+                                            <em>DIGI:
+                                                <strong>
+                                                    <t t-esc="infos['total_qso']['DIGI']"/>
+                                                </strong>
+                                            </em>
+                                        </li>
+                                        <li>
+                                            <em>PHONE:
+                                                <strong>
+                                                    <t t-esc="infos['total_qso']['PHONE']"/>
+                                                </strong>
+                                            </em>
+                                        </li>
+                                    </ul>
+                                </p>
+                                <p>Your QSO:
+                                    <strong>
+                                        <t t-esc="infos['your_qso']['TOTAL']"/>
+                                        (<t t-esc="'%.01f' % infos['your_qso']['PERCENT']"/>%)
+                                    </strong>
+                                    <ul>
+                                        <li>
+                                            <em>CW:
+                                                <strong>
+                                                    <t t-esc="infos['your_qso']['CW']"/>
+                                                </strong>
+                                            </em>
+                                        </li>
+                                        <li>
+                                            <em>DIGI:
+                                                <strong>
+                                                    <t t-esc="infos['your_qso']['DIGI']"/>
+                                                </strong>
+                                            </em>
+                                        </li>
+                                        <li>
+                                            <em>PHONE:
+                                                <strong>
+                                                    <t t-esc="infos['your_qso']['PHONE']"/>
+                                                </strong>
+                                            </em>
+                                        </li>
+                                    </ul>
+                                </p>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-xl-4">
+                                <h5>First 10 Countries</h5>
+                                <ul>
+                                    <t t-foreach="infos['first_countries']" t-as="country">
+                                        <li>
+                                            <t t-esc="country['name']"/>
+                                            <strong>
+                                                (<t t-esc="country['count']"/>)
+                                            </strong>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-xl-6">
+                                <h5>Coastal Stations</h5>
+                                <table class="w-100">
+                                    <thead>
+                                        <tr>
+                                            <t t-foreach="infos['specialcalls'][0]" t-as="day">
+                                                <th>
+                                                    <t t-esc="day"/>
+                                                </th>
+                                            </t>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="infos['specialcalls'][1:]" t-as="specialcall">
+                                            <tr>
+                                                <td>
+                                                    <strong>
+                                                        <span class="text-monospace">
+                                                            <t t-esc="specialcall[0]"/>
+                                                        </span>
+                                                    </strong>
+                                                </td>
+                                                <t t-foreach="specialcall[1:]" t-as="count">
+                                                    <td>
+                                                        <t t-esc="count"/>
+                                                    </td>
+                                                </t>
+                                            </tr>
                                         </t>
-                                        <t t-if="upload_id.status == 'parsed'">
-                                            <span class="fa fa-check"/>
-                                            Imported
-                                        </t>
-                                        <t t-if="upload_id.status == 'error'">
-                                            <span class="fa fa-exclamation-triangle"/>
-                                            Problems
-                                        </t>
-                                    </em>
-                                </td>
-                                <td>
-                                    <a t-att-href="'/ham_award/private/upload/file_content/%d' % upload_id.id">
-                                        <span class="fa fa-download"/>
-                                    </a>
-                                    <!--                                    <a t-att-href="'/ham_award/private/upload/delete/%d' % upload_id.id">-->
-                                    <!--                                        <span class="fa fa-close"/>-->
-                                    <!--                                    </a>-->
-                                </td>
-                            </tr>
-                        </t>
-                    </tbody>
-                </t>
-                <div t-else="">
-                    <p>There are no uploads for your account.</p>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <hr/>
                 <div class="card">
-                    <div class="card-header">
-                        Upload new ADIF
-                    </div>
+                    <div class="card-header">Uploads</div>
                     <div class="card-body">
-                        <form action="/ham_award/private/upload/add" method="POST" enctype="multipart/form-data">
-                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                            <input type="hidden" name="award" t-att-value="award_id.id"/>
-                            <div class="row o_portal_details">
-                                <div class="col-lg-12">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div t-if="error_message" class="alert alert-danger" role="alert">
-                                                <t t-foreach="error_message" t-as="err">
-                                                    <t t-esc="err"/>
-                                                    <br/>
-                                                </t>
+                        <t t-if="upload_ids">
+                            <t t-call="portal.portal_table">
+                                <thead>
+                                    <tr class="active">
+                                        <th>Date &amp; Time</th>
+                                        <th>Filename</th>
+                                        <th>Status</th>
+                                        <th>Download</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="upload_ids" t-as="upload_id">
+                                        <tr>
+                                            <td>
+                                                <strong>
+                                                    <t t-esc="upload_id.ts"/>
+                                                </strong>
+                                            </td>
+                                            <td>
+                                                <em>
+                                                    <t t-esc="upload_id.file_name"/>
+                                                </em>
+                                            </td>
+                                            <td>
+                                                <em>
+                                                    <t t-if="upload_id.status == 'draft'">
+                                                        <span class="fa fa-file"/>
+                                                        Uploaded
+                                                    </t>
+                                                    <t t-if="upload_id.status == 'parsed'">
+                                                        <span class="fa fa-check"/>
+                                                        Imported
+                                                    </t>
+                                                    <t t-if="upload_id.status == 'error'">
+                                                        <span class="fa fa-exclamation-triangle"/>
+                                                        Problems
+                                                    </t>
+                                                </em>
+                                            </td>
+                                            <td>
+                                                <a t-att-href="'/ham_award/private/upload/file_content/%d' % upload_id.id">
+                                                    <span class="fa fa-download"/>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </t>
+                        </t>
+                        <div t-else="">
+                            <p>There are no uploads for your account.</p>
+                        </div>
+                        <hr/>
+                        <div>
+                            <form action="/ham_award/private/upload/add" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="award" t-att-value="award_id.id"/>
+                                <div class="row o_portal_details">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div t-attf-class="form-group #{error.get('adif_file') and 'o_has_error' or ''} col-xl-12">
+                                                <label class="col-form-label" for="adif_file">Upload new ADIF File
+                                                </label>
+                                                <input type="file" name="adif_file"
+                                                       t-attf-class="form-control #{error.get('adif_file') and 'is-invalid' or ''}"
+                                                       t-att-value="adif_file"/>
                                             </div>
+                                            <div class="clearfix"/>
                                         </div>
-                                        <div class="clearfix"/>
-                                        <div t-attf-class="form-group #{error.get('adif_file') and 'o_has_error' or ''} col-xl-12">
-                                            <label class="col-form-label" for="adif_file">ADIF File</label>
-                                            <input type="file" name="adif_file"
-                                                   t-attf-class="form-control #{error.get('adif_file') and 'is-invalid' or ''}"
-                                                   t-att-value="adif_file"/>
+                                        <div>
+                                            <button type="submit" class="btn btn-primary float-right">
+                                                Upload
+                                                <span class="fa fa-long-arrow-right"/>
+                                            </button>
                                         </div>
-                                        <div class="clearfix"/>
-                                    </div>
-                                    <div>
-                                        <button type="submit" class="btn btn-primary float-right mb32">
-                                            Upload
-                                            <span class="fa fa-long-arrow-right"/>
-                                        </button>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </t>

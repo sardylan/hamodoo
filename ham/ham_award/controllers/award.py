@@ -1,7 +1,8 @@
+import datetime
 import logging
 import re
 
-from odoo import http
+from odoo import http, fields
 from odoo.addons.portal.controllers.portal import pager as portal_pager
 from odoo.http import route, request
 
@@ -145,10 +146,14 @@ class AwardController(http.Controller):
         csrf=True,
         website=True
     )
-    def single(self, awardid=0, **data):
+    def single(self, awardid=0):
         operator_obj = request.env["ham_award.operator"]
         award_obj = request.env["ham_award.award"]
+        qso_obj = request.env["ham_award.qso"]
         upload_obj = request.env["ham_award.upload"]
+        specialcall_obj = request.env["ham_award.specialcall"]
+
+        modulation_obj = request.env["ham_utility.modulation"]
 
         partner_id = request.env.user.partner_id
 
@@ -166,11 +171,116 @@ class AwardController(http.Controller):
             ("operator_id.id", "=", operator_id.id)
         ])
 
+        modulationids_cw = modulation_obj.search([("name", "in", ["CW"])]).ids
+        modulationids_digi = modulation_obj.search([("name", "in", ["FT8", "RTTY", "BPSK31"])]).ids
+        modulationids_phone = modulation_obj.search([("name", "in", ["SSB", "LSB", "USB"])]).ids
+
+        domain_total_qso = [
+            ("award_id", "=", award_id.id)
+        ]
+
+        domain_total_qso_cw = domain_total_qso.copy()
+        domain_total_qso_cw.append(("modulation_id", "in", modulationids_cw))
+
+        domain_total_qso_digi = domain_total_qso.copy()
+        domain_total_qso_digi.append(("modulation_id", "in", modulationids_digi))
+
+        domain_total_qso_phone = domain_total_qso.copy()
+        domain_total_qso_phone.append(("modulation_id", "in", modulationids_phone))
+
+        your_total_qso = [
+            ("award_id", "=", award_id.id),
+            ("operator_id.partner_id", "=", request.env.user.partner_id.id)
+        ]
+
+        your_total_qso_cw = your_total_qso.copy()
+        your_total_qso_cw.append(("modulation_id", "in", modulationids_cw))
+
+        your_total_qso_digi = your_total_qso.copy()
+        your_total_qso_digi.append(("modulation_id", "in", modulationids_digi))
+
+        your_total_qso_phone = your_total_qso.copy()
+        your_total_qso_phone.append(("modulation_id", "in", modulationids_phone))
+
+        total_qso_count = qso_obj.search_count(domain_total_qso)
+        your_qso_count = qso_obj.search_count(your_total_qso)
+        your_qso_percent = 100 * (float(your_qso_count) / total_qso_count)
+
+        infos = {
+            "total_qso": {
+                "TOTAL": total_qso_count,
+                "CW": qso_obj.search_count(domain_total_qso_cw),
+                "DIGI": qso_obj.search_count(domain_total_qso_digi),
+                "PHONE": qso_obj.search_count(domain_total_qso_phone),
+            },
+            "your_qso": {
+                "TOTAL": your_qso_count,
+                "PERCENT": your_qso_percent,
+                "CW": qso_obj.search_count(your_total_qso_cw),
+                "DIGI": qso_obj.search_count(your_total_qso_digi),
+                "PHONE": qso_obj.search_count(your_total_qso_phone),
+            }
+        }
+
+        country_count = qso_obj.read_group(
+            domain=domain_total_qso,
+            fields=["country_id"],
+            groupby=["country_id"]
+        )
+
+        first_countries = sorted([
+            {"name": x["country_id"] and x["country_id"][1] or "", "count": x["country_id_count"]}
+            for x in country_count
+        ], key=lambda x: x["count"], reverse=True)[:10]
+
+        infos["first_countries"] = first_countries
+
+        specialcall_ids = specialcall_obj.search([
+            ("award_id", "=", award_id.id),
+            ("callsign", "!=", award_id.common_callsign)
+        ])
+
+        days = (award_id.ts_end - award_id.ts_start).days
+
+        specialcalls = []
+
+        specialcalls_header = ["Day"]
+
+        for i in range(0, days):
+            ts_start = (award_id.ts_start + datetime.timedelta(days=i))
+            specialcalls_header.append(ts_start.strftime("%d"))
+
+        specialcalls.append(specialcalls_header)
+
+        for specialcall_id in specialcall_ids:
+            specialcall_data = [specialcall_id.callsign]
+
+            for i in range(0, days):
+                ts_start = (award_id.ts_start + datetime.timedelta(days=i)).replace(
+                    hour=0, minute=0, second=0, microsecond=0
+                )
+
+                ts_end = ts_start.replace(hour=23, minute=59, second=59, microsecond=999999)
+
+                qso_count = qso_obj.search_count([
+                    ("award_id", "=", award_id.id),
+                    ("callsign", "ilike", specialcall_id.callsign),
+                    ("ts_start", ">=", ts_start.strftime(fields.DATETIME_FORMAT)),
+                    ("ts_start", "<=", ts_end.strftime(fields.DATETIME_FORMAT))
+                ])
+
+                specialcall_data.append(qso_count)
+
+            specialcalls.append(specialcall_data)
+
+        infos["specialcalls"] = specialcalls
+
         values = {
             "error": {},
             "error_message": [],
             "page_name": "award_single",
             "award_id": award_id,
+            "infos": infos,
             "upload_ids": upload_ids
         }
 

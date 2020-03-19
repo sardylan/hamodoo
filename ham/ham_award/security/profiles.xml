@@ -11,7 +11,8 @@
             ref('group_operator_readonly'),
             ref('group_qso_readonly'),
             ref('group_station_readonly'),
-            ref('group_upload_readonly')
+            ref('group_upload_readonly'),
+            ref('group_specialcall_readonly')
             ])]"/>
             <field name="users" eval="[(4, ref('base.user_admin'))]"/>
         </record>
@@ -34,7 +35,8 @@
             ref('group_profile_user'),
             ref('group_award_readwrite'),
             ref('group_operator_readwrite'),
-            ref('group_station_readwrite')
+            ref('group_station_readwrite'),
+            ref('group_specialcall_readwrite')
             ])]"/>
             <field name="users" eval="[(4, ref('base.user_admin'))]"/>
         </record>

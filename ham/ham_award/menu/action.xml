@@ -43,5 +43,13 @@
             <field name="limit">20</field>
         </record>
 
+        <record model="ir.actions.act_window" id="action_specialcall_list">
+            <field name="name">Special Callsigns</field>
+            <field name="res_model">ham_award.specialcall</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="limit">20</field>
+        </record>
+
     </data>
 </odoo>

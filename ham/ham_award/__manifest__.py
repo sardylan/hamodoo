@@ -17,6 +17,7 @@
         "security/groups/qso.xml",
         "security/groups/station.xml",
         "security/groups/upload.xml",
+        "security/groups/specialcall.xml",
 
         "security/categories.xml",
         "security/profiles.xml",
@@ -26,12 +27,14 @@
         "security/access/qso.xml",
         "security/access/station.xml",
         "security/access/upload.xml",
+        "security/access/specialcall.xml",
 
         "views/award.xml",
         "views/operator.xml",
         "views/qso.xml",
         "views/station.xml",
         "views/upload.xml",
+        "views/specialcall.xml",
 
         "menu/action.xml",
         "menu/items.xml",
