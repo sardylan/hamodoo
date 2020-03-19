@@ -240,7 +240,7 @@ class AwardController(http.Controller):
             ("callsign", "!=", award_id.common_callsign)
         ])
 
-        days = (award_id.ts_end - award_id.ts_start).days
+        days = (award_id.ts_end - award_id.ts_start).days + 1
 
         specialcalls = []
 
@@ -262,12 +262,31 @@ class AwardController(http.Controller):
 
                 ts_end = ts_start.replace(hour=23, minute=59, second=59, microsecond=999999)
 
-                qso_count = qso_obj.search_count([
+                domain = [
                     ("award_id", "=", award_id.id),
                     ("callsign", "ilike", specialcall_id.callsign),
                     ("ts_start", ">=", ts_start.strftime(fields.DATETIME_FORMAT)),
                     ("ts_start", "<=", ts_end.strftime(fields.DATETIME_FORMAT))
-                ])
+                ]
+
+                domain_cw = domain.copy()
+                domain_cw.append(("modulation_id", "in", modulationids_cw))
+
+                domain_digi = domain.copy()
+                domain_digi.append(("modulation_id", "in", modulationids_digi))
+
+                domain_phone = domain.copy()
+                domain_phone.append(("modulation_id", "in", modulationids_phone))
+
+                qso_count_cw = qso_obj.search_count(domain_cw)
+                qso_count_digi = qso_obj.search_count(domain_digi)
+                qso_count_phone = qso_obj.search_count(domain_phone)
+
+                qso_count = "%s%s%s" % (
+                    qso_count_cw > 0 and "C" or "",
+                    qso_count_digi > 0 and "D" or "",
+                    qso_count_phone > 0 and "P" or ""
+                )
 
                 specialcall_data.append(qso_count)
 

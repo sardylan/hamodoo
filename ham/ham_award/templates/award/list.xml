@@ -6,6 +6,7 @@
         <template id="template_award_list" name="Awards List">
             <t t-call="portal.portal_layout">
                 <t t-set="additional_title">Awards</t>
+                <div class="m-2"/>
                 <t t-if="award_ids" t-call="portal.portal_table">
                     <thead>
                         <tr class="active">

@@ -11,3 +11,10 @@ div.ham-award-qso-table {
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
+table.table-border-v tbody tr td,
+table.table-border-v thead tr th,
+table.table-border-v thead {
+  border-left: 1px solid #B0B0B0;
+  border-right: 1px solid #B0B0B0;
+}

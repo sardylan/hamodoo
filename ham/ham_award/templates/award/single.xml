@@ -78,9 +78,9 @@
                                 <ul>
                                     <t t-foreach="infos['first_countries']" t-as="country">
                                         <li>
-                                            <t t-esc="country['name']"/>
+                                            <t t-esc="country['name']"/>:
                                             <strong>
-                                                (<t t-esc="country['count']"/>)
+                                                <t t-esc="country['count']"/>
                                             </strong>
                                         </li>
                                     </t>
@@ -88,7 +88,7 @@
                             </div>
                             <div class="col-sm-12 col-md-6 col-xl-6">
                                 <h5>Coastal Stations</h5>
-                                <table class="w-100">
+                                <table class="w-100 table table-sm table-striped table-border-v">
                                     <thead>
                                         <tr>
                                             <t t-foreach="infos['specialcalls'][0]" t-as="day">
@@ -110,13 +110,30 @@
                                                 </td>
                                                 <t t-foreach="specialcall[1:]" t-as="count">
                                                     <td>
-                                                        <t t-esc="count"/>
+                                                        <span class="text-monospace">
+                                                            <t t-esc="count"/>
+                                                        </span>
                                                     </td>
                                                 </t>
                                             </tr>
                                         </t>
                                     </tbody>
                                 </table>
+                                <div class="m-2"/>
+                                <div>
+                                    <span class="text-monospace">
+                                        <strong>C</strong>
+                                    </span>
+                                    : CW -
+                                    <span class="text-monospace">
+                                        <strong>D</strong>
+                                    </span>
+                                    : DIGI -
+                                    <span class="text-monospace">
+                                        <strong>P</strong>
+                                    </span>
+                                    : PHONE
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -126,13 +143,13 @@
                     <div class="card-header">Uploads</div>
                     <div class="card-body">
                         <t t-if="upload_ids">
-                            <t t-call="portal.portal_table">
+                            <table class="w-100 table table-sm table-striped">
                                 <thead>
                                     <tr class="active">
-                                        <th>Date &amp; Time</th>
-                                        <th>Filename</th>
-                                        <th>Status</th>
-                                        <th>Download</th>
+                                        <th scope="col">Date &amp; Time</th>
+                                        <th scope="col" class="d-none d-md-table-cell">Filename</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Download</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -143,7 +160,7 @@
                                                     <t t-esc="upload_id.ts"/>
                                                 </strong>
                                             </td>
-                                            <td>
+                                            <td class="d-none d-md-table-cell">
                                                 <em>
                                                     <t t-esc="upload_id.file_name"/>
                                                 </em>
@@ -152,15 +169,15 @@
                                                 <em>
                                                     <t t-if="upload_id.status == 'draft'">
                                                         <span class="fa fa-file"/>
-                                                        Uploaded
+                                                        <span class="d-none d-lg-inline">Uploaded</span>
                                                     </t>
                                                     <t t-if="upload_id.status == 'parsed'">
                                                         <span class="fa fa-check"/>
-                                                        Imported
+                                                        <span class="d-none d-lg-inline">Imported</span>
                                                     </t>
                                                     <t t-if="upload_id.status == 'error'">
                                                         <span class="fa fa-exclamation-triangle"/>
-                                                        Problems
+                                                        <span class="d-none d-lg-inline">Problems</span>
                                                     </t>
                                                 </em>
                                             </td>
@@ -172,7 +189,7 @@
                                         </tr>
                                     </t>
                                 </tbody>
-                            </t>
+                            </table>
                         </t>
                         <div t-else="">
                             <p>There are no uploads for your account.</p>
