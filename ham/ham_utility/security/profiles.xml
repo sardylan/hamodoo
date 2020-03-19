@@ -26,5 +26,9 @@
             <field name="users" eval="[(4, ref('base.user_admin'))]"/>
         </record>
 
+        <record id="base.group_portal" model="res.groups">
+            <field name="implied_ids" eval="[(4, ref('ham_utility.group_profile_user'))]"/>
+        </record>
+
     </data>
 </odoo>
