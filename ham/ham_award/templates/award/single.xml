@@ -13,7 +13,7 @@
                     <div class="card-header">Informations</div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-12 col-md-4 col-xl-2">
+                            <div class="col-sm-12 col-md-3">
                                 <h5>QSO count</h5>
                                 <p>Total QSO:
                                     <strong>
@@ -73,20 +73,7 @@
                                     </ul>
                                 </p>
                             </div>
-                            <div class="col-sm-12 col-md-6 col-xl-4">
-                                <h5>First 10 Countries</h5>
-                                <ul>
-                                    <t t-foreach="infos['first_countries']" t-as="country">
-                                        <li>
-                                            <t t-esc="country['name']"/>:
-                                            <strong>
-                                                <t t-esc="country['count']"/>
-                                            </strong>
-                                        </li>
-                                    </t>
-                                </ul>
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-xl-6">
+                            <div class="col-sm-12 col-md-9">
                                 <h5>Coastal Stations</h5>
                                 <table class="w-100 table table-sm table-striped table-border-v">
                                     <thead>
@@ -134,6 +121,23 @@
                                     </span>
                                     : PHONE
                                 </div>
+                            </div>
+                            <div class="col-12">
+                                <h5>Countries</h5>
+                                <p>Total: <t t-esc="'%d' % len(infos['countries'])"/></p>
+                                <ul>
+                                    <t t-foreach="infos['countries']" t-as="country">
+                                        <li>
+                                            <t t-esc="country['name']"/>
+                                            [
+                                            <span class="text-monospace" t-esc="country['prefixes']"/>
+                                            ] :
+                                            <strong>
+                                                <t t-esc="country['count']"/>
+                                            </strong>
+                                        </li>
+                                    </t>
+                                </ul>
                             </div>
                         </div>
                     </div>

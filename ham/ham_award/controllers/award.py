@@ -153,6 +153,7 @@ class AwardController(http.Controller):
         upload_obj = request.env["ham_award.upload"]
         specialcall_obj = request.env["ham_award.specialcall"]
 
+        country_prefix_obj = request.env["ham_utility.country_prefix"]
         modulation_obj = request.env["ham_utility.modulation"]
 
         partner_id = request.env.user.partner_id
@@ -222,18 +223,38 @@ class AwardController(http.Controller):
             }
         }
 
-        country_count = qso_obj.read_group(
+        countries = qso_obj.read_group(
             domain=domain_total_qso,
             fields=["country_id"],
             groupby=["country_id"]
         )
 
-        first_countries = sorted([
-            {"name": x["country_id"] and x["country_id"][1] or "", "count": x["country_id_count"]}
-            for x in country_count
-        ], key=lambda x: x["count"], reverse=True)[:10]
+        country_list = []
 
-        infos["first_countries"] = first_countries
+        for country in countries:
+            name = country["country_id"] and country["country_id"][1] or ""
+            count = country["country_id_count"]
+
+            countryid = country["country_id"] and country["country_id"][0] or False
+
+            country_prefix_ids = country_prefix_obj.search([
+                ("country_id", "=", countryid)
+            ])
+
+            prefixes = []
+
+            for country_prefix_id in country_prefix_ids:
+                prefixes.append(country_prefix_id.prefix)
+
+            country_list.append({
+                "name": name,
+                "count": count,
+                "prefixes": " ".join(prefixes)
+            })
+
+        countries = sorted(country_list, key=lambda x: x["count"], reverse=True)
+
+        infos["countries"] = countries
 
         specialcall_ids = specialcall_obj.search([
             ("award_id", "=", award_id.id),
