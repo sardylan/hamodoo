@@ -35,6 +35,14 @@
             <field name="limit">20</field>
         </record>
 
+        <record model="ir.actions.act_window" id="action_station_type_list">
+            <field name="name">Station Types</field>
+            <field name="res_model">ham_award.station_type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="limit">20</field>
+        </record>
+
         <record model="ir.actions.act_window" id="action_upload_list">
             <field name="name">Uploads</field>
             <field name="res_model">ham_award.upload</field>

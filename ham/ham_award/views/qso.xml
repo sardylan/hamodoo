@@ -19,7 +19,7 @@
                     <field name="rx_rst"/>
                     <field name="award_id"/>
                     <field name="operator_id"/>
-                    <field name="upload_id"/>
+                    <field name="station_ids"/>
                 </tree>
             </field>
         </record>
@@ -70,6 +70,10 @@
                             <page name="page_note"
                                   string="Note">
                                 <field name="note"/>
+                            </page>
+                            <page name="page_station"
+                                  string="Reference Stations">
+                                <field name="station_ids"/>
                             </page>
                         </notebook>
                     </sheet>

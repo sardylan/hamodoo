@@ -8,7 +8,9 @@
             <field name="model">ham_award.station</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"/>
+                    <field name="type_id"/>
+                    <field name="callsign"/>
+                    <field name="reference"/>
                     <field name="active"/>
                 </tree>
             </field>
@@ -37,9 +39,11 @@
                                        }"/>
                             </button>
                         </div>
-                        <h1>
-                            <field name="name"/>
-                        </h1>
+                        <group>
+                            <field name="type_id"/>
+                            <field name="callsign"/>
+                            <field name="reference"/>
+                        </group>
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
@@ -54,9 +58,53 @@
             <field name="model">ham_award.station</field>
             <field name="arch" type="xml">
                 <search>
-                    <field name="name"/>
+                    <field name="type_id"/>
+                    <field name="callsign"/>
+                    <field name="reference"/>
                     <separator/>
                     <field name="active"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_station_type_tree">
+            <field name="name">view_station_type_tree</field>
+            <field name="model">ham_award.station_type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="short_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_station_type_form">
+            <field name="name">view_station_type_form</field>
+            <field name="model">ham_award.station_type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="short_name"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_station_type_search">
+            <field name="name">view_station_type_search</field>
+            <field name="model">ham_award.station_type</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <separator/>
+                    <field name="short_name"/>
                 </search>
             </field>
         </record>

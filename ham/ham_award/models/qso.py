@@ -1,4 +1,6 @@
-from odoo import models, fields
+import re
+
+from odoo import models, fields, api
 
 
 class QSO(models.Model):
@@ -32,3 +34,27 @@ class QSO(models.Model):
         comodel_name="ham_award.upload",
         tracking=True
     )
+
+    station_ids = fields.Many2many(
+        string="Referenced Stations",
+        help="Referenced Stations",
+        comodel_name="ham_award.station",
+        relation="ham_award_qso_station_rel",
+        column1="qso_id",
+        column2="station_id",
+        compute="_compute_station_ids",
+        store=True
+    )
+
+    @api.depends("callsign")
+    def _compute_station_ids(self):
+        station_obj = self.env["ham_award.station"]
+
+        for rec in self:
+            callsign = sorted(re.split(r"([A-Z0-9]+)", rec.callsign.strip().upper()), key=len, reverse=True)[0]
+
+            station_ids = station_obj.search([
+                ("callsign", "ilike", callsign)
+            ])
+
+            rec.station_ids = [(6, 0, station_ids.ids)]

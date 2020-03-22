@@ -53,6 +53,12 @@
                   action="action_station_list"
                   sequence="0"/>
 
+        <menuitem id="menu_station_types"
+                  name="Types"
+                  parent="menu_station"
+                  action="action_station_type_list"
+                  sequence="1"/>
+
         <menuitem id="menu_upload"
                   name="Uploads"
                   parent="menu_root"
