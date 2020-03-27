@@ -20,6 +20,12 @@
             <field name="model">ham_award.award</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button type="object"
+                                name="action_produce_adif"
+                                string="Produce ADIF"
+                                class="btn-primary"/>
+                    </header>
                     <sheet>
                         <h1>
                             <field name="name"/>
