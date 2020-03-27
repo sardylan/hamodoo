@@ -88,7 +88,7 @@ class Award(models.Model):
 
         adif_content = adif_utility.generate_adif(qso_ids)
 
-        name = "%s %s" % (
+        name = "%s %s.adi" % (
             datetime.datetime.now().strftime("%Y%m%d-%H%M%S"),
             award_id.name
         )
@@ -99,7 +99,7 @@ class Award(models.Model):
             "type": "binary",
             "name": name,
             "store_fname": name,
-            "datas_fname": "%s.adi" % name,
+            "mimetype": "application/text",
             "datas": base64.b64encode(adif_content.encode()),
         })
 
