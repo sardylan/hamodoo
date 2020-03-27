@@ -125,6 +125,7 @@ class QSO(models.AbstractModel):
         tracking=True
     )
 
+    @api.model_create_multi
     def create(self, vals):
         vals = self.sanitize_vals(vals)
         return super().create(vals)
