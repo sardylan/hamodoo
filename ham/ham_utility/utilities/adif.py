@@ -104,7 +104,9 @@ class AdifUtility(models.AbstractModel):
 
         adif += self._generate_adif_header()
 
-        for qso_id in qso_ids:
+        sorted_qso_ids = sorted(qso_ids, key=lambda x: x.ts_start)
+
+        for qso_id in sorted_qso_ids:
             adif += self._generate_adif_qso(qso_id)
 
         return adif
