@@ -1,5 +1,4 @@
 {
-  "python_dir": "/opt/python-3.7.9",
   "only_binary": [
     "poetry",
     "tomlkit",
