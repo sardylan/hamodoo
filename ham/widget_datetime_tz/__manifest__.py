@@ -1,6 +1,6 @@
 {
     "name": "Custom Timezone Datetime Widget",
-    "version": "13.0.0.0.0",
+    "version": "14.0.1.0.0",
     "category": "Extra Tools",
     "summary": "This module implements a custom datetime widget with manual timezone",
     "author": "Luca Cireddu",

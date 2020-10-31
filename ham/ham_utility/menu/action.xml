@@ -5,7 +5,7 @@
 
         <record model="ir.actions.act_window" id="action_modulation_list">
             <field name="name">Modulations</field>
-            <field name="res_model">ham_utility.modulation</field>
+            <field name="res_model">ham.modulation</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="limit">20</field>
@@ -13,7 +13,7 @@
 
         <record model="ir.actions.act_window" id="action_country_list">
             <field name="name">Countries</field>
-            <field name="res_model">ham_utility.country</field>
+            <field name="res_model">ham.country</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="limit">20</field>
@@ -21,14 +21,14 @@
 
         <record model="ir.actions.act_window" id="action_country_import">
             <field name="name">Import Countries</field>
-            <field name="res_model">ham_utility.wizard_import_prefix</field>
+            <field name="res_model">ham.wizard.import.prefix</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
         </record>
 
         <record model="ir.actions.act_window" id="action_band_list">
             <field name="name">Bands</field>
-            <field name="res_model">ham_utility.band</field>
+            <field name="res_model">ham.band</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="limit">20</field>

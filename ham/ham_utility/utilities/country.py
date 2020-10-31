@@ -2,7 +2,7 @@ from odoo import models, api
 
 
 class CallsignUtility(models.AbstractModel):
-    _name = "ham_utility.utility_country"
+    _name = "ham.utility.country"
     _description = "Utility for searching related country related to callsign"
 
     @api.model
@@ -10,7 +10,7 @@ class CallsignUtility(models.AbstractModel):
         if not callsign:
             return False
 
-        country_prefix_obj = self.env["ham_utility.country_prefix"]
+        country_prefix_obj = self.env["ham.country.prefix"]
 
         country_prefix_id = country_prefix_obj.search([("prefix", "=", callsign[:4])]) \
                            or country_prefix_obj.search([("prefix", "=", callsign[:3])]) \

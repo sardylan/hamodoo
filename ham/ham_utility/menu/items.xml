@@ -34,7 +34,6 @@
         <menuitem id="menu_country_import"
                   name="Import"
                   parent="menu_country"
-                  groups="group_profile_manager"
                   action="action_country_import"
                   sequence="1"/>
 

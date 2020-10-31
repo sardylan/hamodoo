@@ -17,7 +17,7 @@ SELECTION_RANGE_ITU = [
 
 
 class Band(models.Model):
-    _name = "ham_utility.band"
+    _name = "ham.band"
     _inherit = "mail.thread"
     _description = "Frequency band"
     _order = "start ASC, end ASC"
@@ -65,9 +65,7 @@ class Band(models.Model):
         if not frequency:
             return False
 
-        band_obj = self
-
-        band_id = band_obj.search([
+        band_id = self.search([
             ("start", "<=", frequency),
             ("end", ">=", frequency)
         ])

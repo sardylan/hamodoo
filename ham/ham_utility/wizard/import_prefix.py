@@ -15,7 +15,7 @@ _logger = logging.getLogger(__name__)
 
 
 class ImportPrefix(models.TransientModel):
-    _name = "ham_utility.wizard_import_prefix"
+    _name = "ham.wizard.import.prefix"
     _description = "Wizard user for import of official ITU XLSX countries file"
 
     xlsx_file = fields.Binary(
@@ -30,11 +30,11 @@ class ImportPrefix(models.TransientModel):
         self.ensure_one()
 
         _logger.info("Deleting all country prefixes")
-        country_prefix_ids = self.env["ham_utility.country_prefix"].search([])
+        country_prefix_ids = self.env["ham.country.prefix"].search([])
         country_prefix_ids.unlink()
 
         _logger.info("Deleting all countries")
-        country_ids = self.env["ham_utility.country"].search([])
+        country_ids = self.env["ham.country"].search([])
         country_ids.unlink()
 
     def action_open_web_site(self):
@@ -51,8 +51,8 @@ class ImportPrefix(models.TransientModel):
     def action_import_xlsx(self):
         self.ensure_one()
 
-        country_obj = self.env["ham_utility.country"]
-        country_prefix_obj = self.env["ham_utility.country_prefix"]
+        country_obj = self.env["ham.country"]
+        country_prefix_obj = self.env["ham.country.prefix"]
         res_country_obj = self.env["res.country"]
 
         rawfile = base64.b64decode(self.xlsx_file)

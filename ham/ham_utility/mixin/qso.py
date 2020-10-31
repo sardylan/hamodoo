@@ -3,7 +3,7 @@ from odoo.tools.translate import _
 
 
 class QSO(models.AbstractModel):
-    _name = "ham_utility.qso"
+    _name = "ham.mixin.qso"
     _inherit = "mail.thread"
     _description = "Abstract QSO"
     _order = "ts_start DESC"
@@ -68,7 +68,7 @@ class QSO(models.AbstractModel):
     modulation_id = fields.Many2one(
         string="Modulation",
         help="Modulation",
-        comodel_name="ham_utility.modulation",
+        comodel_name="ham.modulation",
         required=True,
         tracking=True
     )
@@ -104,7 +104,7 @@ class QSO(models.AbstractModel):
     country_id = fields.Many2one(
         string="Country",
         help="HAM Country",
-        comodel_name="ham_utility.country",
+        comodel_name="ham.country",
         readonly=True,
         compute="_compute_country_id",
         store=True
@@ -113,7 +113,7 @@ class QSO(models.AbstractModel):
     band_id = fields.Many2one(
         string="Band",
         help="HAM Band",
-        comodel_name="ham_utility.band",
+        comodel_name="ham.band",
         readonly=True,
         compute="_compute_band_id",
         store=True
@@ -136,7 +136,7 @@ class QSO(models.AbstractModel):
 
     @api.onchange("callsign", "local_callsign")
     def uppercase_onchange(self):
-        callsign_utility = self.env["ham_utility.utility_callsign"]
+        callsign_utility = self.env["ham.utility.callsign"]
 
         for rec in self:
             rec.callsign = callsign_utility.uppercase(rec.callsign)
@@ -157,7 +157,7 @@ class QSO(models.AbstractModel):
 
     @api.depends("callsign")
     def _compute_country_id(self):
-        country_utility = self.env["ham_utility.utility_country"]
+        country_utility = self.env["ham.utility.country"]
 
         for rec in self:
             country_id = country_utility.get_country(rec.callsign)
@@ -165,7 +165,7 @@ class QSO(models.AbstractModel):
 
     @api.depends("frequency")
     def _compute_band_id(self):
-        band_obj = self.env["ham_utility.band"]
+        band_obj = self.env["ham.band"]
 
         for rec in self:
             band_id = band_obj.get_band(rec.frequency)
@@ -188,7 +188,7 @@ class QSO(models.AbstractModel):
 
     @api.model
     def sanitize_vals(self, vals):
-        callsign_utility = self.env["ham_utility.utility_callsign"]
+        callsign_utility = self.env["ham.utility.callsign"]
 
         if "rx_frequency" not in vals or not vals["rx_frequency"]:
             if "frequency" in vals:

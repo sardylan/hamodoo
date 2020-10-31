@@ -8,12 +8,12 @@ _logger = logging.getLogger(__name__)
 
 
 class QsoUtility(models.AbstractModel):
-    _name = "ham_utility.utility_qso"
+    _name = "ham.utility.qso"
     _description = "QSO Utilities"
 
     @api.model
     def values_from_adif_record(self, adif_record):
-        modulation_obj = self.env["ham_utility.modulation"]
+        modulation_obj = self.env["ham.modulation"]
 
         ts_time = adif_record["TIME_ON"]
         ts_date = adif_record["QSO_DATE"]

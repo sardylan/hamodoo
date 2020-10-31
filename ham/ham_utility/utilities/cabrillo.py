@@ -5,7 +5,7 @@ from odoo.exceptions import ValidationError
 
 
 class Cabrillo(models.AbstractModel):
-    _name = "ham_utility.cabrillo"
+    _name = "ham.utility.cabrillo"
     _description = "Cabrillo log format parsing utilities"
 
     @api.model

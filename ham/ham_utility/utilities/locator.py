@@ -2,7 +2,7 @@ from odoo import models, api
 
 
 class LocatorUtility(models.AbstractModel):
-    _name = "ham_utility.utility_locator"
+    _name = "ham.utility.locator"
     _description = "Utility for manipulation of Maidenhead Locators"
 
     @api.model

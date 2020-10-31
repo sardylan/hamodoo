@@ -5,7 +5,7 @@
 
         <record model="ir.ui.view" id="view_wizard_import_prefix">
             <field name="name">Import Country</field>
-            <field name="model">ham_utility.wizard_import_prefix</field>
+            <field name="model">ham.wizard.import.prefix</field>
             <field name="arch" type="xml">
                 <form string="Import Prefixes" create="false" edit="false" delete="false">
                     <field name="xlsx_file_name" invisible="1"/>
@@ -22,7 +22,7 @@
                     </header>
                     <group>
                         <field name="xlsx_file"
-                               widget="file"
+                               widget="binary"
                                filename="xlsx_file_name"/>
                     </group>
                     <footer>

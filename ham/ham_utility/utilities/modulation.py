@@ -2,7 +2,7 @@ from odoo import models, api
 
 
 class ModulationUtility(models.AbstractModel):
-    _name = "ham_utility.utility_modulation"
+    _name = "ham.utility.modulation"
     _description = "Utility methods for Modulation entities"
 
     @api.model

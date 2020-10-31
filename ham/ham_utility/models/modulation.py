@@ -46,7 +46,7 @@ SELECTION_MODULATION = [
 
 
 class Modulation(models.Model):
-    _name = "ham_utility.modulation"
+    _name = "ham.modulation"
     _inherit = "mail.thread"
     _description = "Modulation"
     _rec_name = "complete_name"
@@ -139,7 +139,7 @@ class Modulation(models.Model):
 
     @api.depends("bandwidth", "modulation", "signal", "information")
     def _compute_emission(self):
-        modulation_utility = self.env["ham_utility.utility_modulation"]
+        modulation_utility = self.env["ham.utility.modulation"]
 
         for rec in self:
             bandwidth = ""

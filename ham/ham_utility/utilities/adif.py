@@ -16,7 +16,7 @@ FORMAT_TIME = "%H%M%S"
 
 
 class AdifUtility(models.AbstractModel):
-    _name = "ham_utility.utility_adif"
+    _name = "ham.utility.adif"
     _description = "ADIF log format parsing utilities"
 
     @api.model

@@ -4,8 +4,8 @@
     <data noupdate="0">
 
         <record model="ir.ui.view" id="view_country_tree">
-            <field name="name">view_country_tree</field>
-            <field name="model">ham_utility.country</field>
+            <field name="name">view.country.tree</field>
+            <field name="model">ham.country</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
@@ -16,8 +16,8 @@
         </record>
 
         <record model="ir.ui.view" id="view_country_form">
-            <field name="name">view_country_form</field>
-            <field name="model">ham_utility.country</field>
+            <field name="name">view.country.form</field>
+            <field name="model">ham.country</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
@@ -26,7 +26,7 @@
                         </h1>
                         <group string="General">
                             <field name="res_country_id"/>
-                            <field name="flag" widget="image"/>
+                            <field name="image_url" widget="image_url" class="oe_avatar"/>
                         </group>
                         <group string="Prefixes">
                             <field name="prefix_ids"/>
@@ -37,16 +37,16 @@
                         </group>
                     </sheet>
                     <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers"/>
-                        <field name="message_ids" widget="mail_thread"/>
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
                     </div>
                 </form>
             </field>
         </record>
 
         <record model="ir.ui.view" id="view_country_search">
-            <field name="name">view_country_search</field>
-            <field name="model">ham_utility.country</field>
+            <field name="name">view.country.search</field>
+            <field name="model">ham.country</field>
             <field name="arch" type="xml">
                 <search>
                     <field name="name"/>
@@ -59,8 +59,8 @@
         </record>
 
         <record model="ir.ui.view" id="view_country_prefix_tree">
-            <field name="name">view_country_prefix_tree</field>
-            <field name="model">ham_utility.country_prefix</field>
+            <field name="name">view.country.prefix_tree</field>
+            <field name="model">ham.country.prefix</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="prefix"/>
@@ -69,8 +69,8 @@
         </record>
 
         <record model="ir.ui.view" id="view_country_prefix_form">
-            <field name="name">view_country_prefix_form</field>
-            <field name="model">ham_utility.country_prefix</field>
+            <field name="name">view.country.prefix_form</field>
+            <field name="model">ham.country.prefix</field>
             <field name="arch" type="xml">
                 <form>
                     <group>

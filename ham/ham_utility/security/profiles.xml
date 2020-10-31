@@ -6,11 +6,6 @@
         <record model="res.groups" id="group_profile_user">
             <field name="name">User</field>
             <field name="category_id" ref="category_main"/>
-            <field name="implied_ids" eval="[(6, 0, [
-            ref('group_modulation_readonly'),
-            ref('group_country_readonly'),
-            ref('group_band_readonly')
-            ])]"/>
             <field name="users" eval="[(4, ref('base.user_admin'))]"/>
         </record>
 
@@ -19,9 +14,6 @@
             <field name="category_id" ref="category_main"/>
             <field name="implied_ids" eval="[(6, 0, [
             ref('group_profile_user'),
-            ref('group_modulation_readwrite'),
-            ref('group_country_readwrite'),
-            ref('group_band_readwrite')
             ])]"/>
             <field name="users" eval="[(4, ref('base.user_admin'))]"/>
         </record>
