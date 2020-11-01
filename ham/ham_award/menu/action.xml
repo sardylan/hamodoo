@@ -3,61 +3,61 @@
 <odoo>
     <data noupdate="0">
 
-        <record model="ir.actions.act_window" id="action_award_list">
-            <field name="name">Awards</field>
-            <field name="res_model">ham_award.award</field>
-            <field name="view_mode">tree,form</field>
-            <field name="domain">[]</field>
-            <field name="limit">20</field>
-        </record>
+<!--        <record model="ir.actions.act_window" id="action_award_list">-->
+<!--            <field name="name">Awards</field>-->
+<!--            <field name="res_model">ham_award.award</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--            <field name="domain">[]</field>-->
+<!--            <field name="limit">20</field>-->
+<!--        </record>-->
 
-        <record model="ir.actions.act_window" id="action_operator_list">
-            <field name="name">Operators</field>
-            <field name="res_model">ham_award.operator</field>
-            <field name="view_mode">tree,form</field>
-            <field name="domain">[]</field>
-            <field name="limit">20</field>
-        </record>
+<!--        <record model="ir.actions.act_window" id="action_operator_list">-->
+<!--            <field name="name">Operators</field>-->
+<!--            <field name="res_model">ham_award.operator</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--            <field name="domain">[]</field>-->
+<!--            <field name="limit">20</field>-->
+<!--        </record>-->
 
         <record model="ir.actions.act_window" id="action_qso_list">
             <field name="name">QSOs</field>
-            <field name="res_model">ham_award.qso</field>
+            <field name="res_model">ham.award.qso</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
             <field name="limit">20</field>
         </record>
 
-        <record model="ir.actions.act_window" id="action_station_list">
-            <field name="name">Stations</field>
-            <field name="res_model">ham_award.station</field>
-            <field name="view_mode">tree,form</field>
-            <field name="domain">[]</field>
-            <field name="limit">20</field>
-        </record>
+<!--        <record model="ir.actions.act_window" id="action_station_list">-->
+<!--            <field name="name">Stations</field>-->
+<!--            <field name="res_model">ham_award.station</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--            <field name="domain">[]</field>-->
+<!--            <field name="limit">20</field>-->
+<!--        </record>-->
 
-        <record model="ir.actions.act_window" id="action_station_type_list">
-            <field name="name">Station Types</field>
-            <field name="res_model">ham_award.station_type</field>
-            <field name="view_mode">tree,form</field>
-            <field name="domain">[]</field>
-            <field name="limit">20</field>
-        </record>
+<!--        <record model="ir.actions.act_window" id="action_station_type_list">-->
+<!--            <field name="name">Station Types</field>-->
+<!--            <field name="res_model">ham_award.station_type</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--            <field name="domain">[]</field>-->
+<!--            <field name="limit">20</field>-->
+<!--        </record>-->
 
-        <record model="ir.actions.act_window" id="action_upload_list">
-            <field name="name">Uploads</field>
-            <field name="res_model">ham_award.upload</field>
-            <field name="view_mode">tree,form</field>
-            <field name="domain">[]</field>
-            <field name="limit">20</field>
-        </record>
+<!--        <record model="ir.actions.act_window" id="action_upload_list">-->
+<!--            <field name="name">Uploads</field>-->
+<!--            <field name="res_model">ham_award.upload</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--            <field name="domain">[]</field>-->
+<!--            <field name="limit">20</field>-->
+<!--        </record>-->
 
-        <record model="ir.actions.act_window" id="action_specialcall_list">
-            <field name="name">Special Callsigns</field>
-            <field name="res_model">ham_award.specialcall</field>
-            <field name="view_mode">tree,form</field>
-            <field name="domain">[]</field>
-            <field name="limit">20</field>
-        </record>
+<!--        <record model="ir.actions.act_window" id="action_specialcall_list">-->
+<!--            <field name="name">Special Callsigns</field>-->
+<!--            <field name="res_model">ham_award.specialcall</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--            <field name="domain">[]</field>-->
+<!--            <field name="limit">20</field>-->
+<!--        </record>-->
 
     </data>
 </odoo>

@@ -2,8 +2,9 @@
     "name": "HAM Utility",
     "version": "14.0.1.1.0",
     "category": "HAM Utility",
-    "sequence": 0,
     "summary": "HAM utilities and models",
+    "sequence": 0,
+    "author": "Luca Cireddu",
     "depends": [
         "base",
         "mail",

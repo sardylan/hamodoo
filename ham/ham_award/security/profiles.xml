@@ -3,28 +3,11 @@
 <odoo>
     <data noupdate="0">
 
-        <record model="res.groups" id="group_profile_viewer">
-            <field name="name">Viewer</field>
-            <field name="category_id" ref="category_main"/>
-            <field name="implied_ids" eval="[(6, 0, [
-            ref('group_award_readonly'),
-            ref('group_operator_readonly'),
-            ref('group_qso_readonly'),
-            ref('group_station_readonly'),
-            ref('group_station_type_readonly'),
-            ref('group_upload_readonly'),
-            ref('group_specialcall_readonly')
-            ])]"/>
-            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
-        </record>
-
         <record model="res.groups" id="group_profile_user">
             <field name="name">User</field>
             <field name="category_id" ref="category_main"/>
             <field name="implied_ids" eval="[(6, 0, [
-            ref('group_profile_viewer'),
-            ref('group_qso_readwrite'),
-            ref('group_upload_readwrite')
+            ref('ham_utility.group_profile_user'),
             ])]"/>
             <field name="users" eval="[(4, ref('base.user_admin'))]"/>
         </record>
@@ -34,11 +17,6 @@
             <field name="category_id" ref="category_main"/>
             <field name="implied_ids" eval="[(6, 0, [
             ref('group_profile_user'),
-            ref('group_award_readwrite'),
-            ref('group_operator_readwrite'),
-            ref('group_station_readwrite'),
-            ref('group_station_type_readwrite'),
-            ref('group_specialcall_readwrite')
             ])]"/>
             <field name="users" eval="[(4, ref('base.user_admin'))]"/>
         </record>

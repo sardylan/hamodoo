@@ -5,7 +5,7 @@
 
         <record model="ir.ui.view" id="view_qso_tree">
             <field name="name">view_qso_tree</field>
-            <field name="model">ham_award.qso</field>
+            <field name="model">ham.award.qso</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="country_id"/>
@@ -17,16 +17,16 @@
                     <field name="modulation_id"/>
                     <field name="tx_rst"/>
                     <field name="rx_rst"/>
-                    <field name="award_id"/>
-                    <field name="operator_id"/>
-                    <field name="station_ids"/>
+                    <!--                    <field name="award_id"/>-->
+                    <!--                    <field name="operator_id"/>-->
+                    <!--                    <field name="station_ids"/>-->
                 </tree>
             </field>
         </record>
 
         <record model="ir.ui.view" id="view_qso_form">
             <field name="name">view_qso_form</field>
-            <field name="model">ham_award.qso</field>
+            <field name="model">ham.award.qso</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
@@ -55,7 +55,7 @@
                             <field name="rx_rst"/>
                         </group>
                         <group string="Local informations" col="4">
-                            <field name="operator_id"/>
+                            <!--                            <field name="operator_id"/>-->
                             <field name="local_callsign"/>
                         </group>
                         <notebook>
@@ -63,8 +63,8 @@
                                   string="Others">
                                 <group string="Others">
                                     <field name="footprint"/>
-                                    <field name="award_id"/>
-                                    <field name="upload_id"/>
+                                    <!--                                    <field name="award_id"/>-->
+                                    <!--                                    <field name="upload_id"/>-->
                                 </group>
                             </page>
                             <page name="page_note"
@@ -73,13 +73,13 @@
                             </page>
                             <page name="page_station"
                                   string="Reference Stations">
-                                <field name="station_ids"/>
+                                <!--                                <field name="station_ids"/>-->
                             </page>
                         </notebook>
                     </sheet>
                     <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers"/>
-                        <field name="message_ids" widget="mail_thread"/>
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
                     </div>
                 </form>
             </field>
@@ -87,7 +87,7 @@
 
         <record model="ir.ui.view" id="view_qso_search">
             <field name="name">view_qso_search</field>
-            <field name="model">ham_award.qso</field>
+            <field name="model">ham.award.qso</field>
             <field name="arch" type="xml">
                 <search>
                     <field name="callsign"/>
@@ -99,12 +99,12 @@
                     <separator/>
                     <field name="frequency"/>
                     <field name="band_id"/>
-                    <field name="operator_id"/>
+<!--                    <field name="operator_id"/>-->
                     <field name="local_callsign"/>
                     <separator/>
                     <field name="footprint"/>
-                    <field name="award_id"/>
-                    <field name="upload_id"/>
+<!--                    <field name="award_id"/>-->
+<!--                    <field name="upload_id"/>-->
                     <group expand="1">
                         <filter string="Band" name="band_id" context="{'group_by': 'band_id'}"/>
                     </group>
