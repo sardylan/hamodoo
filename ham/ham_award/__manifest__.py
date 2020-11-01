@@ -27,6 +27,11 @@
 
         "menu/action.xml",
         "menu/items.xml",
+
+        "templates/portal/my_home.xml",
+
+        "templates/private/award/list.xml",
+        "templates/private/award/single.xml"
     ],
     "application": True
 }
