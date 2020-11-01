@@ -43,13 +43,13 @@
 <!--            <field name="limit">20</field>-->
 <!--        </record>-->
 
-<!--        <record model="ir.actions.act_window" id="action_upload_list">-->
-<!--            <field name="name">Uploads</field>-->
-<!--            <field name="res_model">ham_award.upload</field>-->
-<!--            <field name="view_mode">tree,form</field>-->
-<!--            <field name="domain">[]</field>-->
-<!--            <field name="limit">20</field>-->
-<!--        </record>-->
+        <record model="ir.actions.act_window" id="action_upload_list">
+            <field name="name">Uploads</field>
+            <field name="res_model">ham.award.upload</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="limit">20</field>
+        </record>
 
 <!--        <record model="ir.actions.act_window" id="action_specialcall_list">-->
 <!--            <field name="name">Special Callsigns</field>-->

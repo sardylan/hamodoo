@@ -18,10 +18,12 @@
         "security/access/qso.xml",
         "security/access/operator.xml",
         "security/access/award.xml",
+        "security/access/upload.xml",
 
         "views/qso.xml",
         "views/operator.xml",
         "views/award.xml",
+        "views/upload.xml",
 
         "menu/action.xml",
         "menu/items.xml",

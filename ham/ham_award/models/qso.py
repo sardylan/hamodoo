@@ -17,13 +17,13 @@ class QSO(models.Model):
         default=True
     )
 
-    # award_id = fields.Many2one(
-    #     string="Award",
-    #     help="Related award",
-    #     comodel_name="ham_award.award",
-    #     required=True,
-    #     tracking=True
-    # )
+    award_id = fields.Many2one(
+        string="Award",
+        help="Related award",
+        comodel_name="ham.award",
+        required=True,
+        tracking=True
+    )
 
     operator_id = fields.Many2one(
         string="Operator",
@@ -33,12 +33,12 @@ class QSO(models.Model):
         tracking=True
     )
 
-    # upload_id = fields.Many2one(
-    #     string="Upload",
-    #     help="Related upload",
-    #     comodel_name="ham_award.upload",
-    #     tracking=True
-    # )
+    upload_id = fields.Many2one(
+        string="Upload",
+        help="Related upload",
+        comodel_name="ham.award.upload",
+        tracking=True
+    )
 
     # station_ids = fields.Many2many(
     #     string="Referenced Stations",

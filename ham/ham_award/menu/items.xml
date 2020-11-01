@@ -59,16 +59,16 @@
 <!--                  action="action_station_type_list"-->
 <!--                  sequence="1"/>-->
 
-<!--        <menuitem id="menu_upload"-->
-<!--                  name="Uploads"-->
-<!--                  parent="menu_root"-->
-<!--                  sequence="4"/>-->
+        <menuitem id="menu_upload"
+                  name="Uploads"
+                  parent="menu_root"
+                  sequence="4"/>
 
-<!--        <menuitem id="menu_upload_list"-->
-<!--                  name="List"-->
-<!--                  parent="menu_upload"-->
-<!--                  action="action_upload_list"-->
-<!--                  sequence="0"/>-->
+        <menuitem id="menu_upload_list"
+                  name="List"
+                  parent="menu_upload"
+                  action="action_upload_list"
+                  sequence="0"/>
 
 <!--        <menuitem id="menu_specialcall"-->
 <!--                  name="Special callsigns"-->
