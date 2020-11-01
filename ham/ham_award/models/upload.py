@@ -123,8 +123,8 @@ class Upload(models.Model):
     @api.model
     def parse_adif(self, upload):
         qso_obj = self.env["ham.award.qso"]
+        modulation_obj = self.env["ham.modulation"]
 
-        modulation_obj = self.env["ham.utility.modulation"]
         adif_utility = self.env["ham.utility.adif"]
         qso_utility = self.env["ham.utility.qso"]
 
@@ -151,27 +151,42 @@ class Upload(models.Model):
 
         upload.headers = json.dumps(adif["headers"])
 
+        enabled_callsigns = [x.callsign for x in self.award_id.callsigns]
+
         for qso in adif["qso"]:
             ts_time = qso["TIME_ON"]
             ts_date = qso["QSO_DATE"]
 
-            modulation = qso["MODE"]
+            modulation_name = qso["MODE"]
 
-            modulation_id = modulation_obj.search([("name", "=", modulation)])
-            if not modulation_id:
-                modulation_id = modulation_obj.search([("name", "ilike", modulation)])
+            modulation = modulation_obj.search([("name", "=", modulation_name)])
+            if not modulation:
+                modulation = modulation_obj.search([("name", "ilike", modulation_name)])
 
-            if not modulation_id:
-                _logger.error("Modulation not found for value: %s", modulation)
+            if not modulation:
+                _logger.error("Modulation not found for value: %s", modulation_name)
                 upload.status = "error"
                 return
 
             ts_start = datetime.datetime.combine(ts_date, ts_time)
-            local_callsign = upload.award_id.common_callsign
+
+            local_callsigns = [qso[x] for x in ["STATION_CALLSIGN", "OPERATOR"] if x in qso]
+
+            if not local_callsigns:
+                raise ValidationError(_("Both STATION_CALLSIGN and OPERATOR empty or not present in ADIF row"))
+
+            local_callsign = False
+            for item in local_callsigns:
+                if item in enabled_callsigns:
+                    local_callsign = item
+
+            if not local_callsign:
+                raise ValidationError(_("Callsigns not enabled in award"))
+
             callsign = qso["CALL"]
             frequency = qso["FREQ"]
 
-            footprint = qso_obj.footprint_value(ts_start, local_callsign, callsign, modulation_id, frequency)
+            footprint = qso_obj.footprint_value(ts_start, local_callsign, callsign, modulation, frequency)
 
             values = qso_utility.values_from_adif_record(qso)
             values.update({
@@ -181,15 +196,15 @@ class Upload(models.Model):
                 "upload_id": upload.id
             })
 
-            qso_id = qso_obj.search([("footprint", "=", footprint)])
-            if not qso_id:
+            qso = qso_obj.search([("footprint", "=", footprint)])
+            if not qso:
                 _logger.info("Creating new QSO: %s" % footprint)
-                qso_id = qso_id.create(values)
+                qso = qso.create(values)
             else:
                 _logger.info("Updating QSO: %s" % footprint)
-                qso_id.write(values)
+                qso.write(values)
 
-            if not qso_id:
+            if not qso:
                 raise ValidationError("Unable to create QSO with values: %s" % json.dumps(values))
 
-        upload.status = "parsed"
+        upload.state = "parsed"
