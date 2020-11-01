@@ -14,6 +14,14 @@
         "security/categories.xml",
         "security/profiles.xml",
 
+        "security/utilities/adif.xml",
+        "security/utilities/cabrillo.xml",
+        "security/utilities/callsign.xml",
+        "security/utilities/country.xml",
+        "security/utilities/locator.xml",
+        "security/utilities/modulation.xml",
+        "security/utilities/qso.xml",
+
         "security/models/modulation.xml",
         "security/models/country.xml",
         "security/models/band.xml",
