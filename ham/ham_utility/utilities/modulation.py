@@ -6,7 +6,7 @@ class ModulationUtility(models.AbstractModel):
     _description = "Utility methods for Modulation entities"
 
     @api.model
-    def compute_bandwidth_tag(self, bandwidth=0):
+    def compute_bandwidth_tag(self, bandwidth: int = 0):
         letter = "H"
         multiplier = 1
 

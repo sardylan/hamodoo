@@ -40,14 +40,14 @@ class QsoUtility(models.AbstractModel):
 
         rx_frequency = "FREQ_RX" in adif_record and adif_record["FREQ_RX"] or frequency
 
-        modulation = adif_record["MODE"]
+        modulation_name = adif_record["MODE"]
 
-        modulation_id = modulation_obj.search([("name", "=", modulation)])
-        if not modulation_id:
-            modulation_id = modulation_obj.search([("name", "ilike", modulation)])
+        modulation = modulation_obj.search([("name", "=", modulation_name)])
+        if not modulation:
+            modulation = modulation_obj.search([("name", "ilike", modulation_name)])
 
-        if not modulation_id:
-            raise ValidationError("Modulation not found for value: %s" % modulation)
+        if not modulation:
+            raise ValidationError("Modulation not found for value: %s" % modulation_name)
 
         tx_rst = "RST_SENT" in adif_record and adif_record["RST_SENT"].strip() or ""
         rx_rst = "RST_RCVD" in adif_record and adif_record["RST_RCVD"].strip() or ""
@@ -67,7 +67,7 @@ class QsoUtility(models.AbstractModel):
             "op_name": op_name,
             "frequency": frequency,
             "rx_frequency": rx_frequency,
-            "modulation_id": modulation_id.id,
+            "modulation_id": modulation.id,
             "tx_rst": tx_rst,
             "rx_rst": rx_rst,
             "qth": qth,
