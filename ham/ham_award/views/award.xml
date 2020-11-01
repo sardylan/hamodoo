@@ -27,12 +27,22 @@
                                 class="btn-primary"/>
                     </header>
                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button type="object"
+                                    name="action_show_uploads"
+                                    class="oe_stat_button"
+                                    icon="fa-upload">
+                                <field string="Uploads"
+                                       name="uploads_count"
+                                       widget="statinfo"/>
+                            </button>
+                        </div>
                         <h1>
                             <field name="name"/>
                         </h1>
                         <group string="Infos">
                             <field name="public"/>
-                            <field name="callsigns"/>
+                            <field name="callsigns" widget="many2many_tags"/>
                         </group>
                         <group string="Date &amp; Time" col="4">
                             <field name="ts_start" widget="datetime_tz"/>

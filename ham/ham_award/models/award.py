@@ -65,6 +65,26 @@ class Award(models.Model):
         tracking=True
     )
 
+    uploads = fields.One2many(
+        string="Uploads",
+        help="Log uploads by operators",
+        comodel_name="ham.award.upload",
+        inverse_name="award_id",
+        readonly=True
+    )
+
+    uploads_count = fields.Integer(
+        string="Uploads count",
+        help="Uploads count",
+        readonly=True,
+        compute="_compute_uploads_count"
+    )
+
+    @api.depends("uploads")
+    def _compute_uploads_count(self):
+        for rec in self:
+            rec.uploads_count = len(rec.uploads)
+
     def action_produce_adif(self):
         for rec in self:
             self.produce_adif(rec)
@@ -73,6 +93,16 @@ class Award(models.Model):
             "type": "ir.actions.client",
             "tag": "reload"
         }
+
+    def action_show_uploads(self):
+        self.ensure_one()
+
+        action = self.env.ref("ham_award.action_upload_list")
+        result = action.read()[0]
+
+        result["domain"] = [("award_id", "=", self.id)]
+
+        return result
 
     @api.model
     def produce_adif(self, award):
