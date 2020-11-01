@@ -3,13 +3,13 @@
 <odoo>
     <data noupdate="0">
 
-<!--        <record model="ir.actions.act_window" id="action_award_list">-->
-<!--            <field name="name">Awards</field>-->
-<!--            <field name="res_model">ham_award.award</field>-->
-<!--            <field name="view_mode">tree,form</field>-->
-<!--            <field name="domain">[]</field>-->
-<!--            <field name="limit">20</field>-->
-<!--        </record>-->
+        <record model="ir.actions.act_window" id="action_award_list">
+            <field name="name">Awards</field>
+            <field name="res_model">ham.award</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="limit">20</field>
+        </record>
 
         <record model="ir.actions.act_window" id="action_operator_list">
             <field name="name">Operators</field>

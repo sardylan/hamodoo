@@ -36,15 +36,15 @@ class Operator(models.Model):
         tracking=True
     )
 
-    # award_ids = fields.Many2many(
-    #     string="Awards",
-    #     help="Enabled awards",
-    #     comodel_name="ham.award",
-    #     relation="ham_award_operator_award_rel",
-    #     column1="award_id",
-    #     column2="operator_id",
-    #     tracking=True
-    # )
+    award_ids = fields.Many2many(
+        string="Awards",
+        help="Enabled awards",
+        comodel_name="ham.award",
+        relation="ham_award_operator_rel",
+        column1="award_id",
+        column2="operator_id",
+        tracking=True
+    )
 
     name = fields.Char(
         related="partner_id.name"

@@ -9,16 +9,16 @@
                   groups="group_profile_user"
                   sequence="0"/>
 
-<!--        <menuitem id="menu_award"-->
-<!--                  name="Awards"-->
-<!--                  parent="menu_root"-->
-<!--                  sequence="0"/>-->
+        <menuitem id="menu_award"
+                  name="Awards"
+                  parent="menu_root"
+                  sequence="0"/>
 
-<!--        <menuitem id="menu_award_list"-->
-<!--                  name="List"-->
-<!--                  parent="menu_award"-->
-<!--                  action="action_award_list"-->
-<!--                  sequence="0"/>-->
+        <menuitem id="menu_award_list"
+                  name="List"
+                  parent="menu_award"
+                  action="action_award_list"
+                  sequence="0"/>
 
         <menuitem id="menu_operator"
                   name="Operators"

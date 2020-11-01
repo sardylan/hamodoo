@@ -37,9 +37,9 @@
                             <field name="callsign"/>
                             <field name="partner_id"/>
                         </group>
-                        <!--                        <group string="Awards">-->
-                        <!--                            <field name="award_ids"/>-->
-                        <!--                        </group>-->
+                        <group string="Awards">
+                            <field name="award_ids"/>
+                        </group>
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids"/>
@@ -57,7 +57,7 @@
                     <field name="callsign"/>
                     <field name="partner_id"/>
                     <separator/>
-<!--                    <field name="award_ids"/>-->
+                    <field name="award_ids"/>
                 </search>
             </field>
         </record>
