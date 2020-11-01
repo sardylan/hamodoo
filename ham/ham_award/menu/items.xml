@@ -20,16 +20,16 @@
 <!--                  action="action_award_list"-->
 <!--                  sequence="0"/>-->
 
-<!--        <menuitem id="menu_operator"-->
-<!--                  name="Operators"-->
-<!--                  parent="menu_root"-->
-<!--                  sequence="1"/>-->
+        <menuitem id="menu_operator"
+                  name="Operators"
+                  parent="menu_root"
+                  sequence="1"/>
 
-<!--        <menuitem id="menu_operator_list"-->
-<!--                  name="List"-->
-<!--                  parent="menu_operator"-->
-<!--                  action="action_operator_list"-->
-<!--                  sequence="0"/>-->
+        <menuitem id="menu_operator_list"
+                  name="List"
+                  parent="menu_operator"
+                  action="action_operator_list"
+                  sequence="0"/>
 
         <menuitem id="menu_qso"
                   name="QSOs"

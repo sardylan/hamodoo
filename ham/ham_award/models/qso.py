@@ -25,13 +25,13 @@ class QSO(models.Model):
     #     tracking=True
     # )
 
-    # operator_id = fields.Many2one(
-    #     string="Operator",
-    #     help="Operator",
-    #     comodel_name="ham_award.operator",
-    #     required=True,
-    #     tracking=True
-    # )
+    operator_id = fields.Many2one(
+        string="Operator",
+        help="Operator",
+        comodel_name="ham.award.operator",
+        required=True,
+        tracking=True
+    )
 
     # upload_id = fields.Many2one(
     #     string="Upload",

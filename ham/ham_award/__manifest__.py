@@ -8,6 +8,7 @@
     "depends": [
         "website",
         "portal",
+        "contacts",
         "ham_utility",
     ],
     "data": [
@@ -15,8 +16,10 @@
         "security/profiles.xml",
 
         "security/access/qso.xml",
+        "security/access/operator.xml",
 
         "views/qso.xml",
+        "views/operator.xml",
 
         "menu/action.xml",
         "menu/items.xml",

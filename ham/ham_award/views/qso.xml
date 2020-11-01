@@ -18,7 +18,7 @@
                     <field name="tx_rst"/>
                     <field name="rx_rst"/>
                     <!--                    <field name="award_id"/>-->
-                    <!--                    <field name="operator_id"/>-->
+                    <field name="operator_id"/>
                     <!--                    <field name="station_ids"/>-->
                 </tree>
             </field>
@@ -55,7 +55,7 @@
                             <field name="rx_rst"/>
                         </group>
                         <group string="Local informations" col="4">
-                            <!--                            <field name="operator_id"/>-->
+                            <field name="operator_id"/>
                             <field name="local_callsign"/>
                         </group>
                         <notebook>
@@ -99,12 +99,12 @@
                     <separator/>
                     <field name="frequency"/>
                     <field name="band_id"/>
-<!--                    <field name="operator_id"/>-->
+                    <!--                    <field name="operator_id"/>-->
                     <field name="local_callsign"/>
                     <separator/>
                     <field name="footprint"/>
-<!--                    <field name="award_id"/>-->
-<!--                    <field name="upload_id"/>-->
+                    <!--                    <field name="award_id"/>-->
+                    <!--                    <field name="upload_id"/>-->
                     <group expand="1">
                         <filter string="Band" name="band_id" context="{'group_by': 'band_id'}"/>
                     </group>
