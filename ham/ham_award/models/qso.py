@@ -1,4 +1,6 @@
 from odoo import models, fields
+from odoo.exceptions import ValidationError
+from odoo.tools.translate import _
 
 
 class QSO(models.Model):
@@ -39,6 +41,36 @@ class QSO(models.Model):
         comodel_name="ham.award.upload",
         tracking=True
     )
+
+    hrdlog_sent = fields.Boolean(
+        string="Sent to HRDLog",
+        help="Sent to HRDLog",
+        required=True,
+        default=False,
+        readonly=True,
+        tracking=True
+
+    )
+
+    hrdlog_ts_sent = fields.Datetime(
+        string="Date and Time HRDLog",
+        help="Date and Time of upload to HRDLog",
+        readonly=True,
+        tracking=True
+    )
+
+    def action_set_hrdlog_sent(self):
+        for rec in self:
+            self.set_hrdlog_sent(rec)
+
+    def set_hrdlog_sent(self, qso):
+        if not qso:
+            raise ValidationError(_("Invalid QSO"))
+
+        qso.write({
+            "hrdlog_ts_sent": fields.Datetime.now(),
+            "hrdlog_sent": True
+        })
 
     # station_ids = fields.Many2many(
     #     string="Referenced Stations",

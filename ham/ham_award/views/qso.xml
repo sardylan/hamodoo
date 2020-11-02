@@ -11,15 +11,14 @@
                     <field name="country_id"/>
                     <field name="callsign"/>
                     <field name="ts_start" widget="datetime_tz"/>
-                    <field name="ts_end" widget="datetime_tz"/>
                     <field name="frequency"/>
                     <field name="band_id"/>
                     <field name="modulation_id"/>
                     <field name="tx_rst"/>
                     <field name="rx_rst"/>
-                    <!--                    <field name="award_id"/>-->
+                    <field name="local_callsign"/>
                     <field name="operator_id"/>
-                    <!--                    <field name="station_ids"/>-->
+                    <field name="hrdlog_sent"/>
                 </tree>
             </field>
         </record>
@@ -29,6 +28,12 @@
             <field name="model">ham.award.qso</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button type="object"
+                                name="action_set_hrdlog_sent"
+                                string="Send to HRDLog"
+                                attrs="{'invisible': [('hrdlog_sent', '=', True)]}"/>
+                    </header>
                     <sheet>
                         <h1>
                             <field name="callsign"/>
@@ -63,18 +68,25 @@
                                   string="Others">
                                 <group string="Others">
                                     <field name="footprint"/>
-                                    <!--                                    <field name="award_id"/>-->
-                                    <!--                                    <field name="upload_id"/>-->
+                                    <field name="award_id"/>
+                                    <field name="upload_id"/>
                                 </group>
                             </page>
                             <page name="page_note"
                                   string="Note">
                                 <field name="note"/>
                             </page>
-                            <page name="page_station"
-                                  string="Reference Stations">
-                                <!--                                <field name="station_ids"/>-->
+                            <page name="page_upload"
+                                  string="Uploads to Websites">
+                                <group string="Uploads to Websites">
+                                    <field name="hrdlog_sent"/>
+                                    <field name="hrdlog_ts_sent"/>
+                                </group>
                             </page>
+                            <!--                            <page name="page_station"-->
+                            <!--                                  string="Reference Stations">-->
+                            <!--                                <field name="station_ids"/>-->
+                            <!--                            </page>-->
                         </notebook>
                     </sheet>
                     <div class="oe_chatter">
@@ -99,14 +111,20 @@
                     <separator/>
                     <field name="frequency"/>
                     <field name="band_id"/>
-                    <!--                    <field name="operator_id"/>-->
+                    <field name="operator_id"/>
                     <field name="local_callsign"/>
                     <separator/>
                     <field name="footprint"/>
-                    <!--                    <field name="award_id"/>-->
-                    <!--                    <field name="upload_id"/>-->
+                    <field name="award_id"/>
+                    <field name="upload_id"/>
                     <group expand="1">
+                        <filter string="Local Callsign" name="local_callsign" context="{'group_by': 'local_callsign'}"/>
                         <filter string="Band" name="band_id" context="{'group_by': 'band_id'}"/>
+                        <filter string="Upload" name="upload_id" context="{'group_by': 'upload_id'}"/>
+                    </group>
+                    <separator/>
+                    <group expand="1">
+                        <filter string="HRDlog send status" name="hrdlog_sent" context="{'group_by': 'hrdlog_sent'}"/>
                     </group>
                 </search>
             </field>

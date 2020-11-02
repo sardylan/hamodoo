@@ -36,6 +36,14 @@
                                        name="uploads_count"
                                        widget="statinfo"/>
                             </button>
+                            <button type="object"
+                                    name="action_show_qsos"
+                                    class="oe_stat_button"
+                                    icon="fa-comment">
+                                <field string="QSOs"
+                                       name="qsos_count"
+                                       widget="statinfo"/>
+                            </button>
                         </div>
                         <h1>
                             <field name="name"/>

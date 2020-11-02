@@ -73,17 +73,34 @@ class Award(models.Model):
         readonly=True
     )
 
+    adif_id = fields.Many2one(
+        string="ADIF",
+        help="Generated ADIF",
+        comodel_name="ir.attachment",
+        readonly=True
+    )
+
     uploads_count = fields.Integer(
         string="Uploads count",
         help="Uploads count",
         readonly=True,
-        compute="_compute_uploads_count"
+        compute="_compute_counts"
+    )
+
+    qsos_count = fields.Integer(
+        string="QSOs count",
+        help="QSOs count",
+        readonly=True,
+        compute="_compute_counts"
     )
 
     @api.depends("uploads")
-    def _compute_uploads_count(self):
+    def _compute_counts(self):
+        qso_obj = self.env["ham.award.qso"]
+
         for rec in self:
             rec.uploads_count = len(rec.uploads)
+            rec.qsos_count = qso_obj.search_count([("award_id", "=", rec.id)])
 
     def action_produce_adif(self):
         for rec in self:
@@ -104,6 +121,16 @@ class Award(models.Model):
 
         return result
 
+    def action_show_qsos(self):
+        self.ensure_one()
+
+        action = self.env.ref("ham_award.action_qso_list")
+        result = action.read()[0]
+
+        result["domain"] = [("award_id", "=", self.id)]
+
+        return result
+
     @api.model
     def produce_adif(self, award):
         if not award:
@@ -114,19 +141,21 @@ class Award(models.Model):
 
         adif_utility = self.env["ham.utility.adif"]
 
-        qso_ids = qso_obj.search([
+        qsos = qso_obj.search([
             ("award_id", "=", award.id),
             ("active", "=", True)
         ])
 
-        adif_content = adif_utility.generate_adif(qso_ids)
+        adif_content = adif_utility.generate_adif(qsos)
 
         name = "%s %s.adi" % (
             datetime.datetime.now().strftime("%Y%m%d-%H%M%S"),
             award.name
         )
 
-        ir_attachment_id = ir_attachment_obj.create({
+        award.adif_id.unlink()
+
+        award.adif_id = ir_attachment_obj.create({
             "res_model": award._name,
             "res_id": award.id,
             "type": "binary",
@@ -136,7 +165,7 @@ class Award(models.Model):
             "datas": base64.b64encode(adif_content.encode()),
         })
 
-        if not ir_attachment_id:
+        if not award.adif_id:
             raise ValidationError(_("Unable to create attachment"))
 
 
