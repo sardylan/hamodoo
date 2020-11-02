@@ -22,6 +22,9 @@
         "security/utilities/modulation.xml",
         "security/utilities/qso.xml",
 
+        "security/utilities/websites/hamqth.xml",
+        "security/utilities/websites/hrdlog.xml",
+
         "security/models/modulation.xml",
         "security/models/country.xml",
         "security/models/band.xml",
