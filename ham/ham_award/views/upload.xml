@@ -30,7 +30,8 @@
                                 string="Parse"
                                 default_focus="1"
                                 confirm="Proceed with ADIF parsing?"
-                                class="btn-primary"/>
+                                class="btn-primary"
+                                attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
                         <field name="state"
                                widget="statusbar"/>
                     </header>
@@ -41,6 +42,9 @@
                             <field name="file_content" filename="file_name"/>
                             <field name="operator_id"/>
                             <field name="award_id"/>
+                        </group>
+                        <group>
+                            <field name="note"/>
                         </group>
                         <notebook>
                             <page name="page_adif"

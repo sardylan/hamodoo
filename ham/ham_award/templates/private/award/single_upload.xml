@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <template id="template_private_award_single_upload" name="Single award upload">
+            <t t-call="portal.portal_layout">
+                <t t-set="additional_title">
+                    <t t-esc="award.name"/> - <t t-esc="upload.name"/>
+                </t>
+                <div class="m-2"/>
+                <div t-if="upload" class="card">
+                    <div class="card-header"><t t-esc="upload.ts"/>
+                        <t t-if="upload.file_name">- <t t-esc="upload.file_name"/></t></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6 col-md-4 col-lg-3 font-weight-bold">Date &amp; Time (UTC) of upload:</div>
+                            <div class="col-6 col-md-8 col-lg-9"><t t-esc="upload.ts"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-md-4 col-lg-3 font-weight-bold">Filename:</div>
+                            <div class="col-6 col-md-8 col-lg-9"><t t-esc="upload.file_name"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-md-4 col-lg-3 font-weight-bold">State:</div>
+                            <div class="col-6 col-md-8 col-lg-9">
+                                <t t-if="upload.state == 'draft'">
+                                    <span class="fa fa-file"/>
+                                    <span class="d-none d-lg-inline">Uploaded</span>
+                                </t>
+                                <t t-if="upload.state == 'parsed'">
+                                    <span class="fa fa-check"/>
+                                    <span class="d-none d-lg-inline">Imported</span>
+                                </t>
+                                <t t-if="upload.state == 'error'">
+                                    <span class="fa fa-exclamation-triangle"/>
+                                    <span class="d-none d-lg-inline">Problems</span>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="mt-4"/>
+                        <div class="font-weight-bold">Note:</div>
+                        <div><t t-raw="upload.note"/></div>
+                    </div>
+                </div>
+                <div t-else="">
+                    <p>Upload not found.</p>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

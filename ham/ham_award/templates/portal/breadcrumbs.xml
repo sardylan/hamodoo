@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <template id="portal_breadcrumbs"
+                  inherit_id="portal.portal_breadcrumbs"
+                  priority="0">
+            <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+                <t t-if="page_name in ['award_list', 'award_single', 'award_single_upload']">
+                    <li class="breadcrumb-item">
+                        <a href="/ham_award/private/award">Awards</a>
+                    </li>
+                    <t t-if="page_name in ['award_single', 'award_single_upload']">
+                        <li class="breadcrumb-item">
+                            <a t-att-href="'/ham_award/private/award/%d' % award.id">
+                                <t t-esc="award.name"/>
+                            </a>
+                        </li>
+                        <t t-if="page_name in ['award_single_upload']">
+                            <li class="breadcrumb-item">
+                                <a t-att-href="'/ham_award/private/award/%d/upload/%d' % (award.id, upload.id)">
+                                    <t t-esc="upload.ts"/>
+                                </a>
+                            </li>
+                        </t>
+                    </t>
+                </t>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

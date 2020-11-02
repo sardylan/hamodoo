@@ -19,7 +19,7 @@
                                         <th scope="col">Date &amp; Time (UTC)</th>
                                         <th scope="col" class="d-none d-md-table-cell">Filename</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Download</th>
+                                        <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,8 +52,13 @@
                                                 </em>
                                             </td>
                                             <td>
-                                                <a t-att-href="'/ham_award/private/upload/file_content/%d' % upload.id">
+                                                <a t-att-href="'/ham_award/private/upload/file_content/%d' % upload.id"
+                                                   target="_blank">
                                                     <span class="fa fa-download"/>
+                                                </a>
+                                                <span class="mx-2"/>
+                                                <a t-att-href="'/ham_award/private/award/%d/upload/%d' % (award.id, upload.id)">
+                                                    <span class="fa fa-info"/>
                                                 </a>
                                             </td>
                                         </tr>
@@ -81,10 +86,19 @@
                                             </div>
                                             <div class="clearfix"/>
                                         </div>
+                                        <div class="row">
+                                            <div t-attf-class="form-group #{error.get('note') and 'o_has_error' or ''} col-xl-12">
+                                                <label class="col-form-label" for="note">Note</label>
+                                                <textarea name="note" rows="4"
+                                                          t-attf-class="form-control #{error.get('note') and 'is-invalid' or ''}"
+                                                          t-att-value="note"/>
+                                            </div>
+                                            <div class="clearfix"/>
+                                        </div>
                                         <div>
                                             <button type="submit" class="btn btn-primary float-right">
                                                 Upload
-                                                <span class="fa fa-arrow-right"/>
+                                                <span class="fa fa-upload"/>
                                             </button>
                                         </div>
                                     </div>

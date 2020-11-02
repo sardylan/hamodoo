@@ -97,6 +97,11 @@ class Upload(models.Model):
         readonly=True
     )
 
+    note = fields.Html(
+        string="Note",
+        help="Note"
+    )
+
     @api.depends("ts", "operator_id")
     def _compute_name(self):
         for rec in self:

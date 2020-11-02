@@ -64,6 +64,7 @@ class UploadController(http.Controller):
 
         award = data["award"]
         adif_file = data["adif_file"]
+        note = data["note"]
 
         adif_file_filename = adif_file.filename
         adif_file_raw = adif_file.stream.read()
@@ -91,6 +92,7 @@ class UploadController(http.Controller):
             "file_content": base64.b64encode(adif_file_raw),
             "operator_id": operator.id,
             "award_id": award.id,
+            "note": note,
         }
 
         upload = upload_obj.create(values)
