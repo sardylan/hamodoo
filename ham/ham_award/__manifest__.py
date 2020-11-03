@@ -20,10 +20,14 @@
         "security/access/award.xml",
         "security/access/upload.xml",
 
+        "security/wizard/award_publish.xml",
+
         "views/qso.xml",
         "views/operator.xml",
         "views/award.xml",
         "views/upload.xml",
+
+        "wizard/award_publish.xml",
 
         "menu/action.xml",
         "menu/items.xml",

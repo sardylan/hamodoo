@@ -111,6 +111,20 @@ class Award(models.Model):
             "tag": "reload"
         }
 
+    def action_publish(self):
+        self.ensure_one()
+
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Award QSOs Publish"),
+            "res_model": "ham.wizard.award.publish",
+            "view_mode": "form",
+            "target": "new",
+            "context": {
+                "default_award_id": self.id
+            }
+        }
+
     def action_show_uploads(self):
         self.ensure_one()
 
