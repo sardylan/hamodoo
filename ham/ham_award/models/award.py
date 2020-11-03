@@ -23,12 +23,11 @@ class Award(models.Model):
         tracking=True
     )
 
-    callsigns = fields.Many2many(
+    callsigns = fields.One2many(
         string="Callsigns",
         help="Callsigns used by all stations in the award",
         comodel_name="ham.award.callsign",
-        column1="award_id",
-        column2="callsign_id",
+        inverse_name="award_id",
         required=True,
         tracking=True
     )
@@ -191,13 +190,32 @@ class AwardCallsign(models.Model):
     _rec_name = "callsign"
 
     _sql_constraints = [
-        ("callsign_uniq", "UNIQUE(callsign)", _("Callsign already exists"))
+        ("award_callsign_uniq", "UNIQUE(award_id, callsign)", _("Callsign already exists in award"))
     ]
+
+    award_id = fields.Many2one(
+        string="Award",
+        help="Related Award",
+        comodel_name="ham.award",
+        required=True
+    )
 
     callsign = fields.Char(
         string="Callsign",
         help="Callsign",
         required=True,
+        tracking=True
+    )
+
+    hrdlog_callsign = fields.Char(
+        string="HRDLog Callsign",
+        help="Callsign param for HRDLog QSO publish",
+        tracking=True
+    )
+
+    hrdlog_code = fields.Char(
+        string="HRDLog Code",
+        help="Code param for HRDLog QSO publish",
         tracking=True
     )
 

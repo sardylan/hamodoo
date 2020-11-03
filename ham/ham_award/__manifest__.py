@@ -22,6 +22,8 @@
 
         "security/wizard/award_publish.xml",
 
+        "security/utilities/award_publish.xml",
+
         "views/qso.xml",
         "views/operator.xml",
         "views/award.xml",

@@ -54,7 +54,7 @@
                         </h1>
                         <group string="Infos">
                             <field name="public"/>
-                            <field name="callsigns" widget="many2many_tags"/>
+                            <field name="callsigns"/>
                         </group>
                         <group string="Date &amp; Time" col="4">
                             <field name="ts_start" widget="datetime_tz"/>
@@ -104,6 +104,14 @@
                         <group string="Infos">
                             <field name="callsign"/>
                         </group>
+                        <notebook>
+                            <page string="HRDLog">
+                                <group>
+                                    <field name="hrdlog_callsign"/>
+                                    <field name="hrdlog_code"/>
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids"/>

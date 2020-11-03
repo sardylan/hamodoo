@@ -43,3 +43,6 @@ class AwardPublish(models.TransientModel):
 
     def action_publish(self):
         self.ensure_one()
+
+        award_publish_utility = self.env["ham.utility.award.publish"]
+        award_publish_utility.publish_not_published_qsos(self.award_id, self.callsign_id, self.website)

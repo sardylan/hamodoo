@@ -45,7 +45,6 @@ class QSO(models.Model):
         help="QSO pubblications in online websites",
         comodel_name="ham.award.qso.publish",
         inverse_name="qso_id",
-        readonly=True
     )
 
 
@@ -60,6 +59,12 @@ class QSOPublish(models.Model):
         required=True
     )
 
+    website_tag = fields.Char(
+        string="Website tag",
+        help="External website tag",
+        required=True
+    )
+
     website = fields.Char(
         string="Website",
         help="External website",
@@ -69,5 +74,6 @@ class QSOPublish(models.Model):
     ts = fields.Datetime(
         string="Date & Time",
         help="QSO publishing Date & Time",
-        readonly=True
+        readonly=True,
+        default=lambda self: fields.Datetime.now()
     )

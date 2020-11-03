@@ -107,12 +107,12 @@ class AdifUtility(models.AbstractModel):
         sorted_qso_ids = sorted(qso_ids, key=lambda x: x.ts_start)
 
         for qso_id in sorted_qso_ids:
-            adif += self._generate_adif_qso(qso_id)
+            adif += self.generate_adif_qso(qso_id)
 
         return adif
 
     @api.model
-    def _generate_adif_qso(self, qso_id):
+    def generate_adif_qso(self, qso_id):
         if not qso_id:
             raise ValidationError(_("Invalid qso_id"))
 

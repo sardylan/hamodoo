@@ -136,6 +136,8 @@
                 <form>
                     <sheet>
                         <group>
+                            <field name="qso_id"/>
+                            <field name="website_tag"/>
                             <field name="website"/>
                             <field name="ts"/>
                         </group>
