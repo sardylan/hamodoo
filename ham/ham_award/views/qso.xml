@@ -4,7 +4,7 @@
     <data noupdate="0">
 
         <record model="ir.ui.view" id="view_qso_tree">
-            <field name="name">view_qso_tree</field>
+            <field name="name">view.qso.tree</field>
             <field name="model">ham.award.qso</field>
             <field name="arch" type="xml">
                 <tree>
@@ -18,21 +18,20 @@
                     <field name="rx_rst"/>
                     <field name="local_callsign"/>
                     <field name="operator_id"/>
-                    <field name="hrdlog_sent"/>
                 </tree>
             </field>
         </record>
 
         <record model="ir.ui.view" id="view_qso_form">
-            <field name="name">view_qso_form</field>
+            <field name="name">view.qso.form</field>
             <field name="model">ham.award.qso</field>
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button type="object"
-                                name="action_set_hrdlog_sent"
-                                string="Send to HRDLog"
-                                attrs="{'invisible': [('hrdlog_sent', '=', True)]}"/>
+<!--                        <button type="object"-->
+<!--                                name="action_set_hrdlog_sent"-->
+<!--                                string="Send to HRDLog"-->
+<!--                                attrs="{'invisible': [('hrdlog_sent', '=', True)]}"/>-->
                     </header>
                     <sheet>
                         <h1>
@@ -41,6 +40,10 @@
                         <h2>
                             <field name="country_id"/>
                         </h2>
+                        <group string="Local informations" col="4">
+                            <field name="operator_id"/>
+                            <field name="local_callsign"/>
+                        </group>
                         <group string="Remote" col="4">
                             <field name="op_name"/>
                             <field name="qth"/>
@@ -59,10 +62,6 @@
                             <field name="tx_rst"/>
                             <field name="rx_rst"/>
                         </group>
-                        <group string="Local informations" col="4">
-                            <field name="operator_id"/>
-                            <field name="local_callsign"/>
-                        </group>
                         <notebook>
                             <page name="page_others"
                                   string="Others">
@@ -78,15 +77,8 @@
                             </page>
                             <page name="page_upload"
                                   string="Uploads to Websites">
-                                <group string="Uploads to Websites">
-                                    <field name="hrdlog_sent"/>
-                                    <field name="hrdlog_ts_sent"/>
-                                </group>
+                                <field name="publish_ids"/>
                             </page>
-                            <!--                            <page name="page_station"-->
-                            <!--                                  string="Reference Stations">-->
-                            <!--                                <field name="station_ids"/>-->
-                            <!--                            </page>-->
                         </notebook>
                     </sheet>
                     <div class="oe_chatter">
@@ -98,7 +90,7 @@
         </record>
 
         <record model="ir.ui.view" id="view_qso_search">
-            <field name="name">view_qso_search</field>
+            <field name="name">view.qso.search</field>
             <field name="model">ham.award.qso</field>
             <field name="arch" type="xml">
                 <search>
@@ -122,11 +114,33 @@
                         <filter string="Band" name="band_id" context="{'group_by': 'band_id'}"/>
                         <filter string="Upload" name="upload_id" context="{'group_by': 'upload_id'}"/>
                     </group>
-                    <separator/>
-                    <group expand="1">
-                        <filter string="HRDlog send status" name="hrdlog_sent" context="{'group_by': 'hrdlog_sent'}"/>
-                    </group>
                 </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_qso_publish_tree">
+            <field name="name">view.qso.publish.tree</field>
+            <field name="model">ham.award.qso.publish</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="website"/>
+                    <field name="ts" widget="datetime_tz"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_qso_publish_form">
+            <field name="name">view.qso.publish.form</field>
+            <field name="model">ham.award.qso.publish</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="website"/>
+                            <field name="ts"/>
+                        </group>
+                    </sheet>
+                </form>
             </field>
         </record>
 
