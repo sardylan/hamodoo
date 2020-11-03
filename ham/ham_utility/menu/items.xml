@@ -48,5 +48,16 @@
                   action="action_band_list"
                   sequence="0"/>
 
+        <menuitem id="menu_website"
+                  name="Eebsites"
+                  parent="menu_root"
+                  sequence="2"/>
+
+        <menuitem id="menu_website_list"
+                  name="List"
+                  parent="menu_website"
+                  action="action_website_list"
+                  sequence="0"/>
+
     </data>
 </odoo>

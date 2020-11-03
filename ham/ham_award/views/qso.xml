@@ -123,7 +123,7 @@
             <field name="model">ham.award.qso.publish</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="website"/>
+                    <field name="website_id"/>
                     <field name="ts" widget="datetime_tz"/>
                 </tree>
             </field>
@@ -137,8 +137,7 @@
                     <sheet>
                         <group>
                             <field name="qso_id"/>
-                            <field name="website_tag"/>
-                            <field name="website"/>
+                            <field name="website_id"/>
                             <field name="ts"/>
                         </group>
                     </sheet>

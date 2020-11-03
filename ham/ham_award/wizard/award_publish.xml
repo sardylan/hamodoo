@@ -14,7 +14,7 @@
                     <group>
                         <field name="callsign_id"
                                widget="selection_badge"/>
-                        <field name="website"/>
+                        <field name="website_id"/>
                     </group>
                     <footer>
                         <button type="object"

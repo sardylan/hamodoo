@@ -1,6 +1,8 @@
 import logging
 
 from odoo import models, api
+from odoo.exceptions import ValidationError
+from odoo.tools.translate import _
 
 _logger = logging.getLogger(__name__)
 
@@ -31,7 +33,7 @@ class AwardPublish(models.AbstractModel):
         sql_params = {
             "award_id": award.id,
             "callsign": callsign.callsign,
-            "website_tag": website
+            "website_tag": website.tag
         }
 
         cr.execute(query=sql_query, params=sql_params)
@@ -42,7 +44,7 @@ class AwardPublish(models.AbstractModel):
         for qso_id in qso_ids:
             qso = qso_obj.browse(qso_id)
 
-            if website == "hrdlog":
+            if website == self.env.ref("ham_utility.data_ham_website_hrdlog").tag:
                 qso_adif_data = adif_utility.generate_adif_qso(qso)
 
                 try:
@@ -57,8 +59,10 @@ class AwardPublish(models.AbstractModel):
 
                 qso_publish_obj.create([{
                     "qso_id": qso.id,
-                    "website_tag": "hrdlog",
-                    "website": "HRDLog",
+                    "website_id": website.id
                 }])
 
                 cr.commit()
+
+            else:
+                raise ValidationError(_("Upload website not supported"))

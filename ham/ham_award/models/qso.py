@@ -59,15 +59,10 @@ class QSOPublish(models.Model):
         required=True
     )
 
-    website_tag = fields.Char(
-        string="Website tag",
-        help="External website tag",
-        required=True
-    )
-
-    website = fields.Char(
+    website_id = fields.Many2one(
         string="Website",
         help="External website",
+        comodel_name="ham.website",
         required=True
     )
 

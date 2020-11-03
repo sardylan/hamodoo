@@ -12,7 +12,7 @@ class AwardPublish(models.TransientModel):
 
     award_id = fields.Many2one(
         string="Award",
-        Help="Related Award",
+        help="Related Award",
         comodel_name="ham.award",
         required=True,
         readonly=True
@@ -25,12 +25,11 @@ class AwardPublish(models.TransientModel):
         required=True
     )
 
-    website = fields.Selection(
+    website_id = fields.Many2one(
         string="Website",
         help="Choose website for uploading",
-        selection=SELECTION_WEBSITE,
-        required=True,
-        default="hrdlog"
+        comodel_name="ham.website",
+        required=True
     )
 
     @api.onchange("award_id")
@@ -45,4 +44,4 @@ class AwardPublish(models.TransientModel):
         self.ensure_one()
 
         award_publish_utility = self.env["ham.utility.award.publish"]
-        award_publish_utility.publish_not_published_qsos(self.award_id, self.callsign_id, self.website)
+        award_publish_utility.publish_not_published_qsos(self.award_id, self.callsign_id, self.website_id)

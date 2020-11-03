@@ -34,5 +34,13 @@
             <field name="limit">20</field>
         </record>
 
+        <record model="ir.actions.act_window" id="action_website_list">
+            <field name="name">Websites</field>
+            <field name="res_model">ham.website</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="limit">20</field>
+        </record>
+
     </data>
 </odoo>
