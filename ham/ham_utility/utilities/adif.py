@@ -26,6 +26,8 @@ class AdifUtility(models.AbstractModel):
         if isinstance(raw_content, bytes):
             raw_content = raw_content.decode()
 
+        raw_content = self._sanitize_raw_content(raw_content)
+
         items = adif_regex.findall(raw_content)
         if not items:
             raise ValidationError(_("Invalid ADIF file"))
@@ -192,3 +194,8 @@ class AdifUtility(models.AbstractModel):
             tag += "\n"
 
         return tag
+
+    @staticmethod
+    def _sanitize_raw_content(raw_content: str = ""):
+        raw_content = raw_content.replace("<eh>", "<EOH>")  # Bug of WSJT-X
+        return raw_content
