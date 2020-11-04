@@ -175,9 +175,7 @@ class Upload(models.Model):
                 modulation = modulation_obj.search([("name", "ilike", modulation_name)])
 
             if not modulation:
-                _logger.error("Modulation not found for value: %s", modulation_name)
-                upload.status = "error"
-                return
+                raise ValidationError(_("Modulation not found for value: %s") % modulation_name)
 
             ts_start = datetime.datetime.combine(ts_date, ts_time)
 
