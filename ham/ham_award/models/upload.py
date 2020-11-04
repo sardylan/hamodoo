@@ -58,6 +58,12 @@ class Upload(models.Model):
         tracking=True
     )
 
+    award_callsign_id = fields.Many2one(
+        string="Callsign",
+        help="Force Callsign for parsing",
+        comodel_name="ham.award.callsign"
+    )
+
     state = fields.Selection(
         string="Status",
         help="Upload status",
@@ -175,18 +181,25 @@ class Upload(models.Model):
 
             ts_start = datetime.datetime.combine(ts_date, ts_time)
 
-            local_callsigns = [qso[x] for x in ["STATION_CALLSIGN", "OPERATOR"] if x in qso]
+            if upload.award_callsign_id:
+                local_callsign = upload.award_callsign_id.callsign
+            else:
+                local_callsigns = [qso[x] for x in ["STATION_CALLSIGN", "OPERATOR"] if x in qso]
 
-            if not local_callsigns:
-                raise ValidationError(_("Both STATION_CALLSIGN and OPERATOR empty or not present in ADIF row"))
+                if not local_callsigns:
+                    raise ValidationError(_("Both STATION_CALLSIGN and OPERATOR empty or not present in ADIF row"))
 
-            local_callsign = False
-            for item in local_callsigns:
-                if item in enabled_callsigns:
-                    local_callsign = item
+                local_callsign = False
+                for item in local_callsigns:
+                    if item in enabled_callsigns:
+                        local_callsign = item
+                        break
 
-            if not local_callsign:
-                raise ValidationError(_("Callsigns not enabled in award"))
+                if upload.award_callsign_id:
+                    local_callsign = upload.award_callsign_id.callsign
+
+                if not local_callsign:
+                    raise ValidationError(_("Callsign not enabled in award"))
 
             callsign = qso["CALL"]
             frequency = qso["FREQ"]

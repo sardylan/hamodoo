@@ -17,6 +17,7 @@
                                 <thead>
                                     <tr class="active">
                                         <th scope="col">Date &amp; Time (UTC)</th>
+                                        <th scope="col">Callsign</th>
                                         <th scope="col" class="d-none d-md-table-cell">Filename</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Actions</th>
@@ -29,6 +30,9 @@
                                                 <strong>
                                                     <t t-esc="upload.ts"/>
                                                 </strong>
+                                            </td>
+                                            <td>
+                                                <t t-esc="upload.award_callsign_id and upload.award_callsign_id.callsign or '(auto)'"/>
                                             </td>
                                             <td class="d-none d-md-table-cell">
                                                 <em>
@@ -83,6 +87,20 @@
                                                 <input type="file" name="adif_file"
                                                        t-attf-class="form-control #{error.get('adif_file') and 'is-invalid' or ''}"
                                                        t-att-value="adif_file"/>
+                                            </div>
+                                            <div class="clearfix"/>
+                                        </div>
+                                        <div class="row">
+                                            <div t-attf-class="form-group #{error.get('callsign_id') and 'o_has_error' or ''} col-xl-12">
+                                                <label class="col-form-label" for="callsign_id">Callsign</label>
+                                                <select name="callsign_id"
+                                                        t-attf-class="form-control #{error.get('callsign_id') and 'is-invalid' or ''}">
+                                                    <option value="-1">(automatic from ADIF)</option>
+                                                    <option t-foreach="award.callsigns" t-as="award_callsign"
+                                                            t-att-value="award_callsign.id">
+                                                        <t t-esc="award_callsign.callsign"/>
+                                                    </option>
+                                                </select>
                                             </div>
                                             <div class="clearfix"/>
                                         </div>

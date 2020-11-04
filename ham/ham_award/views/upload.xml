@@ -13,6 +13,7 @@
                     <field name="ts" widget="datetime_tz"/>
                     <field name="file_content" filename="file_name"/>
                     <field name="award_id"/>
+                    <field name="award_callsign_id"/>
                     <field name="operator_id"/>
                     <field name="state"/>
                 </tree>
@@ -42,6 +43,7 @@
                             <field name="file_content" filename="file_name"/>
                             <field name="operator_id"/>
                             <field name="award_id"/>
+                            <field name="award_callsign_id"/>
                         </group>
                         <group>
                             <field name="note"/>

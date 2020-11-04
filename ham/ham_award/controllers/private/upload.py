@@ -56,15 +56,23 @@ class UploadController(http.Controller):
     def add(self, **data):
         operator_obj = request.env["ham.award.operator"]
         award_obj = request.env["ham.award"]
+        award_callsign_obj = request.env["ham.award.callsign"]
         upload_obj = request.env["ham.award.upload"]
 
         for item in ["award", "adif_file"]:
             if item not in data or not data[item]:
                 return "error"
 
-        award = data["award"]
+        award_id = data["award"]
         adif_file = data["adif_file"]
         note = data["note"]
+
+        callsign_id = False
+
+        try:
+            callsign_id = int(data["callsign_id"])
+        except Exception as e:
+            _logger.warning("Unable to convert callsign_id to number: %s" % data["callsign_id"])
 
         adif_file_filename = adif_file.filename
         adif_file_raw = adif_file.stream.read()
@@ -79,12 +87,21 @@ class UploadController(http.Controller):
             return "error"
 
         award = award_obj.search([
-            ("id", "=", award),
+            ("id", "=", award_id),
             ("operator_ids", "in", [operator.id]),
         ])
         if not award:
             _logger.error("Award not found")
             return "error"
+
+        if callsign_id:
+            award_callsign = award_callsign_obj.search([
+                ("id", "=", callsign_id),
+                ("award_id", "=", award.id),
+            ])
+            if not award_callsign:
+                _logger.warning("Award Callsign not found")
+                award_callsign = False
 
         values = {
             "ts": fields.Datetime.now(),
@@ -92,6 +109,7 @@ class UploadController(http.Controller):
             "file_content": base64.b64encode(adif_file_raw),
             "operator_id": operator.id,
             "award_id": award.id,
+            "award_callsign_id": award_callsign and award_callsign.id,
             "note": note,
         }
 
