@@ -150,7 +150,7 @@ class Upload(models.Model):
             _logger.error(e)
             error_message = str(e)
 
-            upload.status = "error"
+            upload.state = "error"
             upload.errors = error_message
 
             return {

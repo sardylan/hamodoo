@@ -24,7 +24,7 @@ class AdifUtility(models.AbstractModel):
         adif_regex = re.compile(r"<([a-zA-Z0-9:_]+)>([^<\t\f\v\r\n]*)")
 
         if isinstance(raw_content, bytes):
-            raw_content = raw_content.decode()
+            raw_content = self._bytes_to_str(raw_content)
 
         raw_content = self._sanitize_raw_content(raw_content)
 
@@ -199,3 +199,19 @@ class AdifUtility(models.AbstractModel):
     def _sanitize_raw_content(raw_content: str = ""):
         raw_content = raw_content.replace("<eh>", "<EOH>")  # Bug of WSJT-X
         return raw_content
+
+    @staticmethod
+    def _bytes_to_str(data: bytes):
+        string: str = ""
+
+        for codec_name in ["utf8", "iso8859-15", "ascii"]:
+            try:
+                string = data.decode(codec_name)
+                break
+            except UnicodeDecodeError:
+                continue
+
+        if not string:
+            raise ValidationError(_("Unable to convert bytes to string"))
+
+        return string
