@@ -28,12 +28,12 @@ class AwardPublish(models.AbstractModel):
                                  LEFT JOIN ham_award_qso_publish haqp ON haq.id = haqp.qso_id
                         WHERE haq.award_id = %(award_id)s
                           AND haq.local_callsign = %(callsign)s
-                          AND (haqp.website_tag != %(website_tag)s OR haqp.website_tag IS NULL)"""
+                          AND (haqp.website_id != %(website_id)s OR haqp.website_id IS NULL)"""
 
         sql_params = {
             "award_id": award.id,
             "callsign": callsign.callsign,
-            "website_tag": website.tag
+            "website_id": website.id
         }
 
         cr.execute(query=sql_query, params=sql_params)
@@ -44,7 +44,7 @@ class AwardPublish(models.AbstractModel):
         for qso_id in qso_ids:
             qso = qso_obj.browse(qso_id)
 
-            if website == self.env.ref("ham_utility.data_ham_website_hrdlog").tag:
+            if website.tag == self.env.ref("ham_utility.data_ham_website_hrdlog").tag:
                 qso_adif_data = adif_utility.generate_adif_qso(qso)
 
                 try:
