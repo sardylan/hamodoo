@@ -143,8 +143,8 @@ class AdifUtility(models.AbstractModel):
             qso += self._tag_serialize("QTH", qso_id.qth)
 
         comment_items = []
-        for station_id in qso_id.station_ids:
-            comment_items.append(station_id.reference)
+        # for station_id in qso_id.station_ids:
+        #     comment_items.append(station_id.reference)
 
         comment = " - ".join(comment_items)
         if comment:
