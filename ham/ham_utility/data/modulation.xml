@@ -70,5 +70,14 @@
             <field name="bandwidth">50</field>
         </record>
 
+        <record model="ham.modulation" id="data_ham_modulation_ft4">
+            <field name="name">FT4</field>
+            <field name="description">Amateur radio QSO communication protocol developed by Joe Taylor (K1JT) and Steve Franke (K9AN), especially used in contests.</field>
+            <field name="modulation">F</field>
+            <field name="signal">1</field>
+            <field name="information">B</field>
+            <field name="bandwidth">90</field>
+        </record>
+
     </data>
 </odoo>
