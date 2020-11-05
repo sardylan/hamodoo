@@ -47,15 +47,11 @@ class AwardPublish(models.AbstractModel):
             if website.tag == self.env.ref("ham_utility.data_ham_website_hrdlog").tag:
                 qso_adif_data = adif_utility.generate_adif_qso(qso)
 
-                try:
-                    hrdlog_utility.upload_qso(
-                        callsign=callsign.hrdlog_callsign,
-                        code=callsign.hrdlog_code,
-                        adif_data=qso_adif_data
-                    )
-                except Exception as e:
-                    _logger.error(e)
-                    continue
+                hrdlog_utility.upload_qso(
+                    callsign=callsign.hrdlog_callsign,
+                    code=callsign.hrdlog_code,
+                    adif_data=qso_adif_data
+                )
 
                 qso_publish_obj.create([{
                     "qso_id": qso.id,
