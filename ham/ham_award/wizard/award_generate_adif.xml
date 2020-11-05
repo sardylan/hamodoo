@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record model="ir.ui.view" id="view_ham_wizard_award_generate_adif">
+            <field name="name">view.ham.wizard.award.generate.adif</field>
+            <field name="model">ham.wizard.award.generate.adif</field>
+            <field name="arch" type="xml">
+                <form string="Generate Award ADIF" create="false" edit="false" delete="false">
+                    <group>
+                        <field name="award_id"/>
+                    </group>
+                    <group>
+                        <field name="callsign_id"
+                               widget="selection_badge"/>
+                    </group>
+                    <footer>
+                        <button type="object"
+                                name="action_publish"
+                                string="Generate"
+                                class="btn-primary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

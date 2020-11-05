@@ -101,12 +101,12 @@ class AdifUtility(models.AbstractModel):
         return adif_dict
 
     @api.model
-    def generate_adif(self, qso_ids):
+    def generate_adif(self, qsos):
         adif = ""
 
         adif += self._generate_adif_header()
 
-        sorted_qso_ids = sorted(qso_ids, key=lambda x: x.ts_start)
+        sorted_qso_ids = sorted(qsos, key=lambda x: x.ts_start)
 
         for qso_id in sorted_qso_ids:
             adif += self.generate_adif_qso(qso_id)
@@ -114,33 +114,33 @@ class AdifUtility(models.AbstractModel):
         return adif
 
     @api.model
-    def generate_adif_qso(self, qso_id):
-        if not qso_id:
+    def generate_adif_qso(self, qso):
+        if not qso:
             raise ValidationError(_("Invalid qso_id"))
 
-        qso = ""
+        qso_string = ""
 
-        qso += self._tag_serialize("TIME_ON", qso_id.ts_start.strftime(FORMAT_TIME))
-        qso += self._tag_serialize("TIME_OFF", qso_id.ts_end.strftime(FORMAT_TIME))
-        qso += self._tag_serialize("QSO_DATE", qso_id.ts_start.strftime(FORMAT_DATE))
-        qso += self._tag_serialize("QSO_DATE_OFF", qso_id.ts_end.strftime(FORMAT_DATE))
-        qso += self._tag_serialize("CALL", qso_id.callsign)
+        qso_string += self._tag_serialize("TIME_ON", qso.ts_start.strftime(FORMAT_TIME))
+        qso_string += self._tag_serialize("TIME_OFF", qso.ts_end.strftime(FORMAT_TIME))
+        qso_string += self._tag_serialize("QSO_DATE", qso.ts_start.strftime(FORMAT_DATE))
+        qso_string += self._tag_serialize("QSO_DATE_OFF", qso.ts_end.strftime(FORMAT_DATE))
+        qso_string += self._tag_serialize("CALL", qso.callsign)
 
-        if qso_id.local_callsign:
-            qso += self._tag_serialize("STATION_CALLSIGN", qso_id.local_callsign)
+        if qso.local_callsign:
+            qso_string += self._tag_serialize("STATION_CALLSIGN", qso.local_callsign)
 
-        if qso_id.op_name:
-            qso += self._tag_serialize("NAME", qso_id.op_name)
+        if qso.op_name:
+            qso_string += self._tag_serialize("NAME", qso.op_name)
 
-        qso += self._tag_serialize("FREQ", float(qso_id.frequency) / 1000000)
-        qso += self._tag_serialize("FREQ_RX", float(qso_id.rx_frequency) / 1000000)
+        qso_string += self._tag_serialize("FREQ", float(qso.frequency) / 1000000)
+        qso_string += self._tag_serialize("FREQ_RX", float(qso.rx_frequency) / 1000000)
 
-        qso += self._tag_serialize("MODE", qso_id.modulation_id.name)
-        qso += self._tag_serialize("RST_SENT", qso_id.tx_rst)
-        qso += self._tag_serialize("RST_RCVD", qso_id.rx_rst)
+        qso_string += self._tag_serialize("MODE", qso.modulation_id.name)
+        qso_string += self._tag_serialize("RST_SENT", qso.tx_rst)
+        qso_string += self._tag_serialize("RST_RCVD", qso.rx_rst)
 
-        if qso_id.qth:
-            qso += self._tag_serialize("QTH", qso_id.qth)
+        if qso.qth:
+            qso_string += self._tag_serialize("QTH", qso.qth)
 
         comment_items = []
         # for station_id in qso_id.station_ids:
@@ -148,16 +148,16 @@ class AdifUtility(models.AbstractModel):
 
         comment = " - ".join(comment_items)
         if comment:
-            qso += self._tag_serialize("COMMENT", comment)
+            qso_string += self._tag_serialize("COMMENT", comment)
 
-        if qso_id.note:
-            notes = BeautifulSoup(qso_id.note, features="lxml").text.strip()
+        if qso.note:
+            notes = BeautifulSoup(qso.note, features="lxml").text.strip()
             if notes:
-                qso += self._tag_serialize("NOTES", notes)
+                qso_string += self._tag_serialize("NOTES", notes)
 
-        qso += self._tag_serialize("EOR")
+        qso_string += self._tag_serialize("EOR")
 
-        return qso
+        return qso_string
 
     @api.model
     def _generate_adif_header(self):

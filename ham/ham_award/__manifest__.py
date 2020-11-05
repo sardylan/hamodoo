@@ -21,6 +21,7 @@
         "security/access/upload.xml",
 
         "security/wizard/award_publish.xml",
+        "security/wizard/award_generate_adif.xml",
 
         "security/utilities/award_publish.xml",
 
@@ -30,6 +31,7 @@
         "views/upload.xml",
 
         "wizard/award_publish.xml",
+        "wizard/award_generate_adif.xml",
 
         "menu/action.xml",
         "menu/items.xml",

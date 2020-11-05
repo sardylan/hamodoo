@@ -101,6 +101,7 @@ class Award(models.Model):
             rec.uploads_count = len(rec.uploads)
             rec.qsos_count = qso_obj.search_count([("award_id", "=", rec.id)])
 
+    # TODO: Deprecated
     def action_produce_adif(self):
         for rec in self:
             self.produce_adif(rec)
@@ -117,6 +118,20 @@ class Award(models.Model):
             "type": "ir.actions.act_window",
             "name": _("Award QSOs Publish"),
             "res_model": "ham.wizard.award.publish",
+            "view_mode": "form",
+            "target": "new",
+            "context": {
+                "default_award_id": self.id
+            }
+        }
+
+    def action_generate_adif(self):
+        self.ensure_one()
+
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Generate Award ADIF"),
+            "res_model": "ham.wizard.award.generate.adif",
             "view_mode": "form",
             "target": "new",
             "context": {

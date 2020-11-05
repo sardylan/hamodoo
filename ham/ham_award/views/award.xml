@@ -22,8 +22,8 @@
                 <form>
                     <header>
                         <button type="object"
-                                name="action_produce_adif"
-                                string="Produce ADIF"
+                                name="action_generate_adif"
+                                string="Generate ADIF"
                                 class="btn-primary"/>
                         <button type="object"
                                 name="action_publish"
