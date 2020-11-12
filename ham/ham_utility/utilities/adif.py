@@ -118,6 +118,8 @@ class AdifUtility(models.AbstractModel):
         if not qso:
             raise ValidationError(_("Invalid qso_id"))
 
+        band_obj = self.env["ham.band"]
+
         qso_string = ""
 
         qso_string += self._tag_serialize("TIME_ON", qso.ts_start.strftime(FORMAT_TIME))
@@ -133,7 +135,18 @@ class AdifUtility(models.AbstractModel):
             qso_string += self._tag_serialize("NAME", qso.op_name)
 
         qso_string += self._tag_serialize("FREQ", float(qso.frequency) / 1000000)
+
+        band = band_obj.get_band(qso.frequency)
+        if not band:
+            raise ValidationError(_("Band not found for frequency %d") % qso.frequency)
+        qso_string += self._tag_serialize("BAND", band.name)
+
         qso_string += self._tag_serialize("FREQ_RX", float(qso.rx_frequency) / 1000000)
+
+        band = band_obj.get_band(qso.rx_frequency)
+        if not band:
+            raise ValidationError(_("Band not found for frequency %d") % qso.rx_frequency)
+        qso_string += self._tag_serialize("BAND_RX", band.name)
 
         qso_string += self._tag_serialize("MODE", qso.modulation_id.name)
         qso_string += self._tag_serialize("RST_SENT", qso.tx_rst)
