@@ -39,8 +39,10 @@ class HRDLogUtility(models.AbstractModel):
             _logger.error("Unable to upload QSO to HRDLog. Status code %d: %s" % (
                 response.status_code, response.content
             ))
+            _logger.error("Data: %s" % data)
             raise ValidationError(_("Unable to upload QSO to HRDLog"))
 
         if b"error" in response.content.lower():
             _logger.error("Error publishing QSO: %s" % response.content)
+            _logger.error("Data: %s" % data)
             raise ValidationError(_("Error publishing QSO"))
