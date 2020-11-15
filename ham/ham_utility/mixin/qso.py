@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 from odoo.tools.translate import _
 
 
@@ -127,11 +128,11 @@ class QSO(models.AbstractModel):
 
     @api.model_create_multi
     def create(self, vals):
-        vals = self.sanitize_vals(vals)
+        self.sanitize_vals(vals)
         return super().create(vals)
 
     def write(self, vals):
-        vals = self.sanitize_vals(vals)
+        self.sanitize_vals(vals)
         return super().write(vals)
 
     @api.onchange("callsign", "local_callsign")
@@ -187,15 +188,24 @@ class QSO(models.AbstractModel):
         return footprint
 
     @api.model
-    def sanitize_vals(self, vals):
+    def sanitize_vals(self, vals: dict):
+        modulation_obj = self.env["ham.modulation"]
+
         callsign_utility = self.env["ham.utility.callsign"]
 
         if "rx_frequency" not in vals or not vals["rx_frequency"]:
             if "frequency" in vals:
                 vals["rx_frequency"] = vals["frequency"]
 
+        modulation = modulation_obj.browse(vals["modulation_id"])
+        if not modulation:
+            raise ValidationError(_("Modulation not found when creating QSO"))
+
+        if "tx_rst" not in vals or not vals["tx_rst"].strip():
+            vals["tx_rst"] = modulation.default_rst
+        if "rx_rst" not in vals or not vals["rx_rst"].strip():
+            vals["rx_rst"] = modulation.default_rst
+
         for field in ["callsign", "local_callsign"]:
             if field in vals:
                 vals[field] = callsign_utility.uppercase(vals[field])
-
-        return vals
