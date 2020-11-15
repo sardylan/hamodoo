@@ -33,6 +33,8 @@ class AdifUtility(models.AbstractModel):
             raise ValidationError(_("Invalid ADIF file"))
 
         mode = MODE_HEADER
+        if "<EOH>" not in raw_content.upper():
+            mode = MODE_QSO
 
         adif_dict = {
             "headers": {},
@@ -48,7 +50,7 @@ class AdifUtility(models.AbstractModel):
             item_split = tag_param.split(":")
 
             item_param = item_split[0].strip()
-            item_length = 0
+            item_length = False
             item_type = ""
 
             if len(item_split) > 1:
@@ -59,7 +61,7 @@ class AdifUtility(models.AbstractModel):
 
             item_value = tag_value.strip()
 
-            if item_length:
+            if isinstance(item_length, int):
                 item_value = tag_value[:item_length].strip()
 
             if item_param in ["TIME_ON", "TIME_OFF"]:
@@ -69,9 +71,12 @@ class AdifUtility(models.AbstractModel):
                 item_value = date(year=int(item_value[0:4]), month=int(item_value[4:6]), day=int(item_value[6:8]))
             elif item_param in ["FREQ", "FREQ_RX"]:
                 item_value = item_value.replace(",", ".")
+                item_value = re.sub("[^0-9.]", "", item_value)
                 item_value = int(float(item_value) * 1000000)
             elif item_param in ["GRIDSQUARE"]:
                 item_value = "%s%s" % (item_value[0:4].upper(), item_value[4:8].lower())
+            elif item_param in ["CALL"]:
+                item_value = re.sub("[^A-Z0-9/]", "", item_value.upper())
 
             elif item_type == "D":
                 item_value = date(year=int(item_value[0:4]), month=int(item_value[4:6]), day=int(item_value[6:8]))
@@ -82,6 +87,8 @@ class AdifUtility(models.AbstractModel):
                 item_value = bool(item_value.upper() == "Y")
             elif item_type == "N":
                 item_value = int(item_value)
+            else:
+                item_value = item_value.replace("\";\"", "")
 
             if mode == MODE_HEADER:
                 if item_param == "EOH":
