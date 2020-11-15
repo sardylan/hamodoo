@@ -128,7 +128,12 @@ class QSO(models.AbstractModel):
 
     @api.model_create_multi
     def create(self, vals):
-        self.sanitize_vals(vals)
+        if isinstance(vals, dict):
+            self.sanitize_vals(vals)
+        else:
+            for item in vals:
+                self.sanitize_vals(item)
+
         return super().create(vals)
 
     def write(self, vals):
