@@ -38,6 +38,11 @@
                             <page string="Note">
                                 <field name="note"/>
                             </page>
+                            <page string="Other infos">
+                                <group>
+                                    <field name="default_rst"/>
+                                </group>
+                            </page>
                         </notebook>
                     </sheet>
                     <div class="oe_chatter">

@@ -95,6 +95,17 @@ class Modulation(models.Model):
         tracking=True
     )
 
+    default_rst = fields.Char(
+        string="Default RST",
+        required=True,
+        translate=False,
+        tracking=True
+    )
+
+    note = fields.Html(
+        string="Note"
+    )
+
     emission = fields.Char(
         string="Emission",
         compute="_compute_emission",
@@ -107,10 +118,6 @@ class Modulation(models.Model):
         compute="_compute_complete_name",
         translate=False,
         store=True
-    )
-
-    note = fields.Html(
-        string="Note"
     )
 
     @api.model

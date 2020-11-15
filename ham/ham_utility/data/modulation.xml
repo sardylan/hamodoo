@@ -9,6 +9,7 @@
             <field name="modulation">A</field>
             <field name="signal">3</field>
             <field name="information">E</field>
+            <field name="default_rst">59</field>
         </record>
 
         <record model="ham.modulation" id="data_ham_modulation_fm">
@@ -17,6 +18,7 @@
             <field name="modulation">F</field>
             <field name="signal">3</field>
             <field name="information">E</field>
+            <field name="default_rst">59</field>
         </record>
 
         <record model="ham.modulation" id="data_ham_modulation_ssb">
@@ -25,6 +27,7 @@
             <field name="modulation">J</field>
             <field name="signal">3</field>
             <field name="information">E</field>
+            <field name="default_rst">59</field>
         </record>
 
         <record model="ham.modulation" id="data_ham_modulation_cw">
@@ -33,6 +36,7 @@
             <field name="modulation">A</field>
             <field name="signal">1</field>
             <field name="information">A</field>
+            <field name="default_rst">599</field>
         </record>
 
         <record model="ham.modulation" id="data_ham_modulation_rtty">
@@ -42,6 +46,7 @@
             <field name="signal">1</field>
             <field name="information">B</field>
             <field name="bandwidth">170</field>
+            <field name="default_rst">599</field>
         </record>
 
         <record model="ham.modulation" id="data_ham_modulation_psk31">
@@ -51,6 +56,7 @@
             <field name="signal">2</field>
             <field name="information">B</field>
             <field name="bandwidth">31</field>
+            <field name="default_rst">599</field>
         </record>
 
         <record model="ham.modulation" id="data_ham_modulation_afsk">
@@ -59,6 +65,7 @@
             <field name="modulation">F</field>
             <field name="signal">2</field>
             <field name="information">B</field>
+            <field name="default_rst">599</field>
         </record>
 
         <record model="ham.modulation" id="data_ham_modulation_ft8">
@@ -68,6 +75,7 @@
             <field name="signal">1</field>
             <field name="information">B</field>
             <field name="bandwidth">50</field>
+            <field name="default_rst">0</field>
         </record>
 
         <record model="ham.modulation" id="data_ham_modulation_ft4">
@@ -77,6 +85,7 @@
             <field name="signal">1</field>
             <field name="information">B</field>
             <field name="bandwidth">90</field>
+            <field name="default_rst">0</field>
         </record>
 
         <record model="ham.modulation" id="data_ham_modulation_mfsk">
@@ -85,6 +94,7 @@
             <field name="modulation">F</field>
             <field name="signal">1</field>
             <field name="information">B</field>
+            <field name="default_rst">0</field>
         </record>
 
     </data>
