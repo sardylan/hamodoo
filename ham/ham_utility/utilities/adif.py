@@ -170,6 +170,10 @@ class AdifUtility(models.AbstractModel):
         if comment:
             qso_string += self._tag_serialize("COMMENT", comment)
 
+        extra_content = self.generate_adif_qso_extra_fields(qso)
+        if extra_content:
+            qso_string += extra_content
+
         if qso.note:
             notes = BeautifulSoup(qso.note, features="lxml").text.strip()
             if notes:
@@ -180,13 +184,17 @@ class AdifUtility(models.AbstractModel):
         return qso_string
 
     @api.model
+    def generate_adif_qso_extra_fields(self, qso):
+        return ""
+
+    @api.model
     def _generate_adif_header(self):
         header = ""
 
-        header += self._tag_serialize("ADIF_VER", "3.1.0")
-        header += self._tag_serialize("CREATED_TIMESTAMP", datetime.datetime.now().strftime("%Y%m%d %H%M%S"))
+        header += self._tag_serialize("ADIF_VER", "3.1.1")
+        header += self._tag_serialize("CREATED_TIMESTAMP", datetime.datetime.utcnow().strftime("%Y%m%d %H%M%S"))
         header += self._tag_serialize("PROGRAMID", "HAM Utilities for Odoo, by IS0GVH Luca")
-        header += self._tag_serialize("PROGRAMVERSION", "1.0.0")
+        header += self._tag_serialize("PROGRAMVERSION", "2.3.0")
         header += self._tag_serialize("EOH")
 
         return header
