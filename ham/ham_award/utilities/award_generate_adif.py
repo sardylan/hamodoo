@@ -22,14 +22,16 @@ class AwardPublish(models.AbstractModel):
 
         _logger.info("Generating ADIF for %s with callsign %s" % (award, callsign))
 
+        dt = datetime.datetime.utcnow()
+
         qsos = qso_obj.search([
             ("award_id", "=", award.id),
             ("local_callsign", "=", callsign.callsign)
         ])
 
-        adif_content = adif_utility.generate_adif(qsos)
+        adif_content = adif_utility.generate_adif(qsos, dt=dt)
 
-        ts_string = datetime.datetime.utcnow().strftime("%Y%m%d %H%M%S")
+        ts_string = dt.strftime("%Y%m%d %H%M%S")
         filename = "%s - %s - %s.adi" % (ts_string, callsign.callsign, award.name)
 
         values = {

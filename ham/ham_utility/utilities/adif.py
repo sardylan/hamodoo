@@ -108,10 +108,10 @@ class AdifUtility(models.AbstractModel):
         return adif_dict
 
     @api.model
-    def generate_adif(self, qsos):
-        adif = ""
+    def generate_adif(self, qsos, dt: datetime.datetime = datetime.datetime.utcnow()) -> str:
+        adif: str = ""
 
-        adif += self._generate_adif_header()
+        adif += self._generate_adif_header(dt=dt)
 
         sorted_qso_ids = sorted(qsos, key=lambda x: x.ts_start)
 
@@ -184,15 +184,16 @@ class AdifUtility(models.AbstractModel):
         return qso_string
 
     @api.model
-    def generate_adif_qso_extra_fields(self, qso):
-        return ""
+    def generate_adif_qso_extra_fields(self, qso) -> str:
+        qso_string: str = ""
+        return qso_string
 
     @api.model
-    def _generate_adif_header(self):
+    def _generate_adif_header(self, dt: datetime.datetime = datetime.datetime.utcnow()) -> str:
         header = ""
 
         header += self._tag_serialize("ADIF_VER", "3.1.1")
-        header += self._tag_serialize("CREATED_TIMESTAMP", datetime.datetime.utcnow().strftime("%Y%m%d %H%M%S"))
+        header += self._tag_serialize("CREATED_TIMESTAMP", dt.strftime("%Y%m%d %H%M%S"))
         header += self._tag_serialize("PROGRAMID", "HAM Utilities for Odoo, by IS0GVH Luca")
         header += self._tag_serialize("PROGRAMVERSION", "2.3.0")
         header += self._tag_serialize("EOH")
