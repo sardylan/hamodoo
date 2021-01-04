@@ -59,6 +59,8 @@
                         <group string="Date &amp; Time" col="4">
                             <field name="ts_start" widget="datetime_tz"/>
                             <field name="ts_end" widget="datetime_tz"/>
+                            <field name="ts_upload_start" widget="datetime_tz"/>
+                            <field name="ts_upload_end" widget="datetime_tz"/>
                         </group>
                         <group string="Operators">
                             <field name="operator_ids"/>

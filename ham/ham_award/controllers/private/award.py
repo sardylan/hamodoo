@@ -1,6 +1,7 @@
+import datetime
 import logging
 
-from odoo import http
+from odoo import http, fields
 from odoo.http import route, request
 
 _logger = logging.getLogger(__name__)
@@ -28,9 +29,15 @@ class AwardController(http.Controller):
             ("partner_id", "=", partner.id)
         ])
 
+        now = fields.Datetime.now()
         awards = award_obj.search([
-            ("operator_ids", "in", [operator.id])
-        ])
+            ("operator_ids", "in", [operator.id]),
+            ("ts_start", "<=", now + datetime.timedelta(days=7)),
+            ("ts_end", ">=", now - datetime.timedelta(days=90)),
+            "|",
+            ("ts_upload_start", "=", False),
+            ("ts_upload_start", "<=", now)
+        ], order="ts_start DESC")
 
         values = {
             "error": {},

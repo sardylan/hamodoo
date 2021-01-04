@@ -11,8 +11,9 @@
                     <thead>
                         <tr class="active">
                             <th>Name</th>
-                            <th>Start</th>
-                            <th>End</th>
+                            <th class="d-none d-sm-table-cell">Start</th>
+                            <th class="d-none d-sm-table-cell">End</th>
+                            <th class="d-none d-md-table-cell">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,11 +26,29 @@
                                         </strong>
                                     </a>
                                 </td>
-                                <td>
+                                <td class="d-none d-sm-table-cell">
                                     <t t-esc="award.ts_start"/>
                                 </td>
-                                <td>
+                                <td class="d-none d-sm-table-cell">
                                     <t t-esc="award.ts_end"/>
+                                </td>
+                                <td class="d-none d-md-table-cell">
+                                    <t t-if="award.state == 'scheduled'">
+                                        <span class="fa fa-calendar"/>
+                                        <span class="d-none d-lg-inline">Scheduled</span>
+                                    </t>
+                                    <t t-if="award.state == 'running'">
+                                        <span class="fa fa-play"/>
+                                        <span class="d-none d-lg-inline">Running</span>
+                                    </t>
+                                    <t t-if="award.state == 'completed'">
+                                        <span class="fa fa-hourglass-end"/>
+                                        <span class="d-none d-lg-inline">Completed</span>
+                                    </t>
+                                    <t t-if="award.state == 'closed'">
+                                        <span class="fa fa-check"/>
+                                        <span class="d-none d-lg-inline">Closed</span>
+                                    </t>
                                 </td>
                             </tr>
                         </t>

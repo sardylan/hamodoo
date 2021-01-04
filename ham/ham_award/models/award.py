@@ -5,6 +5,13 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from odoo.tools.translate import _
 
+SELECTION_STATE = [
+    ("scheduled", "Scheduled"),
+    ("running", "Running"),
+    ("completed", "Completed"),
+    ("closed", "Closed")
+]
+
 
 class Award(models.Model):
     _name = "ham.award"
@@ -43,6 +50,18 @@ class Award(models.Model):
         string="Date & Time End",
         help="Date and Time of end",
         required=True,
+        tracking=True
+    )
+
+    ts_upload_start = fields.Datetime(
+        string="Upload Start",
+        help="Start Date and Time of the interval in which ADIF uploading is permitted",
+        tracking=True
+    )
+
+    ts_upload_end = fields.Datetime(
+        string="Upload End",
+        help="End Date and Time of the interval in which ADIF uploading is permitted",
         tracking=True
     )
 
@@ -93,6 +112,22 @@ class Award(models.Model):
         compute="_compute_counts"
     )
 
+    state = fields.Selection(
+        string="State",
+        help="Award state",
+        selection=SELECTION_STATE,
+        readonly=True,
+        compute="_compute_state"
+    )
+
+    @api.constrains("ts_start", "ts_end", "ts_upload_start", "ts_upload_end")
+    def _constrain_ts_fields(self):
+        for rec in self:
+            if rec.ts_upload_start and rec.ts_upload_start < rec.ts_start:
+                raise ValidationError(_("Upload Start datetime must be equal or after Award Start datetime"))
+            if rec.ts_upload_end and rec.ts_upload_end < rec.ts_end:
+                raise ValidationError(_("Upload End datetime must be equal or after Award End datetime"))
+
     @api.depends("uploads")
     def _compute_counts(self):
         qso_obj = self.env["ham.award.qso"]
@@ -100,6 +135,22 @@ class Award(models.Model):
         for rec in self:
             rec.uploads_count = len(rec.uploads)
             rec.qsos_count = qso_obj.search_count([("award_id", "=", rec.id)])
+
+    @api.depends()
+    def _compute_state(self):
+        now = fields.Datetime.now()
+
+        for rec in self:
+            ts_upload_end = rec.ts_upload_end and rec.ts_upload_end or rec.ts_end
+
+            if now < rec.ts_start:
+                rec.state = "scheduled"
+            elif now < rec.ts_end:
+                rec.state = "running"
+            elif now < ts_upload_end:
+                rec.state = "completed"
+            else:
+                rec.state = "closed"
 
     # TODO: Deprecated
     def action_produce_adif(self):
@@ -158,6 +209,20 @@ class Award(models.Model):
         result["domain"] = [("award_id", "=", self.id)]
 
         return result
+
+    def is_upload_permitted(self) -> bool:
+        self.ensure_one()
+
+        upload_interval_start = self.ts_start
+        upload_interval_end = self.ts_end
+
+        if self.ts_upload_start:
+            upload_interval_start = self.ts_upload_start
+        if self.ts_upload_end:
+            upload_interval_end = self.ts_upload_end
+
+        now = datetime.datetime.utcnow()
+        return bool(upload_interval_start <= now <= upload_interval_end)
 
     @api.model
     def produce_adif(self, award):

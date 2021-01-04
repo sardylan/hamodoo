@@ -73,56 +73,59 @@
                         <div t-else="">
                             <p>There are no uploads for your account.</p>
                         </div>
-                        <hr/>
-                        <div>
-                            <form action="/ham_award/private/upload/add" method="POST" enctype="multipart/form-data">
-                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                                <input type="hidden" name="award" t-att-value="award.id"/>
-                                <div class="row o_portal_details">
-                                    <div class="col-lg-12">
-                                        <div class="row">
-                                            <div t-attf-class="form-group #{error.get('adif_file') and 'o_has_error' or ''} col-xl-12">
-                                                <label class="col-form-label" for="adif_file">Upload new ADIF
-                                                    File </label>
-                                                <input type="file" name="adif_file"
-                                                       t-attf-class="form-control #{error.get('adif_file') and 'is-invalid' or ''}"
-                                                       t-att-value="adif_file"/>
+                        <t t-if="award.is_upload_permitted()">
+                            <hr/>
+                            <div>
+                                <form action="/ham_award/private/upload/add" method="POST"
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <input type="hidden" name="award" t-att-value="award.id"/>
+                                    <div class="row o_portal_details">
+                                        <div class="col-lg-12">
+                                            <div class="row">
+                                                <div t-attf-class="form-group #{error.get('adif_file') and 'o_has_error' or ''} col-xl-12">
+                                                    <label class="col-form-label" for="adif_file">Upload new ADIF
+                                                        File </label>
+                                                    <input type="file" name="adif_file"
+                                                           t-attf-class="form-control #{error.get('adif_file') and 'is-invalid' or ''}"
+                                                           t-att-value="adif_file"/>
+                                                </div>
+                                                <div class="clearfix"/>
                                             </div>
-                                            <div class="clearfix"/>
-                                        </div>
-                                        <div class="row">
-                                            <div t-attf-class="form-group #{error.get('callsign_id') and 'o_has_error' or ''} col-xl-12">
-                                                <label class="col-form-label" for="callsign_id">Callsign</label>
-                                                <select name="callsign_id"
-                                                        t-attf-class="form-control #{error.get('callsign_id') and 'is-invalid' or ''}">
-                                                    <option value="-1">(automatic from ADIF)</option>
-                                                    <option t-foreach="award.callsigns" t-as="award_callsign"
-                                                            t-att-value="award_callsign.id">
-                                                        <t t-esc="award_callsign.callsign"/>
-                                                    </option>
-                                                </select>
+                                            <div class="row">
+                                                <div t-attf-class="form-group #{error.get('callsign_id') and 'o_has_error' or ''} col-xl-12">
+                                                    <label class="col-form-label" for="callsign_id">Callsign</label>
+                                                    <select name="callsign_id"
+                                                            t-attf-class="form-control #{error.get('callsign_id') and 'is-invalid' or ''}">
+                                                        <option value="-1">(automatic from ADIF)</option>
+                                                        <option t-foreach="award.callsigns" t-as="award_callsign"
+                                                                t-att-value="award_callsign.id">
+                                                            <t t-esc="award_callsign.callsign"/>
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="clearfix"/>
                                             </div>
-                                            <div class="clearfix"/>
-                                        </div>
-                                        <div class="row">
-                                            <div t-attf-class="form-group #{error.get('note') and 'o_has_error' or ''} col-xl-12">
-                                                <label class="col-form-label" for="note">Note</label>
-                                                <textarea name="note" rows="4"
-                                                          t-attf-class="form-control #{error.get('note') and 'is-invalid' or ''}"
-                                                          t-att-value="note"/>
+                                            <div class="row">
+                                                <div t-attf-class="form-group #{error.get('note') and 'o_has_error' or ''} col-xl-12">
+                                                    <label class="col-form-label" for="note">Note</label>
+                                                    <textarea name="note" rows="4"
+                                                              t-attf-class="form-control #{error.get('note') and 'is-invalid' or ''}"
+                                                              t-att-value="note"/>
+                                                </div>
+                                                <div class="clearfix"/>
                                             </div>
-                                            <div class="clearfix"/>
-                                        </div>
-                                        <div>
-                                            <button type="submit" class="btn btn-primary float-right">
-                                                Upload
-                                                <span class="fa fa-upload"/>
-                                            </button>
+                                            <div>
+                                                <button type="submit" class="btn btn-primary float-right">
+                                                    Upload
+                                                    <span class="fa fa-upload"/>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
-                        </div>
+                                </form>
+                            </div>
+                        </t>
                     </div>
                 </div>
             </t>

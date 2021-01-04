@@ -20,7 +20,7 @@
                         <t t-if="page_name in ['award_single_upload']">
                             <li class="breadcrumb-item">
                                 <a t-att-href="'/ham_award/private/award/%d/upload/%d' % (award.id, upload.id)">
-                                    <t t-esc="upload.ts"/>
+                                    Upload <t t-esc="upload.ts"/>
                                 </a>
                             </li>
                         </t>
