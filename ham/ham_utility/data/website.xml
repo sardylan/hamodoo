@@ -9,6 +9,12 @@
             <field name="publish_enabled" eval="False"/>
         </record>
 
+        <record model="ham.website" id="data_ham_website_eqsl">
+            <field name="name">eQSL</field>
+            <field name="tag">eqsl</field>
+            <field name="publish_enabled" eval="False"/>
+        </record>
+
         <record model="ham.website" id="data_ham_website_hrdlog">
             <field name="name">HRDLog</field>
             <field name="tag">hrdlog</field>
@@ -24,12 +30,6 @@
         <record model="ham.website" id="data_ham_website_hamqth">
             <field name="name">HamQTH</field>
             <field name="tag">hamqth</field>
-            <field name="publish_enabled" eval="False"/>
-        </record>
-
-        <record model="ham.website" id="data_ham_website_eqsl">
-            <field name="name">eQSL</field>
-            <field name="tag">eqsl</field>
             <field name="publish_enabled" eval="False"/>
         </record>
 

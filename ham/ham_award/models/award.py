@@ -222,15 +222,39 @@ class AwardCallsign(models.Model):
         tracking=True
     )
 
+    eqsl_enabled = fields.Boolean(
+        string="eQSL",
+        help="Enable publishing on eQSL",
+        tracking=True
+    )
+
+    eqsl_username = fields.Char(
+        string="eQSL Username",
+        help="Username for eQSL QSO publish",
+        tracking=True
+    )
+
+    eqsl_password = fields.Char(
+        string="eQSL Password",
+        help="Password for eQSL QSO publish",
+        tracking=True
+    )
+
+    hrdlog_enabled = fields.Boolean(
+        string="HRDLog",
+        help="Enable publishing on HRDLog",
+        tracking=True
+    )
+
     hrdlog_callsign = fields.Char(
         string="HRDLog Callsign",
-        help="Callsign param for HRDLog QSO publish",
+        help="Callsign for HRDLog QSO publish",
         tracking=True
     )
 
     hrdlog_code = fields.Char(
         string="HRDLog Code",
-        help="Code param for HRDLog QSO publish",
+        help="Code for HRDLog QSO publish",
         tracking=True
     )
 

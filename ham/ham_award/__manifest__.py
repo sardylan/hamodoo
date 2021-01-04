@@ -1,6 +1,6 @@
 {
     "name": "HAM Awards",
-    "version": "14.0.2.3.2",
+    "version": "14.0.2.4.0",
     "category": "Extra Tools",
     "summary": "HAM award management",
     "sequence": 0,

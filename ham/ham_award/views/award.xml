@@ -101,11 +101,27 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                        <group string="Infos">
+                        <group name="group_infos" string="Infos">
                             <field name="callsign"/>
                         </group>
                         <notebook>
-                            <page string="HRDLog">
+                            <page name="page_websites" string="Website publishing">
+                                <group>
+                                    <field name="eqsl_enabled"/>
+                                    <field name="hrdlog_enabled"/>
+                                </group>
+                            </page>
+                            <page name="page_eqsl"
+                                  string="eQSL"
+                                  attrs="{'invisible': [('eqsl_enabled', '!=', True)]}">
+                                <group>
+                                    <field name="eqsl_username"/>
+                                    <field name="eqsl_password"/>
+                                </group>
+                            </page>
+                            <page name="page_hrdlog"
+                                  string="HRDLog"
+                                  attrs="{'invisible': [('hrdlog_enabled', '!=', True)]}">
                                 <group>
                                     <field name="hrdlog_callsign"/>
                                     <field name="hrdlog_code"/>
