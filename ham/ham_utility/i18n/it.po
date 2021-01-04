@@ -1,0 +1,1121 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ham_utility
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-04 22:45+0000\n"
+"PO-Revision-Date: 2021-01-04 22:45+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__signal__0
+msgid "0 - No modulating signal"
+msgstr "0 - Nessuna modulazione"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__signal__1
+msgid "1 - One channel containing digital information, no subcarrier"
+msgstr "1 - Un canale contenente informazioni digitali, nessuna sottoportante"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__signal__2
+msgid "2 - One channel containing digital information, using a subcarrier"
+msgstr "2 - Un canale contenente informazioni digitali, utilizzando una sottoportante"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__signal__3
+msgid "3 - One channel containing analog information"
+msgstr "3 - Un canale contenente informazioni analogiche"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__signal__7
+msgid "7 - More than one channel containing digital information"
+msgstr "7 - Più di un canale contenente informaizoni digitali"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__signal__8
+msgid "8 - More than one channel containing analog information"
+msgstr "8 - Più di un canale contenente informaizoni analogiche"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__signal__9
+msgid "9 - Combination of analog and digital channels"
+msgstr "9 - Combinazione di canali analogici e digitali"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__information__a
+msgid ""
+"A - Aural telegraphy, intended to be decoded by ear, such as Morse code"
+msgstr "A - Telegrafia auricolare, intesa per la decodifica ad orecchio (Codice Morse)"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__a
+msgid "A - Double-sideband amplitude modulation (e.g. AM broadcast radio)"
+msgstr "A - Modulazione di Ampiezza a Doppia Banda Laterale (Radio Broadcast in AM)"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_utility_adif
+msgid "ADIF log format parsing utilities"
+msgstr "ADIF log format parsing utilities"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_mixin_qso
+msgid "Abstract QSO"
+msgstr "Abstract QSO"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__message_needaction
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__message_needaction
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__message_needaction
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__message_needaction
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__message_needaction
+msgid "Action Needed"
+msgstr "Azione richiesta"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__message_attachment_count
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__message_attachment_count
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__message_attachment_count
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__message_attachment_count
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__message_attachment_count
+msgid "Attachment Count"
+msgstr "Numero di allegati"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__information__b
+msgid ""
+"B - Electronic telegraphy, intended to be decoded by machine (radioteletype "
+"and digital modes)"
+msgstr ""
+"B - Telegrafia Elettronica, intesa per la decodifica tramite macchina (RTTY e modi digitali)"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__b
+msgid "B - Independent sideband (two sidebands containing different signals)"
+msgstr "B - Banda laterale indipendente (due mande laterali contenenti due segnali differenti)"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__band_id
+msgid "Band"
+msgstr "Banda"
+
+#. module: ham_utility
+#: code:addons/ham_utility/utilities/adif.py:0
+#: code:addons/ham_utility/utilities/adif.py:0
+#, python-format
+msgid "Band not found for frequency %d"
+msgstr "Banda non trovata per la frequenza %d"
+
+#. module: ham_utility
+#: model:ir.actions.act_window,name:ham_utility.action_band_list
+#: model:ir.ui.menu,name:ham_utility.menu_band
+msgid "Bands"
+msgstr "Bande"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__bandwidth
+msgid "Bandwidth"
+msgstr "Larghezza di banda"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_modulation__bandwidth
+msgid "Bandwidth in Hz"
+msgstr "Larghezza di banda in Hz"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__information__c
+msgid "C - Facsimile (still images)"
+msgstr "C - Facsimile (immagini ferme)"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__c
+msgid "C - Vestigial sideband (e.g. NTSC)"
+msgstr "C - Banda Laterale Vestigiale (NTSC)"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_zone_cq
+msgid "CQ Zone"
+msgstr "Zona CQ"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__cq_zone_ids
+msgid "CQ Zones"
+msgstr "Zone CQ"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_utility_cabrillo
+msgid "Cabrillo log format parsing utilities"
+msgstr "Cabrillo log format parsing utilities"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__callsign
+msgid "Callsign"
+msgstr "Nominativo"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__callsign
+msgid "Callsign of remote station"
+msgstr "Nominativo della stazione remota"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__local_callsign
+msgid "Callsign used for QSO"
+msgstr "Nominativo utilizzato per il QSO"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_utility_callsign
+msgid "Callsign utilities"
+msgstr "Callsign utilities"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_website__publish_enabled
+msgid "Checked if QSOs publish is enabled"
+msgstr "Attivo se è abilitata la pubblicazione dei QSO"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__complete_name
+msgid "Complete name"
+msgstr "Nome completo"
+
+#. module: ham_utility
+#: model:ir.actions.act_window,name:ham_utility.action_country_list
+#: model:ir.ui.menu,name:ham_utility.menu_country
+msgid "Countries"
+msgstr "Countries"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_country
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country_prefix__country_id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__country_id
+msgid "Country"
+msgstr "Country"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_country_prefix
+msgid "Country Prefix"
+msgstr "Prefisso Country"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__create_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__create_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country_prefix__create_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__create_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__create_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_wizard_import_prefix__create_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_cq__create_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_itu__create_uid
+msgid "Created by"
+msgstr "Creato da"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__create_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__create_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country_prefix__create_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__create_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__create_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_wizard_import_prefix__create_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_cq__create_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_itu__create_date
+msgid "Created on"
+msgstr "Creato il "
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__d
+msgid "D - Combination of AM and FM or PM"
+msgstr "D - Combinazione di AM ed FM o PM"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__information__d
+msgid "D - Data transmission, telemetry or telecommand (remote control)"
+msgstr "d - Trasmissione dati, telemetria o telecomandi (controllo remoto)"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__ts_end
+msgid "Date & Time End"
+msgstr "Data e Ora di fine"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__ts_start
+msgid "Date & Time Start"
+msgstr "Data e Ora di inizio"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__ts_end
+msgid "Date and Time of end"
+msgstr "Data e Ora di fine"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__ts_start
+msgid "Date and Time of start"
+msgstr "Data e Ora di inizio"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__default_rst
+msgid "Default RST"
+msgstr "RST di default"
+
+#. module: ham_utility
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_wizard_import_prefix
+msgid "Delete All"
+msgstr "Cancella tutti"
+
+#. module: ham_utility
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_wizard_import_prefix
+msgid "Delete all countries records?"
+msgstr "Cancellare tutti i country?"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__description
+msgid "Description"
+msgstr "Descrizione"
+
+#. module: ham_utility
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_ham_band_form
+msgid "Designators"
+msgstr "Disegnatore"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country_prefix__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_adif__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_cabrillo__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_callsign__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_country__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_locator__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_modulation__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_qso__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_websites_eqsl__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_websites_hamqth__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_websites_hrdlog__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_wizard_import_prefix__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_cq__display_name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_itu__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__information__e
+msgid "E - Telephony (voice or music intended to be listened to by a human)"
+msgstr "E - Telefonia (voce o musica intesa per l'ascolto da un umano)"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_band__range_itu__ehf
+msgid "EHF (30-300 GHz | 10-1 mm)"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_band__range_itu__elf
+msgid "ELF (3-30 Hz | 100000-10000 km)"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__emission
+msgid "Emission"
+msgstr "Emissione"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__end
+msgid "End"
+msgstr "Fine"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_band__end
+msgid "End frequency"
+msgstr "Frequenza finale"
+
+#. module: ham_utility
+#: code:addons/ham_utility/utilities/websites/eqsl.py:0
+#: code:addons/ham_utility/utilities/websites/hrdlog.py:0
+#, python-format
+msgid "Error publishing QSO"
+msgstr "Errore nella pubblicazione del QSO"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__f
+msgid "F - Frequency modulation (e.g. FM broadcast radio)"
+msgstr "F - Modulazione di Frequenza (Radio FM Broadcast)"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__information__f
+msgid "F - Video (television signals)"
+msgstr "F - Video (segnali televisivi)"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__image_url
+msgid "Flag"
+msgstr "Bandiera"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__message_follower_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__message_follower_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__message_follower_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__message_follower_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__message_channel_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__message_channel_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__message_channel_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__message_channel_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__message_partner_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__message_partner_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__message_partner_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__message_partner_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__footprint
+msgid "Footprint"
+msgstr "Impronta"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__frequency
+msgid "Frequency"
+msgstr "Frequenza"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_band
+msgid "Frequency band"
+msgstr "Banda di frequenza"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__rx_frequency
+msgid "Frequency of RX"
+msgstr "Frequenza in ricezione"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__frequency
+msgid "Frequency of TX"
+msgstr "Frequenza di trasmissione"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_band__range_itu
+msgid "Frequency range accordingly to ITU standards"
+msgstr "Intervallo di frequenza secondo gli standard ITU"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__g
+msgid "G - Phase modulation"
+msgstr "G - Modulazione di fase"
+
+#. module: ham_utility
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_country_form
+msgid "General"
+msgstr "Generale"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__h
+msgid "H - Single-sideband with full carrier (e.g. as used by CHU)"
+msgstr "H - Banda laterale singola con portante piena (usata dalla stazione radio CHU)"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__band_id
+msgid "HAM Band"
+msgstr "Banda HAM"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__country_id
+msgid "HAM Country"
+msgstr "Country HAM"
+
+#. module: ham_utility
+#: model:ir.module.category,description:ham_utility.category_main
+#: model:ir.module.category,name:ham_utility.category_main
+#: model:ir.ui.menu,name:ham_utility.menu_root
+msgid "HAM Utility"
+msgstr "HAM Utility"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_website
+msgid "HAM Website for QSOs publishing"
+msgstr "Sito web HAM per la pubblicazione dei QSO"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_band__range_itu__hf
+msgid "HF (3-30 MHz | 100-10 m)"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country_prefix__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_adif__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_cabrillo__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_callsign__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_country__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_locator__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_modulation__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_qso__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_websites_eqsl__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_websites_hamqth__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_websites_hrdlog__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_wizard_import_prefix__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_cq__id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_itu__id
+msgid "ID"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_zone_itu
+msgid "ITU Zone"
+msgstr "Zona ITU"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__itu_zone_ids
+msgid "ITU Zones"
+msgstr "Zone ITU"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_band__message_needaction
+#: model:ir.model.fields,help:ham_utility.field_ham_band__message_unread
+#: model:ir.model.fields,help:ham_utility.field_ham_country__message_needaction
+#: model:ir.model.fields,help:ham_utility.field_ham_country__message_unread
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__message_needaction
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__message_unread
+#: model:ir.model.fields,help:ham_utility.field_ham_modulation__message_needaction
+#: model:ir.model.fields,help:ham_utility.field_ham_modulation__message_unread
+#: model:ir.model.fields,help:ham_utility.field_ham_website__message_needaction
+#: model:ir.model.fields,help:ham_utility.field_ham_website__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_band__message_has_error
+#: model:ir.model.fields,help:ham_utility.field_ham_country__message_has_error
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__message_has_error
+#: model:ir.model.fields,help:ham_utility.field_ham_modulation__message_has_error
+#: model:ir.model.fields,help:ham_utility.field_ham_website__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.ui.menu,name:ham_utility.menu_country_import
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_wizard_import_prefix
+msgid "Import"
+msgstr "Importa"
+
+#. module: ham_utility
+#: model:ir.actions.act_window,name:ham_utility.action_country_import
+msgid "Import Countries"
+msgstr "Importa Country"
+
+#. module: ham_utility
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_wizard_import_prefix
+msgid "Import Prefixes"
+msgstr "Importa Prefissi"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__information
+msgid "Information"
+msgstr "Informazione"
+
+#. module: ham_utility
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_ham_website_form
+msgid "Integration"
+msgstr "Integrazione"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_utility_websites_hrdlog
+msgid "Integration with HRDLog API"
+msgstr "Integrazione con le API di HRDLog"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_utility_websites_hamqth
+msgid "Integration with HamQTH API"
+msgstr "Integrazione con le API di HamQTH"
+
+#. module: ham_utility
+#: code:addons/ham_utility/utilities/adif.py:0
+#, python-format
+msgid "Invalid ADIF file"
+msgstr "File ADIF non valido"
+
+#. module: ham_utility
+#: code:addons/ham_utility/utilities/websites/eqsl.py:0
+#: code:addons/ham_utility/utilities/websites/hrdlog.py:0
+#, python-format
+msgid "Invalid data"
+msgstr "Data non valida"
+
+#. module: ham_utility
+#: code:addons/ham_utility/utilities/websites/hamqth.py:0
+#, python-format
+msgid "Invalid login data"
+msgstr "Informazioni di login non valide"
+
+#. module: ham_utility
+#: code:addons/ham_utility/utilities/adif.py:0
+#, python-format
+msgid "Invalid qso_id"
+msgstr "ID QSO non valido"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__message_is_follower
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__message_is_follower
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__message_is_follower
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__message_is_follower
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__j
+msgid ""
+"J - Single-sideband with suppressed carrier (e.g. Shortwave utility and "
+"amateur stations)"
+msgstr ""
+"J - Banda Laterale Singola con portante sopressa (attività in onde corte e stazioni di radioamatore)"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__k
+msgid "K - Pulse amplitude modulation"
+msgstr "K - Modulazione di Ampiezza ad Impulsi"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__l
+msgid "L - Pulse width modulation (e.g. as used by WWVB)"
+msgstr "L - Modulazione a larghezza di Impulso (usata dalla stazione WWVB)"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_band__range_itu__lf
+msgid "LF (30-300 kHz | 10-1 km)"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country_prefix____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_adif____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_cabrillo____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_callsign____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_country____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_locator____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_modulation____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_qso____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_websites_eqsl____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_websites_hamqth____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_utility_websites_hrdlog____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_wizard_import_prefix____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_cq____last_update
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_itu____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__write_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__write_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country_prefix__write_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__write_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__write_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_wizard_import_prefix__write_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_cq__write_uid
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_itu__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__write_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__write_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country_prefix__write_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__write_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__write_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_wizard_import_prefix__write_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_cq__write_date
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_itu__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: ham_utility
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_ham_band_form
+msgid "Limits"
+msgstr "Limiti"
+
+#. module: ham_utility
+#: model:ir.ui.menu,name:ham_utility.menu_band_list
+#: model:ir.ui.menu,name:ham_utility.menu_country_list
+#: model:ir.ui.menu,name:ham_utility.menu_modulation_list
+#: model:ir.ui.menu,name:ham_utility.menu_website_list
+msgid "List"
+msgstr "Lista"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__local_callsign
+msgid "Local Callsign"
+msgstr "Nominativo locale"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__m
+msgid "M - Pulse position modulation"
+msgstr "M - Modulazione a Posizione di Impulso"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_band__range_itu__mf
+msgid "MF (300-3000 kHz | 1000-100 m)"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__message_main_attachment_id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__message_main_attachment_id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__message_main_attachment_id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__message_main_attachment_id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: ham_utility
+#: model:res.groups,name:ham_utility.group_profile_manager
+msgid "Manager"
+msgstr "Amministratore"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__message_has_error
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__message_has_error
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__message_has_error
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__message_has_error
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__message_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__message_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__message_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__message_ids
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_modulation
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__modulation_id
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__modulation
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__modulation_id
+msgid "Modulation"
+msgstr "Modulazione"
+
+#. module: ham_utility
+#: model:ir.model.constraint,message:ham_utility.constraint_ham_modulation_name_uniq
+msgid "Modulation already exists. Name must be unique."
+msgstr "Modulazione già esistente. Il nome deve essere univoco"
+
+#. module: ham_utility
+#: code:addons/ham_utility/mixin/qso.py:0
+#, python-format
+msgid "Modulation not found when creating QSO"
+msgstr "Modulazione non trovata durante la creazione del QSO"
+
+#. module: ham_utility
+#: model:ir.actions.act_window,name:ham_utility.action_modulation_list
+#: model:ir.ui.menu,name:ham_utility.menu_modulation
+msgid "Modulations"
+msgstr "Modulazioni"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__information__n
+msgid "N - No transmitted information"
+msgstr "N - Nessuna informazione trasmessa"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__n
+msgid "N - Unmodulated carrier"
+msgstr "N - Portante non modulata"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__name
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__name
+#: model:ir.model.fields,help:ham_utility.field_ham_website__name
+msgid "Name"
+msgstr "Nome"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__op_name
+msgid "Name of remote operator"
+msgstr "Nome dell'operatore remoto"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__note
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country_prefix__note
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__note
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__note
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_cq__note
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_itu__note
+#: model:ir.model.fields,help:ham_utility.field_ham_band__note
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__note
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_modulation_form
+msgid "Note"
+msgstr "Note"
+
+#. module: ham_utility
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_ham_band_form
+msgid "Notes"
+msgstr "Note"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_cq__number
+#: model:ir.model.fields,field_description:ham_utility.field_ham_zone_itu__number
+msgid "Number"
+msgstr "Numero"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__message_needaction_counter
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__message_needaction_counter
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__message_needaction_counter
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__message_needaction_counter
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__message_has_error_counter
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__message_has_error_counter
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__message_has_error_counter
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__message_has_error_counter
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_band__message_needaction_counter
+#: model:ir.model.fields,help:ham_utility.field_ham_country__message_needaction_counter
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__message_needaction_counter
+#: model:ir.model.fields,help:ham_utility.field_ham_modulation__message_needaction_counter
+#: model:ir.model.fields,help:ham_utility.field_ham_website__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_band__message_has_error_counter
+#: model:ir.model.fields,help:ham_utility.field_ham_country__message_has_error_counter
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__message_has_error_counter
+#: model:ir.model.fields,help:ham_utility.field_ham_modulation__message_has_error_counter
+#: model:ir.model.fields,help:ham_utility.field_ham_website__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_band__message_unread_counter
+#: model:ir.model.fields,help:ham_utility.field_ham_country__message_unread_counter
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__message_unread_counter
+#: model:ir.model.fields,help:ham_utility.field_ham_modulation__message_unread_counter
+#: model:ir.model.fields,help:ham_utility.field_ham_website__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: ham_utility
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_wizard_import_prefix
+msgid "Open Web Site"
+msgstr "Apri sito Web"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__op_name
+msgid "Operator name"
+msgstr "Nome Operatore"
+
+#. module: ham_utility
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_modulation_form
+msgid "Other infos"
+msgstr "Altre info"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__p
+msgid "P - Sequence of pulses without modulation"
+msgstr "P - Sequenza di impulsi senza modulazione"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country_prefix__prefix
+msgid "Prefix"
+msgstr "Prefisso"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__prefix_ids
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_country_form
+msgid "Prefixes"
+msgstr "Prefissi"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__publish_enabled
+msgid "Publish enabled"
+msgstr "Abilita la pubblicazione"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__q
+msgid ""
+"Q - Sequence of pulses, phase or frequency modulation within each pulse"
+msgstr "Q - Sequenza di impulsi, ciascun impulso con modulazione di fase o frequenza"
+
+#. module: ham_utility
+#: code:addons/ham_utility/mixin/qso.py:0
+#: model:ir.model.constraint,message:ham_utility.constraint_ham_award_qso_footprint_uniq
+#: model:ir.model.constraint,message:ham_utility.constraint_ham_mixin_qso_footprint_uniq
+#, python-format
+msgid "QSO Already present"
+msgstr "QSO già presente"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__footprint
+msgid "QSO Footprint"
+msgstr "Impronta QSO"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_utility_qso
+msgid "QSO Utilities"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__qth
+msgid "QTH"
+msgstr "QTH"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__qth
+msgid "QTH of remote station"
+msgstr "QTH della stazione remota"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__r
+msgid "R - Single-sideband with reduced or variable carrier"
+msgstr "R - Banda Laterale Singola con portante ridotta o variabile"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__rx_rst
+msgid "RST RX"
+msgstr "RST RX"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__tx_rst
+msgid "RST TX"
+msgstr "RST TX"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__rx_rst
+msgid "RST received"
+msgstr "RST ricevuto"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_mixin_qso__tx_rst
+msgid "RST sent"
+msgstr "RST trasmesso"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__rx_frequency
+msgid "RX Frequency"
+msgstr "Frequenza di ricezione"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__range_itu
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_ham_band_search
+msgid "Range ITU"
+msgstr "Intervallo ITU"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_band__range_itu__shf
+msgid "SHF (3-30 GHz | 10-1 cm)"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_band__range_itu__slf
+msgid "SLF (30-300 Hz | 10000-1000 km)"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__signal
+msgid "Signal"
+msgstr "Segnale"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__start
+msgid "Start"
+msgstr "Inizio"
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_band__start
+msgid "Start frequency"
+msgstr "Frequenza iniziale"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__res_country_id
+msgid "System Country"
+msgstr "Stato di Odoo"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_band__range_itu__thf
+msgid "THF (300-3000 GHz | 1-0.1 mm)"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__tag
+#: model:ir.model.fields,help:ham_utility.field_ham_website__tag
+msgid "Tag"
+msgstr "Tag"
+
+#. module: ham_utility
+#: code:addons/ham_utility/models/website.py:0
+#: model:ir.model.constraint,message:ham_utility.constraint_ham_website_tag_uniq
+#, python-format
+msgid "Tag already exists"
+msgstr "Tag già esistente"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_band__range_itu__uhf
+msgid "UHF (300-3000 MHz | 100-10 cm)"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_band__range_itu__ulf
+msgid "ULF (300-3000 Hz | 1000-100 km)"
+msgstr ""
+
+#. module: ham_utility
+#: code:addons/ham_utility/utilities/adif.py:0
+#, python-format
+msgid "Unable to convert bytes to string"
+msgstr "Impossibile convertire bytes a stringa"
+
+#. module: ham_utility
+#: code:addons/ham_utility/utilities/websites/hamqth.py:0
+#, python-format
+msgid "Unable to upload ADIF to HamQTH"
+msgstr "Impossibile caricare l'ADIF su HamQTH"
+
+#. module: ham_utility
+#: code:addons/ham_utility/utilities/websites/hrdlog.py:0
+#, python-format
+msgid "Unable to upload QSO to HRDLog"
+msgstr "Impossibile caricare il QSO su HRDLog"
+
+#. module: ham_utility
+#: code:addons/ham_utility/utilities/websites/eqsl.py:0
+#, python-format
+msgid "Unable to upload QSO to eQSL"
+msgstr "Impossibile caricare il QSO su eQSL"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__message_unread
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__message_unread
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__message_unread
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__message_unread
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_band__message_unread_counter
+#: model:ir.model.fields,field_description:ham_utility.field_ham_country__message_unread_counter
+#: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__message_unread_counter
+#: model:ir.model.fields,field_description:ham_utility.field_ham_modulation__message_unread_counter
+#: model:ir.model.fields,field_description:ham_utility.field_ham_website__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields,help:ham_utility.field_ham_country__image_url
+msgid "Url of static flag image"
+msgstr ""
+
+#. module: ham_utility
+#: model:res.groups,name:ham_utility.group_profile_user
+msgid "User"
+msgstr "Utente"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_utility_locator
+msgid "Utility for manipulation of Maidenhead Locators"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_utility_country
+msgid "Utility for searching related country related to callsign"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_utility_modulation
+msgid "Utility methods for Modulation entities"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__v
+msgid "V - Combination of pulse modulation methods"
+msgstr "V - Combinazione di metodi di Modulazione di Fase"
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_band__range_itu__vhf
+msgid "VHF (30-300 MHz | 10-1 m)"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_band__range_itu__vlf
+msgid "VLF (3-30 kHz | 100-10 km)"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__information__w
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__w
+msgid "W - Combination of any of the above"
+msgstr "W - Combinazione varia"
+
+#. module: ham_utility
+#: model:ir.actions.act_window,name:ham_utility.action_website_list
+#: model:ir.ui.menu,name:ham_utility.menu_website
+msgid "Websites"
+msgstr "Siti web"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_wizard_import_prefix
+msgid "Wizard user for import of official ITU XLSX countries file"
+msgstr ""
+
+#. module: ham_utility
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__information__x
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__x
+#: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__signal__x
+msgid "X - None of the above"
+msgstr "X - Nessuna"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_wizard_import_prefix__xlsx_file
+msgid "XLSX File from ITU offical site"
+msgstr "File XLSX dal sito ufficiale ITU"
+
+#. module: ham_utility
+#: model:ir.model.fields,field_description:ham_utility.field_ham_wizard_import_prefix__xlsx_file_name
+msgid "XLSX File name"
+msgstr "Nome file XLSX"
+
+#. module: ham_utility
+#: model_terms:ir.ui.view,arch_db:ham_utility.view_country_form
+msgid "Zones"
+msgstr "Zone"
+
+#. module: ham_utility
+#: model:ir.model,name:ham_utility.model_ham_utility_websites_eqsl
+msgid "ham.utility.websites.eqsl"
+msgstr ""

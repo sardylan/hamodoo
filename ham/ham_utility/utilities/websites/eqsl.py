@@ -14,6 +14,7 @@ EQSL_API_APP_NAME = "ham.thehellnet.org 14.0"
 
 class EQSLWebsiteUtility(models.AbstractModel):
     _name = "ham.utility.websites.eqsl"
+    _description = "Integration with eQSL API"
 
     @api.model
     def upload_qso(self, username: str = "", password: str = "", adif_data: str = ""):
