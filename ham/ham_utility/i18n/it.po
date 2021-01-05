@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-05 21:10+0000\n"
-"PO-Revision-Date: 2021-01-05 22:20+0100\n"
+"POT-Creation-Date: 2021-01-05 22:35+0000\n"
+"PO-Revision-Date: 2021-01-05 23:39+0100\n"
 "Last-Translator: Luca Cireddu <sardylan@gmail.com>\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -232,7 +232,7 @@ msgstr "Creato da"
 #: model:ir.model.fields,field_description:ham_utility.field_ham_zone_cq__create_date
 #: model:ir.model.fields,field_description:ham_utility.field_ham_zone_itu__create_date
 msgid "Created on"
-msgstr "Creato il "
+msgstr "Creato il"
 
 #. module: ham_utility
 #: model:ir.model.fields.selection,name:ham_utility.selection__ham_modulation__modulation__d
@@ -563,6 +563,12 @@ msgid "Integration with eQSL API"
 msgstr "Integrazione con le API di eQSL"
 
 #. module: ham_utility
+#: code:addons/ham_utility/utilities/websites/hamqth.py:0
+#, python-format
+msgid "Invalid ADIF data"
+msgstr "Dati ADIF non validi"
+
+#. module: ham_utility
 #: code:addons/ham_utility/utilities/adif.py:0
 #, python-format
 msgid "Invalid ADIF file"
@@ -738,7 +744,7 @@ msgstr "Modulazione"
 #. module: ham_utility
 #: model:ir.model.constraint,message:ham_utility.constraint_ham_modulation_name_uniq
 msgid "Modulation already exists. Name must be unique."
-msgstr "Modulazione già esistente. Il nome deve essere univoco"
+msgstr "Modulazione già esistente. Il nome deve essere univoco."
 
 #. module: ham_utility
 #: code:addons/ham_utility/mixin/qso.py:0
@@ -903,7 +909,7 @@ msgstr "Impronta QSO"
 #. module: ham_utility
 #: model:ir.model,name:ham_utility.model_ham_utility_qso
 msgid "QSO Utilities"
-msgstr ""
+msgstr "Utility per i QSO"
 
 #. module: ham_utility
 #: model:ir.model.fields,field_description:ham_utility.field_ham_mixin_qso__qth
@@ -1026,6 +1032,12 @@ msgstr "Impossibile caricare l'ADIF su HamQTH"
 #, python-format
 msgid "Unable to upload QSO to HRDLog"
 msgstr "Impossibile caricare il QSO su HRDLog"
+
+#. module: ham_utility
+#: code:addons/ham_utility/utilities/websites/hamqth.py:0
+#, python-format
+msgid "Unable to upload QSO to HamQTH"
+msgstr "Impossibile caricare il QSO su HamQTH"
 
 #. module: ham_utility
 #: code:addons/ham_utility/utilities/websites/eqsl.py:0
