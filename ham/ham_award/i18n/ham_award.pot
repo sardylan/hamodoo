@@ -7,151 +7,109 @@ msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-01-05 21:10+0000\n"
-"PO-Revision-Date: 2021-01-05 22:25+0100\n"
-"Last-Translator: Luca Cireddu <sardylan@gmail.com>\n"
+"PO-Revision-Date: 2021-01-05 21:10+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 2.4.1\n"
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
 msgid "(automatic from ADIF)"
-msgstr "(ricavato in automatico dall'ADIF)"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_list
 msgid ""
 "<span class=\"fa fa-calendar\"/>\n"
-"                                        <span class=\"d-none d-lg-inline"
-"\">Scheduled</span>"
+"                                        <span class=\"d-none d-lg-inline\">Scheduled</span>"
 msgstr ""
-"<span class=\"fa fa-calendar\"/>\n"
-"                                        <span class=\"d-none d-lg-inline"
-"\">Pianificato</span>"
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
 msgid ""
 "<span class=\"fa fa-check\"/>\n"
-"                                                        <span class=\"d-none "
-"d-lg-inline\">Imported</span>"
+"                                                        <span class=\"d-none d-lg-inline\">Imported</span>"
 msgstr ""
-"<span class=\"fa fa-check\"/>\n"
-"                                                        <span class=\"d-none "
-"d-lg-inline\">Importato</span>"
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_list
 msgid ""
 "<span class=\"fa fa-check\"/>\n"
-"                                        <span class=\"d-none d-lg-inline"
-"\">Closed</span>"
+"                                        <span class=\"d-none d-lg-inline\">Closed</span>"
 msgstr ""
-"<span class=\"fa fa-check\"/>\n"
-"                                        <span class=\"d-none d-lg-inline"
-"\">Chiuso</span>"
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single_upload
 msgid ""
 "<span class=\"fa fa-check\"/>\n"
-"                                    <span class=\"d-none d-lg-inline"
-"\">Imported</span>"
+"                                    <span class=\"d-none d-lg-inline\">Imported</span>"
 msgstr ""
-"<span class=\"fa fa-check\"/>\n"
-"                                    <span class=\"d-none d-lg-inline"
-"\">Importato</span>"
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
 msgid ""
 "<span class=\"fa fa-exclamation-triangle\"/>\n"
-"                                                        <span class=\"d-none "
-"d-lg-inline\">Problems</span>"
+"                                                        <span class=\"d-none d-lg-inline\">Problems</span>"
 msgstr ""
-"<span class=\"fa fa-exclamation-triangle\"/>\n"
-"                                                        <span class=\"d-none "
-"d-lg-inline\">Problemi</span>"
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single_upload
 msgid ""
 "<span class=\"fa fa-exclamation-triangle\"/>\n"
-"                                    <span class=\"d-none d-lg-inline"
-"\">Problems</span>"
+"                                    <span class=\"d-none d-lg-inline\">Problems</span>"
 msgstr ""
-"<span class=\"fa fa-exclamation-triangle\"/>\n"
-"                                    <span class=\"d-none d-lg-inline"
-"\">Problemi</span>"
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
 msgid ""
 "<span class=\"fa fa-file\"/>\n"
-"                                                        <span class=\"d-none "
-"d-lg-inline\">Uploaded</span>"
+"                                                        <span class=\"d-none d-lg-inline\">Uploaded</span>"
 msgstr ""
-"<span class=\"fa fa-file\"/>\n"
-"                                                        <span class=\"d-none "
-"d-lg-inline\">Caricato</span>"
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single_upload
 msgid ""
 "<span class=\"fa fa-file\"/>\n"
-"                                    <span class=\"d-none d-lg-inline"
-"\">Uploaded</span>"
+"                                    <span class=\"d-none d-lg-inline\">Uploaded</span>"
 msgstr ""
-"<span class=\"fa fa-file\"/>\n"
-"                                    <span class=\"d-none d-lg-inline"
-"\">Caricato</span>"
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_list
 msgid ""
 "<span class=\"fa fa-hourglass-end\"/>\n"
-"                                        <span class=\"d-none d-lg-inline"
-"\">Completed</span>"
+"                                        <span class=\"d-none d-lg-inline\">Completed</span>"
 msgstr ""
-"<span class=\"fa fa-hourglass-end\"/>\n"
-"                                        <span class=\"d-none d-lg-inline"
-"\">Terminato</span>"
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_list
 msgid ""
 "<span class=\"fa fa-play\"/>\n"
-"                                        <span class=\"d-none d-lg-inline"
-"\">Running</span>"
+"                                        <span class=\"d-none d-lg-inline\">Running</span>"
 msgstr ""
-"<span class=\"fa fa-play\"/>\n"
-"                                        <span class=\"d-none d-lg-inline"
-"\">In corso</span>"
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__adif_id
 #: model_terms:ir.ui.view,arch_db:ham_award.view_upload_form
 msgid "ADIF"
-msgstr "ADIF"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model,name:ham_award.model_ham_award_upload
 msgid "ADIF Upload by Operator"
-msgstr "Caricamento ADIF da un Operatore"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_upload__headers
 msgid "ADIF headers"
-msgstr "Header ADIF"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model,name:ham_award.model_ham_utility_adif
 msgid "ADIF log format parsing utilities"
-msgstr "Utility per l'elaborazione dei log in formato ADIF"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__message_needaction
@@ -165,13 +123,13 @@ msgstr ""
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
 msgid "Actions"
-msgstr "Azioni"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_operator__active
 #: model:ir.model.fields,help:ham_award.field_ham_award_operator__active
 msgid "Active"
-msgstr "Attivo"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/award.py:0
@@ -180,7 +138,7 @@ msgstr "Attivo"
 #: model:ir.model.constraint,message:ham_award.constraint_ham_award_operator_partner_id_uniq
 #, python-format
 msgid "Already present. Must be unique"
-msgstr "Già presente. Deve essere univoco"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__message_attachment_count
@@ -199,30 +157,30 @@ msgstr ""
 #: model:ir.model.fields,field_description:ham_award.field_ham_wizard_award_generate_adif__award_id
 #: model:ir.model.fields,field_description:ham_award.field_ham_wizard_award_publish__award_id
 msgid "Award"
-msgstr "Award"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model,name:ham_award.model_ham_award_callsign
 msgid "Award Callsign"
-msgstr "Nominativo Award"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/award.py:0
 #: model_terms:ir.ui.view,arch_db:ham_award.view_ham_wizard_award_publish
 #, python-format
 msgid "Award QSOs Publish"
-msgstr "Pubblicazioni dei QSO"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/award.py:0
 #, python-format
 msgid "Award not valid"
-msgstr "Award non valido"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award__state
 msgid "Award state"
-msgstr "Stato Award"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.actions.act_window,name:ham_award.action_award_list
@@ -234,21 +192,19 @@ msgstr "Stato Award"
 #: model_terms:ir.ui.view,arch_db:ham_award.view_operator_form
 #: model_terms:ir.ui.view,arch_db:ham_award.view_upload_search
 msgid "Awards"
-msgstr "Award"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__band_id
 #: model_terms:ir.ui.view,arch_db:ham_award.view_qso_search
 msgid "Band"
-msgstr "Banda"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/upload.py:0
 #, python-format
 msgid "Both STATION_CALLSIGN and OPERATOR empty or not present in ADIF row"
 msgstr ""
-"Sia il campo STATION_CALLSIGN che il campo OPERATOR sono vuoti o non "
-"presenti nella riga ADIF"
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_callsign__callsign
@@ -260,87 +216,87 @@ msgstr ""
 #: model:ir.model.fields,help:ham_award.field_ham_award_callsign__callsign
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
 msgid "Callsign"
-msgstr "Nominativo"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/award.py:0
 #: model:ir.model.constraint,message:ham_award.constraint_ham_award_callsign_award_callsign_uniq
 #, python-format
 msgid "Callsign already exists in award"
-msgstr "Nominativo già esistente nell'award"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/operator.py:0
 #: model:ir.model.constraint,message:ham_award.constraint_ham_award_operator_callsign_uniq
 #, python-format
 msgid "Callsign already present. Must be unique"
-msgstr "Nominativo già esistente. Deve essere univoco"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_callsign__hrdlog_callsign
 msgid "Callsign for HRDLog QSO publish"
-msgstr "Nominativo per la pubblicazione su HRDLog"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/upload.py:0
 #, python-format
 msgid "Callsign not enabled in award"
-msgstr "Nominativo non abilitato nell'Award"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__callsign
 msgid "Callsign of remote station"
-msgstr "Nominativo della stazione remota"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_operator__callsign
 msgid "Callsign of the operator"
-msgstr "Nominativo dell'operatore"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__local_callsign
 msgid "Callsign used for QSO"
-msgstr "Nominativo utilizzato nel QSO"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__callsigns
 msgid "Callsigns"
-msgstr "Nominativi"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award__callsigns
 msgid "Callsigns used by all stations in the award"
-msgstr "Nominativi utilizzati da tutte le stazioni nell'award"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_wizard_award_publish__website_id
 msgid "Choose website for uploading"
-msgstr "Selezione il portale per la pubblicazione"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields.selection,name:ham_award.selection__ham_award__state__closed
 msgid "Closed"
-msgstr "Chiuso"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_callsign__hrdlog_code
 msgid "Code for HRDLog QSO publish"
-msgstr "Codice per la pubblicazione su HRDLog"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields.selection,name:ham_award.selection__ham_award__state__completed
 msgid "Completed"
-msgstr "Terminato"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_operator__partner_id
 msgid "Contact"
-msgstr "Contatto"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__country_id
 msgid "Country"
-msgstr "Country"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__create_uid
@@ -373,46 +329,46 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:ham_award.view_award_form
 #: model_terms:ir.ui.view,arch_db:ham_award.view_qso_form
 msgid "Date & Time"
-msgstr "Data e Ora"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__ts_end
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__ts_end
 msgid "Date & Time End"
-msgstr "Data e Ora di fine"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__ts_start
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__ts_start
 msgid "Date & Time Start"
-msgstr "Data e Ora di inizio"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_upload__ts
 msgid "Date & Time of upload"
-msgstr "Data e Ora della pubblicazione"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
 msgid "Date &amp; Time (UTC)"
-msgstr "Data e Ora (UTC)"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single_upload
 msgid "Date &amp; Time (UTC) of upload:"
-msgstr "Data e Ora (UTC) della pubblicazione"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award__ts_end
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__ts_end
 msgid "Date and Time of end"
-msgstr "Data e Ora di fine QSO"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award__ts_start
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__ts_start
 msgid "Date and Time of start"
-msgstr "Data e Ora di inizio QSO"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__display_name
@@ -428,107 +384,105 @@ msgstr "Data e Ora di inizio QSO"
 #: model:ir.model.fields,field_description:ham_award.field_ham_wizard_award_publish__display_name
 #: model:ir.model.fields,field_description:ham_award.field_ham_wizard_upload_reject__display_name
 msgid "Display Name"
-msgstr "Nome visualizzato"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_callsign__hrdlog_enabled
 msgid "Enable publishing on HRDLog"
-msgstr "Abilita pubbblicazione su HRDLog"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_callsign__eqsl_enabled
 msgid "Enable publishing on eQSL"
-msgstr "Abilita pubbblicazione su eQSL"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award__public
 msgid "Enable visibility on public site"
-msgstr "Abilita visibilità sul portale"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__active
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__active
 msgid "Enabled"
-msgstr "Abilitato"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_operator__award_ids
 msgid "Enabled awards"
-msgstr "Award abilitati"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award__operator_ids
 msgid "Enabled operators"
-msgstr "Operatori abilitati"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_list
 msgid "End"
-msgstr "Fine"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award__ts_upload_end
 msgid "End Date and Time of the interval in which ADIF uploading is permitted"
 msgstr ""
-"Data ed Ora fino alla quale è possibile caricare gli ADIF da parte degli "
-"operatori"
 
 #. module: ham_award
 #: model:ir.model.fields.selection,name:ham_award.selection__ham_award_upload__state__error
 msgid "Error"
-msgstr "Errore"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_upload__errors
 msgid "Error during ADIF parsing"
-msgstr "Errore durante il prasing dell'ADIF"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/upload.py:0
 #, python-format
 msgid "Error parsing upload %d: %s"
-msgstr "Errore durante l'elaborazione dell'upload %d: %s"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_upload__errors
 #: model:ir.model.fields,field_description:ham_award.field_ham_wizard_upload_reject__errors
 msgid "Errors"
-msgstr "Errori"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_wizard_upload_reject__errors
 msgid "Errors or message for uploader"
-msgstr "Errori o messaggi per l'utente che ha caricato il file"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single_upload
 msgid "Errors:"
-msgstr "Errori"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso_publish__website_id
 msgid "External website"
-msgstr "Siti web esterni"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_upload__file_content
 msgid "File"
-msgstr "File"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_upload__file_name
 msgid "File name"
-msgstr "Nome file"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
 msgid "Filename"
-msgstr "Nome file"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single_upload
 msgid "Filename:"
-msgstr "Nome file:"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__message_follower_ids
@@ -560,98 +514,98 @@ msgstr ""
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__footprint
 msgid "Footprint"
-msgstr "Impronta"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_upload__award_callsign_id
 msgid "Force Callsign for parsing"
-msgstr "Forza il nominativo"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__frequency
 msgid "Frequency"
-msgstr "Frequenza"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__rx_frequency
 msgid "Frequency of RX"
-msgstr "Frequenza di ricezione"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__frequency
 msgid "Frequency of TX"
-msgstr "Frequenza di trasmissione"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_ham_wizard_award_generate_adif
 msgid "Generate"
-msgstr "Genera"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_award_form
 msgid "Generate ADIF"
-msgstr "Genera ADIF"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/award.py:0
 #: model_terms:ir.ui.view,arch_db:ham_award.view_ham_wizard_award_generate_adif
 #, python-format
 msgid "Generate Award ADIF"
-msgstr "Genera ADIF dell'Award"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award__adif_id
 msgid "Generated ADIF"
-msgstr "ADIF generato"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_upload_search
 msgid "Group By"
-msgstr "Ragruppa per"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.module.category,description:ham_award.category_main
 #: model:ir.module.category,name:ham_award.category_main
 #: model:ir.ui.menu,name:ham_award.menu_root
 msgid "HAM Award"
-msgstr "HAM Award"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__band_id
 msgid "HAM Band"
-msgstr "HAM Banda"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__country_id
 msgid "HAM Country"
-msgstr "Country HAM"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_callsign__hrdlog_enabled
 #: model_terms:ir.ui.view,arch_db:ham_award.view_award_callsign_form
 msgid "HRDLog"
-msgstr "HRDLog"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_callsign__hrdlog_callsign
 msgid "HRDLog Callsign"
-msgstr "Nominativo HRDLog"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_callsign__hrdlog_code
 msgid "HRDLog Code"
-msgstr "Codice HRDLog"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/utilities/award_publish.py:0
 #, python-format
 msgid "HRDLog not enabled"
-msgstr "HRDLog non abilitato"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_upload__headers
 msgid "Headers"
-msgstr "Intestazioni"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__id
@@ -667,7 +621,7 @@ msgstr "Intestazioni"
 #: model:ir.model.fields,field_description:ham_award.field_ham_wizard_award_publish__id
 #: model:ir.model.fields,field_description:ham_award.field_ham_wizard_upload_reject__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award__message_needaction
@@ -702,13 +656,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:ham_award.view_award_form
 #: model_terms:ir.ui.view,arch_db:ham_award.view_operator_form
 msgid "Infos"
-msgstr "Info"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/upload.py:0
 #, python-format
 msgid "Invalid Upload"
-msgstr "Upload non valido"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__message_is_follower
@@ -767,23 +721,23 @@ msgstr ""
 #: model:ir.ui.menu,name:ham_award.menu_qso_list
 #: model:ir.ui.menu,name:ham_award.menu_upload_list
 msgid "List"
-msgstr "Lista"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__local_callsign
 #: model_terms:ir.ui.view,arch_db:ham_award.view_qso_search
 msgid "Local Callsign"
-msgstr "Nominativo locale"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_qso_form
 msgid "Local informations"
-msgstr "Informazioni locali"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award__uploads
 msgid "Log uploads by operators"
-msgstr "Caricamenti ADIF degli Operatori"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__message_main_attachment_id
@@ -797,7 +751,7 @@ msgstr ""
 #. module: ham_award
 #: model:res.groups,name:ham_award.group_profile_manager
 msgid "Manager"
-msgstr "Amministratore"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__message_has_error
@@ -821,13 +775,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__modulation_id
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__modulation_id
 msgid "Modulation"
-msgstr "Modulazione"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/upload.py:0
 #, python-format
 msgid "Modulation not found for value: %s"
-msgstr "Modulazione non trovata per il valore: %s"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__name
@@ -836,17 +790,17 @@ msgstr "Modulazione non trovata per il valore: %s"
 #: model:ir.model.fields,help:ham_award.field_ham_award_upload__name
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_list
 msgid "Name"
-msgstr "Nome"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__op_name
 msgid "Name of remote operator"
-msgstr "Nome dell'operatore remoto"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award__name
 msgid "Name of the award"
-msgstr "Nome dell'award"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__note
@@ -856,12 +810,12 @@ msgstr "Nome dell'award"
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
 #: model_terms:ir.ui.view,arch_db:ham_award.view_qso_form
 msgid "Note"
-msgstr "Note"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single_upload
 msgid "Note:"
-msgstr "Note:"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__message_needaction_counter
@@ -915,12 +869,12 @@ msgstr ""
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__operator_id
 #: model:ir.model.fields,help:ham_award.field_ham_award_upload__operator_id
 msgid "Operator"
-msgstr "Operatore"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__op_name
 msgid "Operator name"
-msgstr "Nome dell'operatore"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.actions.act_window,name:ham_award.action_operator_list
@@ -929,75 +883,75 @@ msgstr "Nome dell'operatore"
 #: model_terms:ir.ui.view,arch_db:ham_award.view_award_form
 #: model_terms:ir.ui.view,arch_db:ham_award.view_upload_search
 msgid "Operators"
-msgstr "Operatori"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_qso_form
 msgid "Others"
-msgstr "Altro"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_upload_form
 msgid "Parse"
-msgstr "Elabora"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields.selection,name:ham_award.selection__ham_award_upload__state__parsed
 msgid "Parsed"
-msgstr "Elaborato"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_callsign__eqsl_password
 msgid "Password for eQSL QSO publish"
-msgstr "Password per la pubblicazione su eQSL"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_upload_form
 msgid "Proceed with ADIF parsing?"
-msgstr "Procedere con l'elaborazione dell'ADIF?"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__publish_ids
 msgid "Pubblications"
-msgstr "Pubblicazioni"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__public
 msgid "Public"
-msgstr "Pubblico"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_award_form
 #: model_terms:ir.ui.view,arch_db:ham_award.view_ham_wizard_award_publish
 msgid "Publish"
-msgstr "Pubblica"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model,name:ham_award.model_ham_award_qso
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso_publish__qso_id
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso_publish__qso_id
 msgid "QSO"
-msgstr "QSO"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__footprint
 msgid "QSO Footprint"
-msgstr "Impronta QSO"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model,name:ham_award.model_ham_award_qso_publish
 msgid "QSO Sending to external sites"
-msgstr "Invio del QSO sui siti web esterni"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__publish_ids
 msgid "QSO pubblications in online websites"
-msgstr "Pubblicazioni del QSO sui siti web"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso_publish__ts
 msgid "QSO publishing Date & Time"
-msgstr "Data e Ora di pubblicazione del QSO"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.actions.act_window,name:ham_award.action_qso_list
@@ -1006,102 +960,102 @@ msgstr "Data e Ora di pubblicazione del QSO"
 #: model_terms:ir.ui.view,arch_db:ham_award.view_award_form
 #: model_terms:ir.ui.view,arch_db:ham_award.view_upload_form
 msgid "QSOs"
-msgstr "QSO"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__qsos_count
 #: model:ir.model.fields,help:ham_award.field_ham_award__qsos_count
 msgid "QSOs count"
-msgstr "Numero di QSO"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__qth
 msgid "QTH"
-msgstr "QTH"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__qth
 msgid "QTH of remote station"
-msgstr "QTH della stazione remota"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__rx_rst
 msgid "RST RX"
-msgstr "RST RX"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__tx_rst
 msgid "RST TX"
-msgstr "RST TX"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__rx_rst
 msgid "RST received"
-msgstr "RST ricevuto"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__tx_rst
 msgid "RST sent"
-msgstr "RST Trasmesso"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso__rx_frequency
 msgid "RX Frequency"
-msgstr "Frequenza di ricezione"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_ham_wizard_upload_reject
 #: model_terms:ir.ui.view,arch_db:ham_award.view_upload_form
 msgid "Reject"
-msgstr "Rifiuta"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_callsign__award_id
 #: model:ir.model.fields,help:ham_award.field_ham_wizard_award_generate_adif__award_id
 #: model:ir.model.fields,help:ham_award.field_ham_wizard_award_publish__award_id
 msgid "Related Award"
-msgstr "Award relativo"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_upload__qso_ids
 msgid "Related QSOs"
-msgstr "QSO relativi"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_wizard_upload_reject__upload_id
 msgid "Related Upload"
-msgstr "Upload relativo"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__award_id
 #: model:ir.model.fields,help:ham_award.field_ham_award_upload__award_id
 msgid "Related award"
-msgstr "Award relativo"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_operator__partner_id
 msgid "Related contact"
-msgstr "Contatto"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__upload_id
 msgid "Related upload"
-msgstr "Upload relativo"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_qso_form
 msgid "Remote"
-msgstr "Remoto"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_qso_form
 msgid "Reports"
-msgstr "Rapporti"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields.selection,name:ham_award.selection__ham_award__state__running
 msgid "Running"
-msgstr "In corso"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__message_has_sms_error
@@ -1115,35 +1069,34 @@ msgstr ""
 #. module: ham_award
 #: model:ir.model.fields.selection,name:ham_award.selection__ham_award__state__scheduled
 msgid "Scheduled"
-msgstr "Previsto"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_wizard_award_generate_adif__callsign_id
 #: model:ir.model.fields,help:ham_award.field_ham_wizard_award_publish__callsign_id
 msgid "Select callsign to publish"
-msgstr "Seleziona il nominativo da pubblicare"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_list
 msgid "Start"
-msgstr "Inizio"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award__ts_upload_start
 msgid ""
 "Start Date and Time of the interval in which ADIF uploading is permitted"
 msgstr ""
-"Data ed ora di inizio dell'intervallo in cui è possibile caricare gli ADIF"
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__state
 msgid "State"
-msgstr "Stato"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single_upload
 msgid "State:"
-msgstr "Stato:"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_upload__state
@@ -1151,34 +1104,34 @@ msgstr "Stato:"
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
 #: model_terms:ir.ui.view,arch_db:ham_award.view_upload_search
 msgid "Status"
-msgstr "Status"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_qso_form
 msgid "Technical data"
-msgstr "Dati tecnici"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_list
 msgid "There are no awards for your account."
-msgstr "Non ci sono award per il tuo account"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
 msgid "There are no uploads for your account."
-msgstr "Non ci sono upload nel tuo account"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields.selection,name:ham_award.selection__ham_award_upload__state__draft
 msgid "To parse"
-msgstr "Da elaborare"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/award.py:0
 #: code:addons/ham_award/utilities/award_generate_adif.py:0
 #, python-format
 msgid "Unable to create attachment"
-msgstr "Impossibile creare allegato"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__message_unread
@@ -1204,51 +1157,43 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:ham_award.portal_breadcrumbs
 #: model_terms:ir.ui.view,arch_db:ham_award.view_qso_search
 msgid "Upload"
-msgstr "Caricamento"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
 msgid ""
 "Upload\n"
-"                                                    <span class=\"fa fa-"
-"upload\"/>"
+"                                                    <span class=\"fa fa-upload\"/>"
 msgstr ""
-"Caricamento\n"
-"                                                    <span class=\"fa fa-"
-"upload\"/>"
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__ts_upload_end
 msgid "Upload End"
-msgstr "Fine del periodo di upload"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/award.py:0
 #, python-format
 msgid "Upload End datetime must be equal or after Award End datetime"
 msgstr ""
-"La data e ora di fine caricamento deve essere uguale o successiva alla fine "
-"dell'Award"
 
 #. module: ham_award
 #: code:addons/ham_award/models/upload.py:0
 #: model_terms:ir.ui.view,arch_db:ham_award.view_ham_wizard_upload_reject
 #, python-format
 msgid "Upload Reject"
-msgstr "Rifiuta upload"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__ts_upload_start
 msgid "Upload Start"
-msgstr "Inizio del periodo di upload"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/models/award.py:0
 #, python-format
 msgid "Upload Start datetime must be equal or after Award Start datetime"
 msgstr ""
-"La data ed ora di inizio del periodo di upload deve essere uguale o "
-"successiva alla data di inizio dell'Award"
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
@@ -1256,29 +1201,27 @@ msgid ""
 "Upload new ADIF\n"
 "                                                        File"
 msgstr ""
-"Carica nuovo ADIF\n"
-"                                                        File"
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single_upload
 msgid "Upload not found."
-msgstr "Upload non trovato"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_upload__state
 msgid "Upload status"
-msgstr "Stato upload"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/utilities/award_publish.py:0
 #, python-format
 msgid "Upload website not supported"
-msgstr "Sito web non supportato"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_upload__file_content
 msgid "Uploaded file"
-msgstr "File caricato"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.actions.act_window,name:ham_award.action_upload_list
@@ -1287,40 +1230,40 @@ msgstr "File caricato"
 #: model_terms:ir.ui.view,arch_db:ham_award.template_private_award_single
 #: model_terms:ir.ui.view,arch_db:ham_award.view_award_form
 msgid "Uploads"
-msgstr "Caricamenti"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__uploads_count
 #: model:ir.model.fields,help:ham_award.field_ham_award__uploads_count
 msgid "Uploads count"
-msgstr "numero di Caricamenti"
+msgstr ""
 
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_qso_form
 msgid "Uploads to Websites"
-msgstr "Pubblicazione sui siti web"
+msgstr ""
 
 #. module: ham_award
 #: model:res.groups,name:ham_award.group_profile_user
 msgid "User"
-msgstr "Utente"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_callsign__eqsl_username
 msgid "Username for eQSL QSO publish"
-msgstr "Username per la pubblicazione su eQSL"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model,name:ham_award.model_ham_utility_award_generate_adif
 #: model:ir.model,name:ham_award.model_ham_utility_award_publish
 msgid "Utility for publishing Award QSOs to websites"
-msgstr "Utility per la pubblicazione dei QSO nei siti web"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_qso_publish__website_id
 #: model:ir.model.fields,field_description:ham_award.field_ham_wizard_award_publish__website_id
 msgid "Website"
-msgstr "Sito web"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award__website_message_ids
@@ -1343,41 +1286,41 @@ msgstr ""
 #. module: ham_award
 #: model_terms:ir.ui.view,arch_db:ham_award.view_award_callsign_form
 msgid "Website publishing"
-msgstr "Pubblicazione su Sito web"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model,name:ham_award.model_ham_wizard_award_generate_adif
 msgid "Wizard for generating ADIF from Award Log"
-msgstr "Wizard per la generazione dell'ADIF dell'Award"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model,name:ham_award.model_ham_wizard_award_publish
 msgid "Wizard for publishing Award QSOs to websites"
-msgstr "Wizard per la pubblicazione dei QSO nei siti web"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model,name:ham_award.model_ham_wizard_upload_reject
 msgid "Wizard for rejecting ADIF upload"
-msgstr "Utility per la rifiutare un upload"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_callsign__eqsl_enabled
 #: model_terms:ir.ui.view,arch_db:ham_award.view_award_callsign_form
 msgid "eQSL"
-msgstr "eQSL"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_callsign__eqsl_password
 msgid "eQSL Password"
-msgstr "Password eQSL"
+msgstr ""
 
 #. module: ham_award
 #: model:ir.model.fields,field_description:ham_award.field_ham_award_callsign__eqsl_username
 msgid "eQSL Username"
-msgstr "Username eQSL"
+msgstr ""
 
 #. module: ham_award
 #: code:addons/ham_award/utilities/award_publish.py:0
 #, python-format
 msgid "eQSL not enabled"
-msgstr "eQSL non abilitato"
+msgstr ""
