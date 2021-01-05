@@ -323,6 +323,30 @@ class AwardCallsign(models.Model):
         tracking=True
     )
 
+    hamqth_enabled = fields.Boolean(
+        string="HamQTH",
+        help="Enable publishing on HamQTH",
+        tracking=True
+    )
+
+    hamqth_username = fields.Char(
+        string="HamQTH Username",
+        help="Username for HamQTH QSO publish",
+        tracking=True
+    )
+
+    hamqth_password = fields.Char(
+        string="HamQTH Password",
+        help="Password for HamQTH QSO publish",
+        tracking=True
+    )
+
+    hamqth_callsign = fields.Char(
+        string="HamQTH Callsign",
+        help="Callsign for HamQTH QSO publish",
+        tracking=True
+    )
+
     @api.model
     def create(self, vals):
         vals = self.sanitize_vals(vals)

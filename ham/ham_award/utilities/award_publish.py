@@ -20,6 +20,7 @@ class AwardPublish(models.AbstractModel):
 
         eqsl_utility = self.env["ham.utility.websites.eqsl"]
         hrdlog_utility = self.env["ham.utility.websites.hrdlog"]
+        hamqth_utility = self.env["ham.utility.websites.hamqth"]
 
         cr = self._cr
 
@@ -29,13 +30,17 @@ class AwardPublish(models.AbstractModel):
             website.name
         ))
 
-        sql_query = """SELECT haq.id
+        sql_query = """SELECT DISTINCT haq.id
                         FROM ham_award_qso haq
                                  LEFT JOIN ham_award_qso_publish haqp ON haq.id = haqp.qso_id
                         WHERE haq.award_id = %(award_id)s
                           AND haq.local_callsign = %(callsign)s
-                          AND (haqp.website_id != %(website_id)s OR haqp.website_id IS NULL)"""
-
+                          AND (haqp.website_id IS NULL OR haq.id NOT IN (SELECT DISTINCT haq.id
+                                                                         FROM ham_award_qso haq
+                                                                                  LEFT JOIN ham_award_qso_publish haqp ON haq.id = haqp.qso_id
+                                                                         WHERE haq.award_id = %(award_id)s
+                                                                           AND haq.local_callsign = %(callsign)s
+                                                                           AND (haqp.website_id = %(website_id)s)))"""
         sql_params = {
             "award_id": award.id,
             "callsign": callsign.callsign,
@@ -51,46 +56,65 @@ class AwardPublish(models.AbstractModel):
             website.name
         ))
 
-        for qso_id in qso_ids:
-            qso = qso_obj.browse(qso_id)
+        if not qso_ids:
+            return
 
-            if website.tag == self.env.ref("ham_utility.data_ham_website_eqsl").tag:
-                if not callsign.eqsl_enabled:
-                    raise UserError(_("eQSL not enabled"))
+        if website.id == self.env.ref("ham_utility.data_ham_website_eqsl").id:
+            if not callsign.eqsl_enabled:
+                raise UserError(_("eQSL not enabled"))
 
+            for qso_id in qso_ids:
+                qso = qso_obj.browse(qso_id)
                 qso_adif_data = adif_utility.generate_adif_qso(qso)
-
                 eqsl_utility.upload_qso(
                     username=callsign.eqsl_username,
                     password=callsign.eqsl_password,
                     adif_data=qso_adif_data
                 )
-
                 qso_publish_obj.create([{
                     "qso_id": qso.id,
                     "website_id": website.id
                 }])
-
                 cr.commit()
 
-            elif website.tag == self.env.ref("ham_utility.data_ham_website_hrdlog").tag:
-                if not callsign.hrdlog_enabled:
-                    raise UserError(_("HRDLog not enabled"))
+        elif website.id == self.env.ref("ham_utility.data_ham_website_hrdlog").id:
+            if not callsign.hrdlog_enabled:
+                raise UserError(_("HRDLog not enabled"))
 
+            for qso_id in qso_ids:
+                qso = qso_obj.browse(qso_id)
                 qso_adif_data = adif_utility.generate_adif_qso(qso)
-
                 hrdlog_utility.upload_qso(
                     callsign=callsign.hrdlog_callsign,
                     code=callsign.hrdlog_code,
                     adif_data=qso_adif_data
                 )
+                qso_publish_obj.create([{
+                    "qso_id": qso.id,
+                    "website_id": website.id
+                }])
+                cr.commit()
 
+        elif website.id == self.env.ref("ham_utility.data_ham_website_hamqth").id:
+            if not callsign.hamqth_enabled:
+                raise UserError(_("HamQTH not enabled"))
+
+            qsos = qso_obj.browse(qso_ids)
+            adif_data = adif_utility.generate_adif(qsos)
+
+            hamqth_utility.upload_adif(
+                username=callsign.hamqth_username,
+                password=callsign.hamqth_password,
+                callsign=callsign.hamqth_callsign,
+                adif_data=adif_data
+            )
+
+            for qso_id in qso_ids:
+                qso = qso_obj.browse(qso_id)
                 qso_publish_obj.create([{
                     "qso_id": qso.id,
                     "website_id": website.id
                 }])
 
-                cr.commit()
-
-            else:
-                raise ValidationError(_("Upload website not supported"))
+        else:
+            raise ValidationError(_("Website not implemented"))

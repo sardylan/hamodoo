@@ -111,6 +111,7 @@
                                 <group>
                                     <field name="eqsl_enabled"/>
                                     <field name="hrdlog_enabled"/>
+                                    <field name="hamqth_enabled"/>
                                 </group>
                             </page>
                             <page name="page_eqsl"
@@ -127,6 +128,15 @@
                                 <group>
                                     <field name="hrdlog_callsign"/>
                                     <field name="hrdlog_code"/>
+                                </group>
+                            </page>
+                            <page name="page_hamqth"
+                                  string="HamQTH"
+                                  attrs="{'invisible': [('hamqth_enabled', '!=', True)]}">
+                                <group>
+                                    <field name="hamqth_username"/>
+                                    <field name="hamqth_password"/>
+                                    <field name="hamqth_callsign"/>
                                 </group>
                             </page>
                         </notebook>
