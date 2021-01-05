@@ -80,7 +80,7 @@ class Upload(models.Model):
         tracking=True
     )
 
-    errors = fields.Char(
+    errors = fields.Html(
         string="Errors",
         help="Error during ADIF parsing",
         readonly=True,
@@ -129,6 +129,20 @@ class Upload(models.Model):
         return {
             "type": "ir.actions.client",
             "tag": "reload",
+        }
+
+    def action_reject(self):
+        self.ensure_one()
+
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Upload Reject"),
+            "res_model": "ham.wizard.upload.reject",
+            "view_mode": "form",
+            "target": "new",
+            "context": {
+                "default_upload_id": self.id
+            }
         }
 
     @api.model

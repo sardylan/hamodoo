@@ -1,6 +1,6 @@
 {
     "name": "HAM Awards",
-    "version": "14.0.2.6.1",
+    "version": "14.0.2.7.0",
     "category": "Extra Tools",
     "summary": "HAM award management",
     "sequence": 0,
@@ -22,6 +22,7 @@
 
         "security/wizard/award_publish.xml",
         "security/wizard/award_generate_adif.xml",
+        "security/wizard/upload_reject.xml",
 
         "security/utilities/award_publish.xml",
 
@@ -32,6 +33,7 @@
 
         "wizard/award_publish.xml",
         "wizard/award_generate_adif.xml",
+        "wizard/upload_reject.xml",
 
         "menu/action.xml",
         "menu/items.xml",

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record model="ir.ui.view" id="view_ham_wizard_upload_reject">
+            <field name="name">view.ham.wizard.upload.reject</field>
+            <field name="model">ham.wizard.upload.reject</field>
+            <field name="arch" type="xml">
+                <form string="Upload Reject" create="false" edit="false" delete="false">
+                    <group>
+                        <field name="upload_id"/>
+                    </group>
+                    <group>
+                        <field name="errors"/>
+                    </group>
+                    <footer>
+                        <button type="object"
+                                name="action_reject"
+                                string="Reject"
+                                class="btn-primary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

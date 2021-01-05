@@ -41,6 +41,11 @@
                         <div class="mt-4"/>
                         <div class="font-weight-bold">Note:</div>
                         <div><t t-raw="upload.note"/></div>
+                        <t t-if="upload.state == 'error'">
+                            <div class="mt-4"/>
+                            <div class="font-weight-bold">Errors:</div>
+                            <div><t t-raw="upload.errors"/></div>
+                        </t>
                     </div>
                 </div>
                 <div t-else="">

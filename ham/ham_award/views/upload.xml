@@ -33,6 +33,11 @@
                                 confirm="Proceed with ADIF parsing?"
                                 class="btn-primary"
                                 attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
+                        <button type="object"
+                                name="action_reject"
+                                string="Reject"
+                                class="btn-danger"
+                                attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
                         <field name="state"
                                widget="statusbar"/>
                     </header>
