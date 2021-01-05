@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-05 21:10+0000\n"
-"PO-Revision-Date: 2021-01-05 21:10+0000\n"
+"POT-Creation-Date: 2021-01-05 22:36+0000\n"
+"PO-Revision-Date: 2021-01-05 22:36+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -238,6 +238,11 @@ msgid "Callsign for HRDLog QSO publish"
 msgstr ""
 
 #. module: ham_award
+#: model:ir.model.fields,help:ham_award.field_ham_award_callsign__hamqth_callsign
+msgid "Callsign for HamQTH QSO publish"
+msgstr ""
+
+#. module: ham_award
 #: code:addons/ham_award/models/upload.py:0
 #, python-format
 msgid "Callsign not enabled in award"
@@ -389,6 +394,11 @@ msgstr ""
 #. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_callsign__hrdlog_enabled
 msgid "Enable publishing on HRDLog"
+msgstr ""
+
+#. module: ham_award
+#: model:ir.model.fields,help:ham_award.field_ham_award_callsign__hamqth_enabled
+msgid "Enable publishing on HamQTH"
 msgstr ""
 
 #. module: ham_award
@@ -600,6 +610,33 @@ msgstr ""
 #: code:addons/ham_award/utilities/award_publish.py:0
 #, python-format
 msgid "HRDLog not enabled"
+msgstr ""
+
+#. module: ham_award
+#: model:ir.model.fields,field_description:ham_award.field_ham_award_callsign__hamqth_enabled
+#: model_terms:ir.ui.view,arch_db:ham_award.view_award_callsign_form
+msgid "HamQTH"
+msgstr ""
+
+#. module: ham_award
+#: model:ir.model.fields,field_description:ham_award.field_ham_award_callsign__hamqth_callsign
+msgid "HamQTH Callsign"
+msgstr ""
+
+#. module: ham_award
+#: model:ir.model.fields,field_description:ham_award.field_ham_award_callsign__hamqth_password
+msgid "HamQTH Password"
+msgstr ""
+
+#. module: ham_award
+#: model:ir.model.fields,field_description:ham_award.field_ham_award_callsign__hamqth_username
+msgid "HamQTH Username"
+msgstr ""
+
+#. module: ham_award
+#: code:addons/ham_award/utilities/award_publish.py:0
+#, python-format
+msgid "HamQTH not enabled"
 msgstr ""
 
 #. module: ham_award
@@ -898,6 +935,11 @@ msgstr ""
 #. module: ham_award
 #: model:ir.model.fields.selection,name:ham_award.selection__ham_award_upload__state__parsed
 msgid "Parsed"
+msgstr ""
+
+#. module: ham_award
+#: model:ir.model.fields,help:ham_award.field_ham_award_callsign__hamqth_password
+msgid "Password for HamQTH QSO publish"
 msgstr ""
 
 #. module: ham_award
@@ -1213,12 +1255,6 @@ msgid "Upload status"
 msgstr ""
 
 #. module: ham_award
-#: code:addons/ham_award/utilities/award_publish.py:0
-#, python-format
-msgid "Upload website not supported"
-msgstr ""
-
-#. module: ham_award
 #: model:ir.model.fields,help:ham_award.field_ham_award_upload__file_content
 msgid "Uploaded file"
 msgstr ""
@@ -1246,6 +1282,11 @@ msgstr ""
 #. module: ham_award
 #: model:res.groups,name:ham_award.group_profile_user
 msgid "User"
+msgstr ""
+
+#. module: ham_award
+#: model:ir.model.fields,help:ham_award.field_ham_award_callsign__hamqth_username
+msgid "Username for HamQTH QSO publish"
 msgstr ""
 
 #. module: ham_award
@@ -1281,6 +1322,12 @@ msgstr ""
 #: model:ir.model.fields,help:ham_award.field_ham_award_qso__website_message_ids
 #: model:ir.model.fields,help:ham_award.field_ham_award_upload__website_message_ids
 msgid "Website communication history"
+msgstr ""
+
+#. module: ham_award
+#: code:addons/ham_award/utilities/award_publish.py:0
+#, python-format
+msgid "Website not implemented"
 msgstr ""
 
 #. module: ham_award

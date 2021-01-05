@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-05 21:10+0000\n"
-"PO-Revision-Date: 2021-01-05 21:10+0000\n"
+"POT-Creation-Date: 2021-01-05 22:35+0000\n"
+"PO-Revision-Date: 2021-01-05 22:35+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -553,6 +553,13 @@ msgid "Integration with eQSL API"
 msgstr ""
 
 #. module: ham_utility
+#: code:addons/ham_utility/utilities/websites/hamqth.py:0
+#: code:addons/ham_utility/utilities/websites/hamqth.py:0
+#, python-format
+msgid "Invalid ADIF data"
+msgstr ""
+
+#. module: ham_utility
 #: code:addons/ham_utility/utilities/adif.py:0
 #, python-format
 msgid "Invalid ADIF file"
@@ -566,6 +573,7 @@ msgid "Invalid data"
 msgstr ""
 
 #. module: ham_utility
+#: code:addons/ham_utility/utilities/websites/hamqth.py:0
 #: code:addons/ham_utility/utilities/websites/hamqth.py:0
 #, python-format
 msgid "Invalid login data"
@@ -1013,6 +1021,12 @@ msgstr ""
 #: code:addons/ham_utility/utilities/websites/hrdlog.py:0
 #, python-format
 msgid "Unable to upload QSO to HRDLog"
+msgstr ""
+
+#. module: ham_utility
+#: code:addons/ham_utility/utilities/websites/hamqth.py:0
+#, python-format
+msgid "Unable to upload QSO to HamQTH"
 msgstr ""
 
 #. module: ham_utility
