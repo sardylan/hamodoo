@@ -65,12 +65,11 @@ class AwardPublish(models.AbstractModel):
 
             for qso_id in qso_ids:
                 qso = qso_obj.browse(qso_id)
-                qso_adif_data = adif_utility.generate_adif_qso(qso)
                 eqsl_utility.upload_qso(
+                    qso=qso,
                     username=callsign.eqsl_username,
                     password=callsign.eqsl_password,
-                    qth_nickname=callsign.eqsl_qth_nickname,
-                    adif_data=qso_adif_data
+                    qth_nickname=callsign.eqsl_qth_nickname
                 )
                 qso_publish_obj.create([{
                     "qso_id": qso.id,
@@ -84,11 +83,10 @@ class AwardPublish(models.AbstractModel):
 
             for qso_id in qso_ids:
                 qso = qso_obj.browse(qso_id)
-                qso_adif_data = adif_utility.generate_adif_qso(qso)
                 hrdlog_utility.upload_qso(
+                    qso=qso,
                     callsign=callsign.hrdlog_callsign,
-                    code=callsign.hrdlog_code,
-                    adif_data=qso_adif_data
+                    code=callsign.hrdlog_code
                 )
                 qso_publish_obj.create([{
                     "qso_id": qso.id,

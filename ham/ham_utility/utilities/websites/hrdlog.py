@@ -17,14 +17,22 @@ class HRDLogUtility(models.AbstractModel):
     _description = "Integration with HRDLog API"
 
     @api.model
-    def upload_qso(self, callsign: str = "", code: str = "", adif_data: str = ""):
-        if not callsign or not code or not adif_data:
-            _logger.error("Invalid login data. Username: %s - Code: %s - ADIF data: %s" % (
-                callsign, code, adif_data
+    def upload_qso(self, qso, callsign: str = "", code: str = ""):
+        if not callsign or not code:
+            _logger.error("Invalid login data. Username: %s - Code: %s" % (
+                callsign, code
             ))
-            raise ValidationError(_("Invalid data"))
+            raise ValidationError(_("Invalid login data"))
+
+        if not qso:
+            _logger.error("Invalid QSO")
+            raise ValidationError(_("Invalid QSO"))
+
+        adif_utility = self.env["ham.utility.adif"]
 
         url = HRDLOG_API_UPLOAD_QSO
+
+        adif_data = adif_utility.generate_adif_qso(qso)
 
         data = {
             "Callsign": callsign,

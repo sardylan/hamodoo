@@ -1,6 +1,6 @@
 {
     "name": "HAM Utility",
-    "version": "14.0.2.8.2",
+    "version": "14.0.2.8.3",
     "category": "HAM Utility",
     "summary": "HAM utilities and models",
     "sequence": 0,

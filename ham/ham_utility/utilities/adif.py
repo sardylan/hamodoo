@@ -111,7 +111,7 @@ class AdifUtility(models.AbstractModel):
     def generate_adif(self, qsos, dt: datetime.datetime = datetime.datetime.utcnow()) -> str:
         adif: str = ""
 
-        adif += self._generate_adif_header(dt=dt)
+        adif += self.generate_adif_header(dt=dt)
 
         sorted_qso_ids = sorted(qsos, key=lambda x: x.ts_start)
 
@@ -121,7 +121,10 @@ class AdifUtility(models.AbstractModel):
         return adif
 
     @api.model
-    def generate_adif_qso(self, qso):
+    def generate_adif_qso(self, qso, extra_fields: dict = None):
+        if not extra_fields:
+            extra_fields = {}
+
         if not qso:
             raise ValidationError(_("Invalid qso_id"))
 
@@ -179,6 +182,9 @@ class AdifUtility(models.AbstractModel):
             if notes:
                 qso_string += self._tag_serialize("NOTES", notes)
 
+        for key, value in extra_fields.items():
+            qso_string += self._tag_serialize(key, value)
+
         qso_string += self._tag_serialize("EOR")
 
         return qso_string
@@ -189,13 +195,24 @@ class AdifUtility(models.AbstractModel):
         return qso_string
 
     @api.model
-    def _generate_adif_header(self, dt: datetime.datetime = datetime.datetime.utcnow()) -> str:
+    def generate_adif_header(
+            self,
+            dt: datetime.datetime = datetime.datetime.utcnow(),
+            extra_fields: dict = None
+    ) -> str:
+        if extra_fields is None:
+            extra_fields = {}
+
         header = ""
 
         header += self._tag_serialize("ADIF_VER", "3.1.1")
         header += self._tag_serialize("CREATED_TIMESTAMP", dt.strftime("%Y%m%d %H%M%S"))
         header += self._tag_serialize("PROGRAMID", "HAM Utilities for Odoo, by IS0GVH Luca")
         header += self._tag_serialize("PROGRAMVERSION", "2.3.0")
+
+        for key, value in extra_fields.items():
+            header += self._tag_serialize(key, value)
+
         header += self._tag_serialize("EOH")
 
         return header

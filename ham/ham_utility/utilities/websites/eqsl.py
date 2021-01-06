@@ -19,27 +19,42 @@ class EQSLWebsiteUtility(models.AbstractModel):
     _description = "Integration with eQSL API"
 
     @api.model
-    def upload_qso(self, username: str = "", password: str = "", qth_nickname: str = "", adif_data: str = ""):
+    def upload_qso(self, qso, username: str = "", password: str = "", qth_nickname: str = ""):
         if not username or not password or not qth_nickname:
             _logger.error("Invalid login data. Username: %s - Password: %s - QTH Nickname: %s" % (
                 username, password, qth_nickname
             ))
             raise ValidationError(_("Invalid login data"))
 
-        if not adif_data:
-            _logger.error("Invalid login data. ADIF data: %s" % adif_data)
-            raise ValidationError(_("Invalid data"))
+        if not qso:
+            _logger.error("Invalid QSO")
+            raise ValidationError(_("Invalid QSO"))
 
-        url = EQSL_API_UPLOAD_QSO
+        adif_utility = self.env["ham.utility.adif"]
+
+        extra_fields = {
+            "EQSL_USER": username,
+            "EQSL_PSWD": password,
+        }
+        adif_content = adif_utility.generate_adif_header(extra_fields=extra_fields)
+
+        extra_fields = {
+            "APP_EQSL_QTH_NICKNAME": qth_nickname
+        }
+        adif_content += adif_utility.generate_adif_qso(qso, extra_fields=extra_fields)
 
         data = {
             "EQSL_USER": username,
             "EQSL_PSWD": password,
-            "APP_EQSL_QTH_NICKNAME": qth_nickname,
-            "ADIFData": adif_data
         }
 
-        response = requests.post(url=url, data=data)
+        files = {
+            "Filename": ("file.adi", adif_content)
+        }
+
+        url = EQSL_API_UPLOAD_QSO
+
+        response = requests.post(url=url, files=files)
 
         if response.status_code != 200:
             _logger.error("Unable to upload QSO to eQSL. Status code %d: %s" % (
@@ -49,8 +64,11 @@ class EQSLWebsiteUtility(models.AbstractModel):
             raise ValidationError(_("Unable to upload QSO to eQSL"))
 
         if b"error" in response.content.lower():
-            message = response.content.decode()
+            root = etree.fromstring(response.content.decode(), parser=etree.HTMLParser(remove_comments=True))
+            html_content = etree.tostring(root)
+            raw_message = BeautifulSoup(html_content, "lxml").text.strip()
+            message = "\n".join([x.strip() for x in raw_message.splitlines() if x.strip()])
 
             _logger.error("Error publishing QSO: %s" % message)
             _logger.error("Data: %s" % data)
-            raise ValidationError(_("Error publishing QSO"))
+            raise ValidationError("%s.\n%s" % (_("Error publishing QSO"), message))
