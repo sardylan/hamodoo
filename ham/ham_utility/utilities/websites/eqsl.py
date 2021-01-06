@@ -49,13 +49,7 @@ class EQSLWebsiteUtility(models.AbstractModel):
             raise ValidationError(_("Unable to upload QSO to eQSL"))
 
         if b"error" in response.content.lower():
-            root = etree.fromstring(response.content.decode())
-            for comment in root.xpath('//comment()'):
-                parent = comment.getparent()
-                parent.remove(comment)
-
-            html_content = etree.tostring(root)
-            message = BeautifulSoup(html_content, "lxml").text.strip()
+            message = response.content.decode()
 
             _logger.error("Error publishing QSO: %s" % message)
             _logger.error("Data: %s" % data)
