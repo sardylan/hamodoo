@@ -305,6 +305,12 @@ class AwardCallsign(models.Model):
         tracking=True
     )
 
+    eqsl_qth_nickname = fields.Char(
+        string="eQSL QTH Nickname",
+        help="QTH Nickname for eQSL QSO publish",
+        tracking=True
+    )
+
     hrdlog_enabled = fields.Boolean(
         string="HRDLog",
         help="Enable publishing on HRDLog",

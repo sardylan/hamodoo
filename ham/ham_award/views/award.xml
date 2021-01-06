@@ -120,6 +120,7 @@
                                 <group>
                                     <field name="eqsl_username"/>
                                     <field name="eqsl_password"/>
+                                    <field name="eqsl_qth_nickname"/>
                                 </group>
                             </page>
                             <page name="page_hrdlog"

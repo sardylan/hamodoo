@@ -69,6 +69,7 @@ class AwardPublish(models.AbstractModel):
                 eqsl_utility.upload_qso(
                     username=callsign.eqsl_username,
                     password=callsign.eqsl_password,
+                    qth_nickname=callsign.eqsl_qth_nickname,
                     adif_data=qso_adif_data
                 )
                 qso_publish_obj.create([{
