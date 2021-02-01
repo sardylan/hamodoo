@@ -28,10 +28,10 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-<!--                        <button type="object"-->
-<!--                                name="action_set_hrdlog_sent"-->
-<!--                                string="Send to HRDLog"-->
-<!--                                attrs="{'invisible': [('hrdlog_sent', '=', True)]}"/>-->
+                        <!--                        <button type="object"-->
+                        <!--                                name="action_set_hrdlog_sent"-->
+                        <!--                                string="Send to HRDLog"-->
+                        <!--                                attrs="{'invisible': [('hrdlog_sent', '=', True)]}"/>-->
                     </header>
                     <sheet>
                         <h1>
@@ -94,6 +94,7 @@
             <field name="model">ham.award.qso</field>
             <field name="arch" type="xml">
                 <search>
+                    <field name="country_id"/>
                     <field name="callsign"/>
                     <field name="op_name"/>
                     <field name="qth"/>
@@ -110,9 +111,21 @@
                     <field name="award_id"/>
                     <field name="upload_id"/>
                     <group expand="1">
-                        <filter string="Local Callsign" name="local_callsign" context="{'group_by': 'local_callsign'}"/>
-                        <filter string="Band" name="band_id" context="{'group_by': 'band_id'}"/>
-                        <filter string="Upload" name="upload_id" context="{'group_by': 'upload_id'}"/>
+                        <filter string="Local Callsign"
+                                name="filter_group_local_callsign"
+                                context="{'group_by': 'local_callsign'}"/>
+                        <filter string="Band"
+                                name="filter_group_band_id"
+                                context="{'group_by': 'band_id'}"/>
+                        <filter string="Upload"
+                                name="filter_group_upload_id"
+                                context="{'group_by': 'upload_id'}"/>
+                        <filter string="Start Date &amp; Time"
+                                name="filter_group_create_date"
+                                context="{'group_by': 'ts_start'}"/>
+                        <filter string="Country"
+                                name="filter_group_country_id"
+                                context="{'group_by': 'country_id'}"/>
                     </group>
                 </search>
             </field>

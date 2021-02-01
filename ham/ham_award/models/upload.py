@@ -108,6 +108,17 @@ class Upload(models.Model):
         help="Note"
     )
 
+    @api.onchange("award_id")
+    def onchange_award_id(self):
+        self.ensure_one()
+
+        return {
+            "domain": {
+                "operator_id": [("award_ids", "in", self.award_id.id)],
+                "award_callsign_id": [("award_id", "=", self.award_id.id)],
+            }
+        }
+
     @api.depends("ts", "operator_id")
     def _compute_name(self):
         for rec in self:

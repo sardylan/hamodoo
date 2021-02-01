@@ -1,5 +1,6 @@
 import base64
 import datetime
+import json
 
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
@@ -196,7 +197,13 @@ class Award(models.Model):
         action = self.env.ref("ham_award.action_upload_list")
         result = action.read()[0]
 
-        result["domain"] = [("award_id", "=", self.id)]
+        domain: list = json.loads(result["domain"])
+        domain.extend([("award_id", "=", self.id)])
+        result["domain"] = json.dumps(domain)
+
+        context: dict = json.loads(result["context"])
+        context.update({"default_award_id": self.id})
+        result["context"] = json.dumps(context)
 
         return result
 
