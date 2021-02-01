@@ -1,7 +1,7 @@
 {
     "name": "HAM Awards",
     "version": "14.0.2.8.3",
-    "category": "Extra Tools",
+    "category": "HAM Radio",
     "summary": "HAM award management",
     "sequence": 0,
     "author": "Luca Cireddu",
@@ -12,7 +12,6 @@
         "ham_utility",
     ],
     "data": [
-        "security/categories.xml",
         "security/profiles.xml",
 
         "security/access/qso.xml",

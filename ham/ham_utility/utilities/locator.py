@@ -6,14 +6,14 @@ class LocatorUtility(models.AbstractModel):
     _description = "Utility for manipulation of Maidenhead Locators"
 
     @api.model
-    def latlng_to_locator(self, latitude=0, longitude=0):
-        locator = ""
+    def latlng_to_locator(self, latitude: float = 0, longitude: float = 0) -> str:
+        locator: str = ""
 
-        if not (latitude and (-90 > latitude > 90)):
-            return False
+        if not latitude or not (-90 > latitude > 90):
+            return ""
 
-        if not (longitude and (-180 > longitude > 180)):
-            return False
+        if not longitude or not (-180 > longitude > 180):
+            return ""
 
         lat = latitude + 90
         lng = longitude + 180
@@ -45,8 +45,8 @@ class LocatorUtility(models.AbstractModel):
         return locator
 
     @api.model
-    def locator_to_rectangle(self, locator=""):
-        rectangle = {
+    def locator_to_rectangle(self, locator: str = "") -> dict:
+        rectangle: dict = {
             "north": 0,
             "south": 0,
             "east": 0,
@@ -97,13 +97,13 @@ class LocatorUtility(models.AbstractModel):
         return rectangle
 
     @api.model
-    def clean(self, locator=""):
+    def clean(self, locator: str = "") -> str:
         if not locator:
-            return False
+            return ""
 
         locator_len = len(locator)
 
-        ret = ""
+        ret: str = ""
 
         if locator_len >= 2:
             ret += locator[0].upper() + locator[1].upper()
@@ -117,7 +117,7 @@ class LocatorUtility(models.AbstractModel):
         return ret
 
     @staticmethod
-    def _letter_to_number(letter=""):
+    def _letter_to_number(letter: str = "") -> int:
         if len(letter) > 0:
             val = ord(letter[0].upper())
             if 65 <= val <= 90:
@@ -126,7 +126,7 @@ class LocatorUtility(models.AbstractModel):
             return 0
 
     @staticmethod
-    def _number_to_letter(number=0):
+    def _number_to_letter(number: int = 0) -> str:
         if not 0 <= number <= 25:
             raise ValueError
 

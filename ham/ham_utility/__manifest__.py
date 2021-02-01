@@ -1,7 +1,7 @@
 {
     "name": "HAM Utility",
     "version": "14.0.2.8.3",
-    "category": "HAM Utility",
+    "category": "HAM Radio",
     "summary": "HAM utilities and models",
     "sequence": 0,
     "author": "Luca Cireddu",
@@ -11,7 +11,13 @@
         "widget_datetime_tz"
     ],
     "data": [
-        "security/categories.xml",
+        "data/ir_module_category.xml",
+        "data/zone_cq.xml",
+        "data/zone_itu.xml",
+        "data/modulation.xml",
+        "data/band.xml",
+        "data/website.xml",
+
         "security/profiles.xml",
 
         "security/utilities/adif.xml",
@@ -41,12 +47,6 @@
 
         "menu/action.xml",
         "menu/items.xml",
-
-        "data/zone_cq.xml",
-        "data/zone_itu.xml",
-        "data/modulation.xml",
-        "data/band.xml",
-        "data/website.xml"
     ],
     "application": True
 }

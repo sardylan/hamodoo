@@ -3,14 +3,20 @@
 <odoo>
     <data noupdate="0">
 
+        <record id="category_ham_utilities" model="ir.module.category">
+            <field name="name">HAM Radio Utilities</field>
+            <field name="description">HAM Radio Utilities and base data</field>
+            <field name="sequence">100</field>
+        </record>
+
         <record model="res.groups" id="group_profile_user">
             <field name="name">User</field>
-            <field name="category_id" ref="category_main"/>
+            <field name="category_id" ref="category_ham_utilities"/>
         </record>
 
         <record model="res.groups" id="group_profile_manager">
             <field name="name">Manager</field>
-            <field name="category_id" ref="category_main"/>
+            <field name="category_id" ref="category_ham_utilities"/>
             <field name="implied_ids" eval="[(6, 0, [
             ref('group_profile_user'),
             ])]"/>

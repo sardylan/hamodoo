@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record id="category_ham" model="ir.module.category">
+            <field name="name">HAM Radio</field>
+            <field name="description">HAM Applications and Utilities</field>
+            <field name="sequence">0</field>
+        </record>
+
+    </data>
+</odoo>
