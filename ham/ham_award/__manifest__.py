@@ -34,15 +34,17 @@
         "wizard/award_generate_adif.xml",
         "wizard/upload_reject.xml",
 
-        "menu/action.xml",
-        "menu/items.xml",
-
         "templates/portal/my_home.xml",
         "templates/portal/breadcrumbs.xml",
 
         "templates/private/award/list.xml",
         "templates/private/award/single.xml",
-        "templates/private/award/single_upload.xml"
+        "templates/private/award/single_upload.xml",
+
+        "actions/qso.xml",
+
+        "menu/action.xml",
+        "menu/items.xml"
     ],
     "application": True
 }

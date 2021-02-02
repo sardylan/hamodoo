@@ -1,6 +1,11 @@
+import datetime
+import logging
+
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from odoo.tools.translate import _
+
+_logger = logging.getLogger(__name__)
 
 
 class QSO(models.AbstractModel):
@@ -176,6 +181,40 @@ class QSO(models.AbstractModel):
         for rec in self:
             band_id = band_obj.get_band(rec.frequency)
             rec.band_id = band_id and band_id.id or False
+
+    def action_export_adif(self):
+        ir_attachment_obj = self.env["ir.attachment"]
+
+        adif_utility = self.env["ham.utility.adif"]
+
+        qsos = self
+
+        dt = datetime.datetime.utcnow()
+
+        adif_content: str = adif_utility.generate_adif(qsos=qsos, dt=dt)
+
+        file_name: str = self.compute_adif_filename(dt, qsos)
+
+        ir_attachments = ir_attachment_obj.create([{
+            "name": file_name,
+            "type": "binary",
+            "raw": adif_content.encode(),
+            "store_fname": file_name,
+        }])
+        if not ir_attachments:
+            raise ValidationError(_("Unable to create ADIF attachment"))
+
+        ir_attachment = ir_attachments[0]
+
+        return {
+            "type": "ir.actions.act_url",
+            "target": "new",
+            "url": f"/web/content/{ir_attachment.id}/{file_name}"
+        }
+
+    @api.model
+    def compute_adif_filename(self, dt: datetime.datetime, qsos) -> str:
+        return f"{dt.strftime('%Y%m%d-%H%m%s')}.adi"
 
     @api.model
     def footprint_value(self, ts_start, local_callsign, callsign, modulation_id, frequency):

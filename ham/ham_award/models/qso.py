@@ -1,4 +1,7 @@
-from odoo import models, fields
+import datetime
+import os
+
+from odoo import models, fields, api
 
 
 class QSO(models.Model):
@@ -46,6 +49,26 @@ class QSO(models.Model):
         comodel_name="ham.award.qso.publish",
         inverse_name="qso_id",
     )
+
+    @api.model
+    def compute_adif_filename(self, dt: datetime.datetime, qsos) -> str:
+        award_obj = self.env["ham.award"]
+
+        ret = super().compute_adif_filename(dt, qsos)
+
+        award_ids = []
+
+        for rec in self:
+            if rec.award_id.id not in award_ids:
+                award_ids.append(rec.award_id.id)
+
+        if len(award_ids) == 1:
+            award = award_obj.browse(award_ids[0])
+            award_name: str = award.name
+            name, ext = os.path.splitext(ret)
+            ret = f"{name} {award_name}{ext}"
+
+        return ret
 
 
 class QSOPublish(models.Model):
