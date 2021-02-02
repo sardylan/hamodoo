@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record id="view_ham_repeater_station_tree" model="ir.ui.view">
+            <field name="name">view.ham.repeater.station.tree</field>
+            <field name="model">ham.repeater.station</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="callsign"/>
+                    <field name="location_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_ham_repeater_station_form" model="ir.ui.view">
+            <field name="name">view.ham.band.form</field>
+            <field name="model">ham.repeater.station</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <h1>
+                            <field name="callsign"/>
+                        </h1>
+                        <group string="References">
+                            <field name="owner_partner_id"/>
+                        </group>
+                        <group string="Location" col="4">
+                            <field name="location_id"/>
+                            <newline/>
+                            <field name="location_latitude"/>
+                            <field name="location_longitude"/>
+                            <field name="location_locator"/>
+                        </group>
+                        <notebook>
+                            <page name="page_notes"
+                                  string="Note">
+                                <field name="note"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_ham_repeater_station_search" model="ir.ui.view">
+            <field name="name">view.ham.band.search</field>
+            <field name="model">ham.repeater.station</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="callsign"/>
+                    <separator/>
+                    <field name="owner_partner_id"/>
+                    <separator/>
+                    <field name="location_id"/>
+                    <separator/>
+                    <group expand="1">
+                        <filter string="Reference Contact" name="group_owner_partner_id" context="{'group_by': 'owner_partner_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>

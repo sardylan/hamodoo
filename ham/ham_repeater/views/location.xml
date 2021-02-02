@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record id="view_ham_repeater_location_tree" model="ir.ui.view">
+            <field name="name">view.ham.repeater.location.tree</field>
+            <field name="model">ham.repeater.location</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="latitude"/>
+                    <field name="longitude"/>
+                    <field name="locator"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_ham_repeater_location_form" model="ir.ui.view">
+            <field name="name">view.ham.repeater.location.form</field>
+            <field name="model">ham.repeater.location</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <group string="References">
+                            <field name="partner_id"/>
+                        </group>
+                        <group string="Position" col="4">
+                            <field name="latitude"/>
+                            <field name="longitude"/>
+                            <field name="locator"/>
+                        </group>
+                        <notebook>
+                            <page name="page_notes"
+                                  string="Note">
+                                <field name="note"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_ham_repeater_location_search" model="ir.ui.view">
+            <field name="name">view.ham.repeater.location.search</field>
+            <field name="model">ham.repeater.location</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <separator/>
+                    <field name="partner_id"/>
+                    <separator/>
+                    <field name="locator"/>
+                    <separator/>
+                    <group expand="1">
+                        <filter string="Reference Contact" name="group_partner_id" context="{'group_by': 'partner_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>

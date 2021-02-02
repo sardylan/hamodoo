@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record id="view_ham_repeater_appliance_tree" model="ir.ui.view">
+            <field name="name">view.ham.repeater.appliance.tree</field>
+            <field name="model">ham.repeater.appliance</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="station_callsign"/>
+                    <field name="freq_out"/>
+                    <field name="item_type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_ham_repeater_appliance_form" model="ir.ui.view">
+            <field name="name">view.ham.band.form</field>
+            <field name="model">ham.repeater.appliance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <h1>
+                            <field name="station_callsign"/>
+                        </h1>
+                        <group string="Items">
+                            <field name="item_ids"/>
+                        </group>
+                        <notebook>
+                            <page name="page_notes"
+                                  string="Note">
+                                <field name="note"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_ham_repeater_appliance_search" model="ir.ui.view">
+            <field name="name">view.ham.band.search</field>
+            <field name="model">ham.repeater.appliance</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="station_id"/>
+                    <group expand="1">
+                        <filter string="Station" name="group_station_id" context="{'group_by': 'station_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_ham_repeater_appliance_item_tree" model="ir.ui.view">
+            <field name="name">view.ham.repeater.appliance.item.tree</field>
+            <field name="model">ham.repeater.appliance.item</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="item_type"/>
+                    <field name="freq_out"/>
+                    <field name="freq_in"/>
+                    <field name="modulation_id"/>
+                    <field name="order_num"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_ham_repeater_appliance_item_form" model="ir.ui.view">
+            <field name="name">view.ham.repeater.appliance.item.form</field>
+            <field name="model">ham.repeater.appliance.item</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Frequencies">
+                            <field name="item_type"/>
+                            <field name="freq_out"/>
+                            <field name="freq_in"/>
+                        </group>
+                        <group string="Modulation" col="4">
+                            <field name="modulation_id"/>
+                            <newline/>
+                            <field name="squelch_type"/>
+                            <field name="squelch_value"/>
+                        </group>
+                        <group>
+                            <field name="antenna_out"/>
+                            <field name="antenna_in"/>
+                            <field name="power"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_ham_repeater_appliance_item_search" model="ir.ui.view">
+            <field name="name">view.ham.repeater.appliance.item.search</field>
+            <field name="model">ham.repeater.appliance.item</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="item_type"/>
+                    <field name="freq_out"/>
+                    <field name="freq_in"/>
+                    <separator/>
+                    <field name="modulation_id"/>
+                    <field name="squelch_type"/>
+                    <field name="squelch_value"/>
+                    <separator/>
+                    <field name="antenna_out"/>
+                    <field name="antenna_in"/>
+                    <field name="power"/>
+                    <group expand="1">
+                        <filter string="Type" name="group_item_type" context="{'group_by': 'item_type'}"/>
+                        <filter string="Output Frequency" name="group_freq_out" context="{'group_by': 'freq_out'}"/>
+                        <filter string="Modulation" name="group_modulation_id" context="{'group_by': 'modulation_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>
