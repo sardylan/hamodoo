@@ -4,6 +4,9 @@
 #
 # Version changelog:
 #
+# 4. Adds support to check for venv only outside git repository
+# 3. Check import dependencies
+# 2. Adds local configuration file
 # 1. First implementation
 #
 
@@ -15,14 +18,18 @@ import subprocess
 import sys
 
 import pkg_resources
-from colorama import Fore, Style
 
-PREPARE_VERSION = 2
+try:
+    from colorama import Fore, Style
+except Exception:
+    print("Cannot import \"colorama\"")
+    print("Please execute as root: \"apt install python3-colorama\"")
+    sys.exit(-1)
 
-PREPARE_CONFIG_FILE = "__prepare__.json"
+PREPARE_VERSION = 4
 
-PIP_ONLY_BINARY = []
-PIP_CONSTRAINT = []
+PREPARE_CONFIG_FILE_PROJECT = "__prepare__.json"
+PREPARE_CONFIG_FILE_LOCAL = ".prepare.json"
 
 
 def exit_error(error_code: int = -1, message: str = ""):
@@ -38,21 +45,16 @@ def exit_error(error_code: int = -1, message: str = ""):
     sys.exit(error_code)
 
 
-def execute(args, skip_error: bool = False, cwd: str = ".", env: dict = None):
+def execute(args: list, skip_error: bool = False, cwd: str = ".", env: dict = None):
     if not args:
         return
 
     if env is None:
         env = {}
 
-    if isinstance(args, list):
-        cmd = " ".join(args)
-    else:
-        cmd = args
-
     print()
     print()
-    print(Fore.LIGHTMAGENTA_EX + Style.BRIGHT + "    $ " + cmd + Style.RESET_ALL + Fore.RESET)
+    print(Fore.LIGHTMAGENTA_EX + Style.BRIGHT + "    $ " + " ".join(args) + Style.RESET_ALL + Fore.RESET)
     print()
 
     extra = {}
@@ -63,7 +65,7 @@ def execute(args, skip_error: bool = False, cwd: str = ".", env: dict = None):
     if len(env) > 0:
         extra["env"] = env
 
-    pr = subprocess.run(args=cmd, shell=True, **extra)
+    pr = subprocess.run(args=args, **extra)
     cmd_result = pr.returncode
 
     print()
@@ -72,64 +74,15 @@ def execute(args, skip_error: bool = False, cwd: str = ".", env: dict = None):
         exit_error(cmd_result)
 
 
-def print_title(title: str = ""):
-    print(Fore.LIGHTRED_EX + Style.BRIGHT + title + Style.RESET_ALL + Fore.RESET)
-    print()
-
-
-def print_completed(ts_duration):
-    print()
-    print(Fore.LIGHTRED_EX + "completed!!" + Fore.RESET)
-    print()
-    print("Duration: " + Fore.LIGHTBLUE_EX + str(ts_duration) + Fore.RESET)
-    print()
-    print()
-    print()
-
-
-def print_step(message: str = ""):
-    if not message:
-        return
-
-    print(Fore.LIGHTBLUE_EX + Style.BRIGHT + "    " + message + Style.RESET_ALL + Fore.RESET)
-    print()
-
-
 def env_prepend(key, value):
     items = []
 
     if key in os.environ:
-        items.extend([x.strip() for x in os.environ[key].split(":") if x])
+        items.extend([x.strip() for x in os.environ[key].split(":") if x.strip()])
 
     items.insert(0, value)
 
     os.environ[key] = ":".join(items)
-
-
-def parse_config():
-    if not os.path.exists(PREPARE_CONFIG_FILE):
-        return
-
-    fd = open(PREPARE_CONFIG_FILE, "r")
-    raw_content = fd.read()
-    fd.close()
-
-    config_data = json.loads(raw_content)
-
-    if "python_dir" in config_data:
-        python_dir = config_data["python_dir"]
-
-        env_prepend("PATH", "%s/bin" % python_dir)
-
-        print()
-        print("Using python from \033[1;35m%s\033[0m" % python_dir)
-        print()
-
-    for item in config_data["only_binary"]:
-        PIP_ONLY_BINARY.append(item)
-
-    for item in config_data["constraint_files"]:
-        PIP_CONSTRAINT.append(item)
 
 
 def print_header():
@@ -147,153 +100,232 @@ def print_header():
     print()
 
 
-def git_configure():
-    execute("git config --global credential.helper \"cache --timeout=300\"")
+def print_title(title: str = ""):
+    print(Fore.LIGHTRED_EX + Style.BRIGHT + title + Style.RESET_ALL + Fore.RESET)
+    print()
 
 
-def git_align():
-    execute("git submodule init")
-    execute("git submodule update")
-
-
-def venv_create():
-    if os.path.isdir("venv"):
+def print_step(message: str = ""):
+    if not message:
         return
 
-    execute("python3 -m venv venv")
+    print(Fore.LIGHTBLUE_EX + Style.BRIGHT + "    " + message + Style.RESET_ALL + Fore.RESET)
+    print()
 
 
-def venv_requirements():
-    requirements_files = []
+def print_completed(ts_duration):
+    print()
+    print(Fore.LIGHTRED_EX + "completed!!" + Fore.RESET)
+    print()
+    print("Duration: " + Fore.LIGHTBLUE_EX + str(ts_duration) + Fore.RESET)
+    print()
+    print()
+    print()
 
-    reqs = {}
 
-    for file_path in glob.iglob(pathname="**", recursive=True):
-        file_name = os.path.basename(file_path)
-        file_dir = os.path.dirname(file_path)
+class Preparer:
+    def __init__(self):
+        self._pip_only_binary: list = []
+        self._pip_constraints_files: list = []
+        self._pip_overrides: list = []
 
-        if file_name != "requirements.txt":
-            continue
+    def run(self):
+        ts_start = datetime.datetime.now()
 
-        if "openerp" in file_dir or "odoo" in file_dir:
-            if os.path.basename(file_dir) == "doc":
-                continue
+        print_header()
 
-        requirements_files.append(file_path)
+        self._parse_config(PREPARE_CONFIG_FILE_PROJECT)
+        self._parse_config(PREPARE_CONFIG_FILE_LOCAL)
 
-    for requirements_file in requirements_files:
-        print("Reading %s..." % requirements_file)
-        fd = open(requirements_file, "r")
-        file_content = fd.read()
+        # self._git_configure()
+        self._git_align()
+
+        self._venv_create()
+        self._venv_requirements()
+
+        self._first_run_cmd_print()
+
+        ts_end = datetime.datetime.now()
+        ts_interval = ts_end - ts_start
+
+        print_completed(ts_interval)
+
+    def _parse_config(self, filepath: str):
+        if not os.path.exists(filepath):
+            return
+
+        print_title("Parsing configuration %s" % filepath)
+
+        fd = open(filepath, "r")
+        raw_content = fd.read()
         fd.close()
 
-        rows = file_content.splitlines()
-        parsed_reqs = pkg_resources.parse_requirements(rows)
-        items = [x for x in parsed_reqs]
+        config_data = json.loads(raw_content)
 
-        for item in items:
+        if "python_dir" in config_data:
+            python_dir = config_data["python_dir"]
+
+            env_prepend("PATH", "%s/bin" % python_dir)
+
+        if "only_binary" in config_data:
+            for item in config_data["only_binary"]:
+                self._pip_only_binary.append(item)
+
+        if "constraint_files" in config_data:
+            for item in config_data["constraint_files"]:
+                self._pip_constraints_files.append(item)
+
+        if "overrides" in config_data:
+            for item in config_data["overrides"]:
+                self._pip_overrides.append(item)
+
+    def _git_configure(self):
+        print_title("Configuring git")
+        execute(["git", "config", "--global", "credential.helper", "\"cache --timeout=300\""])
+
+    def _git_align(self):
+        print_title("Align git repositories")
+
+        if not os.path.isdir(".git"):
+            print("Skipping 'cause we are not inside a git repo")
+            return
+
+        execute(["git", "submodule", "init"])
+        execute(["git", "submodule", "update"])
+
+    def _venv_create(self):
+        print_title("Preparing Python Virtualenv")
+
+        if os.path.isdir("venv"):
+            return
+
+        execute(["python3", "-m", "venv", "venv"])
+
+    def _venv_requirements(self):
+        print_title("Installing Venv requirements")
+
+        requirements_files = []
+
+        reqs = {}
+
+        for file_path in glob.iglob(pathname="**", recursive=True):
+            file_name = os.path.basename(file_path)
+            file_dir = os.path.dirname(file_path)
+
+            if file_name != "requirements.txt":
+                continue
+
+            if "openerp" in file_dir or "odoo" in file_dir:
+                if os.path.basename(file_dir) == "doc":
+                    continue
+
+            requirements_files.append(file_path)
+
+        for requirements_file in requirements_files:
+            print("Reading %s..." % requirements_file)
+
+            fd = open(requirements_file, "r")
+            file_content = fd.read()
+            fd.close()
+
+            rows = file_content.splitlines()
+            parsed_reqs = pkg_resources.parse_requirements(rows)
+            items = [x for x in parsed_reqs]
+
+            for item in items:
+                if item.marker and not item.marker.evaluate():
+                    continue
+
+                if item.name not in reqs:
+                    reqs[item.name] = []
+
+                reqs[item.name].extend(item.specs)
+
+        for key, value in reqs.items():
+            versions = [x[1] for x in value]
+            versions.sort(key=lambda x: pkg_resources.parse_version(x), reverse=True)
+            reqs[key] = versions and versions[0] or None
+
+        for override in self._pip_overrides:
+            override_parsed_reqs = pkg_resources.parse_requirements(override)
+            items = [x for x in override_parsed_reqs]
+            if not items:
+                continue
+
+            item = items[0]
             if item.marker and not item.marker.evaluate():
                 continue
 
-            if item.name not in reqs:
-                reqs[item.name] = []
+            if not item.specs:
+                continue
 
-            reqs[item.name].extend(item.specs)
+            if item.name in reqs:
+                reqs[item.name] = item.specs[0][1]
 
-    for key, value in reqs.items():
-        versions = [x[1] for x in value]
-        versions.sort(key=lambda x: pkg_resources.parse_version(x), reverse=True)
-        reqs[key] = versions and versions[0] or None
+        reqs["Cython"] = None
 
-    reqs["Cython"] = None
+        reqs = sorted(reqs.items(), key=lambda x: x[0])
 
-    reqs = sorted(reqs.items(), key=lambda x: x[0])
+        reqs_args = [value and "%s==%s" % (key, value) or key for key, value in reqs]
+        if not reqs_args:
+            return
 
-    reqs_args = [value and "%s==%s" % (key, value) or key for key, value in reqs]
-    if not reqs_args:
-        return
+        args = [
+            "./venv/bin/pip3",
+            "install",
+            "--no-binary", ":all:"
+        ]
 
-    args = [
-        "./venv/bin/pip3",
-        "install",
-        "--no-binary", ":all:",
-    ]
+        if self._pip_only_binary:
+            args.extend(["--only-binary", ",".join(self._pip_only_binary)])
 
-    if PIP_ONLY_BINARY:
-        args.extend(["--only-binary", ",".join(PIP_ONLY_BINARY)])
+        for item in self._pip_constraints_files:
+            args.extend(["--constraint", item])
 
-    for item in PIP_CONSTRAINT:
-        args.extend(["--constraint", item])
+        args.extend(reqs_args)
 
-    args.extend(reqs_args)
+        execute(args)
 
-    execute(args)
+    def _first_run_cmd_print(self):
+        print_title("Printing example command")
 
+        addons_dirs = [
+            "odoo/odoo/addons",
+            "odoo/addons"
+        ]
 
-def first_run_cmd_print():
-    addons_dirs = [
-        "odoo/odoo/addons",
-        "odoo/addons"
-    ]
+        for file_path in glob.iglob(pathname="*/*/*", recursive=True):
+            file_name = os.path.basename(file_path)
+            file_dir = os.path.dirname(file_path)
 
-    for file_path in glob.iglob(pathname="*/*/*", recursive=True):
-        file_name = os.path.basename(file_path)
-        file_dir = os.path.dirname(file_path)
+            if file_name != "__manifest__.py":
+                continue
 
-        if file_name != "__manifest__.py":
-            continue
+            module_dir = os.path.dirname(file_dir)
+            if "test" in module_dir:
+                continue
 
-        module_dir = os.path.dirname(file_dir)
-        if "test" in module_dir:
-            continue
+            if module_dir not in addons_dirs:
+                addons_dirs.append(module_dir)
 
-        if module_dir not in addons_dirs:
-            addons_dirs.append(module_dir)
+        addons_paths = ",".join(addons_dirs)
 
-    addons_paths = ",".join(addons_dirs)
+        print(Fore.WHITE + Style.BRIGHT + "First run command:" + Style.RESET_ALL + Fore.RESET)
+        print("")
 
-    print(Fore.WHITE + Style.BRIGHT + "First run command:" + Style.RESET_ALL + Fore.RESET)
-    print("")
-
-    print(" ".join([
-        "./venv/bin/python3",
-        "./odoo/odoo-bin",
-        "--addons-path=%s" % addons_paths,
-        "--db_host=127.0.0.1",
-        "--db_port=5432",
-        "--db_user=odoo",
-        "--db_password=odoo",
-        "--data-dir=~/data",
-        "--save"
-    ]))
-
-
-def run():
-    ts_start = datetime.datetime.now()
-
-    print_header()
-
-    # print_title("Configuring git")
-    # git_configure()
-
-    print_title("Parsing configuration")
-    parse_config()
-
-    print_title("Align git repositories")
-    git_align()
-
-    print_title("Preparing Python Virtualenv")
-    venv_create()
-    venv_requirements()
-
-    print_title("Printing example command")
-    first_run_cmd_print()
-
-    ts_end = datetime.datetime.now()
-    ts_interval = ts_end - ts_start
-
-    print_completed(ts_interval)
+        print(" ".join([
+            "./venv/bin/python3",
+            "./odoo/odoo-bin",
+            "--addons-path=%s" % addons_paths,
+            "--db_host=127.0.0.1",
+            "--db_port=5432",
+            "--db_user=odoo",
+            "--db_password=odoo",
+            "--data-dir=~/data",
+            "--save"
+        ]))
 
 
 if __name__ == "__main__":
-    run()
+    preparer = Preparer()
+    preparer.run()

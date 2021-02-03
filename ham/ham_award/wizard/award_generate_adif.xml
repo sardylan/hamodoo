@@ -10,11 +10,33 @@
                 <form string="Generate Award ADIF" create="false" edit="false" delete="false">
                     <group>
                         <field name="award_id"/>
-                    </group>
-                    <group>
                         <field name="callsign_id"
                                widget="selection_badge"/>
                     </group>
+                    <group name="group_adif_data" string="ADIF Data" col="4">
+                        <field name="filename"/>
+                        <field name="dt"/>
+                    </group>
+                    <group name="group_qso" string="QSOs interval" col="4">
+                        <field name="dt_start"/>
+                        <field name="dt_end"/>
+                    </group>
+                        <button type="object"
+                                name="action_dt_startend_lastday"
+                                string="Last day"
+                                class="btn-primary mx-2"/>
+                        <button type="object"
+                                name="action_dt_startend_lastweek"
+                                string="Last week"
+                                class="btn-primary mx-2"/>
+                        <button type="object"
+                                name="action_dt_startend_lastmonth"
+                                string="Last month"
+                                class="btn-primary mx-2"/>
+                        <button type="object"
+                                name="action_dt_startend_lastyear"
+                                string="Last year"
+                                class="btn-primary mx-2"/>
                     <footer>
                         <button type="object"
                                 name="action_publish"

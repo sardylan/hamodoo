@@ -8,13 +8,23 @@ from odoo.tools.translate import _
 
 _logger = logging.getLogger(__name__)
 
+DT_FORMAT = "%Y%m%d %H%M%S"
+
 
 class AwardPublish(models.AbstractModel):
     _name = "ham.utility.award.generate.adif"
     _description = "Utility for publishing Award QSOs to websites"
 
     @api.model
-    def generate(self, award, callsign):
+    def generate(
+            self,
+            award,
+            callsign,
+            filename: str = "",
+            dt_start: datetime.datetime = None,
+            dt_end: datetime.datetime = None,
+            dt: datetime.datetime = datetime.datetime.utcnow()
+    ):
         qso_obj = self.env["ham.award.qso"]
         ir_attachment_obj = self.env["ir.attachment"]
 
@@ -22,17 +32,23 @@ class AwardPublish(models.AbstractModel):
 
         _logger.info("Generating ADIF for %s with callsign %s" % (award, callsign))
 
-        dt = datetime.datetime.utcnow()
-
-        qsos = qso_obj.search([
+        qso_domain = [
             ("award_id", "=", award.id),
             ("local_callsign", "=", callsign.callsign)
-        ])
+        ]
+
+        if dt_start:
+            qso_domain.append(("ts_start", ">=", dt_start))
+
+        if dt_end:
+            qso_domain.append(("ts_end", "<=", dt_end))
+
+        qsos = qso_obj.search(qso_domain)
 
         adif_content = adif_utility.generate_adif(qsos, dt=dt)
 
-        ts_string = dt.strftime("%Y%m%d %H%M%S")
-        filename = "%s - %s - %s.adi" % (ts_string, callsign.callsign, award.name)
+        if not filename:
+            filename = self.generate_name(award, callsign, dt)
 
         values = {
             "name": filename,
@@ -50,3 +66,7 @@ class AwardPublish(models.AbstractModel):
 
         ir_attachment = ir_attachments[0]
         return ir_attachment
+
+    @api.model
+    def generate_name(self, award, callsign, dt: datetime.datetime) -> str:
+        return f"{dt.strftime(DT_FORMAT)} - {callsign.callsign} - {award.name}.adi"
