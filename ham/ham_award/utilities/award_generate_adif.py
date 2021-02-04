@@ -68,5 +68,10 @@ class AwardPublish(models.AbstractModel):
         return ir_attachment
 
     @api.model
-    def generate_name(self, award, callsign, dt: datetime.datetime) -> str:
-        return f"{dt.strftime(DT_FORMAT)} - {callsign.callsign} - {award.name}.adi"
+    def generate_name(self, award, callsign, dt: datetime.datetime, suffix: str = "") -> str:
+        filename = f"{dt.strftime(DT_FORMAT)} - {callsign.callsign} - {award.name}"
+
+        if suffix.strip():
+            filename = f"{filename} - {suffix.strip()}"
+
+        return f"{filename}.adi"

@@ -1,10 +1,12 @@
-import datetime
-
 from odoo import models, fields, api
+from odoo.tools.translate import _
 
-SELECTION_WEBSITE = [
-    ("hrdlog", "HRDLog"),
-    ("eqsl", "eQSL"),
+SELECTION_DT_MODE = [
+    ("manual", "Manual"),
+    ("last_day", "Last Day"),
+    ("last_week", "Last Week"),
+    ("last_month", "Last Month"),
+    ("last_year", "Last Year")
 ]
 
 
@@ -40,6 +42,14 @@ class AwardPublish(models.TransientModel):
         default=lambda self: fields.Datetime.now()
     )
 
+    dt_mode = fields.Selection(
+        string="Mode",
+        help="Interval for QSO extraction",
+        selection=SELECTION_DT_MODE,
+        required=True,
+        default="manual"
+    )
+
     dt_start = fields.Datetime(
         string="QSO From",
         help="Extract QSO from this datetime"
@@ -63,6 +73,19 @@ class AwardPublish(models.TransientModel):
         for rec in self:
             rec.filename = self._default_filename()
 
+    @api.onchange("dt_mode")
+    def _onchange_dt_mode(self):
+        self.ensure_one()
+
+        dt_utility = self.env["ham.utility.dt"]
+
+        if self.dt_mode not in ["manual"]:
+            dt_start, dt_end = dt_utility.compute_start_end(self.dt_mode)
+            self.dt_start = dt_start
+            self.dt_end = dt_end
+
+        self.filename = self._default_filename()
+
     def _default_filename(self):
         self.ensure_one()
 
@@ -73,25 +96,27 @@ class AwardPublish(models.TransientModel):
             return ""
 
         award_generate_adif_utility = self.env["ham.utility.award.generate.adif"]
-        return award_generate_adif_utility.generate_name(
+
+        suffix = ""
+
+        if self.dt_start and self.dt_end:
+            if self.dt_mode == "last_day":
+                suffix = f"{_('Day')} {self.dt_start.strftime('%Y-%m-%d')}"
+            elif self.dt_mode == "last_week":
+                suffix = f"{_('Week')} from {self.dt_start.strftime('%Y-%m-%d')} to {self.dt_end.strftime('%Y-%m-%d')}"
+            elif self.dt_mode == "last_month":
+                suffix = f"{_('Month')} {self.dt_start.strftime('%Y-%m')}"
+            elif self.dt_mode == "last_year":
+                suffix = f"{_('Year')} {self.dt_start.strftime('%Y')}"
+
+        filename = award_generate_adif_utility.generate_name(
             award=self.award_id,
             callsign=self.callsign_id,
-            dt=self.dt
+            dt=self.dt,
+            suffix=suffix
         )
 
-    def action_dt_startend_lastday(self):
-        self.ensure_one()
-
-        now = datetime.datetime.utcnow()
-
-    def action_dt_startend_lastweek(self):
-        self.ensure_one()
-
-    def action_dt_startend_lastmonth(self):
-        self.ensure_one()
-
-    def action_dt_startend_lastyear(self):
-        self.ensure_one()
+        return filename
 
     def action_publish(self):
         self.ensure_one()
@@ -110,4 +135,3 @@ class AwardPublish(models.TransientModel):
             "type": "ir.actions.client",
             "tag": "reload"
         }
-

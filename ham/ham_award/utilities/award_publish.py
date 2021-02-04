@@ -31,16 +31,17 @@ class AwardPublish(models.AbstractModel):
         ))
 
         sql_query = """SELECT DISTINCT haq.id
-                        FROM ham_award_qso haq
-                                 LEFT JOIN ham_award_qso_publish haqp ON haq.id = haqp.qso_id
-                        WHERE haq.award_id = %(award_id)s
-                          AND haq.local_callsign = %(callsign)s
-                          AND (haqp.website_id IS NULL OR haq.id NOT IN (SELECT DISTINCT haq.id
-                                                                         FROM ham_award_qso haq
-                                                                                  LEFT JOIN ham_award_qso_publish haqp ON haq.id = haqp.qso_id
-                                                                         WHERE haq.award_id = %(award_id)s
-                                                                           AND haq.local_callsign = %(callsign)s
-                                                                           AND (haqp.website_id = %(website_id)s)))"""
+                       FROM ham_award_qso haq
+                                LEFT JOIN ham_award_qso_publish haqp ON haq.id = haqp.qso_id
+                       WHERE haq.award_id = %(award_id)s
+                         AND haq.local_callsign = %(callsign)s
+                         AND (haqp.website_id IS NULL OR haq.id NOT IN (
+                           SELECT DISTINCT haq.id
+                           FROM ham_award_qso haq
+                                    LEFT JOIN ham_award_qso_publish haqp ON haq.id = haqp.qso_id
+                           WHERE haq.award_id = %(award_id)s
+                             AND haq.local_callsign = %(callsign)s
+                             AND (haqp.website_id = %(website_id)s)))"""
         sql_params = {
             "award_id": award.id,
             "callsign": callsign.callsign,
