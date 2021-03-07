@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <template id="template_public_award_list" name="Awards List">
+            <t t-call="portal.portal_layout">
+                <t t-set="no_breadcrumbs" t-value="True"/>
+                <div class="m-2"/>
+                <div class="row">
+                    <t t-if="awards">
+                        <t t-foreach="awards" t-as="award">
+                            <div class="col-12 col-sm-6 col-md-4">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        <t t-esc="award.name"/>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="d-none d-lg-block col-4"><strong>From:</strong></div>
+                                            <div class="col-12 col-lg-8 text-right"><t t-esc="award.ts_start"/></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="d-none d-lg-block col-4"><strong>To:</strong></div>
+                                            <div class="col-12 col-lg-8 text-right"><t t-esc="award.ts_end"/></div>
+                                        </div>
+                                        <div class="m-2"/>
+                                        <h4>Callsigns:</h4>
+                                        <ul>
+                                            <t t-foreach="award.callsigns" t-as="callsign">
+                                                <li><span class="text-monospace">
+                                                    <t t-esc="callsign.callsign"/>
+                                                </span></li>
+                                            </t>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer text-right">
+                                        <a t-att-href="'/ham_award/public/award/%d' % award.id">
+                                            <input class="btn btn-primary"
+                                                   type="button"
+                                                   value="Show QSO"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </t>
+                    <div t-else="">
+                        <p>There are no awards available</p>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

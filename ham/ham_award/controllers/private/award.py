@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 QSO_PAGE_SIZE = 10
 
 
-class AwardController(http.Controller):
+class AwardProvateController(http.Controller):
 
     @route(
         route="/ham_award/private/award",
@@ -42,7 +42,7 @@ class AwardController(http.Controller):
         values = {
             "error": {},
             "error_message": [],
-            "page_name": "award_list",
+            "page_name": "private_award_list",
             "awards": awards
         }
 
@@ -80,7 +80,7 @@ class AwardController(http.Controller):
         values = {
             "error": {},
             "error_message": [],
-            "page_name": "award_single",
+            "page_name": "private_award_single",
             "award": award,
             "uploads": uploads
         }
@@ -120,7 +120,7 @@ class AwardController(http.Controller):
         values = {
             "error": {},
             "error_message": [],
-            "page_name": "award_single_upload",
+            "page_name": "private_award_single_upload",
             "award": award,
             "upload": upload
         }

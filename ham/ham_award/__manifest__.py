@@ -41,6 +41,9 @@
         "templates/private/award/single.xml",
         "templates/private/award/single_upload.xml",
 
+        "templates/public/award/list.xml",
+        "templates/public/award/single.xml",
+
         "actions/qso.xml",
 
         "menu/action.xml",

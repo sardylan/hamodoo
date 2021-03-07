@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <template id="template_public_award_single" name="Award">
+            <t t-call="portal.portal_layout">
+                <t t-set="no_breadcrumbs" t-value="True"/>
+                <div class="m-2"/>
+                <div class="container">
+                    <t t-if="award">
+                        <h1 class="text-center"><t t-esc="award.name"/></h1>
+                        <h2 class="text-center text-monospace">
+                            <t t-foreach="award.callsigns" t-as="callsign">
+                                <t t-esc="callsign.callsign"/>
+                            </t>
+                        </h2>
+                        <div class="row text-center">
+                            <div class="col-12 col-md-6">
+                                <h4>From:</h4>
+                                <t t-esc="award.ts_start"/>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <h4>To:</h4>
+                                <t t-esc="award.ts_start"/>
+                            </div>
+                        </div>
+                        <div class="m-3"/>
+                        <div class="container">
+                            <h3>Most contacted countries</h3>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Country</th>
+                                        <th>QSO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="country_counts" t-as="country_count">
+                                        <tr>
+                                            <td><t t-esc="country_count['country_name']"/></td>
+                                            <td><t t-esc="country_count['qso_count']"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                    <div t-else="">
+                        <p>Award not found</p>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>
