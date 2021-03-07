@@ -44,6 +44,12 @@ SELECTION_MODULATION = [
     ("X", "X - None of the above")
 ]
 
+SELECTION_COUNT_AS = [
+    ("cw", "CW"),
+    ("phone", "PHONE"),
+    ("digi", "DIGI")
+]
+
 
 class Modulation(models.Model):
     _name = "ham.modulation"
@@ -99,6 +105,15 @@ class Modulation(models.Model):
         string="Default RST",
         required=True,
         translate=False,
+        tracking=True
+    )
+
+    count_as = fields.Selection(
+        string="Count as",
+        help="What category has to be assigned to QSOs with this modulation",
+        selection=SELECTION_COUNT_AS,
+        required=True,
+        transalte=False,
         tracking=True
     )
 

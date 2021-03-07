@@ -16,7 +16,7 @@
         </record>
 
         <record id="base.group_portal" model="res.groups">
-            <field name="implied_ids" eval="[(4, ref('ham_award.group_profile_user'))]"/>
+            <field name="implied_ids" eval="[(6, 0, [ref('ham_award.group_profile_user')])]"/>
         </record>
 
     </data>

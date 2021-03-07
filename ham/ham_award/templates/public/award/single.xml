@@ -10,24 +10,45 @@
                 <div class="container">
                     <t t-if="award">
                         <h1 class="text-center"><t t-esc="award.name"/></h1>
-                        <h2 class="text-center text-monospace">
-                            <t t-foreach="award.callsigns" t-as="callsign">
-                                <t t-esc="callsign.callsign"/>
-                            </t>
-                        </h2>
-                        <div class="row text-center">
+                        <div class="row">
                             <div class="col-12 col-md-6">
-                                <h4>From:</h4>
-                                <t t-esc="award.ts_start"/>
+                                <h2 class="text-monospace text-center text-md-left">
+                                    <t t-foreach="award.callsigns" t-as="callsign">
+                                        <t t-esc="callsign.callsign"/>
+                                    </t>
+                                </h2>
                             </div>
                             <div class="col-12 col-md-6">
-                                <h4>To:</h4>
-                                <t t-esc="award.ts_start"/>
+                                <div class="row text-center text-md-right">
+                                    <div class="col-12">From: <t t-esc="award.ts_start"/></div>
+                                    <div class="col-12">To: <t t-esc="award.ts_end"/></div>
+                                </div>
                             </div>
                         </div>
                         <div class="m-3"/>
                         <div class="container">
-                            <h3>Most contacted countries</h3>
+                            <h3>Stats</h3>
+                            <div class="row">
+                                <div class="col-12 col-md-6 col-lg 4">
+                                    <ul>
+                                        <li><strong>Total QSOs: </strong><t t-esc="award_qso_count"/></li>
+                                        <li><strong>Total Countries: </strong><t t-esc="award_country_count"/></li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg 4">
+                                    <ul>
+                                        <li><strong>CW: </strong><t t-esc="modulations['CW']"/></li>
+                                        <li><strong>PHONE: </strong><t t-esc="modulations['PHONE']"/></li>
+                                        <li><strong>DIGI: </strong><t t-esc="modulations['DIGI']"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-3"/>
+                        <div class="container">
+                            <h3 class="text-center text-md-left">
+                                <t t-esc="most_contacted_countries_count"/> most contacted countries
+                            </h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -36,10 +57,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <t t-foreach="country_counts" t-as="country_count">
+                                    <t t-foreach="most_contacted_countries" t-as="country">
                                         <tr>
-                                            <td><t t-esc="country_count['country_name']"/></td>
-                                            <td><t t-esc="country_count['qso_count']"/></td>
+                                            <td><t t-esc="country['country_name']"/></td>
+                                            <td><t t-esc="country['qso_count']"/></td>
                                         </tr>
                                     </t>
                                 </tbody>

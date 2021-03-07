@@ -41,6 +41,7 @@
                             <page string="Other infos">
                                 <group>
                                     <field name="default_rst"/>
+                                    <field name="count_as"/>
                                 </group>
                             </page>
                         </notebook>
