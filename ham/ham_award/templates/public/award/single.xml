@@ -20,8 +20,8 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="row text-center text-md-right">
-                                    <div class="col-12">From: <t t-esc="award.ts_start"/></div>
-                                    <div class="col-12">To: <t t-esc="award.ts_end"/></div>
+                                    <div class="col-12"><em>From:</em> <t t-esc="award.ts_start"/></div>
+                                    <div class="col-12"><em>To:</em> <t t-esc="award.ts_end"/></div>
                                 </div>
                             </div>
                         </div>
@@ -29,13 +29,13 @@
                         <div class="container">
                             <h3>Stats</h3>
                             <div class="row">
-                                <div class="col-12 col-md-6 col-lg 4">
+                                <div class="col-12 col-md-6 col-lg-4">
                                     <ul>
                                         <li><strong>Total QSOs: </strong><t t-esc="award_qso_count"/></li>
                                         <li><strong>Total Countries: </strong><t t-esc="award_country_count"/></li>
                                     </ul>
                                 </div>
-                                <div class="col-12 col-md-6 col-lg 4">
+                                <div class="col-12 col-md-6 col-lg-4">
                                     <ul>
                                         <li><strong>CW: </strong><t t-esc="modulations['CW']"/></li>
                                         <li><strong>PHONE: </strong><t t-esc="modulations['PHONE']"/></li>
@@ -49,7 +49,7 @@
                             <h3 class="text-center text-md-left">
                                 <t t-esc="most_contacted_countries_count"/> most contacted countries
                             </h3>
-                            <table class="table">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>Country</th>
