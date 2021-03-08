@@ -1,3 +1,5 @@
+import geopy.distance
+
 from odoo import models, api
 
 
@@ -43,6 +45,18 @@ class LocatorUtility(models.AbstractModel):
         locator += self._number_to_letter(fisrt_lng).lower()
 
         return locator
+
+    @api.model
+    def locator_to_latlng(self, locator: str = "") -> (float, float):
+        if not locator:
+            raise ValueError("Invalid locator")
+
+        rectangle = self.locator_to_rectangle(locator)
+
+        latitude = rectangle["south"] + ((rectangle["north"] - rectangle["south"]) / 2)
+        longitude = rectangle["west"] + ((rectangle["east"] - rectangle["west"]) / 2)
+
+        return latitude, longitude
 
     @api.model
     def locator_to_rectangle(self, locator: str = "") -> dict:
@@ -95,6 +109,23 @@ class LocatorUtility(models.AbstractModel):
                         rectangle["west"] = longitude
 
         return rectangle
+
+    @api.model
+    def distance(self, src_locator: str = "", dst_locator: str = ""):
+        if not src_locator:
+            raise ValueError("Invalid source locator")
+        if not dst_locator:
+            raise ValueError("Invalid destination locator")
+
+        src_latitude, src_longitude = self.locator_to_latlng(src_locator)
+        dst_latitude, dst_longitude = self.locator_to_latlng(dst_locator)
+
+        distance = geopy.distance.distance(
+            (src_latitude, src_longitude),
+            (dst_latitude, dst_longitude)
+        )
+
+        return float(distance.kilometers)
 
     @api.model
     def clean(self, locator: str = "") -> str:

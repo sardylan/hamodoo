@@ -27,12 +27,6 @@
             <field name="model">ham.award.qso</field>
             <field name="arch" type="xml">
                 <form>
-                    <header>
-                        <!--                        <button type="object"-->
-                        <!--                                name="action_set_hrdlog_sent"-->
-                        <!--                                string="Send to HRDLog"-->
-                        <!--                                attrs="{'invisible': [('hrdlog_sent', '=', True)]}"/>-->
-                    </header>
                     <sheet>
                         <h1>
                             <field name="callsign"/>
@@ -74,6 +68,15 @@
                             <page name="page_note"
                                   string="Note">
                                 <field name="note"/>
+                            </page>
+                            <page name="page_position"
+                                  string="Positions">
+                                <group col="4">
+                                    <field name="locator"/>
+                                    <newline/>
+                                    <field name="latitude"/>
+                                    <field name="longitude"/>
+                                </group>
                             </page>
                             <page name="page_upload"
                                   string="Uploads to Websites">

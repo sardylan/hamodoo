@@ -99,6 +99,24 @@ class QSO(models.AbstractModel):
         tracking=True
     )
 
+    locator = fields.Char(
+        string="Locator",
+        help="Maidenhead Locator",
+        tracking=True
+    )
+
+    latitude = fields.Float(
+        string="Latitude",
+        help="Station Latitude",
+        tracking=True
+    )
+
+    longitude = fields.Float(
+        string="Longitude",
+        help="Station Longitude",
+        tracking=True
+    )
+
     footprint = fields.Char(
         string="Footprint",
         help="QSO Footprint",
