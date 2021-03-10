@@ -1,3 +1,4 @@
 from . import eqsl
-from . import hrdlog
 from . import hamqth
+from . import hrdlog
+from . import qrzcom

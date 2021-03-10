@@ -218,11 +218,11 @@ class Upload(models.Model):
                         local_callsign = item
                         break
 
-                if upload.award_callsign_id:
-                    local_callsign = upload.award_callsign_id.callsign
-
                 if not local_callsign:
                     raise ValidationError(_("Callsign not enabled in award"))
+
+            award_callsign_obj = self.env["ham.award.callsign"]
+            award_callsign = award_callsign_obj.search([("callsign", "=", local_callsign)])
 
             callsign = qso["CALL"]
             frequency = qso["FREQ"]
@@ -231,7 +231,9 @@ class Upload(models.Model):
 
             values = qso_utility.values_from_adif_record(qso)
             values.update({
-                "local_callsign": local_callsign,
+                "local_callsign": award_callsign.callsign,
+                "local_latitude": award_callsign.latitude,
+                "local_longitude": award_callsign.longitude,
                 "award_id": upload.award_id.id,
                 "operator_id": upload.operator_id.id,
                 "upload_id": upload.id

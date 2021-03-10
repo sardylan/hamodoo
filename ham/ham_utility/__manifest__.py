@@ -43,6 +43,8 @@
         "views/band.xml",
         "views/website.xml",
 
+        "views/inherit_res_users.xml",
+
         "wizard/import_prefix.xml",
 
         "menu/action.xml",

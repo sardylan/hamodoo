@@ -71,11 +71,20 @@
                             </page>
                             <page name="page_position"
                                   string="Positions">
-                                <group col="4">
+                                <group col="4" string="Remote">
                                     <field name="locator"/>
                                     <newline/>
                                     <field name="latitude"/>
                                     <field name="longitude"/>
+                                </group>
+                                <group col="4" string="Local">
+                                    <field name="local_locator"/>
+                                    <newline/>
+                                    <field name="local_latitude"/>
+                                    <field name="local_longitude"/>
+                                </group>
+                                <group string="Distance">
+                                    <field name="distance"/>
                                 </group>
                             </page>
                             <page name="page_upload"

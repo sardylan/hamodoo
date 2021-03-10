@@ -111,7 +111,7 @@ class LocatorUtility(models.AbstractModel):
         return rectangle
 
     @api.model
-    def distance(self, src_locator: str = "", dst_locator: str = ""):
+    def distance_locator(self, src_locator: str = "", dst_locator: str = ""):
         if not src_locator:
             raise ValueError("Invalid source locator")
         if not dst_locator:
@@ -119,6 +119,15 @@ class LocatorUtility(models.AbstractModel):
 
         src_latitude, src_longitude = self.locator_to_latlng(src_locator)
         dst_latitude, dst_longitude = self.locator_to_latlng(dst_locator)
+
+        return self.distance_latlng(src_latitude, src_longitude, dst_latitude, dst_longitude)
+
+    @api.model
+    def distance_latlng(self, src_latitude: float, src_longitude: float, dst_latitude: float, dst_longitude: float):
+        if src_latitude is False or src_longitude is False:
+            raise ValueError("Invalid source coordinates")
+        if dst_latitude is False or dst_longitude is False:
+            raise ValueError("Invalid destination coordinates")
 
         distance = geopy.distance.distance(
             (src_latitude, src_longitude),

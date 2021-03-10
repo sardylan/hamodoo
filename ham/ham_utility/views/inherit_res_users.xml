@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record id="view_res_users_form" model="ir.ui.view">
+            <field name="name">view.res.users.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <page name="references" position="after">
+                    <page name="page_qrzcom" string="QRZ.com API Credentials">
+                        <group name="group_qrzcom">
+                            <field name="qrzcom_username"/>
+                            <field name="qrzcom_password"
+                                   password="True"/>
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="view_res_users_form_preferences" model="ir.ui.view">
+            <field name="name">view.res.users.form.preferences</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[last()]" position="after">
+                    <page name="page_qrzcom" string="QRZ.com API Credentials">
+                        <group name="group_qrzcom">
+                            <field name="qrzcom_username"/>
+                            <field name="qrzcom_password"
+                                   password="True"/>
+                        </group>
+                        <button type="object"
+                                name="action_qrzcom_verify_credentials"
+                                string="Test credentials"
+                                class="btn-primary"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

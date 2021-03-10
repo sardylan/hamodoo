@@ -40,6 +40,26 @@ class QSO(models.AbstractModel):
         tracking=True
     )
 
+    local_locator = fields.Char(
+        string="Local Locator",
+        help="Local Maidenhead Locator",
+        tracking=True
+    )
+
+    local_latitude = fields.Float(
+        string="Local Latitude",
+        help="Local Station Latitude",
+        digits=(8, 6),
+        tracking=True
+    )
+
+    local_longitude = fields.Float(
+        string="Local Longitude",
+        help="Local Station Longitude",
+        digits=(9, 6),
+        tracking=True
+    )
+
     callsign = fields.Char(
         string="Callsign",
         help="Callsign of remote station",
@@ -108,12 +128,14 @@ class QSO(models.AbstractModel):
     latitude = fields.Float(
         string="Latitude",
         help="Station Latitude",
+        digits=(8, 6),
         tracking=True
     )
 
     longitude = fields.Float(
         string="Longitude",
         help="Station Longitude",
+        digits=(9, 6),
         tracking=True
     )
 
@@ -143,6 +165,14 @@ class QSO(models.AbstractModel):
         store=True
     )
 
+    distance = fields.Float(
+        string="Distance",
+        help="Distance",
+        readonly=True,
+        compute="_compute_distance",
+        store=True
+    )
+
     note = fields.Html(
         string="Note",
         help="Note",
@@ -160,7 +190,7 @@ class QSO(models.AbstractModel):
         return super().create(vals)
 
     def write(self, vals):
-        self.sanitize_vals(vals)
+        self.sanitize_vals(vals, in_write=True)
         return super().write(vals)
 
     @api.onchange("callsign", "local_callsign")
@@ -199,6 +229,27 @@ class QSO(models.AbstractModel):
         for rec in self:
             band_id = band_obj.get_band(rec.frequency)
             rec.band_id = band_id and band_id.id or False
+
+    @api.depends("local_locator", "local_latitude", "local_longitude", "locator", "latitude", "longitude")
+    def _compute_distance(self):
+        locator_utility = self.env["ham.utility.locator"]
+
+        for rec in self:
+            if rec.local_locator is False \
+                    or rec.local_latitude is False \
+                    or rec.local_longitude is False \
+                    or rec.locator is False \
+                    or rec.latitude is False \
+                    or rec.longitude is False:
+                rec.distance = False
+                continue
+
+            rec.distance = locator_utility.distance_latlng(
+                src_latitude=rec.local_latitude,
+                src_longitude=rec.local_longitude,
+                dst_latitude=rec.latitude,
+                dst_longitude=rec.longitude,
+            )
 
     def action_export_adif(self):
         ir_attachment_obj = self.env["ir.attachment"]
@@ -250,7 +301,7 @@ class QSO(models.AbstractModel):
         return footprint
 
     @api.model
-    def sanitize_vals(self, vals: dict):
+    def sanitize_vals(self, vals: dict, in_write: bool = False):
         modulation_obj = self.env["ham.modulation"]
 
         callsign_utility = self.env["ham.utility.callsign"]
@@ -259,14 +310,16 @@ class QSO(models.AbstractModel):
             if "frequency" in vals:
                 vals["rx_frequency"] = vals["frequency"]
 
-        modulation = modulation_obj.browse(vals["modulation_id"])
-        if not modulation:
-            raise ValidationError(_("Modulation not found when creating QSO"))
+        if "modulation_id" in vals:
+            modulation = modulation_obj.browse(vals["modulation_id"])
+            if not modulation:
+                raise ValidationError(_("Modulation not found when creating QSO"))
 
-        if "tx_rst" not in vals or not vals["tx_rst"].strip():
-            vals["tx_rst"] = modulation.default_rst
-        if "rx_rst" not in vals or not vals["rx_rst"].strip():
-            vals["rx_rst"] = modulation.default_rst
+        if not in_write:
+            if "tx_rst" not in vals or not vals["tx_rst"].strip():
+                vals["tx_rst"] = modulation.default_rst
+            if "rx_rst" not in vals or not vals["rx_rst"].strip():
+                vals["rx_rst"] = modulation.default_rst
 
         for field in ["callsign", "local_callsign"]:
             if field in vals:

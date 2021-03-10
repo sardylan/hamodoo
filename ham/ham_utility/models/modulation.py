@@ -113,7 +113,7 @@ class Modulation(models.Model):
         help="What category has to be assigned to QSOs with this modulation",
         selection=SELECTION_COUNT_AS,
         required=True,
-        transalte=False,
+        translate=False,
         tracking=True
     )
 

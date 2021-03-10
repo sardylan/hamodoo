@@ -1,7 +1,11 @@
 import datetime
+import logging
 import os
 
 from odoo import models, fields, api
+from odoo.addons.ham_utility.libs.qrzcom_client import QRZComClient
+
+_logger = logging.getLogger(__name__)
 
 
 class QSO(models.Model):
@@ -50,6 +54,40 @@ class QSO(models.Model):
         inverse_name="qso_id",
     )
 
+    def action_update_from_qrzcom(self):
+        locator_utility = self.env["ham.utility.locator"]
+
+        username = self.env.user.qrzcom_username
+        password = self.env.user.qrzcom_password
+
+        qrz_com_client = QRZComClient(
+            username=username,
+            password=password
+        )
+
+        qrz_com_client.login()
+        _logger.info("Logged in in QRZ.com")
+
+        for rec in self:
+            _logger.info(f"Updating data for {rec}")
+
+            try:
+                qrzcom_values = qrz_com_client.search(rec.callsign)
+            except ValueError:
+                continue
+
+            values = {
+                "locator": self._parse_value(qrzcom_values, "grid"),
+                "latitude": self._parse_value(qrzcom_values, "lat", float),
+                "longitude": self._parse_value(qrzcom_values, "lon", float)
+            }
+
+            if values["locator"] and (values["latitude"] is False or values["longitude"] is False):
+                values["latitude"], values["longitude"] = locator_utility.locator_to_latlng
+
+            rec.write(values)
+            self._cr.commit()
+
     @api.model
     def compute_adif_filename(self, dt: datetime.datetime, qsos) -> str:
         award_obj = self.env["ham.award"]
@@ -69,6 +107,23 @@ class QSO(models.Model):
             ret = f"{name} {award_name}{ext}"
 
         return ret
+
+    @staticmethod
+    def _parse_value(values: dict, key: str, datatype: type = str):
+        if not values:
+            return False
+
+        if key not in values:
+            return False
+
+        value = values[key]
+        if not value:
+            return False
+
+        try:
+            return datatype(value)
+        except Exception:
+            return False
 
 
 class QSOPublish(models.Model):

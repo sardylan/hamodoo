@@ -294,6 +294,26 @@ class AwardCallsign(models.Model):
         tracking=True
     )
 
+    locator = fields.Char(
+        string="Locator",
+        help="Maidenhead Locator",
+        tracking=True
+    )
+
+    latitude = fields.Float(
+        string="Latitude",
+        help="Station Latitude",
+        digits=(8, 6),
+        tracking=True
+    )
+
+    longitude = fields.Float(
+        string="Longitude",
+        help="Station Longitude",
+        digits=(9, 6),
+        tracking=True
+    )
+
     eqsl_enabled = fields.Boolean(
         string="eQSL",
         help="Enable publishing on eQSL",
