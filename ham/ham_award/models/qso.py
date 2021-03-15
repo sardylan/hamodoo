@@ -56,6 +56,13 @@ class QSO(models.Model):
         inverse_name="qso_id",
     )
 
+    qrzcom_updated = fields.Boolean(
+        string="Updated from QRZ.com",
+        help="Updated from QRZ.com",
+        required=True,
+        default=False,
+    )
+
     def action_update_from_qrzcom(self):
         locator_utility = self.env["ham.utility.locator"]
 
@@ -82,6 +89,7 @@ class QSO(models.Model):
                 continue
 
             values = {
+                "qrzcom_updated": True,
                 "locator": self._parse_value(qrzcom_values, "grid"),
                 "latitude": self._parse_value(qrzcom_values, "lat", float),
                 "longitude": self._parse_value(qrzcom_values, "lon", float)

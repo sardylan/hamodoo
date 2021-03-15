@@ -10,7 +10,7 @@ class AwardQSOCron(models.AbstractModel):
 
         sql_query = "SELECT haq.id " \
                     "FROM ham_award_qso haq " \
-                    "WHERE haq.locator IS NULL " \
+                    "WHERE haq.qrzcom_updated = FALSE " \
                     "ORDER BY haq.id " \
                     "LIMIT %(limit)s"
 

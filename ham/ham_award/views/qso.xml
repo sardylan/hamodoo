@@ -64,6 +64,7 @@
                                     <field name="footprint"/>
                                     <field name="award_id"/>
                                     <field name="upload_id"/>
+                                    <field name="qrzcom_updated"/>
                                 </group>
                             </page>
                             <page name="page_note"
