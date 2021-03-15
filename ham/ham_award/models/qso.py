@@ -4,6 +4,8 @@ import os
 
 from odoo import models, fields, api
 from odoo.addons.ham_utility.libs.qrzcom_client import QRZComClient
+from odoo.exceptions import ValidationError
+from odoo.tools.translate import _
 
 _logger = logging.getLogger(__name__)
 
@@ -59,6 +61,9 @@ class QSO(models.Model):
 
         username = self.env.user.qrzcom_username
         password = self.env.user.qrzcom_password
+
+        if not username or not password:
+            raise ValidationError(_("No QRZ.com credentials"))
 
         qrz_com_client = QRZComClient(
             username=username,

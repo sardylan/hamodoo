@@ -1,6 +1,6 @@
 {
     "name": "HAM Awards",
-    "version": "14.0.2.10.0",
+    "version": "14.0.2.11.0",
     "category": "HAM Radio",
     "summary": "HAM award management",
     "sequence": 0,
@@ -12,6 +12,8 @@
         "ham_utility",
     ],
     "data": [
+        "cron/award_qso.xml",
+
         "security/profiles.xml",
 
         "security/access/qso.xml",

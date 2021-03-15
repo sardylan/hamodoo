@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="1">
+
+        <record id="data_cron_certification_create_multi_item" model="ir.cron">
+            <field name="name"><![CDATA[Updates QSO locators from QRZ.com]]></field>
+            <field name="active" eval="False"/>
+            <field name="state">code</field>
+            <field name="model_id" ref="model_ham_cron_award_qso"/>
+            <field name="code">model.update_locator_from_qrzcom()</field>
+            <field name="interval_number">2</field>
+            <field name="interval_type">minute</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

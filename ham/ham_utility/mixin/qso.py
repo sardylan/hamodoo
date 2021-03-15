@@ -23,6 +23,7 @@ class QSO(models.AbstractModel):
         string="Date & Time Start",
         help="Date and Time of start",
         required=True,
+        index=True,
         tracking=True
     )
 
@@ -37,12 +38,14 @@ class QSO(models.AbstractModel):
         string="Local Callsign",
         help="Callsign used for QSO",
         required=True,
+        index=True,
         tracking=True
     )
 
     local_locator = fields.Char(
         string="Local Locator",
         help="Local Maidenhead Locator",
+        index=True,
         tracking=True
     )
 
@@ -50,6 +53,7 @@ class QSO(models.AbstractModel):
         string="Local Latitude",
         help="Local Station Latitude",
         digits=(8, 6),
+        index=True,
         tracking=True
     )
 
@@ -57,6 +61,7 @@ class QSO(models.AbstractModel):
         string="Local Longitude",
         help="Local Station Longitude",
         digits=(9, 6),
+        index=True,
         tracking=True
     )
 
@@ -64,6 +69,7 @@ class QSO(models.AbstractModel):
         string="Callsign",
         help="Callsign of remote station",
         required=True,
+        index=True,
         tracking=True
     )
 
@@ -96,6 +102,7 @@ class QSO(models.AbstractModel):
         help="Modulation",
         comodel_name="ham.modulation",
         required=True,
+        index=True,
         tracking=True
     )
 
@@ -122,6 +129,7 @@ class QSO(models.AbstractModel):
     locator = fields.Char(
         string="Locator",
         help="Maidenhead Locator",
+        index=True,
         tracking=True
     )
 
@@ -129,6 +137,7 @@ class QSO(models.AbstractModel):
         string="Latitude",
         help="Station Latitude",
         digits=(8, 6),
+        index=True,
         tracking=True
     )
 
@@ -136,6 +145,7 @@ class QSO(models.AbstractModel):
         string="Longitude",
         help="Station Longitude",
         digits=(9, 6),
+        index=True,
         tracking=True
     )
 
@@ -144,6 +154,7 @@ class QSO(models.AbstractModel):
         help="QSO Footprint",
         readonly=True,
         compute="compute_footprint",
+        index=True,
         store=True
     )
 
@@ -153,6 +164,7 @@ class QSO(models.AbstractModel):
         comodel_name="ham.country",
         readonly=True,
         compute="_compute_country_id",
+        index=True,
         store=True
     )
 
@@ -162,6 +174,7 @@ class QSO(models.AbstractModel):
         comodel_name="ham.band",
         readonly=True,
         compute="_compute_band_id",
+        index=True,
         store=True
     )
 
