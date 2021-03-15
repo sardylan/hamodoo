@@ -19,7 +19,7 @@ class AwardQSOCron(models.AbstractModel):
         }
 
         self.env.cr.execute(sql_query, sql_params)
-        qso_ids = self.env.cr.fetchall()[0][0]
+        qso_ids = self.env.cr.fetchall()[0]
 
         qsos = qso_obj.browse(qso_ids)
         qsos.action_update_from_qrzcom()
