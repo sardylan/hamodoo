@@ -36,6 +36,8 @@
         "wizard/award_generate_adif.xml",
         "wizard/upload_reject.xml",
 
+        "templates/assets.xml",
+
         "templates/portal/my_home.xml",
         "templates/portal/breadcrumbs.xml",
 

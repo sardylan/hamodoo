@@ -1,0 +1,7 @@
+div#qso-map {
+    height: 200px;
+}
+
+img.award-country-flag {
+    max-height: 20px;
+}

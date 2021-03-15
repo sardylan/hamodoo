@@ -7,8 +7,6 @@ _logger = logging.getLogger(__name__)
 
 QSO_PAGE_SIZE = 10
 
-MOST_CONTACTED_COUNTRIES = 10
-
 
 class AwardPublicController(http.Controller):
 
@@ -38,11 +36,13 @@ class AwardPublicController(http.Controller):
         type="http",
         auth="public",
         methods=["GET"],
-        csrf=True,
+        csrf=False,
+        cors="*",
         website=True
     )
     def single(self, award_id: int = 0):
         award_obj = request.env["ham.award"].sudo()
+        award_qso_obj = request.env["ham.award.qso"].sudo()
         country_obj = request.env["ham.country"].sudo()
         modulation_obj = request.env["ham.modulation"].sudo()
 
@@ -95,6 +95,20 @@ class AwardPublicController(http.Controller):
             elif modulation_id in digi_modulation_ids:
                 modulations["DIGI"] += count
 
+        longest_qso = award_qso_obj.search([
+            ("award_id", "=", award_id),
+            ("distance", "!=", 0)
+        ], order="distance DESC", limit=1)
+
+        longest_qso = {
+            "distance": longest_qso.distance and int(longest_qso.distance) or 0,
+            "country": longest_qso.country_id.name,
+            "callsign": longest_qso.callsign,
+            "mode": longest_qso.modulation_id.name,
+            "band": longest_qso.band_id.name,
+            "operator": longest_qso.operator_id and longest_qso.operator_id.name_get()[0][1] or "",
+        }
+
         sql_query = "SELECT haq.country_id, " \
                     "   count(haq.id) " \
                     "FROM ham_award_qso haq " \
@@ -102,36 +116,31 @@ class AwardPublicController(http.Controller):
                     "GROUP BY haq.country_id"
         request.env.cr.execute(sql_query, sql_params)
         sql_result = request.env.cr.fetchall()
-        country_count_full = dict(sorted({
-                                             x[0]: x[1]
-                                             for x in sql_result
-                                         }.items(),
-                                         key=lambda x: x[1],
-                                         reverse=True
-                                         ))
-        country_ids = list(country_count_full.keys())
 
-        most_contacted_countries = []
+        country_count_full = dict(sorted({x[0]: x[1] for x in sql_result}.items(), key=lambda x: x[1], reverse=True))
 
-        for i in range(0, MOST_CONTACTED_COUNTRIES):
-            country_id = country_ids[i]
+        countries = []
+
+        for country_id, qso_count in country_count_full.items():
             country = country_obj.browse(country_id)
-            qso_count = country_count_full[country.id]
 
-            most_contacted_countries.append({
+            countries.append({
+                "flag_url": country.flag_url,
                 "country_name": country.name,
                 "qso_count": qso_count
             })
+
+        award_country_count = len(countries)
 
         values = {
             "error": {},
             "error_message": [],
             "award": award,
             "award_qso_count": award_qso_count,
-            "award_country_count": len(country_ids),
+            "award_country_count": award_country_count,
             "modulations": modulations,
-            "most_contacted_countries_count": MOST_CONTACTED_COUNTRIES,
-            "most_contacted_countries": most_contacted_countries
+            "longest_qso": longest_qso,
+            "countries": countries
         }
 
         return request.render("ham_award.template_public_award_single", values)

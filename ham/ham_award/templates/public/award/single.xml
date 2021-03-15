@@ -27,38 +27,49 @@
                         </div>
                         <div class="m-3"/>
                         <div class="container">
-                            <h3>Stats</h3>
                             <div class="row">
                                 <div class="col-12 col-md-6 col-lg-4">
+                                    <h4>Numbers</h4>
                                     <ul>
                                         <li><strong>Total QSOs: </strong><t t-esc="award_qso_count"/></li>
                                         <li><strong>Total Countries: </strong><t t-esc="award_country_count"/></li>
                                     </ul>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-4">
                                     <ul>
                                         <li><strong>CW: </strong><t t-esc="modulations['CW']"/></li>
                                         <li><strong>PHONE: </strong><t t-esc="modulations['PHONE']"/></li>
                                         <li><strong>DIGI: </strong><t t-esc="modulations['DIGI']"/></li>
                                     </ul>
                                 </div>
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <h4>Longest QSO</h4>
+                                    <ul>
+                                        <li><strong>Distance:</strong> <t t-esc="longest_qso['distance']"/> km</li>
+                                        <li><strong>Country:</strong> <t t-esc="longest_qso['country']"/></li>
+                                        <li><strong>Callsign:</strong> <t t-esc="longest_qso['callsign']"/></li>
+                                        <li><strong>Mode:</strong> <t t-esc="longest_qso['mode']"/></li>
+                                        <li><strong>Band:</strong> <t t-esc="longest_qso['band']"/></li>
+                                        <li><strong>Operator:</strong> <t t-esc="longest_qso['operator']"/></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="m-3"/>
                         <div class="container">
-                            <h3 class="text-center text-md-left">
-                                <t t-esc="most_contacted_countries_count"/> most contacted countries
-                            </h3>
-                            <table class="table table-striped">
+                            <h3 class="text-center text-md-left">Countries</h3>
+                            <table class="table table-striped" id="table-countries">
                                 <thead>
                                     <tr>
+                                        <th>Flag</th>
                                         <th>Country</th>
                                         <th>QSO</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <t t-foreach="most_contacted_countries" t-as="country">
+                                    <t t-foreach="countries" t-as="country">
                                         <tr>
+                                            <td><img class="award-country-flag"
+                                                     t-att-alt="country['country_name']"
+                                                     t-att-src="country['flag_url']"/></td>
                                             <td><t t-esc="country['country_name']"/></td>
                                             <td><t t-esc="country['qso_count']"/></td>
                                         </tr>

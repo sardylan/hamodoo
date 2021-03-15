@@ -19,9 +19,17 @@ class Country(models.Model):
         tracking=True
     )
 
-    image_url = fields.Char(
-        related="res_country_id.image_url",
-        readonly=True
+    flag_image = fields.Binary(
+        string="Flag image",
+        help="Flag image",
+        attachment=True
+    )
+
+    flag_url = fields.Char(
+        string="Flag URL",
+        help="Flag URL",
+        readonly=True,
+        compute="_compute_flag_url"
     )
 
     prefix_ids = fields.One2many(
@@ -34,16 +42,23 @@ class Country(models.Model):
     cq_zone_ids = fields.Many2many(
         string="CQ Zones",
         comodel_name="ham.zone.cq",
-        required=True,
+        required=False,
         tracking=True
     )
 
     itu_zone_ids = fields.Many2many(
         string="ITU Zones",
         comodel_name="ham.zone.itu",
-        required=True,
+        required=False,
         tracking=True
     )
+
+    def _compute_flag_url(self):
+        for rec in self:
+            if rec.flag_image:
+                rec.flag_url = f"/web/content/{rec._name}/{rec.id}/flag_image"
+            else:
+                rec.flag_url = rec.res_country_id.image_url
 
 
 class CountryPrefix(models.Model):

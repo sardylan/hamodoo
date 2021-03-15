@@ -38,7 +38,7 @@
                                         <a t-att-href="'/ham_award/public/award/%d' % award.id">
                                             <input class="btn btn-primary"
                                                    type="button"
-                                                   value="Show QSO"/>
+                                                   value="Infos"/>
                                         </a>
                                     </div>
                                 </div>
