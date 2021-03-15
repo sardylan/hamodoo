@@ -3,6 +3,7 @@ from odoo import models, api
 
 class AwardQSOCron(models.AbstractModel):
     _name = "ham.cron.award.qso"
+    _description = "Updates Award QSO locator from QRZ.com"
 
     @api.model
     def update_locator_from_qrzcom(self):
@@ -22,4 +23,7 @@ class AwardQSOCron(models.AbstractModel):
         qso_ids = [x[0] for x in self.env.cr.fetchall()]
 
         qsos = qso_obj.browse(qso_ids)
+
         qsos.action_update_from_qrzcom()
+
+        qsos.qrzcom_updated = True

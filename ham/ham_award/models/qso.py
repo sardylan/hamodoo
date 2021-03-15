@@ -83,26 +83,22 @@ class QSO(models.Model):
         for rec in self:
             _logger.info(f"Updating data for {rec}")
 
-            values = {
-                "qrzcom_updated": True,
-            }
-
             try:
                 qrzcom_values = qrz_com_client.search(rec.callsign)
-
-                values = {
-                    "locator": self._parse_value(qrzcom_values, "grid"),
-                    "latitude": self._parse_value(qrzcom_values, "lat", float),
-                    "longitude": self._parse_value(qrzcom_values, "lon", float)
-                }
-
-                if values["locator"] and (values["latitude"] is False or values["longitude"] is False):
-                    values["latitude"], values["longitude"] = locator_utility.locator_to_latlng
             except ValueError:
                 _logger.warning(f"{rec.callsign} not found")
+                continue
+
+            values = {
+                "locator": self._parse_value(qrzcom_values, "grid"),
+                "latitude": self._parse_value(qrzcom_values, "lat", float),
+                "longitude": self._parse_value(qrzcom_values, "lon", float)
+            }
+
+            if values["locator"] and (values["latitude"] is False or values["longitude"] is False):
+                values["latitude"], values["longitude"] = locator_utility.locator_to_latlng
 
             rec.write(values)
-            self._cr.commit()
 
     @api.model
     def compute_adif_filename(self, dt: datetime.datetime, qsos) -> str:
