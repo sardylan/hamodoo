@@ -83,20 +83,23 @@ class QSO(models.Model):
         for rec in self:
             _logger.info(f"Updating data for {rec}")
 
-            try:
-                qrzcom_values = qrz_com_client.search(rec.callsign)
-            except ValueError:
-                continue
-
             values = {
                 "qrzcom_updated": True,
-                "locator": self._parse_value(qrzcom_values, "grid"),
-                "latitude": self._parse_value(qrzcom_values, "lat", float),
-                "longitude": self._parse_value(qrzcom_values, "lon", float)
             }
 
-            if values["locator"] and (values["latitude"] is False or values["longitude"] is False):
-                values["latitude"], values["longitude"] = locator_utility.locator_to_latlng
+            try:
+                qrzcom_values = qrz_com_client.search(rec.callsign)
+
+                values = {
+                    "locator": self._parse_value(qrzcom_values, "grid"),
+                    "latitude": self._parse_value(qrzcom_values, "lat", float),
+                    "longitude": self._parse_value(qrzcom_values, "lon", float)
+                }
+
+                if values["locator"] and (values["latitude"] is False or values["longitude"] is False):
+                    values["latitude"], values["longitude"] = locator_utility.locator_to_latlng
+            except ValueError:
+                _logger.warning(f"{rec.callsign} not found")
 
             rec.write(values)
             self._cr.commit()
