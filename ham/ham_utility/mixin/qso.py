@@ -310,12 +310,14 @@ class QSO(models.AbstractModel):
             if "frequency" in vals:
                 vals["rx_frequency"] = vals["frequency"]
 
-        if "modulation_id" in vals:
+        if not in_write:
+            if "modulation_id" not in vals:
+                raise ValidationError(_("No Modulation in QSO"))
+
             modulation = modulation_obj.browse(vals["modulation_id"])
             if not modulation:
                 raise ValidationError(_("Modulation not found when creating QSO"))
 
-        if not in_write:
             if "tx_rst" not in vals or not vals["tx_rst"].strip():
                 vals["tx_rst"] = modulation.default_rst
             if "rx_rst" not in vals or not vals["rx_rst"].strip():

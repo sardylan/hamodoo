@@ -25,7 +25,7 @@ class Upload(models.Model):
     ts = fields.Datetime(
         string="Date & Time of upload",
         required=True,
-        default=lambda self: self._default_ts(),
+        default=lambda self: fields.Datetime.now(),
         tracking=True
     )
 
@@ -126,9 +126,6 @@ class Upload(models.Model):
                 rec.operator_id.name,
                 rec.ts.strftime("%Y-%m-%d %H:%M:%S")
             )
-
-    def _default_ts(self):
-        return fields.Datetime.now()
 
     def action_parse(self):
         for rec in self:
