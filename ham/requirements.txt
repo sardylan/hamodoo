@@ -1,3 +1,3 @@
-openpyxl==3.0.5
-python-magic==0.4.18
-geopy==2.1.0
+openpyxl==3.0.9
+python-magic==0.4.24
+geopy==2.2.0
