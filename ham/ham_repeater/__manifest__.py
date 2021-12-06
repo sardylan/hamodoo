@@ -1,6 +1,6 @@
 {
     "name": "HAM Repeaters",
-    "version": "14.0.0.0.0",
+    "version": "15.0.0.0.0",
     "category": "HAM Radio",
     "summary": "HAM utilities and models",
     "sequence": 0,

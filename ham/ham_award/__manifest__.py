@@ -1,6 +1,6 @@
 {
     "name": "HAM Awards",
-    "version": "14.0.2.12.0",
+    "version": "15.0.2.12.0",
     "category": "HAM Radio",
     "summary": "HAM award management",
     "sequence": 0,
