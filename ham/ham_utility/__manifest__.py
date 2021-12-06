@@ -1,6 +1,6 @@
 {
     "name": "HAM Utility",
-    "version": "14.0.2.11.0",
+    "version": "14.0.2.12.0",
     "category": "HAM Radio",
     "summary": "HAM utilities and models",
     "sequence": 0,
