@@ -5,6 +5,7 @@
     "summary": "HAM utilities and models",
     "sequence": 0,
     "author": "Luca Cireddu",
+    "license": "GPL-3",
     "depends": [
         "base",
         "mail",
@@ -45,7 +46,7 @@
 
         "views/inherit_res_users.xml",
 
-        "wizard/import_prefix.xml",
+        "wizards/import_prefix.xml",
 
         "menu/action.xml",
         "menu/items.xml",

@@ -5,6 +5,7 @@
     "summary": "HAM utilities and models",
     "sequence": 0,
     "author": "Luca Cireddu",
+    "license": "GPL-3",
     "depends": [
         "base",
         "mail",

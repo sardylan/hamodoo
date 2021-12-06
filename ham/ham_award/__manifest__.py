@@ -5,6 +5,7 @@
     "summary": "HAM award management",
     "sequence": 0,
     "author": "Luca Cireddu",
+    "license": "GPL-3",
     "depends": [
         "website",
         "portal",
@@ -36,8 +37,6 @@
         "wizard/award_generate_adif.xml",
         "wizard/upload_reject.xml",
 
-        "templates/assets.xml",
-
         "templates/portal/my_home.xml",
         "templates/portal/breadcrumbs.xml",
 
@@ -53,5 +52,10 @@
         "menu/action.xml",
         "menu/items.xml"
     ],
+    "assets": {
+        "web.assets_frontend": [
+            "ham_award/static/src/css/public/award.css"
+        ],
+    },
     "application": True
 }

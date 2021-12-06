@@ -1,5 +1,10 @@
 from odoo import models, fields
 
+SELF_FIELDS_ADD = [
+    "qrzcom_username",
+    "qrzcom_password"
+]
+
 
 class ResUsers(models.Model):
     _inherit = "res.users"
@@ -14,16 +19,13 @@ class ResUsers(models.Model):
         help="QRZ.com Password"
     )
 
-    def __init__(self, pool, cr):
-        super().__init__(pool, cr)
+    @property
+    def SELF_READABLE_FIELDS(self):
+        return super().SELF_READABLE_FIELDS + SELF_FIELDS_ADD
 
-        self_fields_add = [
-            "qrzcom_username",
-            "qrzcom_password"
-        ]
-
-        type(self).SELF_READABLE_FIELDS = type(self).SELF_READABLE_FIELDS + self_fields_add
-        type(self).SELF_WRITEABLE_FIELDS = type(self).SELF_WRITEABLE_FIELDS + self_fields_add
+    @property
+    def SELF_WRITEABLE_FIELDS(self):
+        return super().SELF_WRITEABLE_FIELDS + SELF_FIELDS_ADD
 
     def action_qrzcom_verify_credentials(self):
         qrzcom_utility = self.env["ham.utility.websites.qrzcom"]
