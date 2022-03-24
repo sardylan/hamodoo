@@ -98,3 +98,4 @@ cython_debug/
 /web/
 /website/
 .local
+.odoorc
