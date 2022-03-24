@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo noupdate="0">
+
+    <record model="ir.ui.view" id="view_club_tree">
+        <field name="name">ham.award.naval.club: Tree view</field>
+        <field name="model">ham.award.naval.club</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="tag"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_club_form">
+        <field name="name">view.club.form</field>
+        <field name="model">ham.award.naval.club</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <h2>
+                        <field name="tag"/>
+                    </h2>
+                </sheet>
+                <div class="oe_chatter"/>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_club_search">
+        <field name="name">view.club.search</field>
+        <field name="model">ham.award.naval.club</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="tag"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

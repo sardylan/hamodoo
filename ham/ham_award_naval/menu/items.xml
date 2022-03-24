@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo noupdate="0">
+
+    <menuitem id="menu_specials_naval"
+              name="Naval"
+              parent="ham_award.menu_specials"
+              sequence="0"/>
+
+    <menuitem id="menu_specials_naval_clubs"
+              name="Clubs"
+              parent="menu_specials_naval"
+              action="action_specials_naval_club_list"
+              sequence="0"/>
+
+</odoo>

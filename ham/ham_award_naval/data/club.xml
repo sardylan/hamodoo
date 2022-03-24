@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo noupdate="1">
+
+    <record model="ham.award.naval.club" id="data_ham_award_naval_club_ca">
+        <field name="name">Marine Funk Club Austria</field>
+        <field name="short_name">MFCA</field>
+        <field name="tag">CA</field>
+    </record>
+
+    <record model="ham.award.naval.club" id="data_ham_award_naval_club_fn">
+        <field name="name">Finish Naval Amateur Radio Society</field>
+        <field name="short_name">FNARS</field>
+        <field name="tag">FN</field>
+    </record>
+
+    <record model="ham.award.naval.club" id="data_ham_award_naval_club_gr">
+        <field name="name">Hellenic Naval Amateur Radio Club</field>
+        <field name="short_name">HNARC</field>
+        <field name="tag">GR</field>
+    </record>
+
+    <record model="ham.award.naval.club" id="data_ham_award_naval_club_in">
+        <field name="name">Italian "Navy Old Rhythmers Club"</field>
+        <field name="short_name">INORC</field>
+        <field name="tag">IN</field>
+    </record>
+
+    <record model="ham.award.naval.club" id="data_ham_award_naval_club_ma">
+        <field name="name">Marine Amateur Radio Club Netherlands</field>
+        <field name="short_name">MARAC</field>
+        <field name="tag">MA</field>
+    </record>
+
+    <record model="ham.award.naval.club" id="data_ham_award_naval_club_mf">
+        <field name="name">Marinefunker-Runde e.V.</field>
+        <field name="short_name">MF</field>
+        <field name="tag">MF</field>
+    </record>
+
+    <record model="ham.award.naval.club" id="data_ham_award_naval_club_mi">
+        <field name="name">Associazione Radioamatori Marinai Italiani</field>
+        <field name="short_name">ARMI</field>
+        <field name="tag">MI</field>
+    </record>
+
+    <record model="ham.award.naval.club" id="data_ham_award_naval_club_pn">
+        <field name="name">Portuguese Navy Amateur Radio Club</field>
+        <field name="short_name">ARMI</field>
+        <field name="tag">PN</field>
+    </record>
+
+    <record model="ham.award.naval.club" id="data_ham_award_naval_club_rn">
+        <field name="name">Royal Naval Amateur Radio Society</field>
+        <field name="short_name">NRA</field>
+        <field name="tag">RN</field>
+    </record>
+
+    <record model="ham.award.naval.club" id="data_ham_award_naval_club_yo">
+        <field name="name">Romanian Marine Amateur Radio Club</field>
+        <field name="short_name">YO-MARC</field>
+        <field name="tag">YO</field>
+    </record>
+
+</odoo>

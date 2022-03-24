@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo noupdate="0">
+
+    <record model="ir.actions.act_window" id="action_specials_naval_club_list">
+        <field name="name">Naval clubs</field>
+        <field name="res_model">ham.award.naval.club</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="limit">20</field>
+    </record>
+
+</odoo>
