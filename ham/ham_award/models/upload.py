@@ -157,6 +157,8 @@ class Upload(models.Model):
     def parse_adif(self, upload):
         qso_obj = self.env["ham.award.qso"]
         modulation_obj = self.env["ham.modulation"]
+        award_callsign_obj = self.env["ham.award.callsign"]
+        band_obj = self.env["ham.band"]
 
         adif_utility = self.env["ham.utility.adif"]
         qso_utility = self.env["ham.utility.qso"]
@@ -218,10 +220,17 @@ class Upload(models.Model):
                 if not local_callsign:
                     raise ValidationError(_("Callsign not enabled in award"))
 
-            award_callsign_obj = self.env["ham.award.callsign"]
             award_callsign = award_callsign_obj.search([("callsign", "=", local_callsign)])
 
             callsign = qso["CALL"]
+
+            if "FREQ" not in qso and "BAND" not in qso:
+                raise ValidationError(_("QSO has no BAND and NO FREQ!"))
+
+            if "FREQ" not in qso:
+                band = band_obj.search([("name", "=", qso["BAND"])])
+                qso["FREQ"] = band.start
+
             frequency = qso["FREQ"]
 
             footprint = qso_obj.footprint_value(ts_start, local_callsign, callsign, modulation, frequency)
