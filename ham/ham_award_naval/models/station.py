@@ -3,11 +3,11 @@ from odoo.tools.translate import _
 
 
 class NavalStation(models.Model):
-    _name = "ham.award.station.naval"
+    _name = "ham.award.naval.station"
     _description = "Naval station"
 
     _sql_constraints = [
-        ("callsign_club_id_uniq", "UNIQUE(callsign, club_id)", _("A combination of Callsign and Club already exists."))
+        # ("callsign_club_id_uniq", "UNIQUE(callsign, club_id)", _("A combination of Callsign and Club already exists."))
     ]
 
     callsign = fields.Char(
@@ -19,11 +19,11 @@ class NavalStation(models.Model):
     club_id = fields.Many2one(
         string="Club",
         help="Naval Club",
-        comodel_name="ham.award.naval.club"
+        comodel_name="ham.award.naval.club",
+        required=True
     )
 
     reference = fields.Char(
         string="Reference",
-        help="Naval Club reference",
-        required=True
+        help="Naval Club reference"
     )

@@ -10,4 +10,12 @@
         <field name="limit">20</field>
     </record>
 
+    <record model="ir.actions.act_window" id="action_specials_naval_station_list">
+        <field name="name">Naval stations</field>
+        <field name="res_model">ham.award.naval.station</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="limit">20</field>
+    </record>
+
 </odoo>

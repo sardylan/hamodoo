@@ -11,8 +11,10 @@
     ],
     "data": [
         "security/access/club.xml",
+        "security/access/station.xml",
 
         "views/club.xml",
+        "views/station.xml",
 
         "menu/actions.xml",
         "menu/items.xml",

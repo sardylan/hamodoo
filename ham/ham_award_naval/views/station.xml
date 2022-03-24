@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo noupdate="0">
+
+    <record model="ir.ui.view" id="view_station_tree">
+        <field name="name">ham.award.naval.station: Tree view</field>
+        <field name="model">ham.award.naval.station</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="callsign"/>
+                <field name="club_id"/>
+                <field name="reference"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_station_form">
+        <field name="name">view.station.form</field>
+        <field name="model">ham.award.naval.station</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>
+                        <label for="callsign" class="oe_edit_only"/>
+                        <field name="callsign"/>
+                    </h1>
+                    <h2>
+                        <label for="club_id" class="oe_edit_only"/>
+                        <field name="club_id"/>
+                    </h2>
+                    <group>
+                        <field name="reference"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter"/>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_station_search">
+        <field name="name">view.station.search</field>
+        <field name="model">ham.award.naval.station</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="callsign"/>
+                <field name="club_id"/>
+                <field name="reference"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

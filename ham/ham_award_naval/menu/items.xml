@@ -13,4 +13,10 @@
               action="action_specials_naval_club_list"
               sequence="0"/>
 
+    <menuitem id="menu_specials_naval_stations"
+              name="Stations"
+              parent="menu_specials_naval"
+              action="action_specials_naval_station_list"
+              sequence="1"/>
+
 </odoo>
