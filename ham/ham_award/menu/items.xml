@@ -70,16 +70,10 @@
                   action="action_upload_list"
                   sequence="0"/>
 
-<!--        <menuitem id="menu_specialcall"-->
-<!--                  name="Special callsigns"-->
-<!--                  parent="menu_root"-->
-<!--                  sequence="4"/>-->
-
-<!--        <menuitem id="menu_specialcall_list"-->
-<!--                  name="List"-->
-<!--                  parent="menu_specialcall"-->
-<!--                  action="action_specialcall_list"-->
-<!--                  sequence="0"/>-->
+        <menuitem id="menu_specials"
+                  name="Specials"
+                  parent="menu_root"
+                  sequence="4"/>
 
     </data>
 </odoo>
