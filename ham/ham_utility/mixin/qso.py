@@ -106,6 +106,11 @@ class QSO(models.AbstractModel):
         tracking=True
     )
 
+    count_as = fields.Selection(
+        related="modulation_id.count_as",
+        store=True
+    )
+
     tx_rst = fields.Char(
         string="RST TX",
         help="RST sent",
@@ -192,6 +197,14 @@ class QSO(models.AbstractModel):
         tracking=True
     )
 
+    short_callsign = fields.Char(
+        string="Short callsign",
+        help="Short callsign",
+        compute="_compute_short_callsign",
+        store=True,
+        readonly=True
+    )
+
     @api.model_create_multi
     def create(self, vals):
         if isinstance(vals, dict):
@@ -263,6 +276,15 @@ class QSO(models.AbstractModel):
                 dst_latitude=rec.latitude,
                 dst_longitude=rec.longitude,
             )
+
+    @api.depends("callsign")
+    def _compute_short_callsign(self):
+        for rec in self:
+            items = rec.callsign.upper().split("/")
+            if len(items) == 1:
+                rec.short_callsign = items[0]
+            elif len(items) > 2:
+                rec.short_callsign = max(items, key=len)
 
     def action_export_adif(self):
         ir_attachment_obj = self.env["ir.attachment"]

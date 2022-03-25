@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo noupdate="0">
+
+    <record model="ir.ui.view" id="view_ham_award_qso_tree">
+        <field name="name">ham.award.qso: Tree view Naval extension</field>
+        <field name="inherit_id" ref="ham_award.view_qso_tree"/>
+        <field name="model">ham.award.qso</field>
+        <field name="arch" type="xml">
+            <field name="operator_id" position="after">
+                <field name="naval_station_id"/>
+                <field name="points"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_ham_award_qso_form">
+        <field name="name">ham.award.qso: Form view Naval extension</field>
+        <field name="inherit_id" ref="ham_award.view_qso_form"/>
+        <field name="model">ham.award.qso</field>
+        <field name="arch" type="xml">
+            <page name="page_note" position="after">
+                <page name="page_naval"
+                      string="Naval references">
+                    <group col="4" string="Remote">
+                        <field name="naval_station_id"/>
+                        <newline/>
+                        <field name="naval_reference"/>
+                        <field name="coastal_radio_station_points"/>
+                    </group>
+                </page>
+            </page>
+            <group name="group_others_other" position="after">
+                <group>
+                    <field name="points"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+</odoo>

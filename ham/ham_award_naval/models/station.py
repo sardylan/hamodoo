@@ -1,5 +1,4 @@
 from odoo import models, fields
-from odoo.tools.translate import _
 
 
 class NavalStation(models.Model):
@@ -23,7 +22,28 @@ class NavalStation(models.Model):
         required=True
     )
 
-    reference = fields.Char(
-        string="Reference",
+    reference_number = fields.Char(
+        string="Reference number",
         help="Naval Club reference"
     )
+
+    reference = fields.Char(
+        string="Reference",
+        help="Reference with club tag",
+        compute="_compute_reference",
+        readonly=True,
+        store=True
+    )
+
+    coastal_radio_station_points = fields.Integer(
+        string="Coastal Radio Station Points",
+        help="Station points for the Italian Navy Coastal Radio Station Award",
+        default="15"
+    )
+
+    def name_get(self):
+        return [(rec.id, f"{rec.callsign} - {rec.reference}") for rec in self]
+
+    def _compute_reference(self):
+        for rec in self:
+            rec.reference = f"{rec.club_id.tag}{rec.reference_number}"

@@ -15,6 +15,7 @@
 
         "views/club.xml",
         "views/station.xml",
+        "views/inherit_award_qso.xml",
 
         "menu/actions.xml",
         "menu/items.xml",

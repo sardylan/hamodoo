@@ -60,11 +60,15 @@
                         <notebook>
                             <page name="page_others"
                                   string="Others">
-                                <group string="Others">
+                                <group string="Info" col="4">
                                     <field name="footprint"/>
                                     <field name="award_id"/>
                                     <field name="upload_id"/>
                                     <field name="qrzcom_updated"/>
+                                </group>
+                                <group name="group_others_other"
+                                       string="Other"
+                                       col="4">
                                 </group>
                             </page>
                             <page name="page_note"

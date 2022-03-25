@@ -10,6 +10,7 @@
                 <field name="callsign"/>
                 <field name="club_id"/>
                 <field name="reference"/>
+                <field name="coastal_radio_station_points"/>
             </tree>
         </field>
     </record>
@@ -29,7 +30,8 @@
                         <field name="club_id"/>
                     </h2>
                     <group>
-                        <field name="reference"/>
+                        <field name="reference_number"/>
+                        <field name="coastal_radio_station_points"/>
                     </group>
                 </sheet>
                 <div class="oe_chatter"/>
@@ -45,6 +47,7 @@
                 <field name="callsign"/>
                 <field name="club_id"/>
                 <field name="reference"/>
+                <field name="coastal_radio_station_points"/>
             </search>
         </field>
     </record>
