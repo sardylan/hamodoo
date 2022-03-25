@@ -20,6 +20,12 @@
                   action="action_award_list"
                   sequence="0"/>
 
+        <menuitem id="menu_award_rules"
+                  name="Rules"
+                  parent="menu_award"
+                  action="action_rules_list"
+                  sequence="1"/>
+
         <menuitem id="menu_operator"
                   name="Operators"
                   parent="menu_root"

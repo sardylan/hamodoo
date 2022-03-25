@@ -21,6 +21,7 @@
         "security/access/operator.xml",
         "security/access/award.xml",
         "security/access/upload.xml",
+        "security/access/rules.xml",
 
         "security/wizard/award_publish.xml",
         "security/wizard/award_generate_adif.xml",
@@ -32,6 +33,7 @@
         "views/operator.xml",
         "views/award.xml",
         "views/upload.xml",
+        "views/rules.xml",
 
         "wizard/award_publish.xml",
         "wizard/award_generate_adif.xml",

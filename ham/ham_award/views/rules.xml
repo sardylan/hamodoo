@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo noupdate="0">
+
+    <record model="ir.ui.view" id="view_rules_tree">
+        <field name="name">ham.award.rules: Tree view</field>
+        <field name="model">ham.award.rules</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="tag"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_rules_form">
+        <field name="name">ham.award.rules: Form view</field>
+        <field name="model">ham.award.rules</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <label for="name" class="oe_edit_only"/>
+                    <h1>
+                        <field name="name" class="w-50"/>
+                    </h1>
+                    <label for="tag" class="oe_edit_only"/>
+                    <h2>
+                        <field name="tag" class="w-50"/>
+                    </h2>
+                </sheet>
+                <div class="oe_chatter"/>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_rules_search">
+        <field name="name">ham.award.rules: Search view</field>
+        <field name="model">ham.award.rules</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="tag"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>
