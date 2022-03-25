@@ -9,6 +9,8 @@
     "depends": [
         "base",
         "mail",
+        "web_responsive",
+        "web_refresher",
         "widget_datetime_tz"
     ],
     "data": [
