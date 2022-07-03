@@ -12,6 +12,25 @@
                 <div class="card">
                     <div class="card-header">Uploads</div>
                     <div class="card-body">
+                        <t t-if="award">
+                            <h1 class="text-center"><t t-esc="award.name"/></h1>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <h2 class="text-monospace text-center text-md-left">
+                                        <t t-foreach="award.callsigns" t-as="callsign">
+                                            <t t-esc="callsign.callsign"/>
+                                        </t>
+                                    </h2>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="row text-center text-md-right">
+                                        <div class="col-12"><em>From:</em> <t t-esc="award.ts_start"/></div>
+                                        <div class="col-12"><em>To:</em> <t t-esc="award.ts_end"/></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-3"/>
+                        </t>
                         <t t-if="uploads">
                             <table class="w-100 table table-sm table-striped">
                                 <thead>
@@ -124,6 +143,14 @@
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <hr/>
+                            <div>
+                                ADIF upload will be available
+                                from <t t-esc="award.ts_upload_start_real"/>
+                                to <t t-esc="award.ts_upload_end_real"/>
                             </div>
                         </t>
                     </div>

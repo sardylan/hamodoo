@@ -66,6 +66,20 @@ class Award(models.Model):
         tracking=True
     )
 
+    ts_upload_start_real = fields.Datetime(
+        string="Real Upload Start",
+        help="Start Date and Time of the interval in which ADIF uploading is permitted",
+        compute="_compute_ts_upload_real",
+        readonly=True
+    )
+
+    ts_upload_end_real = fields.Datetime(
+        string="Real Upload End",
+        help="End Date and Time of the interval in which ADIF uploading is permitted",
+        compute="_compute_ts_upload_real",
+        readonly=True
+    )
+
     operator_ids = fields.Many2many(
         string="Operators",
         help="Enabled operators",
@@ -166,6 +180,12 @@ class Award(models.Model):
             else:
                 rec.state = "closed"
 
+    @api.depends("ts_start", "ts_end", "ts_upload_start", "ts_upload_end")
+    def _compute_ts_upload_real(self):
+        for rec in self:
+            rec.ts_upload_start_real = rec.ts_upload_start or rec.ts_start
+            rec.ts_upload_end_real = rec.ts_upload_end or rec.ts_end
+
     @api.depends("uploads")
     def _compute_points(self):
         for rec in self:
@@ -251,17 +271,8 @@ class Award(models.Model):
 
     def is_upload_permitted(self) -> bool:
         self.ensure_one()
-
-        upload_interval_start = self.ts_start
-        upload_interval_end = self.ts_end
-
-        if self.ts_upload_start:
-            upload_interval_start = self.ts_upload_start
-        if self.ts_upload_end:
-            upload_interval_end = self.ts_upload_end
-
         now = datetime.datetime.utcnow()
-        return bool(upload_interval_start <= now <= upload_interval_end)
+        return bool(self.ts_upload_start_real <= now <= self.ts_upload_end_real)
 
     @api.model
     def produce_adif(self, award):
