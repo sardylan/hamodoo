@@ -1,171 +1,150 @@
-FROM python:3.8-alpine3.14 AS base
-RUN apk add --no-cache --upgrade \
-    libpng \
-    tiff \
-    libffi \
-    libpq \
-    fontconfig \
-    freetype \
-    giflib \
-    jpeg libjpeg-turbo \
-    zlib \
-    lcms2 \
-    libwebp \
-    tcl \
-    libimagequant \
-    fribidi \
-    harfbuzz \
-    openjpeg \
-    openssl \
-    libevent \
-    libxml2 \
-    libldap \
-    libusb \
-    libxslt \
-    libsasl \
-    expat \
-    mpdecimal \
-    readline \
-    ncurses \
-    libmagic
+FROM python:3.10-bullseye AS base
+ENV DEBIAN_FRONTENT=noninteractive
+RUN apt update \
+    && apt -y dist-upgrade \
+    && apt -y install \
+      patch \
+      libpng16-16 \
+      libtiff5 \
+      libffi7 \
+      libpq5 \
+      libfontconfig1 \
+      libfreetype6 \
+      libgif7 \
+      libjpeg62-turbo \
+      zlib1g \
+      liblcms2-2 \
+      libwebp6 \
+      libtcl8.6 \
+      libimagequant0 \
+      libfribidi0 \
+      libharfbuzz0b \
+      libopenjp2-7 \
+      libssl1.1 \
+      libevent-2.1-7 \
+      libxml2  \
+      libldap-2.4-2 \
+      libusb-0.1-4 libusb-1.0-0 \
+      libxslt1.1 \
+      libsasl2-2 \
+      libexpat1 \
+      libmpdec3 \
+      libreadline8 \
+      libncurses6 libncursesw6 \
+      libmagic1 \
+    && rm -R /var/lib/apt/*
 
 FROM base AS base-dev
-RUN apk add --no-cache --upgrade \
-    build-base swig rust cargo \
-    libpng-dev \
-    tiff-dev \
-    libffi-dev \
-    postgresql-dev \
-    fontconfig-dev \
-    freetype-dev \
-    giflib-dev \
-    jpeg-dev libjpeg-turbo-dev \
-    zlib-dev \
-    lcms2-dev \
-    libwebp-dev \
-    tcl-dev \
-    libimagequant-dev \
-    fribidi-dev \
-    harfbuzz-dev \
-    openjpeg-dev \
-    openssl-dev \
-    libevent-dev \
-    libxml2-dev \
-    openldap-dev \
-    libusb-dev \
-    libxslt-dev \
-    expat-dev \
-    mpdecimal-dev \
-    readline-dev \
-    ncurses-dev \
-    file-dev
-
-FROM base-dev AS wkhtmltopdf
-RUN apk add --no-cache --upgrade \
-      git \
-      libxv libxv-dev \
-      libxinerama libxinerama-dev \
-      libxcursor libxcursor-dev \
-      libxrandr libxrandr-dev \
-      libxi libxi-dev \
-      alsa-lib alsa-lib-dev \
-      gstreamer gstreamer-dev \
-      gst-plugins-base gst-plugins-base-dev \
-      gst-plugins-good \
-      gst-plugins-ugly \
-      gst-plugins-bad gst-plugins-bad-dev \
-    && git config --global advice.detachedHead false
-RUN git clone --depth=1 --branch=0.12.6 https://github.com/wkhtmltopdf/wkhtmltopdf.git /build/wkhtmltopdf
-RUN ( cd /build/wkhtmltopdf \
-    && git submodule init \
-    && git submodule update --depth=1 )
-RUN ( mkdir /build/qt-build \
-    && cd /build/qt-build \
-    && /build/wkhtmltopdf/qt/configure \
-      -prefix /build/qt-patched \
-      -nomake demos \
-      -nomake examples \
-      -confirm-license \
-      -release \
-      -opensource \
-      -static \
-      -largefile \
-      -svg \
-      -webkit \
-      -javascript-jit \
-      -qt-zlib \
-      -qt-libtiff \
-      -qt-libpng \
-      -qt-libmng \
-      -qt-libjpeg \
-      -fontconfig )
+ENV DEBIAN_FRONTENT=noninteractive
+RUN apt update \
+    && apt -y dist-upgrade \
+    && apt -y install \
+      build-essential automake autoconf libtool pkg-config cmake swig rustc cargo \
+      libpng-dev \
+      libtiff-dev \
+      libffi-dev \
+      libpq-dev \
+      libfontconfig1-dev \
+      libfreetype-dev \
+      libgif-dev \
+      libjpeg-dev \
+      zlib1g-dev \
+      liblcms2-dev \
+      libwebp-dev \
+      tcl-dev \
+      libimagequant-dev \
+      libfribidi-dev \
+      libharfbuzz-dev \
+      libopenjp2-7-dev \
+      libssl-dev \
+      libevent-dev \
+      libxml2-dev \
+      libldap2-dev \
+      libusb-dev libusb-1.0-0-dev \
+      libxslt1-dev \
+      libsasl2-dev \
+      libexpat1-dev \
+      libmpdec-dev \
+      libreadline-dev \
+      libncurses-dev \
+      libmagic-dev
 
 FROM base-dev AS venv
-ENV MAKEFLAGS=6
+COPY odoo/requirements.txt requirements-odoo.txt
+COPY web/requirements.txt requirements-web.txt
+COPY ham/requirements.txt requirements-ham.txt
+COPY requirements.txt requirements.txt
+ENV MAKEFLAGS=8
 RUN python3 -m venv /venv
-RUN /venv/bin/pip3 install --no-binary :all: \
-    "Babel==2.6.0" \
-    "chardet==3.0.4" \
-    "decorator==4.4.2" \
-    "docutils==0.16" \
-    "ebaysdk==2.1.5"
-RUN /venv/bin/pip3 install --no-binary :all: \
-    "freezegun==0.3.15" \
-    "gevent==20.9.0" \
-    "greenlet==0.4.17" \
-    "idna==2.8" \
-    "Jinja2==2.11.2"
-RUN /venv/bin/pip3 install --no-binary :all: \
-    "libsass==0.18.0" \
-    "lxml==4.6.1" \
-    "MarkupSafe==1.1.0" \
-    "num2words==0.5.6" \
-    "ofxparse==0.19"
-RUN /venv/bin/pip3 install --no-binary :all: \
-    "passlib==1.7.2" \
-    "Pillow==8.1.2" \
-    "polib==1.1.0" \
-    "psutil==5.6.6" \
-    "psycopg2==2.8.6"
-RUN /venv/bin/pip3 install --no-binary :all: \
-    "pydot==1.4.1" \
-    "pyopenssl==19.0.0" \
-    "PyPDF2==1.26.0" \
-    "pyserial==3.4" \
-    "python-dateutil==2.7.3"
-RUN /venv/bin/pip3 install --no-binary :all: \
-    "python-ldap==3.2.0" \
-    "python-stdnum==1.13" \
-    "pytz==2019.3" \
-    "pyusb==1.0.2" \
-    "qrcode==6.1"
-RUN /venv/bin/pip3 install --no-binary :all: \
-    "reportlab==3.5.59" \
-    "requests==2.22.0" \
-    "vobject==0.9.6.1" \
-    "Werkzeug==0.16.1" \
-    "xlrd==1.2.0"
-RUN /venv/bin/pip3 install --no-binary :all: \
-    "XlsxWriter==1.1.2" \
-    "xlwt==1.3.*" \
-    "zeep==3.4.0"
-RUN /venv/bin/pip3 install --no-binary :all: \
-    "openpyxl==3.0.9" \
-    "python-magic==0.4.25" \
-    "geopy==2.2.0" \
-    "mock==4.0.3"
-
-FROM venv AS venv-project
-RUN /venv/bin/pip3 install --no-binary :all: \
-    "openpyxl==3.0.9" \
-    "python-magic==0.4.25" \
-    "geopy==2.2.0"
+RUN /venv/bin/pip3 install --upgrade pip setuptools \
+    && /venv/bin/pip3 install \
+      --requirement requirements-odoo.txt \
+      --requirement requirements-web.txt \
+      --requirement requirements-ham.txt \
+      --requirement requirements.txt
 
 FROM base AS odoo
-COPY --from=venv-project /venv /venv
+RUN apt update \
+    && apt -y dist-upgrade \
+    && apt -y install wget \
+    && wget "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.bullseye_amd64.deb" \
+    && wget "https://github.com/jgm/pandoc/releases/download/2.18/pandoc-2.18-1-amd64.deb" \
+    && ( dpkg -i *.deb; apt -y install -f ) \
+    && rm -Rf /var/lib/apt/* *.deb
+COPY --from=venv /venv /venv
 RUN mkdir /odoo /addons /data
-RUN addgroup -g 1000 odoo \
-    && adduser -h /odoo -s /bin/false -S -D -H -u 1000 odoo \
-    && chown -R 1000:1000 /data
+
+FROM odoo AS dev
+RUN groupadd -g 1000 odoo \
+    && useradd --home-dir /odoo --gid 1000 --no-create-home --shell /bin/false --uid 1000 odoo \
+    && chown 1000:1000 /odoo /addons /data
 USER 1000:1000
 ENTRYPOINT ["/venv/bin/python3", "/odoo/odoo-bin"]
+
+FROM odoo AS prod
+COPY odoo/odoo /odoo/odoo
+CMD rm -rf /odoo/odoo/addons/test*
+COPY odoo/odoo-bin /odoo
+
+COPY odoo/addons/auth_signup /odoo/addons/auth_signup
+COPY odoo/addons/base_setup /odoo/addons/base_setup
+COPY odoo/addons/base_import /odoo/addons/base_import
+COPY odoo/addons/bus /odoo/addons/bus
+COPY odoo/addons/contacts /odoo/addons/contacts
+COPY odoo/addons/digest /odoo/addons/digest
+COPY odoo/addons/http_routing /odoo/addons/http_routing
+COPY odoo/addons/mail /odoo/addons/mail
+COPY odoo/addons/portal /odoo/addons/portal
+COPY odoo/addons/resource /odoo/addons/resource
+COPY odoo/addons/social_media /odoo/addons/social_media
+COPY odoo/addons/utm /odoo/addons/utm
+COPY odoo/addons/web /odoo/addons/web
+COPY odoo/addons/web_editor /odoo/addons/web_editor
+COPY odoo/addons/web_tour /odoo/addons/web_tour
+COPY odoo/addons/website /odoo/addons/website
+
+COPY web/web_advanced_search /odoo/addons/web_advanced_search
+COPY web/web_domain_field /odoo/addons/web_domain_field
+COPY web/web_group_expand /odoo/addons/web_group_expand
+COPY web/web_listview_range_select /odoo/addons/web_listview_range_select
+COPY web/web_m2x_options /odoo/addons/web_m2x_options
+COPY web/web_no_bubble /odoo/addons/web_no_bubble
+COPY web/web_notify /odoo/addons/web_notify
+COPY web/web_refresher /odoo/addons/web_refresher
+COPY web/web_responsive /odoo/addons/web_responsive
+
+COPY docker/odoo.patch /patch/
+RUN patch --directory=/odoo -Np1 -i /patch/odoo.patch
+
+COPY ham /addons/
+
+COPY run.sh /odoo
+RUN chmod 0755 /odoo/run.sh
+
+VOLUME /data
+
+RUN groupadd -g 1000 odoo \
+    && useradd --home-dir /data --gid 1000 --no-create-home --shell /bin/false --uid 1000 odoo \
+    && chown -R 1000:1000 /data
+
+ENTRYPOINT ["/bin/bash", "/odoo/run.sh"]

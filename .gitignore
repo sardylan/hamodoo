@@ -93,3 +93,4 @@ crashlytics-build.properties
 fabric.properties
 .local
 .odoorc
+/temp/
