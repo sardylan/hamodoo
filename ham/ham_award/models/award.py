@@ -99,6 +99,12 @@ class Award(models.Model):
         readonly=True
     )
 
+    rules_id = fields.Many2one(
+        string="Score rules",
+        help="Score rules",
+        comodel_name="ham.award.rules"
+    )
+
     uploads_count = fields.Integer(
         string="Uploads count",
         help="Uploads count",
@@ -119,6 +125,13 @@ class Award(models.Model):
         selection=SELECTION_STATE,
         readonly=True,
         compute="_compute_state"
+    )
+
+    points = fields.Integer(
+        string="Points",
+        help="Points",
+        readonly=True,
+        compute="_compute_points"
     )
 
     @api.constrains("ts_start", "ts_end", "ts_upload_start", "ts_upload_end")
@@ -152,6 +165,25 @@ class Award(models.Model):
                 rec.state = "completed"
             else:
                 rec.state = "closed"
+
+    @api.depends("uploads")
+    def _compute_points(self):
+        for rec in self:
+            sql_query: str = "SELECT SUM(haq.points) " \
+                             "FROM ham_award_qso haq " \
+                             "WHERE haq.award_id = %(award_id)s " \
+                             "  AND haq.points > 0;"
+
+            sql_params: dict = {
+                "award_id": rec.id
+            }
+
+            self.env.cr.execute(sql_query, sql_params)
+
+            sql_result = self.env.cr.fetchall()
+            points = sql_result[0][0]
+
+            rec.points = points
 
     # TODO: Deprecated
     def action_produce_adif(self):

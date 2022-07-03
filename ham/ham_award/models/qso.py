@@ -63,6 +63,13 @@ class QSO(models.Model):
         default=False,
     )
 
+    points = fields.Integer(
+        string="Points",
+        help="Points",
+        compute="action_calculate_points",
+        store=True
+    )
+
     def action_update_from_qrzcom(self):
         locator_utility = self.env["ham.utility.locator"]
 
@@ -99,6 +106,21 @@ class QSO(models.Model):
                 values["latitude"], values["longitude"] = locator_utility.locator_to_latlng
 
             rec.write(values)
+
+    def action_calculate_points(self):
+        for rec in self:
+            self.calculate_points(rec)
+
+    @api.model
+    def calculate_points(self, qso):
+        if not qso:
+            raise ValidationError(_("Invalid QSO record"))
+
+        if not qso.award_id.rules_id:
+            return
+
+        points = qso.award_id.rules_id.qso_points(qso)
+        qso.points = points
 
     @api.model
     def compute_adif_filename(self, dt: datetime.datetime, qsos) -> str:

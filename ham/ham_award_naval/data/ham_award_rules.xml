@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo noupdate="0">
+
+    <record model="ham.award.rules" id="data_ham_award_rules_coastal">
+        <field name="name">Italian Navy Coastal Radio Station Award</field>
+        <field name="tag">coastal</field>
+    </record>
+
+</odoo>

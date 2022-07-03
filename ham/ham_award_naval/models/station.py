@@ -35,12 +35,6 @@ class NavalStation(models.Model):
         store=True
     )
 
-    coastal_radio_station_points = fields.Integer(
-        string="Coastal Radio Station Points",
-        help="Station points for the Italian Navy Coastal Radio Station Award",
-        default="15"
-    )
-
     def name_get(self):
         return [(rec.id, f"{rec.callsign} - {rec.reference}") for rec in self]
 

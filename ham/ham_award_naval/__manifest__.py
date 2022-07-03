@@ -10,17 +10,19 @@
         "ham_award"
     ],
     "data": [
+        "data/club.xml",
+        "data/ham_award_rules.xml",
+
         "security/access/club.xml",
         "security/access/station.xml",
 
         "views/club.xml",
         "views/station.xml",
+        "views/inherit_award.xml",
         "views/inherit_award_qso.xml",
 
         "menu/actions.xml",
-        "menu/items.xml",
-
-        "data/club.xml"
+        "menu/items.xml"
     ],
     "assets": {
         "web.assets_frontend": [

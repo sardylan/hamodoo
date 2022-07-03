@@ -55,6 +55,8 @@
                         <group string="Infos">
                             <field name="public"/>
                             <field name="callsigns"/>
+                            <field name="rules_id"/>
+                            <field name="points"/>
                         </group>
                         <group string="Date &amp; Time" col="4">
                             <field name="ts_start" widget="datetime_tz"/>
@@ -65,11 +67,9 @@
                         <group string="Operators">
                             <field name="operator_ids"/>
                         </group>
+                        <notebook/>
                     </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids"/>
-                        <field name="message_ids"/>
-                    </div>
+                    <div class="oe_chatter"/>
                 </form>
             </field>
         </record>

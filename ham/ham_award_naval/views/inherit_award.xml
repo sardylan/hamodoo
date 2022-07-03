@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo noupdate="0">
+
+    <record model="ir.ui.view" id="view_award_form">
+        <field name="name">ham.award: Inherited Form View for adding Score Points</field>
+        <field name="model">ham.award</field>
+        <field name="inherit_id" ref="ham_award.view_award_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="coastal" string="Coastal award"
+                      attrs="{'invisible': [('rules_id', '!=', %(ham_award_naval.data_ham_award_rules_coastal)d)]}">
+                    <group>
+                        <field name="coastal_jolly"/>
+                        <field name="coastal_station_ids"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+</odoo>

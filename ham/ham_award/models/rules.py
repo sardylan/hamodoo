@@ -20,3 +20,13 @@ class Rules(models.Model):
         help="Tag for code",
         required=True
     )
+
+    def qso_points(self, qso) -> int:
+        self.ensure_one()
+
+        method_name = f"{self.tag}_qso_points"
+        method = getattr(self, method_name)
+        if not method:
+            return 0
+
+        return method(qso)

@@ -9,7 +9,6 @@
         <field name="arch" type="xml">
             <field name="operator_id" position="after">
                 <field name="naval_station_id"/>
-                <field name="points"/>
             </field>
         </field>
     </record>
@@ -20,21 +19,13 @@
         <field name="model">ham.award.qso</field>
         <field name="arch" type="xml">
             <page name="page_note" position="after">
-                <page name="page_naval"
-                      string="Naval references">
-                    <group col="4" string="Remote">
+                <page name="page_coastal"
+                      string="Coastal references">
+                    <group col="2" string="Remote">
                         <field name="naval_station_id"/>
-                        <newline/>
-                        <field name="naval_reference"/>
-                        <field name="coastal_radio_station_points"/>
                     </group>
                 </page>
             </page>
-            <group name="group_others_other" position="after">
-                <group>
-                    <field name="points"/>
-                </group>
-            </group>
         </field>
     </record>
 
