@@ -14,4 +14,4 @@ jobs:
     - name: Compute git short sha
       run: echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-7)" >> $GITHUB_ENV
     - name: Build the Docker image
-      run: docker image build --target=prod --tag hamodoo:$GITHUB_ENV .
+      run: docker image build --target=prod --tag hamodoo:${GITHUB_SHA_SHORT} .
