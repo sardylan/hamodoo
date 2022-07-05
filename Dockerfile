@@ -1,4 +1,4 @@
-FROM hamodoo-venv:latest AS prod
+FROM sardylan/hamodoo-venv:latest AS prod
 COPY odoo/odoo /odoo/odoo
 CMD rm -rf /odoo/odoo/addons/test*
 COPY odoo/odoo-bin /odoo
