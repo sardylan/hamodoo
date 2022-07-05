@@ -1,0 +1,15 @@
+name: Docker Image CI
+on:
+  push:
+    branches: [ "15.0" ]
+  pull_request:
+    branches: [ "15.0" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_SHA_SHORT: "${GITHUB_SHA::6}"
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker image build --target=prod --tag hamodoo:${GITHUB_SHA_SHORT} .
