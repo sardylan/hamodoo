@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IMAGE_TAG: ${{ github.head_ref || github.ref_name }}
+    services:
+      postgresql:
+        image: postgres:14.4-alpine
+        env:
+          POSTGRES_USER: "hamodoo"
+          POSTGRES_PASSWORD: "hamodoo"
     steps:
     - uses: actions/checkout@v3
       with:
@@ -24,7 +30,7 @@ jobs:
     - name: Build the Docker image
       run: docker image build --target=prod --tag sardylan/hamodoo:${GITHUB_SHA_SHORT} .
     - name: Run tests
-      run: docker container run --rm sardylan/hamodoo:${GITHUB_SHA_SHORT}
+      run: docker container run --rm -e TEST_FLAGS="-i ham_award --test-tags /ham_award" -e DB_HOST="postgresql" -e DB_USERNAME="hamodoo" -e DB_PASSWORD="hamodoo" -e DB_NAME="hamodoo" sardylan/hamodoo:${GITHUB_SHA_SHORT}
     - name: Tag the image
       run: docker image tag sardylan/hamodoo:${GITHUB_SHA_SHORT} sardylan/hamodoo:latest sardylan/hamodoo:${GITHUB_REF_NAME}
     - name: Push images
