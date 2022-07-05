@@ -5,7 +5,7 @@ set -x
 cd /odoo || exit 1
 
 if [ -z "${TEST_FLAGS}" ]; then
-  ODOO_CMD_RUN="-i tournaments"
+  ODOO_CMD_RUN="-i ham_award"
 else
   ODOO_CMD_RUN="--limit-time-cpu=9999999 --limit-time-real=9999999 --stop-after-init ${TEST_FLAGS}"
 fi
