@@ -19,6 +19,7 @@ jobs:
           POSTGRES_USER: "hamodoo"
           POSTGRES_PASSWORD: "hamodoo"
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        network: ci
     steps:
     - uses: actions/checkout@v3
       with:
@@ -33,7 +34,7 @@ jobs:
     - name: Build the Docker image
       run: docker image build --target=prod --tag sardylan/hamodoo:${GITHUB_SHA_SHORT} .
     - name: Run tests
-      run: docker container run --rm -e TEST_FLAGS="-i ham_award --test-tags /ham_award" -e DB_USERNAME="hamodoo" -e DB_PASSWORD="hamodoo" -e DB_NAME="hamodoo" sardylan/hamodoo:${GITHUB_SHA_SHORT}
+      run: docker container run --rm --network ci -e TEST_FLAGS="-i ham_award --test-tags /ham_award" -e DB_USERNAME="hamodoo" -e DB_PASSWORD="hamodoo" -e DB_NAME="hamodoo" sardylan/hamodoo:${GITHUB_SHA_SHORT}
     - name: Tag the image
       run: docker image tag sardylan/hamodoo:${GITHUB_SHA_SHORT} sardylan/hamodoo:latest sardylan/hamodoo:${GITHUB_REF_NAME}
     - name: Push images
